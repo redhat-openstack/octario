@@ -1,0 +1,32 @@
+---
+- name: Remove and create logs dir
+  file: path={{ logs_dir | default(ansible_env.HOME) }}/logs/ state={{ item }}
+  with_items:
+    - absent
+    - directory
+
+- name: Load octario configuration
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ inventory_dir }}/octario.cfg"
+    - "/etc/octario.cfg"
+
+- name: Load component configuration
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
+    - "{{ inventory_dir }}/component.cfg"
+    - "/etc/component.cfg"
+
+- name: Setup component configuration based on operating system
+  set_fact:
+    component_config="{{ test_config.virt[item] | default(omit) }}"
+  with_items:
+    - "default"
+    - "{{ ansible_os_family }}-{{ ansible_distribution_version | int }}"
+    - "{{ ansible_os_family }}-{{ ansible_distribution_version }}"
+
+- name: Copy component to remote host
+  synchronize:
+    src="{{ component.path | default(inventory_dir + '/' + component.name) }}"
+    dest="{{ ansible_env.HOME }}"
