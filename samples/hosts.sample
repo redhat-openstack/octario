@@ -1,0 +1,6 @@
+# This is the hosts file. Also known as the 'inventory'.
+# [tester] is the group of one or more nodes, where octario roles would be executed.
+# change <my_test_node> to the hostname or IP address of your tester node.
+
+[tester]
+<my_test_node>
