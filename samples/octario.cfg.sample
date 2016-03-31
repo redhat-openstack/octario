@@ -1,0 +1,10 @@
+# Octario configuration file
+# ===========================
+
+component:
+    name: neutron
+    config_file_name: jenkins-config.yml
+    version: 9
+
+# Additional possible variables under component
+    path: /my/component/is/here
