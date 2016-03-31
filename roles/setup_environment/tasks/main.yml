@@ -1,0 +1,18 @@
+---
+- name: Clean and create logs dir 
+  file: path={{ ansible_env.HOME }}/logs/ state={{ item }}
+  with_items:
+      - absent
+      - directory
+
+- name: Set component configuration file path
+  set_fact: component_config_path="{{ component.name + '/' + component.config_file_name }}"
+  when: component.name and component.config_file_name
+
+- name: Load component configuration
+  include_vars: "{{test_deps_file}}"
+  with_first_found:
+      - "{{ component_config_path }}"
+      - "component.cfg"
+      - "/etc/component.cfg"
+  register: result
