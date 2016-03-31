@@ -1,0 +1,6 @@
+# Component configuration file
+# ===========================
+
+component:
+    name: octario
+    config_file_name: jenkins-config.yml
