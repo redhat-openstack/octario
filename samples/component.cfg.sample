@@ -1,0 +1,56 @@
+# This is an example of common structure for component configuration file
+# This configuration file specifices:
+#    * What RPMs should be removed/installed in general and for a specific tester
+#    * What commands should be executed in general and for a specific tester
+#    * What files should be archived
+# It doesn't:
+#    * Holds the name or the path of the chosen component
+#    * RDO/RHOS release information
+
+# The following section specifices the testers.
+# For each tester you can specify the invocation command and the RPMs to install/remove
+
+pep8:
+    run: tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    run: tox -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+functional:
+    run: tox -v -e functional 2>&1 | tee ../logs/testrun.log;
+
+api:
+    run: tox -v -e api 2>&1 | tee ../logs/testrun.log;
+
+# This section specifies the RPMs that should be installed and removed in any
+# case, no matter which tester was chosen.
+
+rpm_deps: [ gcc ]
+remove_rpm: []
+
+# This section specifies which commands should be exectued for all testers and
+# which files should be archived (= copied to user host ).
+
+virt_run_config:
+    run: >
+        set -o pipefail;
+        rpm -qa | sort > installed-rpms.txt;
+        sudo pip install -U tox;
+        {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+    archive:
+        - ../logs/testrun.log
+        - installed-rpms.txt
+
+# This is the main loop in a matter of where the invocation will start
+# For example, one invocation may trigger the following chain:
+# test_config.virt.default.run -> virt_run_config -> run -> tester_name -> run
+
+test_config:
+    virt:
+        default:
+            setup:
+                install: "{{ rpm_deps }}"
+                remove: "{{ remove_rpm }}"
+            run: "{{ virt_run_config.run }}"
+            archive: "{{ virt_run_config.archive }}"
