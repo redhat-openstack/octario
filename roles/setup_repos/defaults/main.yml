@@ -1,0 +1,4 @@
+# Red Hat OpenStack version 9 is 'Mitaka' based.
+rhos_default_version: 9
+
+rhos_release_bin: '/usr/bin/rhos-release'
