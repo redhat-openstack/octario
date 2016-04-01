@@ -1,0 +1,24 @@
+---
+# This task will register all repos on the system to disable each one of them
+# with the second task.
+- name: Register all the repsitories
+  shell: ls /etc/yum.repos.d/*
+  register: yum_repos
+
+- name: Disable any existing repos
+  become: yes
+  become_method: sudo
+  replace:
+    dest: "{{ item }}" 
+    regexp: "enabled=1"
+    replace: "enabled=0"
+  with_items: "{{ yum_repos.stdout_lines }}" 
+
+# This will install the repo that holds the test depedencies of the
+# different projects
+- name: Install the COPR test depedencies repo
+  vars:
+    component_version: "{{ component.version | default(stable_version) }}"
+  become: yes
+  become_method: sudo
+  template: src=../templates/component-test-copr-repo.j2 dest=/etc/yum.repos.d/test-reqs-copr.repo
