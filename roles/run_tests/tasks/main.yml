@@ -1,0 +1,16 @@
+---
+# This role runs the actual component tests based on the chosen tester
+
+# 'ignore_errors' is true because test results evaultion isn't done here, but in
+# 'collect_logs' role, in the last task.
+# new line stripped from run command because Ansible unable to parser it that way.
+- name: Running tests
+  shell: >
+    export PATH=$PATH:/usr/sbin;
+    {{ component_config.run.replace('\n', '') }}
+  args:
+    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+    executable: "{{ default_shell }}"
+  register: test_run
+  ignore_errors: true
+  
