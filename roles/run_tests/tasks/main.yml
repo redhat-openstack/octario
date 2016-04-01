@@ -1,0 +1,12 @@
+---
+# This role runs the actual component tests based on the chosen tester
+
+- name: Running tests
+  shell: >
+    export PATH=$PATH:/usr/sbin;
+    {{ component_config.run.replace('\n', '') }}
+  args:
+    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+    executable: /bin/bash
+  register: test_run
+  ignore_errors: true
