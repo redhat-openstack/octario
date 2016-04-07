@@ -1,0 +1,5 @@
+---
+- name: Run API tests
+  hosts: tester
+  roles:
+      - { role: run_tests, tester: api }

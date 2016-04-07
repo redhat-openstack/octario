@@ -1,0 +1,8 @@
+---
+# This will run all the tasks needed to prepare the environment for running the tests
+
+- name: Provision OpenStack resources
+  hosts: tester
+  roles:
+      - { role: setup_repos }
+      - { role: setup_environment }
