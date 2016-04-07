@@ -1,0 +1,12 @@
+- name: Run Octario (component testing)
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: "{{ tester_name }}"
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }
