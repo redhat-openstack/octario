@@ -1,0 +1,13 @@
+---
+- name: Run pep8 test
+  hosts: tester
+  vars:
+    tester:
+      component:
+          tox_target: pep8
+  roles:
+      - { role: setup_repos }
+      - { role: setup_environment }
+      - { role: install_packages }
+      - { role: collecting_logs }
+      - { role: run_tests }

@@ -1,0 +1,13 @@
+---
+- name: Run API tests
+  hosts: tester
+  vars:
+    tester:
+      component:
+          tox_target: api
+  roles:
+      - { role: setup_repos }
+      - { role: setup_environment }
+      - { role: install_packages }
+      - { role: collecting_logs }
+      - { role: run_tests, tester: api }
