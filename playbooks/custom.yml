@@ -1,0 +1,5 @@
+---
+- name: Run tests (using $TESTER variable)
+  hosts: tester
+  roles:
+      - { role: run_tests, tester: "{{ lookup('env','TESTER') }}" }

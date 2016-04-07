@@ -1,0 +1,5 @@
+---
+- name: Run pep8 test
+  hosts: tester
+  roles:
+      - { role: run_tests, tester: pep8 }
