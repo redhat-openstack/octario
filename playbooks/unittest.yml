@@ -1,0 +1,11 @@
+---
+- name: Run unit tests
+  hosts: tester
+  vars:
+    tester:
+      component:
+          tox_target: unittest
+  roles:
+      - { role: setup_repos }
+      - { role: setup_environment }
+      - { role: run_tests }

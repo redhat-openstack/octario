@@ -1,0 +1,11 @@
+---
+- name: Run tests (using $TESTER variable)
+  hosts: tester
+  vars:
+    tester:
+      component:
+          tox_target: "{{ lookup('env','TESTER') }}"
+  roles:
+      - { role: setup_repos }
+      - { role: setup_environment }
+      - { role: run_tests }
