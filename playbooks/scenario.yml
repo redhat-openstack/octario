@@ -1,0 +1,13 @@
+---
+- name: Run scenario tests
+  hosts: tester
+  vars:
+    tester:
+      component:
+          tox_target: scenario
+  roles:
+      - { role: setup_repos }
+      - { role: setup_environment }
+      - { role: install_packages }
+      - { role: collect_logs }
+      - { role: run_tests }
