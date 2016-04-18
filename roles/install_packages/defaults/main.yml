@@ -1,0 +1,2 @@
+logs_packages: [ subunit-filters, python-junitxml ]
+yum_bin: '/usr/bin/yum'

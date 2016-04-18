@@ -1,0 +1,23 @@
+# This file handles everything related to packaging.
+
+- name: Print summary of all the repositories enabled on the host
+  shell: "{{ yum_bin }}" repolist all
+
+- name: Install test dependencies RPMs needed to run the tests
+  become: yes
+  become_method: sudo
+  yum: pkg="{{ item }}" state=latest
+  with_items: "{{ component_config.setup.install }}"
+  when: "{{ component_config.setup.install }}"
+
+- name: Remove unwanted rpms
+  become: yes
+  become_method: sudo
+  yum: pkg="{{ item }}" state=absent
+  with_items: "{{ component_config.setup.remove }}"
+  when: "{{ component_config.setup.remove }}"
+
+- name: Install packages needed for converting and collecting the logs
+  become: yes
+  become_method: sudo
+  yum: name="{{ logs_packages }}" state=present
