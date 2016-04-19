@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_b250c85f",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T09:49:16Z",
+      "side": 1,
+      "message": "We shouldn\u0027t run this for every run - some option to skip it.",
+      "revId": "b99d61792cfc61478a1ccdd22b901276f103d299",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
