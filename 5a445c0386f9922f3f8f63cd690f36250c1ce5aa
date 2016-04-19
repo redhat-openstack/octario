@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_7245a0b1",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T09:42:08Z",
+      "side": 1,
+      "message": "Could be defined in defaults and then used in playbooks as YUM_CLI or even INSTALL_CMD whateve name suits best",
+      "revId": "5a445c0386f9922f3f8f63cd690f36250c1ce5aa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
