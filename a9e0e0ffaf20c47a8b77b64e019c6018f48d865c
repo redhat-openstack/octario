@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_8d35a9db",
+        "filename": "roles/setup_repos/defaults/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T11:00:13Z",
+      "side": 1,
+      "message": "Some kind of more informative variable, for example:\n# Mitaka \u003d 9\n\nrename to be something different then stable_version for example latest_supported_version (too long imo)",
+      "revId": "a9e0e0ffaf20c47a8b77b64e019c6018f48d865c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ad3d0dbd",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T11:00:13Z",
+      "side": 1,
+      "message": "/etc/yum.repos.d/*.repos",
+      "revId": "a9e0e0ffaf20c47a8b77b64e019c6018f48d865c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6d3025e9",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T11:00:13Z",
+      "side": 1,
+      "message": "space - remove it.",
+      "revId": "a9e0e0ffaf20c47a8b77b64e019c6018f48d865c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4d4e8170",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T11:00:13Z",
+      "side": 1,
+      "message": "space - remove it",
+      "revId": "a9e0e0ffaf20c47a8b77b64e019c6018f48d865c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_8d4c8971",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T11:00:13Z",
+      "side": 1,
+      "message": "Full path and store it as variable.",
+      "revId": "a9e0e0ffaf20c47a8b77b64e019c6018f48d865c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
