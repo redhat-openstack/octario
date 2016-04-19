@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_b208c82e",
+        "filename": "roles/setup_environment/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T10:47:43Z",
+      "side": 1,
+      "message": "with_first_found:\n - \"octario.cfg\"\n paths:\n  - location 1\n  - location 2",
+      "revId": "8e41f462dfb86f6573f22c1b6cdfce55f24a06fb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
