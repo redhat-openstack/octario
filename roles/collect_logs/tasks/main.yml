@@ -1,0 +1,45 @@
+---
+# This file handles converting and collecting logs
+
+# Notes:
+# - PEP8 is ignored because it's not producing subunit streams
+# - Test results converted into Junit XML since this is a common format published by most of the CI systems (e.g Jenkins).
+# - 'Pass or Fail' is included in 'collecting_logs' role since it should be the last task in the last role, so it can
+#   collect logs before Ansible stops running.
+
+- name: Fetch files that mentioned in component configuration's archive section
+  vars:
+    component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
+  fetch:
+    src="{{ component_path }}/{{ item }}"
+    dest="../{{ inventory_dir }}"
+  with_items: "{{ component_config.archive }}"
+
+- name: Copy test results to convert them into junit xml format
+  vars:
+    component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
+  shell: |
+    find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
+    | while read name; do cat "$name"; done \
+    > '{{ component_path }}/results.subunit'
+  when: tester.component.tox_target != pep8 and fetch_convert_logs
+
+- name: Convert test results into Junit XML
+  shell: >
+    cat results.subunit | subunit-1to2 > results.subunit2;
+    cat results.subunit2 | subunit2junitxml > tests_results.xml
+  args:
+    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+  when: tester.component.tox_target != pep8 and fetch_convert_logs
+
+- name: Fetch converted test results from remote host
+  fetch:
+    src="{{ ansible_env.HOME }}/{{ component.name }}/tests_results.xml"
+    dest="{{ lookup('env', 'PWD') }}/tests_results.xml"
+    flat=yes
+  when: tester.component.tox_target != pep8 and fetch_convert_logs
+
+- name: Pass or Fail execution based on test results
+  fail: msg="The test run failed"
+  when: test_run.rc != 0
+- debug: var=test_run
