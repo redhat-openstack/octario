@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_12e9b480",
+        "filename": "roles/run_tests/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T09:59:36Z",
+      "side": 1,
+      "message": "Try to remove and if fails write the comment",
+      "revId": "8fe6e90fae3153ab1f665a31c19dea2d8369d029",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f2d410be",
+        "filename": "roles/run_tests/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T09:59:36Z",
+      "side": 1,
+      "message": "Variable as executable:\nSHELL \u003d /bin/bash",
+      "revId": "8fe6e90fae3153ab1f665a31c19dea2d8369d029",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d2034c41",
+        "filename": "roles/run_tests/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T09:59:36Z",
+      "side": 1,
+      "message": "write the comment why the ignore_errors is required here.",
+      "revId": "8fe6e90fae3153ab1f665a31c19dea2d8369d029",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
