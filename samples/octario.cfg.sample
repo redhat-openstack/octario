@@ -13,5 +13,11 @@ component:
 #rhos_release_server: <rhos_release_server_address>
 
 # ======= Optional variables =========
+
+# Specify component path if component is not in octario's root directory
 # component:
 #   path: /my/component/is/here
+
+# Skip converting and fetching logs tasks.
+# Note: this is not under component variable
+# convert_fetch_logs: no
