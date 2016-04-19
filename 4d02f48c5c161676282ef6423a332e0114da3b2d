@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_bf3d30bd",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-19T14:12:37Z",
+      "side": 1,
+      "message": "keep it in variables, see:\n\n$ type ls\nls is aliased to `ls --color\u003dauto\u0027\n\n$ type /usr/bin/ls\n/usr/bin/ls is /usr/bin/ls",
+      "revId": "4d02f48c5c161676282ef6423a332e0114da3b2d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
