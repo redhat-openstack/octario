@@ -93,3 +93,16 @@ You can also specify your own tester
 export TESTER=my_new_cool_tester
 ansible-playbook -vvv -i hosts playbooks/custom.yml --extra-vars @octario.cfg
 ```
+
+# Octario CLI
+
+Octario has cli that allows you to run tests using one command, without modifying
+octario.cfg
+
+### Examples
+
+run tests for neutron component, rhos 8 release
+
+```
+cli/main.py --component neutron --rhos-release 8
+```
