@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_33e95781",
+        "filename": "roles/run_tests/tasks/main.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-20T10:10:40Z",
+      "side": 1,
+      "message": "remove empty spaces",
+      "revId": "3ddd83cc4d76aa8eb89a0fc24d93a2d32eed4022",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
