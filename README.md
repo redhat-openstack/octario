@@ -21,7 +21,7 @@ that the tester node is provided by the user by specifing it in the hosts file.
 
 # Configuration
 
-There are 3 configuration files.
+There are 3 configuration files `octario` is using.
 For each one of the configuration files, an detailed sample is included in `samples` directory.
 
 ### octario.cfg
@@ -44,6 +44,10 @@ Controls how the component is tested.
 with component.cfg you can specify what RPMs should be installed/removed, what pre commands
 should be executed and what is the tests invocation command. All this can be specified per
 tester (pep8, unittest, etc) or for all testers.
+
+For certain components, an component.cfg file is located in components_config/<rhos release> directory.
+If there is a component.cfg file there, octario will use it. If not, it will try to look for it in octario
+root directory, component's root directory and /etc.
 
 Detailed example for component.cfg can be found in samples directory.
 
