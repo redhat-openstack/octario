@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_b808a62e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-04-20T07:10:34Z",
+      "side": 1,
+      "message": "Isn\u0027t requirement to have source code for component that includes jenkins-config.yml ?",
+      "revId": "648313ac6141854a277283282909ee27bcedf86f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
