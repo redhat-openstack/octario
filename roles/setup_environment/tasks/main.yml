@@ -17,6 +17,7 @@
 - name: Load component configuration
   include_vars: "{{ item }}"
   with_first_found:
+    - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.cfg"
     - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
     - "{{ inventory_dir }}/component.cfg"
     - "/etc/component.cfg"

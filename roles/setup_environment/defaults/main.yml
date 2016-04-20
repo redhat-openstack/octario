@@ -1,1 +1,2 @@
 config_file_name: jenkins-config.yml
+rhos_default_version: 9
