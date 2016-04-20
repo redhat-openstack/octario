@@ -8,10 +8,6 @@ component:
   config_file_name: jenkins-config.yml
   version: 9
 
-# Internal RHOS release server hostname or IP address
-
-#rhos_release_server: <rhos_release_server_address>
-
 # ======= Optional variables =========
 
 # Specify component path if component is not in octario's root directory

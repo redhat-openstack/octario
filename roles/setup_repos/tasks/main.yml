@@ -23,16 +23,12 @@
   become_method: sudo
   template: src=../templates/component-test-copr-repo.j2 dest=/etc/yum.repos.d/test-reqs-copr.repo
 
-# rhos-release used for installing the right rhos repos.
-# This depends on setting the right internal rhos-release server by 'export rhos_release_server=<the_server_ip_or_fqdn>'.
-# If you are unfamiliar with the server address, please contact octario maintainers.
+# rhos-release used for installing the rhos repos.
 - name: Install rhos-release
   become: yes
   become_method: sudo
-  vars:
-    rhos_server: "{{ rhos_release_server | default(lookup('env','rhos_release_server')) }}"
   yum:
-    name="http://{{ rhos_server }}/repos/rhos-release/rhos-release-latest.noarch.rpm"
+    name="http://rhos-release.virt.bos.redhat.com/repos/rhos-release/rhos-release-latest.noarch.rpm"
 
 - name: Execute rhos-release to install rhos repos
   vars:
