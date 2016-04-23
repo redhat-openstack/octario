@@ -8,17 +8,17 @@
 - name: Load octario configuration
   include_vars: "{{ item }}"
   with_first_found:
-    - files:
-        - octario.cfg
-      paths:
-        - "{{ inventory_dir }}/"
-        - /etc/
+    - "{{ playbook_dir }}/../octario.cfg"
+    - "{{ inventory_dir }}/octario.cfg"
+    - "/etc/octario.cfg"
 
 - name: Load component configuration
   include_vars: "{{ item }}"
   with_first_found:
+    - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.cfg"
     - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.cfg"
     - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
+    - "{{ playbook_dir }}/../component.cfg"
     - "{{ inventory_dir }}/component.cfg"
     - "/etc/component.cfg"
 
@@ -34,3 +34,8 @@
   synchronize:
     src="{{ component.path | default(inventory_dir + '/' + component.name) }}"
     dest="{{ ansible_env.HOME }}"
+  with_first_found:
+    - "{{ component.path | default(omit) }}"
+    - "{{ inventory_dir }}/{{ component.name }}"
+    - "{{ inventory_dir }}/../{{ component.name }}"
+    - "{{ playbook_dir }}/../{{ component.name }}"
