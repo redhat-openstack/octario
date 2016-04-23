@@ -13,17 +13,17 @@ It supports the following testers:
 
 Coming Soon: Tempest.
 
-## Requirements
+### Requirements
 
 1. ansible installed on the system ( ansible >= 2 ).
-2. Component source code ( Can be downloaded using `git clone git://git.openstack.org/openstack/<component_name>.git` ).
+2. Component source code. Can be downloaded using `git clone git://git.openstack.org/openstack/<component_name>.git`.
 
-`octario` is not provisioning the node on which it will run the tests. It's assumed
-that the tester node is provided by the user by specifing it in the hosts file.
+Note: `octario` is not provisioning the node on which it will run the tests. It's assumed
+      that the tester node is provided by the user by specifing it in the hosts file.
 
-# How to run Octario
+## Run Octario
 
-1. First, create an inventory file that will include the IP address or the hostname of your tester node.
+First, create an inventory file that will include the IP address or the hostname of your tester node.
 
 ```
 vi hosts
@@ -32,7 +32,7 @@ vi hosts
 my_tester_host
 ```
 
-2. Edit octario.cfg with your component details. Make sure to specify name and version!
+Edit octario.cfg with your component details. Make sure to specify name and version!
 
 ```
 component:
@@ -40,7 +40,7 @@ component:
   version: 8
 ```
 
-3. Run octario!. Choose one of testers and run the following command in octario root directory
+Run octario!. Choose one of testers and run the following command in octario root directory
 
 ```
 ansible-playbook -vvv -i hosts playbooks/pep8.yml --extra-vars @octario.cfg
@@ -48,7 +48,7 @@ ansible-playbook -vvv -i hosts playbooks/pep8.yml --extra-vars @octario.cfg
 
 pep8.yml can be replaced with [unittest, functional, api, scenario].yml
 
-You can also specify your own tester
+You can also specify your own tester.
 
 ```
 export TESTER=my_new_cool_tester
