@@ -1,2 +1,13 @@
----
-- include: test.yml tester_name=scenario
+- name: Run Octario - Scenario tests ( in component repo )
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: scenario
+  roles:
+    - { role: patch_rpms }
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }

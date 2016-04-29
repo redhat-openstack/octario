@@ -1,9 +1,9 @@
-- name: Run Octario (component testing)
+- name: Run Octario - Unit tests
   hosts: tester
   vars:
     tester:
       component:
-        tox_target: "{{ tester_name }}"
+        tox_target: py27
   roles:
     - { role: setup_repos }
     - { role: setup_environment }

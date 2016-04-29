@@ -1,2 +1,12 @@
----
-- include: test.yml tester_name=pep8
+- name: Run Octario - PEP8 test
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: pep8
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }

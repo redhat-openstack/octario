@@ -1,2 +1,13 @@
----
-- include: test.yml tester_name=api
+- name: Run Octario - API tests ( in component repo )
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: api
+  roles:
+    - { role: patch_rpms }
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }

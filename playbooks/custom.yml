@@ -1,2 +1,12 @@
----
-- include: test.yml tester_name="{{ lookup('env','TESTER') }}"
+- name: Run Octario - Custom tester
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: "{{ lookup('env','TESTER') }}"
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }
