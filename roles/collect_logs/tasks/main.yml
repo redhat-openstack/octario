@@ -42,4 +42,3 @@
 - name: Pass or Fail execution based on test results
   fail: msg="The test run failed"
   when: test_run.rc != 0
-- debug: var=test_run
