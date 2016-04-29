@@ -3,7 +3,7 @@
   vars:
     tester:
       component:
-        tox_target: py27
+        tox_target: unittest
   roles:
     - { role: setup_repos }
     - { role: setup_environment }
