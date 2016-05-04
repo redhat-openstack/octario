@@ -1,0 +1,116 @@
+# rhpkg used by rdopkg
+- name: Install rhpkg repo
+  become: yes
+  become_method: sudo
+  template:
+    src="../templates/rhpkg.j2"
+    dest="/etc/yum.repos.d/rhpkg.repo"
+
+- name: Install packages required for patching
+  become: yes
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'createrepo'
+    - 'python-pip'
+    - 'python-cryptography'
+    - 'libffi-devel'
+    - 'openssl-devel'
+    - 'rhpkg'
+    - 'git'
+    - 'gcc'
+
+# rdopkg isn't installed as RPM since it require packages that are not in OSP repos.
+# installing it with pip will save adding the requirements to COPR repo every new release.
+- name: Install rdopkg
+  become: yes
+  become_method: sudo
+  pip:
+    name='rdopkg'
+  ignore_errors: true
+
+# mock group is needed for for the mockbuild
+# without creating mock group, rdopkg will try to use root and ask for password
+- name: Create mock group
+  become: yes
+  become_method: sudo
+  group:
+    name=mock
+    state=present
+
+- name: Add ansible ssh user to mock group
+  become: yes
+  become_method: sudo
+  user:
+    name="{{ ansible_ssh_user }}"
+    groups=mock
+
+# Clone component dist-git repo
+- name: Clone the dist-git repo
+  git: repo="{{ component_dist_git_url }}"
+       version="rhos-{{ component.version }}.0-rhel-{{ ansible_distribution_version|int }}"
+       dest="dist-git/{{ component_dist_git_name }}"
+       accept_hostkey=true
+
+- name: Prepare component repo
+  shell: "git checkout -b patch-branch"
+  args:
+    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+
+- name: Prepare dist-git repo for patching
+  shell: >
+    git remote add -f patches {{ ansible_env.HOME}}/{{ component.name }};
+    git fetch patches;
+    git fetch patches --tags;
+    git branch rhos-{{ component.version }}.0-rhel-{{ ansible_distribution_version|int }}-patches patches/patch-branch;
+  args:
+    chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
+
+# The actual patching part
+- name: Apply patch on dist-git repo
+  shell: "rdopkg update-patches"
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+
+# Now that the repo is patched, generate a new RPM from it
+- name: Build new RPM from patched dist-git repo
+  shell: "rdopkg mockbuild"
+  ignore_errors: true
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+  register: rpm_mockbuild
+
+# Some build errors are lagitimate and should not fail the run
+# Like '.gitreview: does not exist in index'
+- name: Check for legitimate build errors
+  shell: grep -R -i -E "can't find file to patch|No such file or directory|does not exist in index" results*
+  ignore_errors: true
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+  register: common_build_errors
+
+- name: Fail run if mockbuild failed
+  fail: msg="The mockbuild has failed for some reason. Check tags exist and you have sudo on remote host"
+  when: rpm_mockbuild.rc != 0 and common_build_errors.rc != 0
+
+# Create directorty which will hold the RPMs
+- name: Create 'patched_rpms' directory`
+  file:
+    path=patched_rpms
+    state=directory
+    mode=0755
+
+- name: Copy new generated RPMs to $HOME/patched_rpms
+  command: "cp dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm patched_rpms/"
+
+- name: Create repository for patched RPMs
+  shell: "createrepo patched_rpms"
+
+- name: Setup repository file
+  become: yes
+  become_method: sudo
+  template:
+    src='patched_rpms.j2'
+    dest='/etc/yum.repos.d/patched_rpms.repo'
