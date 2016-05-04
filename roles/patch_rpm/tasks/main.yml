@@ -1,0 +1,68 @@
+- name: Install packages required for patching
+  become: yes
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'createrepo'
+    - 'python-pip'
+    - 'libffi-devel'
+    - 'openssl-devel'
+    - 'git'
+    - 'gcc'
+
+# with rdopkg we will generate new patched RPM
+- name: Install rdopkg
+  become: yes
+  become_method: sudo
+  pip:
+    name='rdopkg'
+  ignore_errors: true
+
+# Clone component dist-git repo
+- name: Clone the dist-git repo
+  git:  repo="{{ component_dist_git_url }}"
+        dest="dist-git/{{ component_dist_git_name }}"
+        accept_hostkey=true
+
+- name: Prepare dist-git repo for patching
+  shell: >
+    git remote add -f patches {{ ansible_env.HOME}}/{{ component.name }};
+    git fetch patches;
+    git fetch patches --tags;
+    git branch rhos-{{ component.version }}.0-patches patches/gerrit-patch;
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+
+# The actual patching part
+- name: Apply patch on dist-git repo
+  shell: "rdopkg update-patches"
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+
+# Now that the repo is patched, generate a new RPM from it
+- name: Build new RPM from patched dist-git repo
+  shell: "rdopkg mockbuild"
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+
+# Create directorty which will hold the RPMs
+- name: Create 'patched_rpms' directory`
+  file:
+    path=patched_rpms
+    state=directory
+    mode=0755
+
+- name: Copy new generated RPMs to $HOME/patched_rpms
+  command: "cp dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm patched_rpms/"
+
+- name: Create repository for patched RPMs
+  shell: "createrepo patched_rpms"
+
+- name: Setup repository file
+  become: yes
+  become_method: sudo
+  template:
+    src='patched_rpms.j2'
+    dest='/etc/yum.repos.d/patched_rpms.repo'
