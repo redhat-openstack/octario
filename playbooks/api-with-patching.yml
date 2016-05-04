@@ -5,6 +5,7 @@
       component:
         tox_target: api
   roles:
+    - { role: patch_rpm }
     - { role: setup_repos }
     - { role: setup_environment }
     - { role: install_packages }

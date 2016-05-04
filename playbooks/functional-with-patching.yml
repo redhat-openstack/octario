@@ -1,10 +1,11 @@
-- name: Run Octario - API tests ( in component repo )
+- name: Run Octario - Functional tests
   hosts: tester
   vars:
     tester:
       component:
-        tox_target: api
+        tox_target: dsvm-functional
   roles:
+    - { role: patch_rpm }
     - { role: setup_repos }
     - { role: setup_environment }
     - { role: install_packages }
