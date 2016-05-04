@@ -12,7 +12,13 @@
     - "{{ inventory_dir }}/octario.cfg"
     - "/etc/octario.cfg"
 
-- name: Load component configuration
+- name: Load component common configuration
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.cfg"
+    - "{{ inventory_dir }}/components_config/common/{{ component.name }}.cfg"
+
+- name: Load component configuration by specific relaease
   include_vars: "{{ item }}"
   with_first_found:
     - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.cfg"
