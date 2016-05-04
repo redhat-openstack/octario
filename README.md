@@ -2,7 +2,7 @@
 
 **Openstack Component Testing Ansible Roles**
 
-Octario is a collection of Ansible roles and playbooks for testing Openstack Components on RHEL/CentOS/Fedora.
+Octario is a collection of Ansible roles and playbooks for testing Openstack Components on RHEL/CentOS.
 
 It supports the following testers:
 
