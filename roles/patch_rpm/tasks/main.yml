@@ -1,0 +1,127 @@
+# rhpkg used by rdopkg
+- name: Install rhpkg repo
+  become: yes
+  become_method: sudo
+  template:
+    src="../templates/rhpkg.j2"
+    dest="/etc/yum.repos.d/rhpkg.repo"
+
+# Although pyrpkg pulled by rhpkg, we install it directly because at the moment, an older
+# version of pyrpkg is pulled (1.40) while we need a newer version (1.43)
+- name: Install packages required for patching
+  become: yes
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'http://dl.fedoraproject.org/pub/epel/7/x86_64/p/pyrpkg-1.43-1.el7.noarch.rpm'
+    - 'createrepo'
+    - 'python-pip'
+    - 'python-cryptography'
+    - 'python-devel'
+    - 'libffi-devel'
+    - 'openssl-devel'
+    - 'rhpkg'
+    - 'git'
+    - 'gcc'
+
+# rdopkg isn't installed as RPM since it require packages that are not in OSP repos.
+# installing it with pip will not require from us to maintain the dependecies in COPR repos.
+- name: Install rdopkg
+  become: yes
+  become_method: sudo
+  pip:
+    name='rdopkg'
+  ignore_errors: true
+
+# mock group is needed for for the mockbuild
+# without creating mock group, rdopkg will try to use root and ask for password
+- name: Create mock group
+  become: yes
+  become_method: sudo
+  group:
+    name=mock
+    state=present
+
+- name: Add ansible ssh user to mock group
+  become: yes
+  become_method: sudo
+  user:
+    name="{{ ansible_user }}"
+    groups=mock
+
+# Clone component dist-git repo
+- name: Clone the component dist-git repo
+  git:
+    repo="{{ component_dist_git_url }}"
+    version="rhos-{{ component.version }}.0-rhel-{{ ansible_distribution_version|int }}"
+    dest="{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
+    accept_hostkey=true
+
+- name: Prepare branch for patching
+  shell: "git checkout -b gerrit-patch; git branch rhos-{{ component.version }}.0-patches"
+  args:
+    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+
+    #- name: Setup git user and mail
+    #  become: yes
+    #  become_method: sudo
+    #  shell: >
+    #    git config --system user.name {{ ansible_ssh_user }};
+    #    git config --system user.email {{ ansible_user }}
+
+- name: Prepare dist-git repo for patching
+  shell: >
+    git remote add -f patches {{ ansible_env.HOME}}/{{ component.name }};
+    git fetch patches;
+    git branch rhos-{{ component.version }}.0-patches patches/gerrit-patch;
+  args:
+    chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
+
+# The actual patching part
+- name: Apply patch on dist-git repo
+  shell: "rdopkg update-patches"
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+
+# Now that the repo is patched, generate RPMs from it
+- name: Build new RPM from patched dist-git repo
+  shell: "rdopkg mockbuild"
+  ignore_errors: true
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+  register: rpm_mockbuild
+
+# Some build errors are lagitimate and should not fail the run
+# Like '.gitreview: does not exist in index'
+- name: Check for legitimate build errors
+  shell: grep -R -i -E "can't find file to patch|No such file or directory|does not exist in index" results*
+  ignore_errors: true
+  args:
+    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+  register: common_build_errors
+
+- name: Fail run if mockbuild failed
+  fail: msg="The mockbuild has failed for some reason. Check tags exist and you have sudo on remote host"
+  when: rpm_mockbuild.rc != 0 and common_build_errors.rc != 0
+
+# Create directorty to hold the RPMs
+- name: Create 'patched_rpms' directory`
+  file:
+    path=patched_rpms
+    state=directory
+    mode=0755
+
+- name: Copy new generated RPMs to $HOME/patched_rpms
+  shell: "cp {{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm patched_rpms/"
+
+- name: Create repository for patched RPMs
+  shell: "createrepo patched_rpms"
+
+- name: Setup repository in /etc/yum.repos.d
+  become: yes
+  become_method: sudo
+  template:
+    src='patched_rpms.j2'
+    dest='/etc/yum.repos.d/patched_rpms.repo'
