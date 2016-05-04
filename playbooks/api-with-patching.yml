@@ -7,6 +7,7 @@
   roles:
     - { role: setup_repos }
     - { role: setup_environment }
+    - { role: patch_rpm }
     - { role: install_packages }
     - { role: run_tests }
     - { role: collect_logs }
