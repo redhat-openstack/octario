@@ -2,7 +2,7 @@
 
 **Openstack Component Testing Ansible Roles**
 
-Octario is a collection of Ansible roles and playbooks for testing Openstack Components on RHEL/CentOS/Fedora.
+Octario is a collection of Ansible roles and playbooks for testing Openstack Components on RHEL/CentOS.
 
 It supports the following testers:
 
@@ -57,10 +57,18 @@ ansible-playbook -vvv -i hosts playbooks/custom.yml --extra-vars @octario.cfg
 
 ## How it works
 
-The following diagram added to simplify work-flow overview of `octario` for simple testers
+The following drawing added to simplify work-flow overview of `octario` for simple testers
 as pep8, unittest and functional.
 
 <div align="center"><img src="./doc/octario_workflow.png" alt="Octario work-flow"></div><hr />
+
+### Patch RPMs
+
+The following drawing describes specifically how RPM patching done with Octario.
+
+To inclue patch_rpm role, run playbooks/<tester>-with-patching.yml
+
+<div align="center"><img src="./doc/patch_rpm.png" alt="Octario patch rpm work-flow"></div><hr />
 
 ## More Docs
 
