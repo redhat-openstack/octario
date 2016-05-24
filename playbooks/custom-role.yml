@@ -1,0 +1,6 @@
+- name: Run Octario - Custom role
+  hosts: tester
+  vars:
+    role_name: "{{ lookup('env','ROLE') }}"
+  roles:
+    - "{{ role_name }}"

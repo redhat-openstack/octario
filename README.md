@@ -48,11 +48,23 @@ ansible-playbook -vvv -i hosts playbooks/pep8.yml --extra-vars @octario.cfg
 
 pep8.yml can be replaced with [unittest, functional, api, scenario].yml
 
-You can also specify your own tester.
+### Custom tester
+
+You can specify your own tester
 
 ```
 export TESTER=my_new_cool_tester
-ansible-playbook -vvv -i hosts playbooks/custom.yml --extra-vars @octario.cfg
+ansible-playbook -vvv -i hosts playbooks/custom-tester.yml --extra-vars @octario.cfg
+```
+
+### External ROLES
+
+You can use external role with `octario`.
+
+```
+cp -r new_role octario/roles
+export ROLE=new_role
+ansible-playbook -vvv -i hosts playbooks/custom-role.yml --extra-vars @octario.cfg
 ```
 
 ## How it works
