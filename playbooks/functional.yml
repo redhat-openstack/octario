@@ -3,7 +3,7 @@
   vars:
     tester:
       component:
-        tox_target: dsvm-functional
+        tox_target: functional
   roles:
     - { role: setup_repos }
     - { role: setup_environment }
