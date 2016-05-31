@@ -77,14 +77,14 @@
 - name: Apply patch on dist-git repo
   shell: "rdopkg update-patches"
   args:
-    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+    chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
 
 # Now that the repo is patched, generate RPMs from it
 - name: Build new RPM from patched dist-git repo
   shell: "rdopkg mockbuild"
   ignore_errors: true
   args:
-    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+    chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
   register: rpm_mockbuild
 
 # Some build errors are lagitimate and should not fail the run
@@ -93,7 +93,7 @@
   shell: grep -R -i -E "can't find file to patch|No such file or directory|does not exist in index" results*
   ignore_errors: true
   args:
-    chdir: "{{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}"
+    chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
   register: common_build_errors
 
 - name: Fail run if mockbuild failed
@@ -109,7 +109,7 @@
   when: rpm_mockbuild.rc == 0
 
 - name: Copy new generated RPMs to $HOME/patched_rpms
-  shell: "cp {{ ansible_env.HOME}}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm patched_rpms/"
+  shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm patched_rpms/"
   when: rpm_mockbuild.rc == 0
 
 - name: Create repository for patched RPMs
