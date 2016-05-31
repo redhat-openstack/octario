@@ -1,0 +1,47 @@
+- name: Clone Red Hat Tempest repo
+  git:
+    repo="https://github.com/redhat-openstack/tempest.git"
+    version='HEAD'
+    dest="tempest"
+
+- name: Install tempest virtualenv
+  shell: "python tempest/tools/install_venv.py tempest"
+
+- name: Install needed packages for ruuning tempest
+  pip:
+    name="{{ item }}"
+    state=present
+    virtualenv="~/tempest/.venv"
+  with_items:
+    - "facter"
+    - "gcc"
+    - "git"
+    - "libffi-devel"
+    - "libxml2-devel"
+    - "libxslt-devel"
+    - "mariadb-devel"
+    - "openssl-devel"
+    - "python-virtualenv"
+
+- name: Create 'with_venv' script to run tempest related commands inside virtualenv
+  copy:
+    dest="tempest/with_venv"
+    mode=0755
+    content: |
+      #!/bin/bash
+      cd "$(dirname $0)"
+      [[ -d .venv ]] && source .venv/bin/activate
+      exec "$@"
+
+- name: Deploy tempest configuration script
+  template:
+    src=configure_tempest.j2
+    dest='tempest/configure_tempest.sh'
+    mode=0755
+
+- name: Configure tempest
+  shell: >
+    source /home/stack/overcloudrc;
+    tempest/with_venv ./configure_tempest.sh
+  args:
+    creates: "~/tempest/etc/tempest.conf"

@@ -1,0 +1,7 @@
+- name: Run testr init
+  shell: "tempest/with_venv testr init"
+  args:
+    creates: "tempest/.testrepository"
+
+- name: Run Tempest
+  shell: "tempest/with_venv ./tools/run-tests.sh --parallel --concurrency=4 {{ tempest.regex }} --skip-file ./skipfile"
