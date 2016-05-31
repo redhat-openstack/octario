@@ -1,0 +1,10 @@
+- name: Run Octario - Tempest
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: tempest
+  roles:
+    - { role: setup_environment }
+    - { role: setup_tempest }
+    - { role: run_tempest }
