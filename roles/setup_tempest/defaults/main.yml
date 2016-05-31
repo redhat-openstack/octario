@@ -1,0 +1,3 @@
+overcloud_rc_file: '/home/stack/overcloudrc'
+overcloud_venv: '/home/stack/tempest/.venv'
+overcloud_skipfile: '/home/stack/tempest/skipfile'
