@@ -9,9 +9,8 @@ It supports the following testers:
 * PEP8
 * unit
 * functional
-* API
-
-Coming Soon: Tempest.
+* API (In-Tree)
+* Tempest
 
 ### Requirements
 
