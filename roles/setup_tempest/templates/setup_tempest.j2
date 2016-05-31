@@ -1,0 +1,17 @@
+#!/bin/bash
+
+source ~/overcloudrc
+
+# Create external network
+# -----------------------
+neutron net-create public --router:external=True --provider:network_type flat --provider:physical_network datacentre
+public_net_id=$(neutron net-show public -f value -c id)
+
+# Create external sunet
+# ---------------------
+neutron subnet-create --name ext-subnet --allocation-pool start=192.0.2.50,end=192.0.2.100 --disable-dhcp --gateway 192.0.2.1 public 192.0.2.0/24
+
+# Configure Tempest
+# -----------------
+
+tools/config_tempest.py --out etc/tempest.conf --network-id $public_net_id --debug --create identity.uri $OS_AUTH_URL identity.admin_password $OS_PASSWORD object-storage.operator_role swiftoperator orchestration.stack_owner_role heat_stack_owner
