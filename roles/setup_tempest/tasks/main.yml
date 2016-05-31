@@ -1,0 +1,60 @@
+- name: Install needed RPMs for running tempest
+  become: true
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'libffi-devel'
+    - 'openssl-devel'
+    - 'subunit-filters'
+
+- include: "{{ tempest_install_type }}.yml"
+
+- name: Deploy 'venv' script to run tempest related commands inside virtualenv
+  copy:
+    src="venv"
+    dest="tempest/venv"
+    mode=0755
+
+- name: Install needed pip packages for running tempest
+  become: true
+  become_method: sudo
+  pip:
+    name="{{ item }}"
+    state=present
+    virtualenv="/home/stack/tempest/.venv"
+  with_items:
+    - 'junitxml'
+    - 'unittest2'
+
+- name: Deploy tempest configuration script
+  template:
+    src=setup_tempest.j2
+    dest='tempest/setup_tempest.sh'
+    mode=0755
+
+- name: Configure tempest
+  shell: >
+    source /home/stack/overcloudrc;
+    tempest/venv ./setup_tempest.sh
+  args:
+    creates: "~/tempest/etc/tempest.conf"
+
+- name: create skip list - Whitelist
+  lineinfile:
+    create: yes
+    dest: "/home/stack/tempest/skipfile"
+    line: "+{{ item }}"
+    regexp: "^[-+]{{ item }}$"
+  with_items: tempest_whitelist
+  when: tempest_whitelist is defined
+
+- name: create skip list - Blacklist
+  lineinfile:
+    create: yes
+    dest: "/home/stack/tempest/skipfile"
+    line: "-{{ item }}"
+    regexp: "^[-+]{{ item }}$"
+  with_items: tempest_blacklist
+  when: tempest_blacklist is defined

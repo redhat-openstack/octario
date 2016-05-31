@@ -1,0 +1,12 @@
+- name: Clone Red Hat Tempest repo
+  git:
+    repo="https://github.com/redhat-openstack/tempest.git"
+    version='HEAD'
+    dest="tempest"
+
+- name: Install pip
+  become: yes
+  command: "easy_install pip"
+
+- name: Install tempest virtualenv
+  shell: "python tempest/tools/install_venv.py tempest"
