@@ -1,0 +1,4 @@
+- name: Install tempest RPM
+  yum:
+    name=openstack-tempest
+    state=present

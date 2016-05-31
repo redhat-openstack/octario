@@ -1,0 +1,13 @@
+# Run Tempest tests and install it from RPM
+# ----------------------------------
+- name: Run Octario - Tempest
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: tempest
+    tempest_install_type: rpm
+  roles:
+    - { role: setup_environment }
+    - { role: setup_tempest }
+    - { role: run_tempest }

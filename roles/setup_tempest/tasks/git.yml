@@ -1,0 +1,5 @@
+- name: Clone Red Hat Tempest repo
+  git:
+    repo="https://github.com/redhat-openstack/tempest.git"
+    version='HEAD'
+    dest="tempest"
