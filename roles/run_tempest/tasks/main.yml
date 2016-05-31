@@ -1,0 +1,7 @@
+- name: Run testr init
+  shell: "tempest/venv testr init"
+  args:
+    creates: "tempest/.testrepository"
+
+- name: Run Tempest
+  shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }}"
