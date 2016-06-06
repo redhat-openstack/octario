@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_5f92f9f6",
+        "filename": "components_config/7/neutron-vpnaas/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-06T21:00:14Z",
+      "side": 1,
+      "message": "To ensure no previous .tox data exists",
+      "parentUuid": "baa041b7_7f001d34",
+      "revId": "720eb4b942e55159ac32084fdeaef85af255b7fc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_5ffb1947",
         "filename": "components_config/7/neutron-vpnaas/component.cfg",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2016-06-06T20:41:10Z",
       "side": 1,
       "message": "is archive used by octario, or it\u0027s part of jjb now.",
+      "revId": "720eb4b942e55159ac32084fdeaef85af255b7fc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_3f8df5d2",
+        "filename": "components_config/7/neutron-vpnaas/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-06T21:00:14Z",
+      "side": 1,
+      "message": "should be both",
+      "parentUuid": "baa041b7_5ffb1947",
       "revId": "720eb4b942e55159ac32084fdeaef85af255b7fc",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
