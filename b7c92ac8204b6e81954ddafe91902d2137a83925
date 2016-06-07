@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_c524fa60",
+        "filename": "components_config/5/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a527b661",
+        "filename": "components_config/6/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_651e4e0d",
+        "filename": "components_config/7/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_85239255",
+        "filename": "components_config/7/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "long line",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_45190a21",
+        "filename": "components_config/8/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_2514c6e6",
+        "filename": "components_config/8/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "long line",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_e5d81e55",
+        "filename": "components_config/9/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_c5dbda4d",
+        "filename": "components_config/9/python-neutronclient/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:05:25Z",
+      "side": 1,
+      "message": "line lenght",
+      "revId": "b7c92ac8204b6e81954ddafe91902d2137a83925",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
