@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_05bd42d7",
+        "filename": "components_config/7/neutron-lbaas/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:08:22Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "a3f14569206e8af28ec58add53f49b31bee6fb2b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
