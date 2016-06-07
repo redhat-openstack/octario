@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_eb310fa3",
+        "filename": "components_config/7/neutron-lbaas/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T10:40:36Z",
+      "side": 1,
+      "message": "space",
+      "revId": "8963e8053e7069f469c9a655aad2fb511da2dc5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
