@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "baa041b7_85fcb2b8",
+        "filename": "components_config/7/neutron-vpnaas/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:01:29Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)",
+      "revId": "52b56a149f489003d8a5c84dcf4ce8d949d29776",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_45022ab5",
+        "filename": "components_config/7/neutron-vpnaas/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:01:29Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)",
+      "revId": "52b56a149f489003d8a5c84dcf4ce8d949d29776",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_e50a5ed1",
         "filename": "components_config/8/neutron-vpnaas/component.cfg",
         "patchSetId": 2
