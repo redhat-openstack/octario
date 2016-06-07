@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_25c28653",
+        "filename": "components_config/7/neutron-fwaas/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:09:27Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "8c7a18c729f2331d43aedbe90ad51f3a481fa063",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_e5a6debf",
+        "filename": "components_config/8/neutron-fwaas/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:09:27Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "8c7a18c729f2331d43aedbe90ad51f3a481fa063",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a5ac569f",
+        "filename": "components_config/9/neutron-fwaas/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-07T07:09:27Z",
+      "side": 1,
+      "message": "it worth having packages listed on in a line. I\u0027m trying (if possible to have the same order as in requirements.txt)\n\n\nhere and bellow",
+      "revId": "8c7a18c729f2331d43aedbe90ad51f3a481fa063",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
