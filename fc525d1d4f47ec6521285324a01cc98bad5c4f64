@@ -85,6 +85,24 @@
       "revId": "fc525d1d4f47ec6521285324a01cc98bad5c4f64",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_47db477c",
+        "filename": "roles/setup_tempest/templates/setup_tempest.j2",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-08T12:42:08Z",
+      "side": 1,
+      "message": "No\nWill be added once a new use case introduced.",
+      "parentUuid": "baa041b7_71c72996",
+      "revId": "fc525d1d4f47ec6521285324a01cc98bad5c4f64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
