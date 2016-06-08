@@ -4,8 +4,8 @@
 # Notes:
 # - PEP8 is ignored because it's not producing subunit streams
 # - Test results converted into Junit XML since this is a common format published by most of the CI systems (e.g Jenkins).
-# - 'Pass or Fail' is included in 'collecting_logs' role since it should be the last task in the last role, so it can
-#   collect logs before Ansible stops running.
+# - 'Pass or Fail' is included in 'collect_logs' role since it should be the last task in the last role, so it can collect logs before Ansible stops running.
+# - Collect logs rc ignored, since the command can fail although results were onvereted. 
 
 - name: Fetch files that mentioned in component configuration's archive section
   vars:
@@ -22,6 +22,7 @@
     find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
     | while read name; do cat "$name"; done \
     > '{{ component_path }}/results.subunit'
+  ignore_errors: true
   when: tester.component.tox_target != pep8 and convert_fetch_logs
 
 - name: Convert test results into Junit XML
@@ -30,6 +31,7 @@
     cat results.subunit2 | subunit2junitxml > tests_results.xml
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+  ignore_errors: true
   when: tester.component.tox_target != pep8 and convert_fetch_logs
 
 - name: Fetch converted test results from remote host
@@ -37,6 +39,7 @@
     src="{{ ansible_env.HOME }}/{{ component.name }}/tests_results.xml"
     dest="{{ lookup('env', 'PWD') }}/tests_results.xml"
     flat=yes
+  ignore_errors: true
   when: tester.component.tox_target != pep8 and convert_fetch_logs
 
 - name: Pass or Fail execution based on test results

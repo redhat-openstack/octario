@@ -37,7 +37,7 @@ Edit octario.cfg with your component details. Make sure to specify name and vers
 ```
 component:
   name: nova
-  version: 8
+  version: 9
 ```
 
 Run octario!. Choose one of testers and run the following command in octario root directory
