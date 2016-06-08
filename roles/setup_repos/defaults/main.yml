@@ -2,4 +2,4 @@
 rhos_default_version: 9
 
 rhos_release_bin: '/usr/bin/rhos-release'
-ls_bin: '/usr/bin/ls'
+ls_bin: '/bin/ls'
