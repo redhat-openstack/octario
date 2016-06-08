@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_f1d2195b",
+        "filename": "roles/run_tempest/tasks/main.yml",
+        "patchSetId": 17
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-08T02:50:56Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 2
+      },
+      "revId": "fc525d1d4f47ec6521285324a01cc98bad5c4f64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d1d5d542",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 17
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-08T02:50:56Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "fc525d1d4f47ec6521285324a01cc98bad5c4f64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b1c811a9",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 17
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-08T02:50:56Z",
+      "side": 1,
+      "message": "more trailing whitespace",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 4
+      },
+      "revId": "fc525d1d4f47ec6521285324a01cc98bad5c4f64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_71c72996",
+        "filename": "roles/setup_tempest/templates/setup_tempest.j2",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-08T02:50:56Z",
+      "side": 1,
+      "message": "is there any template substitution in this file?",
+      "revId": "fc525d1d4f47ec6521285324a01cc98bad5c4f64",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
