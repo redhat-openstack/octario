@@ -1,5 +1,17 @@
 # This file handles everything related to packaging.
 
+- name: Disable any repos specified
+  sudo: yes
+  shell: yum-config-manager --disable {{ item }}
+  with_items: "{{ component_config.setup.disable_repos | default([]) }}"
+  when: component_config.setup | default(false) and component_config.setup.disable_repos | default(false)
+
+- name: Enable any additional repos to be used
+  sudo: yes
+  shell: yum-config-manager --enable {{ item }}
+  with_items: "{{ component_config.setup.enable_repos | default([]) }}"
+  when: component_config.setup | default(false) and component_config.setup.enable_repos | default(false)
+
 - name: Print summary of all the repositories enabled on the host
   shell: "{{ yum_bin }} repolist all"
 
