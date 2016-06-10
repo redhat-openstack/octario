@@ -33,3 +33,4 @@
   become: yes
   become_method: sudo
   yum: name="{{ logs_packages }}" state=present
+  when: "{{ convert_fetch_logs | default(false) }}"
