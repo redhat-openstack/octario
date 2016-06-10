@@ -29,7 +29,7 @@ First, create an inventory file that will include the IP address or the hostname
 vi hosts
 
 [tester]
-my_tester_host
+my_tester_host ansible_user=cloud-user
 ```
 
 Edit octario.cfg with your component details. Make sure to specify name and version!
