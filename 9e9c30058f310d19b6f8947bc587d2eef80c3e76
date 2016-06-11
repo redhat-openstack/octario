@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_764a6d57",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-11T17:44:54Z",
+      "side": 1,
+      "message": "yes, but in case of tempest, we don\u0027t run \u0027setup_repos\u0027 role, hence we don\u0027t install copr repo.\nWe can, but IMHO no need if it just for installing python-pip rpm.",
+      "parentUuid": "baa041b7_8ad70cbf",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_ea58d88c",
         "filename": "roles/setup_tempest/tasks/main.yml",
         "patchSetId": 19
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_5647694b",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-11T17:44:54Z",
+      "side": 1,
+      "message": "So what should we use instead of \u0027install_venv.py\u0027? simply virtualenv tempest/venv?\n\nI\u0027ll move it to \u0027git.yml\u0027.",
+      "parentUuid": "baa041b7_ea58d88c",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4a4a24ae",
         "filename": "roles/setup_tempest/tasks/main.yml",
         "patchSetId": 19
@@ -47,6 +83,24 @@
       "writtenOn": "2016-06-10T10:17:37Z",
       "side": 1,
       "message": "Aren\u0027t packages available for those tests? I think nose is not required anymore (apart from horizon integration/scenario tests, but then it should be in the configuration for those kind of tests). The other two seems to be available as RPMs in the copr with testing dependencies.\n\nThis should also reduce the need for the RPMs on line 7-16 (libffi-devel, openssl-devel, etc)",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_3673c5b6",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-11T17:44:54Z",
+      "side": 1,
+      "message": "Again, we are not installing copr. I will try to remove nose package.\n\nlibffi-devel and openssl-devel were added after getting failures while running setup_tempest.sh",
+      "parentUuid": "baa041b7_4a4a24ae",
       "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
