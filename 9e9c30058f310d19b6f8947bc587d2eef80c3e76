@@ -194,6 +194,80 @@
       "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b236bee5",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-13T12:49:31Z",
+      "side": 1,
+      "message": "should this section be moved to the git.yml file, as the rpm version should install everything needed to the system.  These tasks are steps that should be done if we are doing git/virtualenv install of tempest",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_524c1276",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-13T12:49:31Z",
+      "side": 1,
+      "message": "The piece of this puzzle here is to provide python to use for setup_tempest.sh here and then we don\u0027t have to use venv helper script to get the right python version",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_2a7800f8",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-13T12:49:31Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b23d9ebd",
+        "filename": "roles/setup_tempest/templates/setup_tempest.j2",
+        "patchSetId": 19
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-13T12:49:31Z",
+      "side": 1,
+      "message": "the piece of the template missing here is which python executable to use, if using python from virtualenv specifying that python app should pick up everything we need.\n\nif we are expecting neutron to come from same virtualenv/area then adjustments there will be needed as well.",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
