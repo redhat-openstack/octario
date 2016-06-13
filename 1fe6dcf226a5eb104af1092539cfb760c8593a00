@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_6c9e2065",
+        "filename": "components_config/9/horizon/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-13T10:26:36Z",
+      "side": 1,
+      "message": "can be removed",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 44
+      },
+      "revId": "1fe6dcf226a5eb104af1092539cfb760c8593a00",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0c8c3434",
+        "filename": "components_config/9/horizon/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-13T10:26:36Z",
+      "side": 1,
+      "message": "do you really need to install all these packages for both pep8 and unittest? if not, you can create separate variables. Look for example on neutron or nova component.cfg",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "1fe6dcf226a5eb104af1092539cfb760c8593a00",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ec80f0f9",
+        "filename": "components_config/9/horizon/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-13T10:26:36Z",
+      "side": 1,
+      "message": "what is that?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "1fe6dcf226a5eb104af1092539cfb760c8593a00",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
