@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_b1da3fe8",
+        "filename": "roles/run_tempest/tasks/main.yml",
+        "patchSetId": 20
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-13T08:26:16Z",
+      "side": 1,
+      "message": "also here there is a hard-coded assumption of tripleo",
+      "revId": "cbeec4c57767fcd9faec09af5f88ee29aed9c814",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_91505b60",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 20
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-13T08:26:16Z",
+      "side": 1,
+      "message": "What do you think about delivering the this path as  param for the role?",
+      "revId": "cbeec4c57767fcd9faec09af5f88ee29aed9c814",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d15dc37a",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 20
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-13T08:26:16Z",
+      "side": 1,
+      "message": "rc file is hardcoded assuming tripleo case. \nThe name setup_tempest assumed general purpose role (packstack, tripleo agnostic). What do you think about delivering the keystonce rc a a param for the role?",
+      "revId": "cbeec4c57767fcd9faec09af5f88ee29aed9c814",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_11cb2b20",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 20
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-13T08:26:16Z",
+      "side": 1,
+      "message": "also here therre is a hardcoded assumption of tripleo",
+      "revId": "cbeec4c57767fcd9faec09af5f88ee29aed9c814",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f1cfa727",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 20
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-13T08:26:16Z",
+      "side": 1,
+      "message": "also here therre is a hardcoded assumption of tripleo",
+      "revId": "cbeec4c57767fcd9faec09af5f88ee29aed9c814",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_5173f315",
+        "filename": "roles/setup_tempest/templates/setup_tempest.j2",
+        "patchSetId": 20
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-13T08:26:16Z",
+      "side": 1,
+      "message": "how about substituting here the hard coded \"overcloudrc\" \nwith something like a $KEYSONERC. If case IR was provisioned nodes and installed openstack using pacack.",
+      "revId": "cbeec4c57767fcd9faec09af5f88ee29aed9c814",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
