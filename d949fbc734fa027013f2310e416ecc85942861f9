@@ -16,6 +16,24 @@
       "revId": "d949fbc734fa027013f2310e416ecc85942861f9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6c750031",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-13T10:28:35Z",
+      "side": 1,
+      "message": "by the same manner shouldn\u0027t we also be doing the same for the copr repo?",
+      "parentUuid": "baa041b7_2c7378b6",
+      "revId": "d949fbc734fa027013f2310e416ecc85942861f9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
