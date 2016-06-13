@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_ec8110c5",
+        "filename": "components_config/9/horizon/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-13T10:58:51Z",
+      "side": 1,
+      "message": "Yep, that\u0027s the plan but initial support to get things functional first was required.",
+      "parentUuid": "baa041b7_0c8c3434",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 11
+      },
+      "revId": "1fe6dcf226a5eb104af1092539cfb760c8593a00",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_ec80f0f9",
         "filename": "components_config/9/horizon/component.cfg",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-06-13T10:26:36Z",
       "side": 1,
       "message": "what is that?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "1fe6dcf226a5eb104af1092539cfb760c8593a00",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_2c7818f8",
+        "filename": "components_config/9/horizon/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-13T10:58:51Z",
+      "side": 1,
+      "message": "This disables attempting to converting logs from subunit (which is not used by this module)",
+      "parentUuid": "baa041b7_ec80f0f9",
       "range": {
         "startLine": 82,
         "startChar": 0,
