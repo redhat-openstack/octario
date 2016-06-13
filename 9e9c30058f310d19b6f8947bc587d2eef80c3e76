@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_3551780f",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-13T16:35:13Z",
+      "side": 1,
+      "message": "Ack, thanks. Will remove it.",
+      "parentUuid": "baa041b7_ec6b50f0",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4a4a24ae",
         "filename": "roles/setup_tempest/tasks/main.yml",
         "patchSetId": 19
@@ -220,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_15567406",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-13T16:35:13Z",
+      "side": 1,
+      "message": "yes, you are right. I\u0027ll move it.",
+      "parentUuid": "baa041b7_b236bee5",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 12
+      },
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_524c1276",
         "filename": "roles/setup_tempest/tasks/main.yml",
         "patchSetId": 19
@@ -237,6 +279,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_359f38b6",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-13T16:35:13Z",
+      "side": 1,
+      "message": "Can you elaborate? not sure I understood the change you are proposing here",
+      "parentUuid": "baa041b7_524c1276",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_2a7800f8",
         "filename": "roles/setup_tempest/tasks/main.yml",
         "patchSetId": 19
@@ -248,6 +308,24 @@
       "writtenOn": "2016-06-13T12:49:31Z",
       "side": 1,
       "message": "trailing whitespace",
+      "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_559abcc6",
+        "filename": "roles/setup_tempest/tasks/main.yml",
+        "patchSetId": 19
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-13T16:35:13Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "baa041b7_2a7800f8",
       "revId": "9e9c30058f310d19b6f8947bc587d2eef80c3e76",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
