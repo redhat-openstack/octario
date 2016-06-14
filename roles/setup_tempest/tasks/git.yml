@@ -7,6 +7,11 @@
 - name: Install pip
   become: yes
   command: "easy_install pip"
+  
+- name: Install virtualenv
+  yum:
+    name=python-virtualenv
+    state=present
 
 - name: Install tempest virtualenv
   shell: python tempest/tools/install_venv.py tempest
