@@ -8,15 +8,6 @@
   become: yes
   command: "easy_install pip"
 
-- name: Install tempest virtualenv
-  shell: python tempest/tools/install_venv.py tempest
-
-- name: Deploy 'venv' script to run tempest related commands inside virtualenv
-  copy:
-    src="venv"
-    dest="tempest/venv"
-    mode=0755
-
 - name: Install needed pip packages for running tempest
   become: true
   become_method: sudo
@@ -27,3 +18,13 @@
   with_items:
     - 'junitxml'
     - 'unittest2'
+    - 'virtualenv'
+
+- name: Install tempest virtualenv
+  shell: python tempest/tools/install_venv.py tempest
+
+- name: Deploy 'venv' script to run tempest related commands inside virtualenv
+  copy:
+    src="venv"
+    dest="tempest/venv"
+    mode=0755
