@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_fc4ad426",
+        "filename": "components_config/5/cinder/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-15T11:02:39Z",
+      "side": 1,
+      "message": "It looked strange fore me as well. I copied this file from neutron.cfg. So I\u0027ll take a look on other cfg files as well\nand remove this line",
+      "parentUuid": "baa041b7_d9084230",
+      "revId": "e592a2131afb1186c7f9a76995a2536f995af774",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_f90b062a",
         "filename": "components_config/5/cinder/component.cfg",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-06-15T10:06:56Z",
       "side": 1,
       "message": "is sudo required for all of this?",
+      "revId": "e592a2131afb1186c7f9a76995a2536f995af774",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_dc47101c",
+        "filename": "components_config/5/cinder/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-15T11:02:39Z",
+      "side": 1,
+      "message": "Same as before. I just coped it. Will check with ~@abregman",
+      "parentUuid": "baa041b7_f90b062a",
       "revId": "e592a2131afb1186c7f9a76995a2536f995af774",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
