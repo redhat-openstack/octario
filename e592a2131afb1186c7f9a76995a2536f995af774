@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_d9084230",
+        "filename": "components_config/5/cinder/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-06-15T10:06:56Z",
+      "side": 1,
+      "message": "This should be part of repository playbook not the configuration file.",
+      "revId": "e592a2131afb1186c7f9a76995a2536f995af774",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f90b062a",
+        "filename": "components_config/5/cinder/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-06-15T10:06:56Z",
+      "side": 1,
+      "message": "is sudo required for all of this?",
+      "revId": "e592a2131afb1186c7f9a76995a2536f995af774",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_39116e5e",
+        "filename": "components_config/9/cinder/component.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-06-15T10:06:56Z",
+      "side": 1,
+      "message": "Is the sudo required or the cinder.conf can be copied for the test to different temporary location?",
+      "revId": "e592a2131afb1186c7f9a76995a2536f995af774",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
