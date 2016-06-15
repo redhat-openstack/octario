@@ -12,4 +12,4 @@
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
     executable: "{{ default_shell }}"
   register: test_run
-  ignore_errors: true
+  ignore_errors: true # Note: errors ignored in order to execute log gathering tasks
