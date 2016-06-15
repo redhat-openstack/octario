@@ -10,5 +10,5 @@
 - name: Fetch Tempest results
   fetch:
     src=/home/stack/tempest/tempest.xml
-    dest={{ lookup('env', 'PWD') }}/nosetests.xml
+    dest={{ lookup('env', 'PWD') }}/tempest.xml
     flat=yes
