@@ -2,14 +2,17 @@
 
 source {{ rc_file | default(overcloud_rc_file) }}
 
+# Get default floating IP pool name
+pool_name=`sudo grep -oP '(?<=default_floating_pool=)(.*$)' /etc/nova/nova.conf | uniq`
+
 # Create external network
 # -----------------------
-neutron net-create public --router:external=True --provider:network_type flat --provider:physical_network datacentre
-public_net_id=$(neutron net-show public -f value -c id)
+neutron net-create $pool_name --router:external=True --provider:network_type flat --provider:physical_network datacentre
+public_net_id=$(neutron net-show $pool_name -f value -c id)
 
-# Create external sunet
+# Create external subnet
 # ---------------------
-neutron subnet-create --name ext-subnet --allocation-pool start=192.0.2.50,end=192.0.2.100 --disable-dhcp --gateway 192.0.2.1 public 192.0.2.0/24
+neutron subnet-create --name ext-subnet --allocation-pool start=192.0.2.50,end=192.0.2.180 --disable-dhcp --gateway 192.0.2.1 nova 192.0.2.0/24
 
 # Configure Tempest
 # -----------------
