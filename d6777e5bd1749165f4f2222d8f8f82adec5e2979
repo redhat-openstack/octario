@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_e5f0f0cb",
+        "filename": "components_config/8/neutron/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-17T11:21:22Z",
+      "side": 1,
+      "message": "This is concerning as it\u0027s a direct puddle number and not a symlink, eventually this will be old...",
+      "range": {
+        "startLine": 17,
+        "startChar": 34,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "d6777e5bd1749165f4f2222d8f8f82adec5e2979",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a5b9c8ee",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-06-17T11:21:22Z",
+      "side": 1,
+      "message": "This -d (devel) option is going to be an issue for OSP 10, as that will be bleeding edge brew and not a poodle, which I don\u0027t think is suitable for CI consumption.",
+      "range": {
+        "startLine": 38,
+        "startChar": 63,
+        "endLine": 38,
+        "endChar": 65
+      },
+      "revId": "d6777e5bd1749165f4f2222d8f8f82adec5e2979",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
