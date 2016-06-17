@@ -28,12 +28,18 @@
 
 # rdopkg isn't installed as RPM since it require packages that are not in OSP repos.
 # installing it with pip will not require from us to maintain the dependecies in COPR repos.
-- name: Install rdopkg
+- name: Install rdopkg and its dependencies
   become: yes
   become_method: sudo
   pip:
-    name='rdopkg'
+    name='{{ item }}'
+    state=latest
   ignore_errors: true
+  with_items:
+    - pbr
+    - cffi
+    - cryptography
+    - rdopkg
 
 # mock group is needed for for the mockbuild
 # without creating mock group, rdopkg will try to use root and ask for password
