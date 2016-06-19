@@ -1,10 +1,19 @@
-# rhpkg used by rdopkg
-- name: Install rhpkg repo
+# rhpkg is used by rdopkg
+- name: Install rhpkg & rdopkg repos
   become: yes
   become_method: sudo
-  template:
-    src="../templates/rhpkg.j2"
-    dest="/etc/yum.repos.d/rhpkg.repo"
+  copy:
+    src="{{ item }}.repo"
+    dest="/etc/yum.repos.d/{{ item }}.repo"
+    mode=0755
+  with_items:
+    - 'rdopkg'
+    - 'rhpkg'
+
+    #- name: Install epel
+  #  become: yes
+  #  become_method: sudo
+  #  shell: yum localinstall -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 # Although pyrpkg pulled by rhpkg, we install it directly because at the moment, an older
 # version of pyrpkg is pulled (1.40) while we need a newer version (1.43)
@@ -15,6 +24,7 @@
     name="{{ item }}"
     state=present
   with_items:
+    - 'https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
     - 'http://dl.fedoraproject.org/pub/epel/7/x86_64/p/pyrpkg-1.43-1.el7.noarch.rpm'
     - 'createrepo'
     - 'python-pip'
@@ -23,23 +33,9 @@
     - 'libffi-devel'
     - 'openssl-devel'
     - 'rhpkg'
+    - 'rdopkg'
     - 'git'
     - 'gcc'
-
-# rdopkg isn't installed as RPM since it require packages that are not in OSP repos.
-# installing it with pip will not require from us to maintain the dependecies in COPR repos.
-- name: Install rdopkg and its dependencies
-  become: yes
-  become_method: sudo
-  pip:
-    name='{{ item }}'
-    state=latest
-  ignore_errors: true
-  with_items:
-    - pbr
-    - cffi
-    - cryptography
-    - rdopkg
 
 # mock group is needed for for the mockbuild
 # without creating mock group, rdopkg will try to use root and ask for password
