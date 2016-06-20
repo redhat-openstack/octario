@@ -4,7 +4,7 @@
     creates: "tempest/.testrepository"
 
 - name: Run Tempest
-  shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
+  shell: "tempest/venv ./tools/run-tests.sh {{ tempest_regex | default('') }} --skip-file ./skipfile"
   ignore_errors: true
 
 - name: Fetch Tempest results
