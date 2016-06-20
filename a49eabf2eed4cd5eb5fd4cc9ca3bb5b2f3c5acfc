@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_e6d7d3bd",
+        "filename": "components_config/6/cinder/component.cfg",
+        "patchSetId": 9
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-20T07:47:13Z",
+      "side": 1,
+      "message": "fixed. Thanks",
+      "parentUuid": "baa041b7_239dad59",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "a49eabf2eed4cd5eb5fd4cc9ca3bb5b2f3c5acfc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4398b16a",
         "filename": "components_config/common/cinder.cfg",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_667d03e7",
+        "filename": "components_config/common/cinder.cfg",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-20T07:47:13Z",
+      "side": 1,
+      "message": "removed. Thanks",
+      "parentUuid": "baa041b7_4398b16a",
+      "range": {
+        "startLine": 8,
+        "startChar": 21,
+        "endLine": 8,
+        "endChar": 102
+      },
+      "revId": "a49eabf2eed4cd5eb5fd4cc9ca3bb5b2f3c5acfc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_838eb925",
         "filename": "roles/run_tests/tasks/main.yml",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2016-06-19T16:03:49Z",
       "side": 1,
       "message": "you sure inline comments are not causing Ansible to fail?",
+      "range": {
+        "startLine": 15,
+        "startChar": 22,
+        "endLine": 15,
+        "endChar": 84
+      },
+      "revId": "a49eabf2eed4cd5eb5fd4cc9ca3bb5b2f3c5acfc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a61c2bc2",
+        "filename": "roles/run_tests/tasks/main.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-06-20T07:47:13Z",
+      "side": 1,
+      "message": "It works...",
+      "parentUuid": "baa041b7_838eb925",
       "range": {
         "startLine": 15,
         "startChar": 22,
