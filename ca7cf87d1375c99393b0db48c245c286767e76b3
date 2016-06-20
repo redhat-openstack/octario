@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_19afb895",
+        "filename": "components_config/5/cinder/component.cfg",
+        "patchSetId": 13
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-20T09:54:50Z",
+      "side": 1,
+      "message": "whitespaces",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "ca7cf87d1375c99393b0db48c245c286767e76b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d9915054",
+        "filename": "components_config/5/cinder/component.cfg",
+        "patchSetId": 13
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-20T09:54:50Z",
+      "side": 1,
+      "message": "tab",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 1
+      },
+      "revId": "ca7cf87d1375c99393b0db48c245c286767e76b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f9941445",
+        "filename": "components_config/5/cinder/component.cfg",
+        "patchSetId": 13
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-20T09:54:50Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 15
+      },
+      "revId": "ca7cf87d1375c99393b0db48c245c286767e76b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b99e8c61",
+        "filename": "components_config/6/cinder/component.cfg",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-20T09:54:50Z",
+      "side": 1,
+      "message": "1. This is the old view\n2. Are you sure you want to put internal link where don\u0027t must to have it?",
+      "range": {
+        "startLine": 2,
+        "startChar": 43,
+        "endLine": 2,
+        "endChar": 116
+      },
+      "revId": "ca7cf87d1375c99393b0db48c245c286767e76b3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
