@@ -16,6 +16,24 @@
       "revId": "6e32da64d692c68c54637f51f673503daf5f92da",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_745ec246",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-06-21T15:01:44Z",
+      "side": 1,
+      "message": "Because yum_repository is new in Ansible 2.1\nI don\u0027t want to force users to use latest Ansible version.\n\nI\u0027ll add a \u0027todo\u0027 to change in next releases.",
+      "parentUuid": "baa041b7_94b826e7",
+      "revId": "6e32da64d692c68c54637f51f673503daf5f92da",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
