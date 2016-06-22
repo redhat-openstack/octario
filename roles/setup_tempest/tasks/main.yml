@@ -24,6 +24,13 @@
   args:
     creates: "~/tempest/etc/tempest.conf"
 
+# If no skipfile is present, tempest will fail to run
+- name: Create empty skip file
+  file:
+    path='tempest/skipfile'
+    state=touch
+    mode=0555
+
 - name: create skip list - Whitelist
   lineinfile:
     create: yes
