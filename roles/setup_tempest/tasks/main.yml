@@ -24,6 +24,12 @@
   args:
     creates: "~/tempest/etc/tempest.conf"
 
+- name: Create skip file
+  file:
+    path='tempest/skipfile'
+    state=touch
+    mode=0555
+
 - name: create skip list - Whitelist
   lineinfile:
     create: yes
