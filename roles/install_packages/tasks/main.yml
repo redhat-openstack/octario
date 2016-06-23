@@ -12,7 +12,7 @@
   # TBD: when ansible 2.1 is min version we should be using
   #      https://docs.ansible.com/ansible/yum_repository_module.html
   sudo: yes
-  shell: yum-config-manager --enable {{ item }}
+-  shell: yum-config-manager --enable {{ item }}
   with_items: "{{ component_config.setup.enable_repos | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.enable_repos | default(false)
 

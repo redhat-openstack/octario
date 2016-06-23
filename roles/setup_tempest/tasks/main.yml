@@ -11,6 +11,7 @@
 
 - include: "{{ tempest_install_type }}.yml"
 
+# helloooooooo
 - name: Deploy tempest configuration script
   template:
     src=setup_tempest.j2
