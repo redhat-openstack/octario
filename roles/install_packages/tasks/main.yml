@@ -5,7 +5,6 @@
   #      https://docs.ansible.com/ansible/yum_repository_module.html
   sudo: yes
   shell: yum-config-manager --disable {{ item }}
-  with_items: "{{ component_config.setup.disable_repos | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.disable_repos | default(false)
 
 - name: Enable any additional repos to be used
