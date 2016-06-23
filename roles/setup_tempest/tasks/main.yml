@@ -8,6 +8,7 @@
     - 'libffi-devel'
     - 'openssl-devel'
     - 'subunit-filters'
+    - 'just-testing'
 
 - include: "{{ tempest_install_type }}.yml"
 
