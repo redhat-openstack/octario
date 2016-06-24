@@ -25,7 +25,7 @@
     name="{{ item }}"
     state=present
   with_items:
-    - 'http://dl.fedoraproject.org/pub/epel/7/x86_64/p/pyrpkg-1.43-1.el7.noarch.rpm'
+    - 'pyrpkg'
     - 'createrepo'
     - 'python-pip'
     - 'python-cryptography'
