@@ -1,0 +1,7 @@
+Code-Review+2: Michal Pryc <mpryc@redhat.com>
+Verified+1: Arie Bregman <abregman@redhat.com>
+Submitted-by: Arie Bregman <abregman@redhat.com>
+Submitted-at: Mon, 27 Jun 2016 08:58:54 -0400
+Reviewed-on: https://review.gerrithub.io/281901
+Project: redhat-openstack/octario
+Branch: refs/heads/master
