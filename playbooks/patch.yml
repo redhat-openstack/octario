@@ -1,0 +1,11 @@
+- name: Run Octario - Patching RPMs
+  hosts: tester
+  vars:
+    ansible_ssh_user: cloud-user
+    tester:
+      component:
+        tox_target: tempest
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: patch_rpm }
