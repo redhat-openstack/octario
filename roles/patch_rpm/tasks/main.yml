@@ -122,7 +122,7 @@
   when: rpm_mockbuild.rc == 0
 
 - name: Create repository for patched RPMs
-  shell: "createrepo patched_rpms"
+  shell: "createrepo patched_rpms; chmod -R 777 patched_rpms"
   when: rpm_mockbuild.rc == 0
 
 - name: Setup repository in /etc/yum.repos.d
