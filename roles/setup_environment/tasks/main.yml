@@ -27,6 +27,9 @@
     - "{{ playbook_dir }}/../component.cfg"
     - "{{ inventory_dir }}/component.cfg"
     - "/etc/component.cfg"
+    - "{{ playbook_dir }}/../jenkins-config.yml"
+    - "{{ inventory_dir }}/jenkins-config.yml"
+    - "/etc/jenkins-config.yml"
 
 - name: Setup component configuration based on operating system
   set_fact:
