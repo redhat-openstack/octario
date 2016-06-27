@@ -12,8 +12,10 @@
     - "{{ inventory_dir }}/octario.cfg"
     - "/etc/octario.cfg"
 
+# This is optional since not every component mush have common configuration across all releases
 - name: Load component common configuration
   include_vars: "{{ item }}"
+  ignore_errors: yes
   with_first_found:
     - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.cfg"
     - "{{ inventory_dir }}/components_config/common/{{ component.name }}.cfg"
