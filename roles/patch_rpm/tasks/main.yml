@@ -110,19 +110,21 @@
   when: rpm_mockbuild.rc != 0 and common_build_errors.rc != 0
 
 # Create directorty to hold the RPMs
-- name: Create 'patched_rpms' directory`
+- name: Create '/patched_rpms' directory`
+  become: yes
+  become_method: sudo
   file:
-    path=patched_rpms
+    path=/patched_rpms
     state=directory
-    mode=0755
+    mode=0777
   when: rpm_mockbuild.rc == 0
 
-- name: Copy new generated RPMs to $HOME/patched_rpms
-  shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm patched_rpms/"
+- name: Copy new generated RPMs to /patched_rpms
+  shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm /patched_rpms/"
   when: rpm_mockbuild.rc == 0
 
 - name: Create repository for patched RPMs
-  shell: "createrepo patched_rpms"
+  shell: "createrepo /patched_rpms;"
   when: rpm_mockbuild.rc == 0
 
 - name: Setup repository in /etc/yum.repos.d
