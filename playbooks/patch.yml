@@ -1,0 +1,9 @@
+- name: Run Octario - Patching RPMs
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: none
+  roles:
+    - { role: setup_environment }
+    - { role: patch_rpm }
