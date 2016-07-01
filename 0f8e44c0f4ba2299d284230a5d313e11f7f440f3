@@ -16,6 +16,23 @@
       "revId": "0f8e44c0f4ba2299d284230a5d313e11f7f440f3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_dad0e955",
+        "filename": "components_config/7/ironic/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-07-01T18:36:23Z",
+      "side": 1,
+      "message": "add:\n\npython-oslo-policy",
+      "revId": "0f8e44c0f4ba2299d284230a5d313e11f7f440f3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
