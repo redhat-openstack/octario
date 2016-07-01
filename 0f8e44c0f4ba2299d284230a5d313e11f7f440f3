@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_dae9091c",
+        "filename": "components_config/7/ironic/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-07-01T18:32:09Z",
+      "side": 1,
+      "message": "python-hacking-0.9.2\n\nSee from test-requirements.txt:\nhacking\u003c0.10,\u003e\u003d0.9.2\n\nThere are still 3 errors:\n./ironic/drivers/modules/drac/job.py:149:63: W292 no newline at end of file\n./ironic/tests/drivers/drac/test_power.py:165:74: W292 no newline at end of file\n./ironic/tests/drivers/drac/test_raid.py:715:49: W292 no newline at end of file",
+      "revId": "0f8e44c0f4ba2299d284230a5d313e11f7f440f3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
