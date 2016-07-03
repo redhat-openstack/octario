@@ -6,6 +6,8 @@
 # - Test results converted into Junit XML since this is a common format published by most of the CI systems (e.g Jenkins).
 # - 'Pass or Fail' is included in 'collect_logs' role since it should be the last task in the last role, so it can collect logs before Ansible stops running.
 # - Collect logs rc ignored, since the command can fail although results were onvereted. 
+- include: collect_logs_kh.yml
+  become: yes
 
 - name: Fetch files that mentioned in component configuration's archive section
   vars:
@@ -45,3 +47,7 @@
 - name: Pass or Fail execution based on test results
   fail: msg="The test run failed"
   when: test_run.rc != 0
+
+
+
+
