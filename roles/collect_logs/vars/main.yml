@@ -1,0 +1,12 @@
+#this file contains vars that define system log harvesting configuration
+
+job:
+    gzip_logs: true
+    archive:
+        - /var/log/rpm.list
+        - /var/log/module_list
+        - /var/log/extra/*
+
+
+#defines the place where collested logs are saved on slave
+base_dir: !env WORKSPACE 
