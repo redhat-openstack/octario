@@ -9,5 +9,5 @@
     tempest_install_type: rpm
   roles:
     - { role: setup_environment }
-    - { role: setup_tempest }
-    - { role: run_tempest }
+    - { role: tempest/setup }
+    - { role: tempest/run }
