@@ -12,6 +12,16 @@
     - "{{ inventory_dir }}/octario.cfg"
     - "/etc/octario.cfg"
 
+- name: Copy component to remote host
+  synchronize:
+    src="{{ item }}"
+    dest="{{ ansible_env.HOME }}"
+  with_first_found:
+    - "{{ component.path | default(omit) }}"
+    - "{{ inventory_dir }}/{{ component.name }}"
+    - "{{ inventory_dir }}/../{{ component.name }}"
+    - "{{ playbook_dir }}/../{{ component.name }}"
+
 # This is optional since not every component must have common configuration across all releases
 - name: Load component common configuration
   include_vars: "{{ item }}"
@@ -43,13 +53,3 @@
     - "default"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version | int }}"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version }}"
-
-- name: Copy component to remote host
-  synchronize:
-    src="{{ item }}"
-    dest="{{ ansible_env.HOME }}"
-  with_first_found:
-    - "{{ component.path | default(omit) }}"
-    - "{{ inventory_dir }}/{{ component.name }}"
-    - "{{ inventory_dir }}/../{{ component.name }}"
-    - "{{ playbook_dir }}/../{{ component.name }}"
