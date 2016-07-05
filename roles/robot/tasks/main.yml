@@ -1,0 +1,34 @@
+- name: Install python-paramiko
+  yum:
+    name=python-paramiko
+    state=present
+  with_items:
+    - 'python-paramiko'
+    - 'python-requests'
+
+- name: Install pip packages
+  pip:
+    name="{{ item }}"
+  with_items:
+    - 'requests'
+    - 'robotframework'
+    - 'robotframework-sshlibrary'
+    - 'robotframework-requests'
+    - 'robotframework-sshlibrary'
+    - 'robotframework-httplibrary'
+
+- name: Retrieve Integration Tests (CSIT)
+  git:
+    repo="https://git.opendaylight.org/gerrit/integration/test"
+    dest="tests"
+
+# Tests will fail without ~/.ssh/id_rsa
+- name: Generate SSH key
+  user:
+    name="{{ ansible_user }}"
+    generate_ssh_key=yes
+
+- name: Running Robot test suites
+  shell: >
+    source odlrc;
+    pybot -N test/csit/testplans/netvirt-1node-openstack.txt -v OS_CONTROL_NODE_IP:${OS_CONTROL_NODE_IP} -v OS_USER:${OS_USER} -v USER_HOME:${USER_HOME}
