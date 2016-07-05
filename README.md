@@ -4,13 +4,14 @@
 
 Octario is a collection of Ansible roles and playbooks for testing Openstack Components on RHEL/CentOS.
 
-It supports the following testers:
+It supports the following testers or test frameworks:
 
 * PEP8
 * unit
 * functional
 * API (In-Tree)
 * Tempest
+* Robot
 
 ### Requirements
 
