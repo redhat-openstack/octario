@@ -1,0 +1,24 @@
+- name: Install python-pip
+  yum:
+    name=python-pip
+    state=present
+ 
+- name: Install pip packages
+  pip:
+    name="{{ item }}"
+  with_items:
+    - 'requests'
+    - 'robotframework'
+    - 'robotframework-requests'
+    - 'robotframework-sshlibrary'
+    - 'robotframework-httplibrary'
+
+- name: Retrieve Integration Tests (CSIT)
+  git:
+    repo="https://git.opendaylight.org/gerrit/integration/test"
+    dest="tests"
+
+- name: Running Robot test suites
+  shell: >
+    source odlrc;
+    pybot -N test/csit/testplans/netvirt-1node-openstack.txt -v OS_CONTROL_NODE_IP:${OS_CONTROL_NODE_IP} -v OS_USER:${OS_USER} -v USER_HOME:${USER_HOME}
