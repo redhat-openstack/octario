@@ -16,6 +16,24 @@
       "revId": "eb95b30a82fc0e5172110378ae517ff67162b1ff",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4afac0be",
+        "filename": "roles/robot/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-07-05T17:58:37Z",
+      "side": 1,
+      "message": "For installing only the testing framework? sure.",
+      "parentUuid": "baa041b7_aff15e6c",
+      "revId": "eb95b30a82fc0e5172110378ae517ff67162b1ff",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
