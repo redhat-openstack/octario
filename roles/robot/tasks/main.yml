@@ -1,0 +1,41 @@
+# TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
+- name: Install epel repoistory
+  become: yes
+  become_method: sudo
+  shell: yum localinstall -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+- name: Install python-pip
+  become: yes
+  become_method: sudo
+  yum:
+    name=python-pip
+    state=present
+    
+# TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
+# EPEL is removed, since it is used only for installing python-pip
+- name: Remove epel repository
+  become: yes
+  become_method: sudo
+  shell: "yum remove -y epel-*"
+ 
+- name: Install pip packages
+  become: yes
+  become_method: sudo
+  pip:
+    name="{{ item }}"
+  with_items:
+    - 'requests'
+    - 'robotframework'
+    - 'robotframework-requests'
+    - 'robotframework-sshlibrary'
+    - 'robotframework-httplibrary'
+
+- name: Retrieve Integration Tests (CSIT)
+  git:
+    repo="https://git.opendaylight.org/gerrit/integration/test"
+    dest="tests"
+
+- name: Running Robot test suites
+  shell: >
+    source odlrc;
+    pybot -N test/csit/testplans/netvirt-1node-openstack.txt -v OS_CONTROL_NODE_IP:${OS_CONTROL_NODE_IP} -v OS_USER:${OS_USER} -v USER_HOME:${USER_HOME}
