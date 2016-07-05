@@ -1,0 +1,70 @@
+# TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
+- name: Install epel repoistory
+  become: yes
+  become_method: sudo
+  shell: yum localinstall -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
+- name: Install RPM requirements
+  become: yes
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'gcc'
+    - 'python-pip'
+    - 'libffi-devel'
+    - 'python-devel'
+    - 'openssl-devel'
+    - 'git'
+
+# TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
+# EPEL is removed, since it is used only for installing python-pip
+- name: Remove epel repository
+  become: yes
+  become_method: sudo
+  shell: "yum remove -y epel-*"
+
+- name: Install pip packages
+  become: yes
+  become_method: sudo
+  pip:
+    name="{{ item }}"
+  with_items:
+    - 'requests'
+    - 'robotframework'
+    - 'robotframework-requests'
+    - 'robotframework-sshlibrary'
+    - 'robotframework-httplibrary'
+
+- name: Retrieve Integration Tests (CSIT)
+  git:
+    repo="https://git.opendaylight.org/gerrit/integration/test"
+    dest="test"
+
+# Using -v to override varialbes isn't working as expected. So we are using 'sed' to replace
+# those variables directly in Varibles.py file. 'Replace' module is no good since we need to source
+# odlrc file before replacing the variables.
+- name: Replace default Robot variables
+  shell: >
+    source ~/odlrc;
+    sed -i s/jenkins/$OS_USER/g test/csit/variables/Variables.py;
+    sed -i "s/\(TOOLS_SYSTEM_IP = \).*/\1'$NEUTRON'/" test/csit/variables/Variables.py;
+    sed -i "s/\(ODL_SYSTEM_IP = \).*/\1'$ODL_SYSTEM_IP'/" test/csit/variables/Variables.py;
+
+- name: Running Robot test suites
+  ignore_errors: true
+  shell: >
+    source ~/odlrc;
+    pybot -v NEUTRON:${NEUTRON} -v KEYSTONE:${KEYSTONE} -v OS_CONTROL_NODE_IP:${OS_CONTROL_NODE_IP} -v OS_USER:${OS_USER} -v USER_HOME:${USER_HOME} -v WORKSPACE:${WORKSPACE} -v BUNDLEFOLDER:${BUNDLEFOLDER} {{ robot_tests_suite }}
+    
+- name: Fetch Robot tests results
+  fetch:
+    src="{{ item }}"
+    dest="{{ lookup('env', 'PWD') }}/../{{ item }}"
+    flat=yes
+  ignore_errors: true
+  with_items:
+    - 'output.xml'
+    - 'report.html'
+    - 'log.html'
