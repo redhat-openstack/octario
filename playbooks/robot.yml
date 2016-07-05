@@ -1,0 +1,6 @@
+# Run Robot tests based on the chosen suite
+# ----------------------------------
+- name: Run Octario - Robot Framework
+  hosts: tester
+  roles:
+    - { role: robot }
