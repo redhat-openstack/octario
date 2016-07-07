@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "baa041b7_8f2e93f8",
+        "filename": "roles/robot/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1002755
+      },
+      "writtenOn": "2016-07-07T07:44:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be name\u003d\"{{ item }}\"",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 24
+      },
+      "revId": "eb95b30a82fc0e5172110378ae517ff67162b1ff",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_aff15e6c",
         "filename": "roles/robot/tasks/main.yml",
         "patchSetId": 1
