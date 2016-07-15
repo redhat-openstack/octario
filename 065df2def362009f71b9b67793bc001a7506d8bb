@@ -1,0 +1,8 @@
+Verified+1: rdo-ci-hudson <whayutin+hudson@redhat.com>
+Code-Review+1: Mehdi ABAAKOUK <sileht@sileht.net>
+Code-Review+2: Michal Pryc <mpryc@redhat.com>
+Submitted-by: Michal Pryc <mpryc@redhat.com>
+Submitted-at: Fri, 15 Jul 2016 13:04:43 -0400
+Reviewed-on: https://review.gerrithub.io/284044
+Project: redhat-openstack/octario
+Branch: refs/heads/master
