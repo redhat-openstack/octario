@@ -22,6 +22,30 @@
       "revId": "33315c4acd427d1c035230e6fe9119d71c1e2e70",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_5b737b4e",
+        "filename": "roles/robot/tasks/main.yml",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1008934
+      },
+      "writtenOn": "2016-07-19T23:11:49Z",
+      "side": 1,
+      "message": "actually, looking closer you are calling pybot on the whole \"openstack\" folder which includes a lot of tests including \nclustering (which requires 3 ODL instances set up in cluster mode).\n\nI think for a POC you can be more specific and call a more\nsimple set of tests.  \n\nmaybe if we just called this folder:\ntest/csit/suites/netvirt/Openstack_Neutron",
+      "parentUuid": "baa041b7_7b93df5b",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 180
+      },
+      "revId": "33315c4acd427d1c035230e6fe9119d71c1e2e70",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
