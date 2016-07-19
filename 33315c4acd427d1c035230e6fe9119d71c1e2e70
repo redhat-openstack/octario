@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_7b93df5b",
+        "filename": "roles/robot/tasks/main.yml",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1008934
+      },
+      "writtenOn": "2016-07-19T23:01:58Z",
+      "side": 1,
+      "message": "one thing to try is changing the system prompt variables.\n\nmaybe:\n\n-v DEFAULT_LINUX_PROMPT:\u0027$\u0027\n\nor # if it\u0027s not $\n\nThere are going to be other variables we have to pass on the command line too.  This openstack robot folder is not something we run in upstream ODL any more, but OPNFV is using\nit and they are passing at least two variables ${NEUTRON} and\n${KEYSTONE} as -v on the pybot command line.  those would just\nbe the ip address of the openstack services",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 180
+      },
+      "revId": "33315c4acd427d1c035230e6fe9119d71c1e2e70",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
