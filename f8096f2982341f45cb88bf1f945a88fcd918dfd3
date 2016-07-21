@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_560a2d27",
+        "filename": "playbooks/robot.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1008934
+      },
+      "writtenOn": "2016-07-21T00:02:01Z",
+      "side": 1,
+      "message": "change this to test/csit/suites/netvirt/Openstack_Neutron/010__ovsdb_flow.robot\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 66
+      },
+      "revId": "f8096f2982341f45cb88bf1f945a88fcd918dfd3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
