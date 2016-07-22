@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_0100da64",
+        "filename": "roles/robot/tasks/main.yml",
+        "patchSetId": 16
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1008934
+      },
+      "writtenOn": "2016-07-22T22:33:03Z",
+      "side": 1,
+      "message": "btw, this is not required.  it\u0027s just for display purposes for what the entire group of tests would be \"N\"amed.",
+      "range": {
+        "startLine": 48,
+        "startChar": 10,
+        "endLine": 48,
+        "endChar": 60
+      },
+      "revId": "0a5091a1a3a6bc85268c19990da753999537f78e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
