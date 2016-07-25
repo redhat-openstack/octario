@@ -56,8 +56,8 @@
   ignore_errors: true
   shell: >
     source ~/odlrc;
-    pybot -v NEUTRON:${NEUTRON} -v KEYSTONE:${KEYSTONE} -v OS_USER:${OS_USER} -v USER_HOME:${USER_HOME} -v WORKSPACE:${WORKSPACE} -v BUNDLEFOLDER:${BUNDLEFOLDER} {{ robot_tests_suite }}
-    
+    pybot -v NEUTRON:${NEUTRON} -v KEYSTONE:${KEYSTONE} -v USER_HOME:${USER_HOME} -v WORKSPACE:${WORKSPACE} -v BUNDLEFOLDER:${BUNDLEFOLDER} {{ robot_tests_suite }}
+
 - name: Fetch Robot tests results
   fetch:
     src="{{ item }}"
