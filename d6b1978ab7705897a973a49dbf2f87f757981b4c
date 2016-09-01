@@ -16,6 +16,24 @@
       "revId": "d6b1978ab7705897a973a49dbf2f87f757981b4c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_02e1789a",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-09-01T16:59:37Z",
+      "side": 0,
+      "message": "Because we don\u0027t need to install rdopkg repo",
+      "parentUuid": "baa041b7_6253a46d",
+      "revId": "d6b1978ab7705897a973a49dbf2f87f757981b4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
