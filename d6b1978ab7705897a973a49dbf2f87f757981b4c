@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_6253a46d",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-09-01T16:51:07Z",
+      "side": 0,
+      "message": "Why this is removed and the way repos are installed did change? Isn\u0027t it better to keep the original way and just remove one line. Also the name should change as it clearly states rhpkg \u0026 rdopkg which is not the case now.",
+      "revId": "d6b1978ab7705897a973a49dbf2f87f757981b4c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}

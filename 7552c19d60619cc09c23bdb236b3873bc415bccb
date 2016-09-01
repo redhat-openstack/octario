@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_224d9cc4",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-09-01T16:51:07Z",
+      "side": 1,
+      "message": "Should this be installed in virtualenv or no other system packages pulled? E.g. use of virtualenv_site_packages or virtualenv* ?",
+      "revId": "7552c19d60619cc09c23bdb236b3873bc415bccb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
