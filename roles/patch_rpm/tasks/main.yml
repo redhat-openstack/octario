@@ -1,26 +1,20 @@
 # rhpkg is used by rdopkg
 - name: Install rhpkg & rdopkg repos
   become: yes
-  become_method: sudo
   copy:
-    src="{{ item }}.repo"
-    dest="/etc/yum.repos.d/{{ item }}.repo"
+    src="rhpkg.repo"
+    dest="/etc/yum.repos.d/rhpkg.repo"
     mode=0755
-  with_items:
-    - 'rdopkg'
-    - 'rhpkg'
 
 # TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 - name: Install epel repoistory
   become: yes
-  become_method: sudo
   shell: yum localinstall -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 # Although pyrpkg pulled by rhpkg, we install it directly because at the moment, an older
 # version of pyrpkg is pulled (1.40) while we need a newer version (1.43)
 - name: Install packages required for patching
   become: yes
-  become_method: sudo
   yum:
     name="{{ item }}"
     state=present
@@ -33,29 +27,33 @@
     - 'libffi-devel'
     - 'openssl-devel'
     - 'rhpkg'
-    - 'rdopkg'
     - 'git'
     - 'gcc'
+
+# This is installed using pip, since we need specifically vesrion 0.38
+# which is not available as an RPM.
+- name: Install rdopkg
+  become: yes
+  pip:
+    name=rdopkg
+    version=0.38
 
 # TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 # EPEL is removed, since it is used only for installing rdopkg
 - name: Remove epel repository
   become: yes
-  become_method: sudo
   shell: "yum remove -y epel-*"
 
 # mock group is needed for for the mockbuild
 # without creating mock group, rdopkg will try to use root and ask for password
 - name: Create mock group
   become: yes
-  become_method: sudo
   group:
     name=mock
     state=present
 
 - name: Add ansible ssh user to mock group
   become: yes
-  become_method: sudo
   user:
     name="{{ ansible_user }}"
     groups=mock
@@ -112,7 +110,6 @@
 # Create directorty to hold the RPMs
 - name: Create '/patched_rpms' directory`
   become: yes
-  become_method: sudo
   file:
     path=/patched_rpms
     state=directory
@@ -129,7 +126,6 @@
 
 - name: Setup repository in /etc/yum.repos.d
   become: yes
-  become_method: sudo
   template:
     src='patched_rpms.j2'
     dest='/etc/yum.repos.d/patched_rpms.repo'
