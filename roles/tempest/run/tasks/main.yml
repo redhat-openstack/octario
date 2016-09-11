@@ -3,6 +3,9 @@
   args:
     creates: "tempest/.testrepository"
 
+- namme: Run component specific commands
+  shell: "{{ component_config.run.replace('\n', '') }}"
+
 - name: Run Tempest
   shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
   ignore_errors: true
