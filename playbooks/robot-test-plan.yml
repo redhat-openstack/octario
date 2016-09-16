@@ -1,0 +1,10 @@
+# Run Robot test plan
+# ---------------
+- name: Run Octario - Robot Framework
+  vars:
+    ansible_ssh_user: cloud-user
+    robot_test_plan: "test_plan"
+    robot_tests: ['test/csit/suites/netvirt/Openstack_Neutron/010__ovsdb_flow.robot', 'test/csit/suites/ovsdb/Southbound_Domain/010__configure_1_ovsdb_node.robot']
+  hosts: tester
+  roles:
+    - { role: robot }
