@@ -1,4 +1,4 @@
-# Run Robot tests
+# Run Robot tests suite
 # ---------------
 - name: Run Octario - Robot Framework
   vars:
