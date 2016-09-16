@@ -3,7 +3,7 @@
 - name: Run Octario - Robot Framework
   vars:
     ansible_ssh_user: cloud-user
-    robot_tests_suite: 'test/csit/suites/netvirt/Openstack_Neutron/010__ovsdb_flow.robot'
+    robot_tests_suite: 'test/csit/suites/netvirt/Openstack_Neutron/010__ovsdb_flow.robot test/csit/suites/ovsdb/Southbound_Domain/010__configure_1_ovsdb_node.robot'
   hosts: tester
   roles:
     - { role: robot }
