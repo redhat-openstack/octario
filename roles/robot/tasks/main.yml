@@ -52,11 +52,29 @@
     sed -i "s/\(TOOLS_SYSTEM_IP = \).*/\1'$NEUTRON'/" test/csit/variables/Variables.py;
     sed -i "s/\(ODL_SYSTEM_IP = \).*/\1'$ODL_SYSTEM_IP'/" test/csit/variables/Variables.py;
 
-- name: Running Robot test suites
+- name: Running Robot test suite
   ignore_errors: true
   shell: >
     source ~/odlrc;
     pybot -v NEUTRON:${NEUTRON} -v KEYSTONE:${KEYSTONE} -v USER_HOME:${USER_HOME} -v WORKSPACE:${WORKSPACE} -v BUNDLEFOLDER:${BUNDLEFOLDER} {{ robot_tests_suite }}
+  when: robot_tests_suite is defined
+
+- name: Write test plan
+  lineinfile:
+    created: yes
+    dest: "{{ robot_test_plan | default('test_plan') }}"
+    line: "+{{ item }}"
+    regexp: "^[-+]{{ item }}$"
+    with_items: "{{ robot_tests }}"
+    when: robot_tests is defined
+  
+# Test plan can consist of one test suite or more
+- name: Running Robot test plan
+  ignore_errors: true
+  shell: >
+    source ~/odlrc;
+    pybot -v NEUTRON:${NEUTRON} -v KEYSTONE:${KEYSTONE} -v USER_HOME:${USER_HOME} -v WORKSPACE:${WORKSPACE} -v BUNDLEFOLDER:${BUNDLEFOLDER} -N {{ robot_test_plan | default('test_plan')  }}
+  when: robot_tests is defined
 
 - name: Fetch Robot tests results
   fetch:

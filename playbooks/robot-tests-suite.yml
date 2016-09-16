@@ -1,5 +1,5 @@
-# Run Robot tests based on the chosen suite
-# ----------------------------------
+# Run Robot tests suite
+# ---------------
 - name: Run Octario - Robot Framework
   vars:
     ansible_ssh_user: cloud-user
