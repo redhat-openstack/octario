@@ -12,6 +12,13 @@
     - "{{ inventory_dir }}/octario.cfg"
     - "/etc/octario.cfg"
 
+# To copy the component to remote host
+- name: Install rsync
+  become: yes
+  yum:
+    name='rsync'
+    state=present
+
 - name: Copy component to remote host
   synchronize:
     src="{{ item }}"
