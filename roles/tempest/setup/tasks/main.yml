@@ -49,3 +49,9 @@
     regexp: "^[-+]{{ item }}$"
   with_items: tempest.blacklist
   when: tempest.blacklist is defined
+
+# Just testing. DO NOT MERGE.
+- name: Install fixtures v3
+  shell: >
+    sudo yum remove -y python-fixtures;
+    sudo yum install -y http://download.eng.bos.redhat.com/brewroot/packages/python-fixtures/3.0.0/2.el7ost/noarch/python-fixtures-3.0.0-2.el7ost.noarch.rpm;
