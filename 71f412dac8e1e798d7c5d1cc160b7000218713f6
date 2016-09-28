@@ -16,6 +16,24 @@
       "revId": "71f412dac8e1e798d7c5d1cc160b7000218713f6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_41e9657e",
+        "filename": "components_config/9/cinder/component.cfg",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-09-28T13:07:33Z",
+      "side": 1,
+      "message": "the list of dependences was working ok and all tests were passing on khallessi. Probably khallesi was installing something that has python-os-win as a dependency. So when I moved to octario this one has to be explicitly added to the list.",
+      "parentUuid": "baa041b7_469a9b63",
+      "revId": "71f412dac8e1e798d7c5d1cc160b7000218713f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
