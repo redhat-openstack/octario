@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_469a9b63",
+        "filename": "components_config/9/cinder/component.cfg",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-09-28T08:10:38Z",
+      "side": 1,
+      "message": "Why this was introduced?\nWere the tests failing before?",
+      "revId": "71f412dac8e1e798d7c5d1cc160b7000218713f6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
