@@ -1,5 +1,5 @@
 - name: Run testr init
-  shell: "tempest/venv testr init"
+  shell: "tempest/.venv testr init"
   args:
     creates: "tempest/.testrepository"
 
@@ -7,7 +7,9 @@
   shell: "{{ component_config.run.replace('\n', '') }}"
 
 - name: Run Tempest
-  shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
+  shell: >
+    source tempest/.venv/bin/activate;
+    tempest/tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile
   ignore_errors: true
 
 - name: Fetch Tempest results
