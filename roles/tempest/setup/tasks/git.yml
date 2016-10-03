@@ -15,22 +15,25 @@
     name=python-virtualenv
     state=present
 
-- name: Install tempest virtualenv
-  shell: python tempest/tools/install_venv.py tempest
-
-- name: Deploy 'venv' script to run tempest related commands inside virtualenv
-  copy:
-    src="venv"
-    dest="tempest/venv"
-    mode=0755
-
-- name: Install needed pip packages for running tempest
-  become: true
-  become_method: sudo
+- name: Create venv with packages
+  become: yes
   pip:
+    virtualenv="tempest/.venv"
     name="{{ item }}"
-    state=present
-    virtualenv="{{ tempest_venv | default(overcloud_venv) }}"
+    state=latest
   with_items:
-    - 'junitxml'
-    - 'unittest2'
+    - pip
+    - setuptools
+    - pbr
+    - junitxml
+    - unittest2
+
+- name: Install tempest requirements
+  become: yes
+  pip:
+    virtualenv=".venv"
+    chdir="tempest"
+    requirements="{{ item }}"
+  with_items:
+    - requirements.txt
+    - test-requirements.txt
