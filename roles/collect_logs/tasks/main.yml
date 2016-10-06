@@ -5,7 +5,7 @@
 # - PEP8 is ignored because it's not producing subunit streams
 # - Test results converted into Junit XML since this is a common format published by most of the CI systems (e.g Jenkins).
 # - 'Pass or Fail' is included in 'collect_logs' role since it should be the last task in the last role, so it can collect logs before Ansible stops running.
-# - Collect logs rc ignored, since the command can fail although results were onvereted. 
+# - Collect logs rc ignored, since the command can fail although results were onvereted.
 
 - name: Fetch files that mentioned in component configuration's archive section
   vars:
@@ -14,6 +14,13 @@
     src="{{ component_path }}/{{ item }}"
     dest="../{{ inventory_dir }}"
   with_items: "{{ component_config.archive }}"
+
+- name: Fetch common files
+  become: yes
+  fetch:
+    src="{{ item }}"
+    dest="../{{ inventory_dir }}"
+  with_items: "{{ common_fetch_list }}"
 
 - name: Copy test results to convert them into junit xml format
   vars:
