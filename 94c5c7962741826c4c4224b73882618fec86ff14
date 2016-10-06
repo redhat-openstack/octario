@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_cc64704a",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-10-06T14:19:12Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ac55ac52",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-10-06T14:19:12Z",
+      "side": 1,
+      "message": "Should those use as well archive to save space?",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_2c73dc17",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-10-06T14:19:12Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ecc61415",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-10-06T14:19:12Z",
+      "side": 1,
+      "message": "ansible 2.0 and newer - copy module has remote_src argument instead of invoking shell.",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
