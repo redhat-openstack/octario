@@ -121,6 +121,10 @@
   shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.rpm /patched_rpms/"
   when: rpm_mockbuild.rc == 0
 
+- name: Save patching logs
+  shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.log /var/log/patching_logs"
+  when: rpm_mockbuild.rc =! 0
+
 - name: Create repository for patched RPMs
   shell: "createrepo /patched_rpms;"
   when: rpm_mockbuild.rc == 0
