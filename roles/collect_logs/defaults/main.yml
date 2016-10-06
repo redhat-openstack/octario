@@ -1,1 +1,2 @@
 convert_fetch_logs: yes
+common_fetch_list: ['/var/log/messages','/var/log/patching_logs/state.log', '/var/log/patching_logs/build.log', '/var/log/patching_logs/root.log', '/var/log/audit/audit.log']
