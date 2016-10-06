@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_a7570500",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-10-06T22:20:20Z",
+      "side": 1,
+      "message": "not related to the patch, but np :)",
+      "parentUuid": "baa041b7_cc64704a",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_ac55ac52",
         "filename": "roles/collect_logs/tasks/main.yml",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-06T14:19:12Z",
       "side": 1,
       "message": "Should those use as well archive to save space?",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_c7520912",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-10-06T22:20:20Z",
+      "side": 1,
+      "message": "1. What is \"to use archive\" exactly?\n2. Which space?",
+      "parentUuid": "baa041b7_ac55ac52",
       "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_e7ed0d26",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-10-06T22:20:20Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "baa041b7_2c73dc17",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_ecc61415",
         "filename": "roles/patch_rpm/tasks/main.yml",
         "patchSetId": 5
@@ -64,6 +118,24 @@
       "writtenOn": "2016-10-06T14:19:12Z",
       "side": 1,
       "message": "ansible 2.0 and newer - copy module has remote_src argument instead of invoking shell.",
+      "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_87dd2172",
+        "filename": "roles/patch_rpm/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-10-06T22:20:20Z",
+      "side": 1,
+      "message": "Doesn\u0027t support regex",
+      "parentUuid": "baa041b7_ecc61415",
       "revId": "94c5c7962741826c4c4224b73882618fec86ff14",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
