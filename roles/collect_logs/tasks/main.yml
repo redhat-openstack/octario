@@ -15,6 +15,13 @@
     dest="../{{ inventory_dir }}"
   with_items: "{{ component_config.archive }}"
 
+- name: Fetch common files
+  become: yes
+  fetch:
+    src="{{ item }}"
+    dest="../{{ inventory_dir }}"
+  with_items: "{{ common_fetch_list }}"
+
 - name: Copy test results to convert them into junit xml format
   vars:
     component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
