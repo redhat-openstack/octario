@@ -12,4 +12,3 @@
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
     executable: "{{ default_shell }}"
   register: test_run
-  ignore_errors: true

@@ -1,0 +1,4 @@
+- name: Octario - Collect Logs
+  hosts: tester
+  roles:
+    - collect_logs

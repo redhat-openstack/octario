@@ -48,7 +48,3 @@
     flat=yes
   ignore_errors: true
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
-
-- name: Pass or Fail execution based on test results
-  fail: msg="The test run failed"
-  when: test_run.rc != 0
