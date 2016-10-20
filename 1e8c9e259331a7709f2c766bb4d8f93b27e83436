@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_4475a295",
+        "filename": "components_config/10/glance/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-10-20T11:02:52Z",
+      "side": 1,
+      "message": "foo",
+      "revId": "1e8c9e259331a7709f2c766bb4d8f93b27e83436",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
