@@ -36,8 +36,9 @@
   with_first_found:
     - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.cfg"
     - "{{ inventory_dir }}/components_config/common/{{ component.name }}.cfg"
+  skip: true
 
-- name: Load component configuration by specific relaease
+- name: Load component configuration by specific release
   include_vars: "{{ item }}"
   with_first_found:
     - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.cfg"
