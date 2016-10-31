@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_2a8c802d",
+        "filename": "components_config/8/sahara/component.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-10-31T05:07:11Z",
+      "side": 1,
+      "message": "will be better if something was separating between requirements and test requirements  (a line?)",
+      "revId": "fb452d232009963f36a6fd79f4754cb763ddaca1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4a70e440",
+        "filename": "components_config/common/sahara.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-10-31T05:07:11Z",
+      "side": 1,
+      "message": "the regex should be something like this: \n\nsahara_tempest_plugin\\.tests\n\nas sahara tempest gate upstream run log is:\nhttp://logs.openstack.org/63/391163/1/check/gate-tempest-dsvm-sahara/481af3d/console.html.gz",
+      "revId": "fb452d232009963f36a6fd79f4754cb763ddaca1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6a73a84f",
+        "filename": "octario.cfg",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-10-31T05:07:11Z",
+      "side": 1,
+      "message": "octario cfg is updated the jenkins jobs.",
+      "revId": "fb452d232009963f36a6fd79f4754cb763ddaca1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
