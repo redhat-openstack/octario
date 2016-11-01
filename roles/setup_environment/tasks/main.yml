@@ -8,9 +8,9 @@
 - name: Load octario configuration
   include_vars: "{{ item }}"
   with_first_found:
-    - "{{ playbook_dir }}/../octario.cfg"
-    - "{{ inventory_dir }}/octario.cfg"
-    - "/etc/octario.cfg"
+    - "{{ playbook_dir }}/../octario.yml"
+    - "{{ inventory_dir }}/octario.yml"
+    - "/etc/octario.yml"
 
 # To copy the component to remote host
 - name: Install rsync
@@ -34,18 +34,19 @@
   include_vars: "{{ item }}"
   ignore_errors: yes
   with_first_found:
-    - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.cfg"
-    - "{{ inventory_dir }}/components_config/common/{{ component.name }}.cfg"
+    - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.yml`"
+    - "{{ inventory_dir }}/components_config/common/{{ component.name }}.yml"
+  skip: true
 
 - name: Load component configuration by specific relaease
   include_vars: "{{ item }}"
   with_first_found:
-    - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.cfg"
-    - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.cfg"
+    - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
+    - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
     - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
-    - "{{ playbook_dir }}/../component.cfg"
-    - "{{ inventory_dir }}/component.cfg"
-    - "/etc/component.cfg"
+    - "{{ playbook_dir }}/../component.yml"
+    - "{{ inventory_dir }}/component.yml"
+    - "/etc/component.yml"
     - "{{ component.path | default(inventory_dir + '/' + component.name) }}/jenkins-config.yml"
     - "{{ playbook_dir }}/../jenkins-config.yml"
     - "{{ inventory_dir }}/jenkins-config.yml"
