@@ -1,0 +1,80 @@
+### This file is used by sahara component jobs
+### The jobs can be found on rhos Jenkins: https://rhos-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/component-tests
+
+# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+pep8:
+    rpm_deps: [ python-hacking, pylint ]
+    remove_rpm: [ ]
+    run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
+    remove_rpm: [ ]
+    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  git,
+  mariadb-devel,
+  MySQL-python,
+  postgresql,
+  openstack-sahara,
+  python-babel,
+  python-coverage,
+  python-hacking,
+  python-fixtures,
+  python-mock,
+  python-oslo-sphinx,
+  python-oslotest,
+  python-psycopg2,
+  python-saharaclient,
+
+  bandit,
+  python-bashate,
+  python-doc8,
+  python-pygments,
+  python-tempest-lib,
+  python-testrepository,
+  python-testresources,
+  python-testscenarios,
+  python-testtools,
+  python-tox,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps and archiving used by all tester types
+sahara_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > installed-rpms.txt;
+
+    export DEBUG_FALSE=#\ debug\ =\ False;
+    export DEBUG_TRUE=debug\ =\ True;
+
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    sed -i "/^version/d" setup.cfg;
+    sed -i "s/'hdp', 'cdh'/'hdp', 'vanilla', 'cdh'/" sahara/plugins/base.py;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - ../logs/testrun.log
+    - installed-rpms.txt
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+      run: "{{ sahara_virt_run_config.run }}"
+      archive: "{{ sahara_virt_run_config.archive }}"
