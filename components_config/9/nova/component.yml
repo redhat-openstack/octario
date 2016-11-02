@@ -86,10 +86,17 @@ functional:
 
 
 # Tempest target
+# Blacklisted tests:
+#     test_list_servers_detailed_filter_by_invalid_status - rhbz#1391196
+#     test_delete_attached_volume - rhbz#1391195
 tempest:
    rpm_deps: []
    remove_rpm: []
    run: ""
+   blacklist: [
+       tempest.api.compute.admin.test_servers.ServersAdminTestJSON.test_list_servers_detailed_filter_by_invalid_status,
+       tempest.api.compute.volumes.test_attach_volume_negative.AttachVolumeNegativeTest.test_delete_attached_volume
+   ]
 
 
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
