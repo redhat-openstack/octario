@@ -34,9 +34,10 @@
   include_vars: "{{ item }}"
   ignore_errors: yes
   with_first_found:
-    - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.yml"
-    - "{{ inventory_dir }}/components_config/common/{{ component.name }}.yml"
-  skip: true
+    - files:
+      - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.yml"
+      - "{{ inventory_dir }}/components_config/common/{{ component.name }}.yml"
+    skip: true
 
 - name: Load component configuration by specific relaease
   include_vars: "{{ item }}"
