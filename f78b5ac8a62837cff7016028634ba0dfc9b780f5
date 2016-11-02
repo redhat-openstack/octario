@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_879016ef",
+        "filename": "roles/setup_environment/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-02T12:22:44Z",
+      "side": 1,
+      "message": "Those should be shifted by 2 spaces",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "f78b5ac8a62837cff7016028634ba0dfc9b780f5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
