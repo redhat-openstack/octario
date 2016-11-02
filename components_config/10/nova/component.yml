@@ -14,6 +14,8 @@ pep8:
     remove_rpm: []
 
     run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
@@ -39,6 +41,8 @@ unittest:
     ]
 
     run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
@@ -73,6 +77,8 @@ functional:
     ]
 
     run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 
@@ -122,8 +128,6 @@ nova_virt_run_config:
       rpm -qa | sort > ../logs/installed-rpms.txt;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
-      /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
-      /usr/bin/sed -i 's/^deps/#&/' tox.ini;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:

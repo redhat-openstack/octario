@@ -20,6 +20,7 @@ pep8:
     remove_rpm: []
 
     run:
+        sed -i "s/^install_command\s*=.*$//" tox.ini;
         sed -i '/flake8 {posargs}/a whitelist_externals = flake8' tox.ini;
         export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
@@ -59,9 +60,17 @@ unittest:
     ]
 
     run:
+        sed -i "s/^install_command\s*=.*$//" tox.ini;
         export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
         testenv=$(python -c 'import sys; print "py%i%i" % (sys.version_info[:2])');
         tox --sitepackages -v -e$testenv 2>&1 | tee ../logs/testrun.log;
+
+
+# Tempest target
+tempest:
+   rpm_deps: []
+   remove_rpm: []
+   run: ""
 
 
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
@@ -114,7 +123,6 @@ nova_virt_run_config:
       rpm -qa | sort > ../logs/installed-rpms.txt;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
-      sed -i "s/^install_command\s*=.*$//" tox.ini;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
