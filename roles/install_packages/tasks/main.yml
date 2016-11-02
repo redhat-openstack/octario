@@ -3,7 +3,7 @@
 - name: Disable any repos specified
   # TBD: when ansible 2.1 is min version we should be using
   #      https://docs.ansible.com/ansible/yum_repository_module.html
-  sudo: yes
+  become: yes
   shell: yum-config-manager --disable {{ item }}
   with_items: "{{ component_config.setup.disable_repos | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.disable_repos | default(false)
@@ -11,30 +11,29 @@
 - name: Enable any additional repos to be used
   # TBD: when ansible 2.1 is min version we should be using
   #      https://docs.ansible.com/ansible/yum_repository_module.html
-  sudo: yes
+  become: yes
   shell: yum-config-manager --enable {{ item }}
   with_items: "{{ component_config.setup.enable_repos | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.enable_repos | default(false)
 
 - name: Print summary of all the repositories enabled on the host
   shell: "{{ yum_bin }} repolist all"
+  args:
+    warn: False
 
 - name: Install test dependencies RPMs needed to run the tests
   become: yes
-  become_method: sudo
   yum: pkg="{{ item }}" state=latest
   with_items: "{{ component_config.setup.install | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.install | default(false)
 
 - name: Remove unwanted rpms
   become: yes
-  become_method: sudo
   yum: pkg="{{ item }}" state=absent
   with_items: "{{ component_config.setup.remove | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.remove | default(false)
 
 - name: Install packages needed for converting and collecting the logs
   become: yes
-  become_method: sudo
   yum: name="{{ logs_packages }}" state=present
   when: "{{ convert_fetch_logs | default(false) }}"

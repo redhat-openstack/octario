@@ -39,21 +39,23 @@
         - "{{ inventory_dir }}/components_config/common/{{ component.name }}.yml"
       skip: true
 
-- name: Load component configuration by specific relaease
+- name: Load component configuration by specific release
   include_vars: "{{ item }}"
   with_first_found:
-    - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
-    - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
-    - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
-    - "{{ playbook_dir }}/../component.yml"
-    - "{{ inventory_dir }}/component.yml"
-    - "/etc/component.yml"
-    - "{{ component.path | default(inventory_dir + '/' + component.name) }}/jenkins-config.yml"
-    - "{{ playbook_dir }}/../jenkins-config.yml"
-    - "{{ inventory_dir }}/jenkins-config.yml"
-    - "{{ inventory_dir }}/../{{ component.name }}/jenkins-config.yml"
-    - "{{ playbook_dir }}/../{{ component.name }}/jenkins-config.yml"
-    - "/etc/jenkins-config.yml"
+    - files:
+        - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
+        - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
+        - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
+        - "{{ playbook_dir }}/../component.yml"
+        - "{{ inventory_dir }}/component.yml"
+        - "/etc/component.yml"
+        - "{{ component.path | default(inventory_dir + '/' + component.name) }}/jenkins-config.yml"
+        - "{{ playbook_dir }}/../jenkins-config.yml"
+        - "{{ inventory_dir }}/jenkins-config.yml"
+        - "{{ inventory_dir }}/../{{ component.name }}/jenkins-config.yml"
+        - "{{ playbook_dir }}/../{{ component.name }}/jenkins-config.yml"
+        - "/etc/jenkins-config.yml"
+      skip: true
 
 - name: Setup component configuration based on operating system
   set_fact:
