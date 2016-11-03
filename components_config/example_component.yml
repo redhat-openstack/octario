@@ -1,0 +1,194 @@
+# This file is used by the octario testing framework, please refer to
+# https://github.com/redhat-openstack/octario for more information
+# about framework itself.
+
+# Dependencies are installed from repositories configured on the
+# testing system.
+
+# To easy distinguish between dependencies satisfied by RHOSP repository vs
+# dependencies outside of it, those with explicit versions are not available
+# in the RHOSP repositories.
+
+
+# Comments should be put above tester definition, otherwise error will occur.
+
+# Each shell command in the run section/sub-section should end with ';'
+
+# If the list inside [] brackets contains multiple elements
+#   those should be separated with ',' see example rpm_deps below.
+
+# Any hard coded install commands that will use pip installation
+# method from the tox.ini should be removed, see example /usr/bin/sed below.
+# It is because pip installation method should not be used / mixed with rpm.
+# In below example install_command and deps are commented out. Those two
+# shell commands are duplicated across other testers except tempest, where
+# is not needed. If all testers were requiring such commands then that part
+# could be easilly moved to run from nova_virt_run_config section and less
+# duplication would occur.
+pep8:
+
+    rpm_deps: [
+      python-eventlet,
+      python-hacking
+    ]
+
+    remove_rpm: []
+
+    run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+# python-nova is installed to satisfy all runtime dependencies for the nova
+# component. It is then removed, so all dependent packages are present but
+# the test runs against codebase from gerrit and not the system one.
+#
+unittest:
+
+    rpm_deps: [
+      python-nova,
+      python-pep8
+    ]
+
+    remove_rpm: [
+      python-nova
+    ]
+
+    run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+
+# openstack-nova is installed and then all nova packages are removed
+# to satisfy all runtime dependencies for the nova component. Similarly to
+# above unittest tester, however it pulls much more codebase from nova
+# which is also present in the nova git repository.
+#
+functional:
+
+    rpm_deps: [
+      openstack-nova,
+      python-gabbi
+    ]
+
+    remove_rpm: [
+      python-nova,
+      openstack-nova-api,
+      python-nova,
+      openstack-nova-cells,
+      openstack-nova-cert,
+      openstack-nova-common,
+      openstack-nova-compute,
+      openstack-nova-conductor,
+      openstack-nova-console,
+      openstack-nova-network,
+      openstack-nova-novncproxy,
+      openstack-nova-placement-api,
+      openstack-nova-scheduler
+    ]
+
+    run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+
+
+# Tempest target
+# It is empty as no extra dependencies are required.
+#
+# Blacklisted tests example:
+#     test_list_servers_detailed_filter_by_invalid_status - rhbz#1391196
+#     test_delete_attached_volume - rhbz#1391195
+#
+# Similarly use whitelist, see tempest documentation for difference between
+# those: http://docs.openstack.org/developer/tempest/run.html#test-selection
+tempest:
+   rpm_deps: []
+   remove_rpm: []
+   run: ""
+   blacklist: [
+       tempest.api.compute.admin.test_servers.ServersAdminTestJSON.test_list_servers_detailed_filter_by_invalid_status,
+       tempest.api.compute.volumes.test_attach_volume_negative.AttachVolumeNegativeTest.test_delete_attached_volume
+   ]
+   whitelist: []
+
+
+# Additional repository required to install testing dependencies
+# This is for all testers
+enable_repos: [
+    rhelosp-10.0-unittest
+]
+
+
+# Common rpm deps needed for all tester types:
+#     (pep8 / unittest / functional / tempest)
+#
+# Note the explicit versions (explained in line 3 of this example)
+#
+# The line with "hostvars[inventory_hostname][tester.component.tox_target]"
+# simply calls the section ['rpm_deps'] for the particular tester within this
+# configuration file. The tox_target is tester like pep8, unittest, functional
+# tempest or any other.
+#
+# Having above this we can use below rpm_deps that is common for all testers
+rpm_deps: [
+    git,
+    python-tox-2.3.1,
+    python-pluggy-0.3.1,
+    python2-virtualenv-14.0.6,
+    python-setuptools-18.5,
+    python-pip,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# Common run and archive section.
+# This will be executed for every tester type.
+#
+# We truncate *requirements.txt to ensure we are using dependencies from RPM
+# only and we do not mix them with ones installed by pip.
+#
+nova_virt_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.txt;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+      - ../logs/installed-rpms.txt
+      - ../logs/testrun.log
+      - .tox/py27/log/py27-0.log
+      - .tox/py27/log/py27-1.log
+      - .tox/py27/log/py27-2.log
+      - .tox/pep8/log/pep8-0.log
+      - .tox/pep8/log/pep8-1.log
+      - .tox/pep8/log/pep8-2.log
+      - .tox/functional/log/functional-0.log
+      - .tox/functional/log/functional-1.log
+      - .tox/functional/log/functional-2.log
+
+
+# NOTE: This is the main section. It must exist.
+# RedHat-7 is common for all across different RHEL 7 minor releases such as
+# RHEL 7.2, RHEL 7.3. You can be more specific here and define sections for
+# particular RHEL releases only e.g. RedHat-6, RedHat-7.3
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{nova_virt_run_config.run}}"
+      archive: "{{nova_virt_run_config.archive}}"
