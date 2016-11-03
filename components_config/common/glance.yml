@@ -1,0 +1,9 @@
+# Tempest
+# -------
+
+tempest_regex: tempest\.api\.image\|tempest\.scenario\.*image
+
+# Dist-git
+# --------
+component_dist_git_name: 'openstack-glance'
+component_dist_git_url: 'git://pkgs.devel.redhat.com/rpms/openstack-glance'
