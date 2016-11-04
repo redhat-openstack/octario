@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_c22e028c",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-04T13:44:01Z",
+      "side": 1,
+      "message": "no need to specify this. it\u0027s the default.",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "d884331eb8b8d01071f03707df7c2924800b8bd2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
