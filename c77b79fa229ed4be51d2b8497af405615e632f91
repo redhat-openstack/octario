@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_4259d234",
+        "filename": "components_config/9/glance/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-04T13:45:03Z",
+      "side": 1,
+      "message": "why pip?",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
