@@ -1,0 +1,112 @@
+### This file is used by glance component jobs
+
+# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+pep8:
+    rpm_deps: [  pyflakes-0.7.3, python-pep8-1.4.5, python-flake8-2.0 ]
+    remove_rpm: [ python-glance ]
+    run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: []
+    remove_rpm: [ python-glance ]
+    run: >
+       tox --sitepackages -v -e py27  2>&1 | tee ../logs/testrun.log;
+
+
+# Tempest target
+tempest:
+   rpm_deps: []
+   remove_rpm: []
+   run: ""
+
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  gcc,
+  git,
+  python-tox,
+  python-pip,
+  python-pbr,
+  python-boto,
+  python-sqlalchemy,
+  python-anyjson,
+  python-eventlet,
+  python-paste-deploy,
+  python-httplib2,
+  python-kombu,
+  python-crypto,
+  python-iso8601,
+  python-oslo-config,
+  python-stevedore,
+  python-netaddr,
+  python-keystonemiddleware,
+  python-wsme,
+  python-posix_ipc,
+  python-swiftclient,
+  python-oslo-vmware,
+  python-paste,
+  python-jsonschema,
+  python-keystoneclient,
+  pyOpenSSL,
+  python-six,
+  python-oslo-db,
+  python-oslo-i18n,
+  python-oslo-messaging,
+  python-retrying,
+  python-osprofiler,
+  python-glance-store,
+  openstack-glance,
+
+  python-testtools-1.1.0,
+  pyflakes-0.7.3,
+  python-pep8-1.4.5,
+  python-flake8-2.0,
+  python-hacking-0.8.0,
+  python-babel,
+  python-coverage,
+  python-fixtures,
+  python-mox3,
+  python-mock,
+  python-mox,
+  python-sphinx,
+  python-requests,
+  python-testrepository,
+  python-psutil,
+  MySQL-python,
+  python-psycopg2,
+  pysendfile,
+  python-qpid,
+  pyxattr,
+  python-oslo-sphinx,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps and archiving used by all tester types
+glance_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > installed-rpms.txt;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - ../logs/testrun.log
+    - installed-rpms.txt
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+      run: "{{ glance_virt_run_config.run }}"
+      archive: "{{ glance_virt_run_config.archive }}"
