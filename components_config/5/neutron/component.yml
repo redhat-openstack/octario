@@ -6,9 +6,10 @@ pep8:
   run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
-  rpm_deps: [ python-neutron, python-cliff, python-requests-mock, python-webtest, python-hacking, python-sphinx ]
+  rpm_deps: [ python-neutron, python-cliff, python-requests-mock, python-webtest, python-hacking ]
   remove_rpm: []
   run: >
+    yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python-sphinx-1.1.3-9.el7.noarch.rpm;
     if grep -q -i release.6 /etc/redhat-release; then
         sudo yum install -y python-discover;
         tox --sitepackages -v -e py26 2>&1 | tee ../logs/testrun.log;
