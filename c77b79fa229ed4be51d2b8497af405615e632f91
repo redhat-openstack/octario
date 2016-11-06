@@ -46,6 +46,30 @@
       "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_8bf01568",
+        "filename": "components_config/9/glance/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-06T16:47:13Z",
+      "side": 1,
+      "message": "Here you go:\n\nhttps://kojipkgs.fedoraproject.org//packages/bandit/1.0.1/2.fc25/src/bandit-1.0.1-2.fc25.src.rpm",
+      "parentUuid": "baa041b7_4bd32dd6",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
