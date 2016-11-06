@@ -22,6 +22,30 @@
       "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4bd32dd6",
+        "filename": "components_config/9/glance/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-06T15:36:02Z",
+      "side": 1,
+      "message": "no rpm for bandit :-(",
+      "parentUuid": "baa041b7_4259d234",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
