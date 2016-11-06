@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_eb90c1ef",
+        "filename": "components_config/5/glance/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-06T18:30:30Z",
+      "side": 1,
+      "message": "Added in the next patch set. Thanks!",
+      "parentUuid": "baa041b7_4bea0d76",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 12
+      },
+      "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4259d234",
         "filename": "components_config/9/glance/component.yml",
         "patchSetId": 7
@@ -83,6 +107,30 @@
       "writtenOn": "2016-11-06T16:47:13Z",
       "side": 1,
       "message": "Here you go:\n\nhttps://kojipkgs.fedoraproject.org//packages/bandit/1.0.1/2.fc25/src/bandit-1.0.1-2.fc25.src.rpm",
+      "parentUuid": "baa041b7_4bd32dd6",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_0b8405af",
+        "filename": "components_config/9/glance/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-06T18:30:30Z",
+      "side": 1,
+      "message": "Thanks!!",
       "parentUuid": "baa041b7_4bd32dd6",
       "range": {
         "startLine": 10,
