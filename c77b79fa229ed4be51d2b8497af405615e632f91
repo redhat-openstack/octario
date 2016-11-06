@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "baa041b7_4bea0d76",
+        "filename": "components_config/5/glance/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-06T16:49:41Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there be also section for RHEL 6?",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 12
+      },
+      "revId": "c77b79fa229ed4be51d2b8497af405615e632f91",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4259d234",
         "filename": "components_config/9/glance/component.yml",
         "patchSetId": 7
