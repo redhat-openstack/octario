@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_bc731a4e",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "it\u0027s not a must.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_3c96ea3e",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "Not only. It depends on repositories on your system.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 74
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_77d24b5d",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "true only if there are more than one command",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 71
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_573e278c",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "perhaps it\u0027s a good idea to explain on blacklist vs. whitelist",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_77600ba5",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "perhaps a line of explanation on this \"magic\" line? I learned that it\u0027s very confusing for newcomers.",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 79
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_375a83f3",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "We truncate to ensure we are only using RPMs, it\u0027s not about test vs. non-test",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d769178e",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "Dangerous suggestion. Perhaps we want more strict policy of \"No RPM? package one\"\n\nWorkarounds are usually stay for longer than really needed.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 58
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_37116305",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-07T16:35:40Z",
+      "side": 1,
+      "message": "You can also have specific version (including minor) like RedHat-7.3 or only RedHat if it\u0027s the same for RHEL 6 and RHEL 7+",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "fc96d05d5ced25b82b42e728c34a5a0d23f8f695",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
