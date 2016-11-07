@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_9162823c",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-07T09:52:48Z",
+      "side": 1,
+      "message": "the comment the is:\n# this hack is required to pint to free (non patent guarded) # version of  erasurecodes",
+      "parentUuid": "baa041b7_b6b9fc7e",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_36872cb8",
         "filename": "components_config/10/swift/component.yml",
         "patchSetId": 1
