@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_a6c2eb51",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T12:38:24Z",
+      "side": 1,
+      "message": "Still have no idea what is this for.",
+      "revId": "12e56bf03c1b575a93189023d74b2b86be3751b9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_869ec767",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T12:38:24Z",
+      "side": 1,
+      "message": "Really nothing here?",
+      "revId": "12e56bf03c1b575a93189023d74b2b86be3751b9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
