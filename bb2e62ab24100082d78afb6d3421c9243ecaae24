@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_c3e4c13d",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T10:56:01Z",
+      "side": 1,
+      "message": "This will not work as comments must be above \"unittest:\"",
+      "revId": "bb2e62ab24100082d78afb6d3421c9243ecaae24",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_a3e1bd2c",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T10:56:01Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "bb2e62ab24100082d78afb6d3421c9243ecaae24",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_83cd99bc",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T10:56:01Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "bb2e62ab24100082d78afb6d3421c9243ecaae24",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
