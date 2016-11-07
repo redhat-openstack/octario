@@ -1,0 +1,8 @@
+# Tempest
+# -------
+tempest_regex: tempest\.api\.object_storage\|tempest\.scenario\.*object_storage
+
+# Dist-git
+# --------
+component_dist_git_name: 'openstack-swift'
+component_dist_git_url: 'git://pkgs.devel.redhat.com/rpms/openstack-swift'
