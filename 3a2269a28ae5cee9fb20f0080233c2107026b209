@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_b6b9fc7e",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "some comment why this hack is needed, maybe bug ID?\nSame for the symlinks, so other person knows why it\u0027s there.",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_36872cb8",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_168428af",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_76b3749b",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "Comments above explaining why is this needed and what it does.",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_56b87075",
+        "filename": "components_config/5/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_36ae0c30",
+        "filename": "components_config/5/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f6a7844e",
+        "filename": "components_config/5/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "comments why it\u0027s needed",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_16ab0820",
+        "filename": "components_config/5/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d6a4804c",
+        "filename": "components_config/6/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b660dc0e",
+        "filename": "components_config/6/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_766a54ef",
+        "filename": "components_config/6/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "comments",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_9665d81e",
+        "filename": "components_config/6/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_3675eccb",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "Isn\u0027t this unfinished config? looks much smaller then others.",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_566f50fc",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space x2",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b647bc79",
+        "filename": "components_config/8/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "Comment why this hack is needed with link to bug ID?\nComment why symlink is needed",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f67e64ae",
+        "filename": "components_config/8/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d67b60bd",
+        "filename": "components_config/8/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_964cb89e",
+        "filename": "components_config/8/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "comment why it\u0027s needed",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_365ccc4b",
+        "filename": "components_config/9/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "comment why it\u0027s needed with possible bug ID\ncomment why symlink is needed",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_76413463",
+        "filename": "components_config/9/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_5646307c",
+        "filename": "components_config/9/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_f655441e",
+        "filename": "components_config/9/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "comment what it does and why it\u0027s needed, same for other exports.",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d6524035",
+        "filename": "components_config/common/swift.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-07T08:05:14Z",
+      "side": 1,
+      "message": "Does it support tempest? If yes then regex here.",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
