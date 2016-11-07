@@ -408,6 +408,24 @@
       "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b1c4660e",
+        "filename": "components_config/common/swift.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-07T09:55:11Z",
+      "side": 1,
+      "message": "it supports. regexp should be copied from the old khaleese repo ref change: https://review.gerrithub.io/#/c/274460/",
+      "parentUuid": "baa041b7_d6524035",
+      "revId": "3a2269a28ae5cee9fb20f0080233c2107026b209",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
