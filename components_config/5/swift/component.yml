@@ -1,0 +1,96 @@
+unittest:
+  rpm_deps: []
+  run: >
+    if grep -q -i release.6 /etc/redhat-release; then
+        sudo yum install -y python-discover;
+        tox --sitepackages -v -e py26 2>&1 | tee ../logs/testrun.log;
+    else
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    fi
+
+pep8:
+  rpm_deps: [ pyflakes-0.7.3, python-pep8-1.4.5, python-flake8-2.0, python-hacking-0.8.0 ]
+  run: >
+      tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+# Note: The order of packages is important
+rpm_deps_common: [
+  git,
+  python-tox,
+  gcc,
+  python-devel,
+  python-pip,
+  python-pbr,
+  python-dns,
+  python-eventlet,
+  python-greenlet,
+  python-netifaces,
+  python-paste-deploy,
+  python-simplejson,
+  python-six,
+  libffi-devel,
+  pyxattr,
+  openstack-swift-account,
+  openstack-swift-container,
+  openstack-swift-object,
+  openstack-swift-proxy
+]
+
+rpm_deps_tests_req: [
+  python-coverage,
+  python-nose,
+  python-oslo-sphinx,
+  python-sphinx,
+  python-mock,
+  python-swiftclient,
+  python-keystoneclient
+]
+
+rpm_deps_7: [
+  "{{rpm_deps_tests_req}}",
+  "{{rpm_deps_common}}",
+  "{{ hostvars[inventory_hostname][tester.name]['rpm_deps'] }}"
+]
+
+rpm_remove: [
+  openstack-swift-account,
+  openstack-swift-container,
+  openstack-swift-object,
+  openstack-swift-proxy
+]
+
+# NSS_HASH_ALG_SUPPORT and OPENSSL_ENABLE_MD5_VERIFY are required by erasurecodes
+# NOSE_WITH_XUNIT set to provide test results in the standard XUnit XML format
+virt_run_config:
+  run: >
+    set -o pipefail;
+    sudo rm -Rf .tox;
+    export NSS_HASH_ALG_SUPPORT=+MD5;
+    export OPENSSL_ENABLE_MD5_VERIFY=1;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+    rpm -qa > all-rpms.txt;
+    export NOSE_WITH_XUNIT=1;
+    {{ hostvars[inventory_hostname][tester.name]['run'] }}
+ 
+  archive:
+    - ../logs/testrun.log
+    - all-rpms.txt
+    - requirements.txt
+    - test-requirements.txt
+    - nosetests.xml
+
+### actual test_config: starts here: used by khaleesi ###
+### NOTE: test_config.virt must be defined ###
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{rpm_deps_7}}"
+        remove: "{{rpm_remove}}"
+      run: "{{virt_run_config.run}}"
+    RedHat-6:
+      setup:
+        install: "{{rpm_deps_7}}"
+        remove: "{{rpm_remove}}"
+      run: "{{virt_run_config.run}}"
