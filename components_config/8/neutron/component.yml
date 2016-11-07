@@ -77,7 +77,7 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 neutron_virt_run_config:
   run: >
     set -o pipefail;
-    rpm -qa | sort > installed-rpms.txt;
+    rpm -qa | sort > installed-rpms.log;
 
     export DEBUG_FALSE=#\ debug\ =\ False;
     export DEBUG_TRUE=debug\ =\ True;
@@ -90,7 +90,7 @@ neutron_virt_run_config:
 
   archive:
     - ../logs/testrun.log
-    - installed-rpms.txt
+    - installed-rpms.log
 
 # NOTE: This is the main section. It must exist.
 test_config:

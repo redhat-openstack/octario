@@ -48,13 +48,13 @@ remove_rpm: [ python-neutron, "{{ hostvars[inventory_hostname][tester.component.
 neutron_virt_run_config:
   run: >
     set -o pipefail;
-    rpm -qa > installed-rpms.txt;
+    rpm -qa > installed-rpms.log;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
-    - - installed-rpms.txt
+    - - installed-rpms.log
     - ../logs/testrun.log
 
 # NOTE: This is the main section. It must exist.
