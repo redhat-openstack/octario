@@ -1,10 +1,12 @@
 unittest:
-  rpm_deps: []
+  rpm_deps: [python-nose, python-cliff, python-requests-mock, python-webtest ]
+  remove_rpm: []
   run: >
       tox -v -epy27 2>&1 | tee ../logs/venv-testrun.log;
 
 pep8:
-  rpm_deps: []
+  rpm_deps: [python-hacking-0.8.0, pylint]
+  remove_rpm: []
   run: >
       tox -v -e pep8 2>&1 | tee ../logs/venv-testrun.log;
 
@@ -12,6 +14,7 @@ rpm_deps_common: [
   git,
   python-tox,
   gcc,
+  libffi-devel,
   python-devel,
   python-pip,
   python-pbr
@@ -19,11 +22,10 @@ rpm_deps_common: [
 
 rpm_deps_7: [
   "{{rpm_deps_common}}",
-  "{{ hostvars[inventory_hostname][tester.name]['rpm_deps'] }}"
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
-rpm_remove: [
-]
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
 
 # NSS_HASH_ALG_SUPPORT and OPENSSL_ENABLE_MD5_VERIFY are required by erasurecodes
 # NOSE_WITH_XUNIT set to provide test results in the standard XUnit XML format
@@ -34,8 +36,10 @@ virt_run_config:
     export NSS_HASH_ALG_SUPPORT=+MD5;
     export OPENSSL_ENABLE_MD5_VERIFY=1;
     export NOSE_WITH_XUNIT=1;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
     rpm -qa > all-rpms.txt;
-    {{ hostvars[inventory_hostname][tester.name]['run'] }}
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
     - ../logs/venv-testrun.log
@@ -50,6 +54,6 @@ test_config:
     RedHat-7:
       setup:
         install: "{{rpm_deps_7}}"
-        remove: "{{rpm_remove}}"
+        remove: "{{remove_rpm}}"
       run: "{{virt_run_config.run}}"
       archive: "{{virt_run_config.archive}}"
