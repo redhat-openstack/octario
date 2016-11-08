@@ -40,7 +40,6 @@ rpm_deps_tests_req: [
   python-coverage,
   python-nose,
   python-oslo-sphinx,
-  python-sphinx,
   python-mock,
   python-swiftclient,
   python-keystoneclient
@@ -49,7 +48,7 @@ rpm_deps_tests_req: [
 rpm_deps_7: [
   "{{rpm_deps_tests_req}}",
   "{{rpm_deps_common}}",
-  "{{ hostvars[inventory_hostname][tester.name]['rpm_deps'] }}"
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
 rpm_remove: [
@@ -71,7 +70,7 @@ virt_run_config:
     truncate --size 0 test-requirements.txt;
     rpm -qa > all-rpms.txt;
     export NOSE_WITH_XUNIT=1;
-    {{ hostvars[inventory_hostname][tester.name]['run'] }}
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
  
   archive:
     - ../logs/testrun.log
