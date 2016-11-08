@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_91df183a",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-08T12:33:15Z",
+      "side": 1,
+      "message": "Do we really need to put comment on octario in octario itself?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 25
+      },
+      "revId": "479f865b84ff6b54ba67b104730b87cb233ff5e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_51c99078",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-08T12:33:15Z",
+      "side": 1,
+      "message": "Hmm I don\u0027t think we can really say that. I mean if someone put pep8-x.x.x there is some chance, this package is already provided by RHOSP and we simply didn\u0027t update the component config.\n\nAlso these sentences are more confusing than giving actual valuable information, in my opinion.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "479f865b84ff6b54ba67b104730b87cb233ff5e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_d1bc80dd",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-08T12:33:15Z",
+      "side": 1,
+      "message": "two blank lines",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "479f865b84ff6b54ba67b104730b87cb233ff5e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_9184b80b",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-08T12:33:15Z",
+      "side": 1,
+      "message": "Little obscure. What error? why?",
+      "range": {
+        "startLine": 13,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 77
+      },
+      "revId": "479f865b84ff6b54ba67b104730b87cb233ff5e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_717a5427",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-08T12:33:15Z",
+      "side": 1,
+      "message": "Only if it\u0027s more than one command",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 71
+      },
+      "revId": "479f865b84ff6b54ba67b104730b87cb233ff5e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_5177503b",
+        "filename": "components_config/example_component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-08T12:33:15Z",
+      "side": 1,
+      "message": "That\u0027s how list usually formatted, do we really need to explain that for developers/users?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "479f865b84ff6b54ba67b104730b87cb233ff5e8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
