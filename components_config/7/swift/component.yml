@@ -1,28 +1,56 @@
+# This hack is required to pin to free (non patent guarded) # version of  erasurecodes
 unittest:
-  rpm_deps: []
+  rpm_deps: [python-netifaces]
   run: >
-      tox -v -epy27 2>&1 | tee ../logs/venv-testrun.log;
+      tox --sitepackages -v -epy27 -- --xunit-file=test_nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 pep8:
-  rpm_deps: []
+  rpm_deps: [ pyflakes, python-pep8, python-flake8, python-hacking ]
   run: >
-      tox -v -e pep8 2>&1 | tee ../logs/venv-testrun.log;
+      tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
+# Note: The order of packages is important
 rpm_deps_common: [
   git,
   python-tox,
   gcc,
   python-devel,
   python-pip,
-  python-pbr
+  python-pbr,
+  python-dns,
+  python-eventlet,
+  python-greenlet,
+  python-paste-deploy,
+  python-simplejson,
+  python-six,
+  libffi-devel,
+  pyxattr,
+  openstack-swift-account,
+  openstack-swift-container,
+  openstack-swift-object,
+  openstack-swift-proxy
+]
+
+rpm_deps_tests_req: [
+  python-coverage,
+  python-nose,
+  python-oslo-sphinx,
+  python-mock,
+  python-swiftclient,
+  python-keystoneclient
 ]
 
 rpm_deps_7: [
+  "{{rpm_deps_tests_req}}",
   "{{rpm_deps_common}}",
-  "{{ hostvars[inventory_hostname][tester.name]['rpm_deps'] }}"
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
 rpm_remove: [
+  openstack-swift-account,
+  openstack-swift-container,
+  openstack-swift-object,
+  openstack-swift-proxy
 ]
 
 # NSS_HASH_ALG_SUPPORT and OPENSSL_ENABLE_MD5_VERIFY are required by erasurecodes
@@ -33,15 +61,18 @@ virt_run_config:
     sudo rm -Rf .tox;
     export NSS_HASH_ALG_SUPPORT=+MD5;
     export OPENSSL_ENABLE_MD5_VERIFY=1;
-    export NOSE_WITH_XUNIT=1;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
     rpm -qa > all-rpms.txt;
-    {{ hostvars[inventory_hostname][tester.name]['run'] }}
+    export NOSE_WITH_XUNIT=1;
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
-    - ../logs/venv-testrun.log
+    - ../logs/testrun.log
     - all-rpms.txt
     - requirements.txt
     - test-requirements.txt
+    - test_nosetests.xml
 
 ### actual test_config: starts here: used by khaleesi ###
 ### NOTE: test_config.virt must be defined ###
