@@ -84,6 +84,24 @@
       "revId": "54cdbba35f20726691b5a651d36fe1957a3c3aa0",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_ae33d212",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-09T22:10:24Z",
+      "side": 1,
+      "message": "?\nIt\u0027s already there",
+      "parentUuid": "baa041b7_2ec9027a",
+      "revId": "54cdbba35f20726691b5a651d36fe1957a3c3aa0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
