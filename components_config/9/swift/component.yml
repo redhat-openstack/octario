@@ -1,6 +1,6 @@
 # This hack is required to pin to free (non patent guarded) # version of  erasurecodes
 unittest:
-  rpm_deps: []
+  rpm_deps: [python-netifaces]
   run: >
       sudo yum -y install  http://download.eng.bos.redhat.com/brewroot/packages/python-pyeclib/1.1.0/1.el7ost/x86_64/python-pyeclib-1.1.0-1.el7ost.x86_64.rpm;
       sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
@@ -23,7 +23,6 @@ rpm_deps_common: [
   python-dns,
   python-eventlet,
   python-greenlet,
-  python-netifaces,
   python-paste-deploy,
   python-simplejson,
   python-six,
@@ -48,7 +47,7 @@ rpm_deps_tests_req: [
 rpm_deps_7: [
   "{{rpm_deps_tests_req}}",
   "{{rpm_deps_common}}",
-  "{{ hostvars[inventory_hostname][tester.name]['rpm_deps'] }}"
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
 rpm_remove: [
@@ -70,7 +69,7 @@ virt_run_config:
     truncate --size 0 test-requirements.txt;
     rpm -qa > all-rpms.txt;
     export NOSE_WITH_XUNIT=1;
-    {{ hostvars[inventory_hostname][tester.name]['run'] }}
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
   archive:
