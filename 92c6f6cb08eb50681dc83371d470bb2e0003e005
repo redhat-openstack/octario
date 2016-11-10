@@ -1,0 +1,7 @@
+Verified+1: rdo-ci-hudson <whayutin+hudson@redhat.com>
+Code-Review+2: Arie Bregman <abregman@redhat.com>
+Submitted-by: Arie Bregman <abregman@redhat.com>
+Submitted-at: Thu, 10 Nov 2016 10:03:19 -0500
+Reviewed-on: https://review.gerrithub.io/301529
+Project: redhat-openstack/octario
+Branch: refs/heads/master
