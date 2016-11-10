@@ -1,7 +1,7 @@
 # This file is used by jenkins jobs
 
 pep8:
-  rpm_deps: [ pyflakes-0.7.3, python-pep8-1.4.5, python-flake8-2.0, python-hacking-0.8.0 ]
+  rpm_deps: [  pyflakes-0.7.3, python-pep8-1.4.5, python-flake8-2.0, python-hacking-0.8.0 ]
   remove_rpm: []
   run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
