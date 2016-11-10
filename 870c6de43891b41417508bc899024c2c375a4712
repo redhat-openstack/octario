@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_bf4ada59",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-10T10:27:11Z",
+      "side": 1,
+      "message": "this will run all all tests. we need regexp",
+      "revId": "870c6de43891b41417508bc899024c2c375a4712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_9f4f166a",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-10T10:27:11Z",
+      "side": 1,
+      "message": "regexp",
+      "revId": "870c6de43891b41417508bc899024c2c375a4712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_5f598e34",
+        "filename": "components_config/8/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-10T10:27:11Z",
+      "side": 1,
+      "message": "regexp",
+      "revId": "870c6de43891b41417508bc899024c2c375a4712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_3f3feab6",
+        "filename": "components_config/9/swift/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-10T10:27:11Z",
+      "side": 1,
+      "message": "regexp",
+      "revId": "870c6de43891b41417508bc899024c2c375a4712",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
