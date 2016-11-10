@@ -6,12 +6,15 @@ pep8:
     remove_rpm: [ python-glance ]
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
+# NOTE: for some reason /etc/glance/* and /var/log/glance/* have wrong permissions
 unittest:
     rpm_deps: []
     remove_rpm: [ python-glance ]
     run: >
       if grep -q -i release.6 /etc/redhat-release; then
         sudo yum install -y python-discover;
+        sudo chmod 777 /etc/glance/*;
+        sudo chmod 777 /var/log/glance/*;
         tox --sitepackages -v -epy26 2>&1 | tee ../logs/venv-testrun.log;
       else
         tox --sitepackages -v -epy27 2>&1 | tee ../logs/venv-testrun.log;
