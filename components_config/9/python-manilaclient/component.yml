@@ -1,6 +1,5 @@
-### This file is used by python-manilaclient component jobs
 pep8:
-    rpm_deps: [  pyflakes, python-flake8 ]
+    rpm_deps: [ pyflakes, python-flake8 ]
     remove_rpm: [ python-manilaclient ]
     run: >
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
@@ -31,8 +30,6 @@ rpm_deps: [
   python-testresources,
   python-testscenarios,
   python-barbicanclient,
-
-  python-hacking-0.9.6,
   python-testtools,
   python-babel,
   python-coverage,
