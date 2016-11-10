@@ -1,0 +1,76 @@
+### This file is used by python-cinderclient component jobs
+
+pep8:
+    rpm_deps: [  pyflakes-0.7.3, python-pep8-1.4.5, python-flake8-2.0, python-hacking-0.8.0 ]
+    remove_rpm: [ python-cinderclient ]
+    run: >
+       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+unittest:
+    rpm_deps: [ ]
+    remove_rpm: [ python-cinderclient ]
+    run: >
+       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  python-cinderclient,
+  python-keystoneclient,
+  python-nose,
+  python-tox,
+  gcc,
+  git,
+  python-devel,
+  python-babel,
+  python-httplib2,
+  python-pip,
+  python-pbr,
+  python-requests-mock,
+
+  python-testtools-1.1.0,
+  python-coverage,
+  python-psycopg2,
+  MySQL-python,
+  python-testrepository,
+  python-mock,
+  python-mox,
+  python-mox3,
+
+  python-fixtures,
+  python-subunit,
+  python-oslo-sphinx,
+
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps and archiving used by all tester types
+cinderclient_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > installed-rpms.txt;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - ../logs/testrun.log
+    - installed-rpms.txt
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+      run: "{{ cinderclient_virt_run_config.run }}"
+      archive: "{{ cinderclient_virt_run_config.archive }}"
