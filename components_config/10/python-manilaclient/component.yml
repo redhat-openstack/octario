@@ -1,4 +1,3 @@
-### This file is used by python-manilaclient component jobs
 pep8:
     rpm_deps: [  pyflakes, python-flake8 ]
     remove_rpm: [ python-manilaclient ]
@@ -6,7 +5,7 @@ pep8:
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
-    rpm_deps: [ python-cliff, python-requests-mock, python-webtest ]
+    rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-warlock ]
     remove_rpm: [ python-manilaclient ]
     run: >
        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
@@ -31,8 +30,6 @@ rpm_deps: [
   python-testresources,
   python-testscenarios,
   python-barbicanclient,
-
-  python-hacking-0.9.6,
   python-testtools,
   python-babel,
   python-coverage,
@@ -46,7 +43,6 @@ rpm_deps: [
   python-oslo-sphinx,
   python-fixtures,
   python-subunit,
-  python-pep8-1.5.6,
   python-bashate,
 
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
