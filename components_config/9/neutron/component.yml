@@ -61,6 +61,7 @@ tempest:
    remove_rpm: []
    run: >
      sed -i -E s/,dvr,\?//g /home/stack/tempest/etc/tempest.conf;
+   blacklist: [tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_router_rescheduling]
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
