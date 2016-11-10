@@ -12,6 +12,12 @@ pep8:
   run: >
       tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
+tempest:
+   rpm_deps: [ python-swift-tests ]
+   remove_rpm: []
+   run: ""
+   blacklist: []
+
 # Note: The order of packages is important
 rpm_deps_common: [
   git,
