@@ -3,12 +3,12 @@
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
     rpm_deps: []
-    remove_rpm: [ python-glance ]
+    remove_rpm: [ openstack-glance ]
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: []
-    remove_rpm: [ python-glance ]
+    remove_rpm: [ openstack-glance ]
     run: >
        tox --sitepackages -v -e py27 glance.tests.unit 2>&1 | tee ../logs/testrun.log;
 
