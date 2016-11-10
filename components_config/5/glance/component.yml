@@ -12,6 +12,7 @@ unittest:
     run: >
       if grep -q -i release.6 /etc/redhat-release; then
         sudo yum install -y python-discover;
+        sudo chmod 777 /etc/glance/*;
         tox --sitepackages -v -epy26 2>&1 | tee ../logs/venv-testrun.log;
       else
         tox --sitepackages -v -epy27 2>&1 | tee ../logs/venv-testrun.log;
