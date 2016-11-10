@@ -1,6 +1,6 @@
 ### This file is used by python-manilaclient component jobs
 pep8:
-    rpm_deps: [  pyflakes, python-flake8 ]
+    rpm_deps: [ python-hacking-0.9.2, python-pep8, pyflakes-0.8.1, python-flake8 ]
     remove_rpm: [ python-manilaclient ]
     run: >
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
@@ -32,7 +32,6 @@ rpm_deps: [
   python-testscenarios,
   python-barbicanclient,
 
-  python-hacking-0.9.6,
   python-testtools,
   python-babel,
   python-coverage,
@@ -46,7 +45,6 @@ rpm_deps: [
   python-oslo-sphinx,
   python-fixtures,
   python-subunit,
-  python-pep8-1.5.6,
   python-bashate,
 
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
@@ -59,7 +57,7 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 manila_virt_run_config:
   run: >
     set -o pipefail;
-    rpm -qa | sort > installed-rpms.txt;
+    rpm -qa | sort > installed-rpms.log;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
 
@@ -67,7 +65,7 @@ manila_virt_run_config:
 
   archive:
     - ../logs/testrun.log
-    - installed-rpms.txt
+    - installed-rpms.log
 
 # NOTE: This is the main section. It must exist.
 test_config:
