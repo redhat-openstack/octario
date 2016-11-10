@@ -1,17 +1,16 @@
-### This file is used by glance component jobs
+### This file is used by os-brick component jobs
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ bandit ]
-    remove_rpm: [ python-glance ]
-    run: >
-       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+    rpm_deps: [ python-pep8, pyflakes, python-flake8, python-hacking ]
+    remove_rpm: []
+    run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: []
-    remove_rpm: [ python-glance, postgresql-libs ]
+    remove_rpm: []
     run: >
-       tox --sitepackages -v -e py27 glance.tests.unit 2>&1 | tee ../logs/testrun.log;
+       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
 # Tempest target
@@ -22,77 +21,36 @@ tempest:
    blacklist: [
       tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes.test_encrypted_cinder_volumes_cryptsetup,
       tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes.test_encrypted_cinder_volumes_luks,
-      tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_volume_boot_pattern]
+      tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_backup_create_attached_volume,
+      tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_volume_backup_create_get_detailed_list_restore_delete,
+      tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_backup_create_attached_volume,
+      tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_volume_backup_create_get_detailed_list_restore_delete]
+
+
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
 
 # Common rpm deps needed for all tester types
 rpm_deps: [
-  gcc,
   git,
   python-tox,
+  gcc,
+  python-devel,
   python-pip,
   python-pbr,
-  python-sqlalchemy,
-  python-anyjson,
-  python-eventlet,
-  python-paste-deploy,
-  python-routes,
-  python-httplib2,
-  python-crypto,
-  python-iso8601,
-  python-oslo-config,
-  python-oslo-concurrency,
-  python-oslo-context,
-  python-oslo-utils,
-  python-stevedore,
-  python-taskflow,
-  python-keystonemiddleware,
-  python-wsme,
-  python-paste,
-  python-jsonschema,
-  python-keystoneclient,
-  pyOpenSSL,
-  python-six,
-  python-oslo-db,
-  python-oslo-i18n,
-  python-oslo-log,
-  python-oslo-messaging,
-  python-oslo-middleware,
-  python-oslo-policy,
-  python-oslo-serialization,
-  python-retrying,
-  python-osprofiler,
-  python-glance-store,
-  python-semantic_version,
+  python-ddt,
+  python-os-win,
+  python-oslo-privsep,
+  python-oslo-vmware,
+  python-castellan,
   python-cryptography,
-  openstack-glance,
 
-  python-hacking,
-  python-babel,
-  python-coverage,
-  python-fixtures,
-  python-mox3,
-  python-mock,
-  python-sphinx,
-  python-testtools,
-  python-requests,
+  python-oslotest,
   python-testrepository,
-  python-testresources,
   python-testscenarios,
   python-testtools,
-  python-psutil,
-  python-oslotest,
-  MySQL-python,
-  python-psycopg2,
-  pysendfile,
-  python-qpid,
-  pyxattr,
-  python-swiftclient,
-  python-oslo-sphinx,
   python-os-testr,
-  python-pep8,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
