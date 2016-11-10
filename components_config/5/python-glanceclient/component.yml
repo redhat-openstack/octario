@@ -1,33 +1,25 @@
-### This file is used by cinder component jobs
+### This file is used by python-glanceclient component jobs
 
-# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [  pyflakes, python-flake8, python-hacking ]
-    remove_rpm: [ python-cinder ]
+    rpm_deps: [ python-glanceclient,
+                python-pep8-1.4.5,
+                python-flake8-2.0,
+                python-hacking-0.8.0 ]
+    remove_rpm: [ python-glanceclient ]
     run: >
-       tox -e pylint |  tee ../logs/venv-pylint.log || true;
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
 
 unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest ]
-    remove_rpm: [ python-cinder ]
+    remove_rpm: [ python-glanceclient ]
     run: >
-       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
-
-
-# Tempest target
-tempest:
-   rpm_deps: []
-   remove_rpm: []
-   run: ""
-   blacklist: [
-      tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes.test_encrypted_cinder_volumes_cryptsetup,
-      tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes.test_encrypted_cinder_volumes_luks,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_backup_create_attached_volume,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_volume_backup_create_get_detailed_list_restore_delete,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_backup_create_attached_volume,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_volume_backup_create_get_detailed_list_restore_delete]
-
+        if grep -q -i release.6 /etc/redhat-release; then
+            sudo yum install -y python-discover;
+            tox --sitepackages -v -e py26 2>&1 | tee ../logs/testrun.log;
+        else
+            tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+        fi
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
@@ -35,7 +27,7 @@ tempest:
 # Common rpm deps needed for all tester types
 rpm_deps: [
   git,
-  openstack-cinder,
+  openstack-glance,
   python-tox,
   gcc,
   python-devel,
@@ -48,23 +40,23 @@ rpm_deps: [
   python-testresources,
   python-testscenarios,
   python-barbicanclient,
-  python-os-win,
-  python-crypto,
 
   python-testtools,
   python-babel,
-  python-keystonemiddleware,
   python-coverage,
   python-psycopg2,
   MySQL-python,
   python-testrepository,
   python-mock,
+  python-mox,
   python-oslotest,
   python-tempest-lib,
   python-oslo-sphinx,
   python-fixtures,
   python-subunit,
   python-pep8,
+  python-bashate,
+
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -72,7 +64,7 @@ rpm_deps: [
 remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
 
 # Common pre-run steps and archiving used by all tester types
-cinder_virt_run_config:
+glanceclient_virt_run_config:
   run: >
     set -o pipefail;
     rpm -qa | sort > installed-rpms.txt;
@@ -92,5 +84,10 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-      run: "{{ cinder_virt_run_config.run }}"
-      archive: "{{ cinder_virt_run_config.archive }}"
+      run: "{{ glanceclient_virt_run_config.run }}"
+      archive: "{{ glanceclient_virt_run_config.archive }}"
+    RedHat-6:
+      setup:
+        install: "{{rpm_deps}}"
+      run: "{{glanceclient_virt_run_config.run}}"
+      archive: "{{glanceclient_virt_run_config.archive}}"
