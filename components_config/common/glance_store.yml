@@ -1,0 +1,4 @@
+# Dist-git
+# --------
+component_dist_git_name: 'glance_store'
+component_dist_git_url: 'git://pkgs.devel.redhat.com/rpms/glance_store'

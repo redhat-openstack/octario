@@ -1,0 +1,4 @@
+# Dist-git
+# --------
+component_dist_git_name: 'python-glanceclient'
+component_dist_git_url: 'git://pkgs.devel.redhat.com/rpms/python-glanceclient'
