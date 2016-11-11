@@ -1,10 +1,13 @@
 # rhpkg is used by rdopkg
-- name: Install rhpkg repo
+- name: Install rhpkg and rdopkg repos
   become: yes
   copy:
-    src="rhpkg.repo"
-    dest="/etc/yum.repos.d/rhpkg.repo"
+    src="{{ item }}.repo"
+    dest="/etc/yum.repos.d/{{ item }}.repo"
     mode=0755
+  with_items:
+    - 'rhpkg'
+    - 'rdopkg'
 
 # TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 - name: Install epel repoistory
@@ -27,17 +30,9 @@
     - 'libffi-devel'
     - 'openssl-devel'
     - 'rhpkg'
+    - 'rdopkg'
     - 'git'
     - 'gcc'
-
-# This is installed using pip, since we need specifically vesrion 0.38
-# which is not available as an RPM in our channels.
-# 0.39 is breaking our automated builds.
-- name: Install rdopkg
-  become: yes
-  pip:
-    name=rdopkg
-    version=0.38
 
 # TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 # EPEL is removed, since it is used only for installing rdopkg
