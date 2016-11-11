@@ -14,7 +14,7 @@ unittest:
                 python-flake8, openstack-neutron-openvswitch ]
     remove_rpm: [ python-neutron ]
     run: >
-      sudo yum update -y sqlite;
+      sudo yum update -y https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
