@@ -77,8 +77,8 @@
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
 
 # The actual patching part
-- name: Apply patch on dist-git repo
-  shell: "rdopkg update-patches"
+- name: Apply patch(es) on dist-git repo and bump the version
+  shell: "rdopkg patch"
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
 
