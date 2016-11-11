@@ -77,11 +77,19 @@
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
 
 # The actual patching part
-- name: Apply patch on dist-git repo
-  shell: "rdopkg update-patches"
+- name: Apply patch(es) on dist-git repo
+  shell: "rdopkg updates-patches"
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
 
+# 'rdopkg update-patches' by itself, only apply patches on top of the
+# existing patches. This is not enough if you already have a system
+# with the package installed and you need to update it.
+- name: Bump version
+  shell: "sed -i 's/^Version.*/Version:        99.99.99/g' *.spec"
+  args:
+    chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
+    
 # Now that the repo is patched, generate RPMs from it
 - name: Build new RPM from patched dist-git repo
   shell: "rdopkg mockbuild"
