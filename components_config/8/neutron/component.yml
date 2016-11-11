@@ -17,7 +17,7 @@ unittest:
 dsvm-functional:
     rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-testresources,
                 python-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
-                mysql-server ]
+                mysql-server, psmisc ]
     remove_rpm: []
     run: >
         sudo setenforce 0;
