@@ -30,15 +30,9 @@
     - 'libffi-devel'
     - 'openssl-devel'
     - 'rhpkg'
+    - 'rdopkg'
     - 'git'
     - 'gcc'
-
-# Using 0.38 specifically due to this bug: https://github.com/openstack-packages/rdopkg/issues/80
-- name: Install rdopkg
-  become: yes
-  pip:
-    name=rdopkg
-    version=0.38
 
 # TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 # EPEL is removed, since it is used only for installing rdopkg
@@ -85,9 +79,7 @@
 # The actual patching part
 - name: Apply patch(es) on dist-git repo and bump release
   shell: >
-    git config --global user.name patchy;
-    git config --global user.email patchy@patch.com;
-    rdopkg patch;
+    rdopkg update-patches;
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
 
