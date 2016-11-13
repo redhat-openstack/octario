@@ -9,6 +9,7 @@ It supports the following testers or test frameworks:
 * PEP8
 * unit
 * functional
+* fullstack
 * API (In-Tree)
 * Tempest
 * Robot

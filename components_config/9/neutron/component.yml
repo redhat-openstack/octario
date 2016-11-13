@@ -43,6 +43,11 @@ dsvm-functional:
         mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
+dsvm-fullstack: 
+    rpm_deps: []
+    remove_rpm: []
+    run: tox --sitepackages -v -e dsvm-fullstack 2>&1 | tee ../logs/testrun.log
+
 # Current installer doesn't configure qos, so we configure it here.
 # We use neutron-sanity-check before running API tests.
 api:

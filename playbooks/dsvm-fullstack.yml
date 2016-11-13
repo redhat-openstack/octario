@@ -1,0 +1,12 @@
+- name: Run Octario - Fullstack tests
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: dsvm-fullstack
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }
