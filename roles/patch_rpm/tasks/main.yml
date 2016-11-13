@@ -87,7 +87,7 @@
   shell: >
     git config --global user.name patchy;
     git config --global user.email patchy@patch.com;
-    rdopkg patch;
+    rdopkg patch --force;
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
 
