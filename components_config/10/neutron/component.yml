@@ -55,9 +55,26 @@ dsvm-functional:
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
 dsvm-fullstack:
-    rpm_deps: []
+    rpm_deps: [openstack-neutron, python-oslotest, python-testresources, mysql-server]
     remove_rpm: []
-    run: tox --sitepackages -v -e dsvm-fullstack 2>&1 | tee ../logs/testrun.log
+    run: >
+        sudo chmod 777 /opt;
+        truncate --size 0 neutron/tests/functional/requirements.txt;
+        sudo systemctl start mysqld;
+        sudo mysqladmin -u root password secretmysql;
+        sudo sed -i '/\[mysqld\]/a bind-address=0.0.0.0' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a sql_mode=STRICT_ALL_TABLES' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a default-storage-engine=InnoDB' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a max_connections=1024' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_type=OFF' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_size=0' /etc/my.cnf;
+        sudo systemctl restart mysqld;
+        mysql -u root --password=secretmysql -e "CREATE USER 'openstack_citest' IDENTIFIED BY 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest'@'localhost';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
+        mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
+        tox --sitepackages -v -e dsvm-fullstack 2>&1 | tee ../logs/testrun.log
 
 # Current installer doesn't configure qos, so we configure it here.
 # We use neutron-sanity-check before running API tests.
