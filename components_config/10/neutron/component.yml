@@ -30,6 +30,9 @@ dsvm-functional:
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182321-python-waitress/python-waitress-0.8.9-4.el7.centos.noarch.rpm;
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182329-python-beautifulsoup4/python-beautifulsoup4-4.3.2-1.el7.centos.noarch.rpm;
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00153998-python-webtest/python-webtest-2.0.19-2.el7.centos.noarch.rpm;
+        CHAIN_NAME="openstack-INPUT";
+        sudo iptables -n --list $CHAIN_NAME 1> /dev/null 2>&1 || CHAIN_NAME="INPUT";
+        sudo iptables -I $CHAIN_NAME -s 240.0.0.0/8 -p tcp -m tcp -d 240.0.0.0/8 --dport 5672 -j ACCEPT;
         sudo setenforce 0;
         sudo modprobe bridge;
         sudo modprobe br_netfilter;
@@ -64,6 +67,9 @@ dsvm-fullstack:
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182321-python-waitress/python-waitress-0.8.9-4.el7.centos.noarch.rpm;
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182329-python-beautifulsoup4/python-beautifulsoup4-4.3.2-1.el7.centos.noarch.rpm;
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00153998-python-webtest/python-webtest-2.0.19-2.el7.centos.noarch.rpm;
+        CHAIN_NAME="openstack-INPUT";
+        sudo iptables -n --list $CHAIN_NAME 1> /dev/null 2>&1 || CHAIN_NAME="INPUT";
+        sudo iptables -I $CHAIN_NAME -s 240.0.0.0/8 -p tcp -m tcp -d 240.0.0.0/8 --dport 5672 -j ACCEPT;
         sudo systemctl start rabbitmq-server;
         sudo setenforce 0;
         sudo modprobe bridge;
