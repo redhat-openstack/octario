@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_5bb7423a",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T13:56:46Z",
+      "side": 1,
+      "message": "I have no idea, copied from the template but I looked inside and these are not used so I will remove them.",
+      "parentUuid": "baa041b7_80579926",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_6056d52b",
         "filename": "components_config/10/sahara/component.yml",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_bb7c0e72",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T13:56:46Z",
+      "side": 1,
+      "message": "I spend a LOT of time due to this as this failed ~9 tests because they were not able to access the config file. Seems like relatively recent change, I suspect for security reasons. (can it contain sensitive info?).\n\nTest are executed using cloud-user and the file has root:sahara ownership. \n\nThe alternative is to add the cloud-user to the sahara group.",
+      "parentUuid": "baa041b7_6056d52b",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 42
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4051912f",
         "filename": "components_config/10/sahara/component.yml",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2016-11-17T13:18:43Z",
       "side": 1,
       "message": "change to .log as we don\u0027t support .txt in our jobs.",
+      "range": {
+        "startLine": 72,
+        "startChar": 21,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_3b891e70",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T13:56:46Z",
+      "side": 1,
+      "message": "My impression is that you want me to save it in ../logs/ and I doubt  you want another extensions, I checked and all the components are using the same extensions (txt).",
+      "parentUuid": "baa041b7_4051912f",
       "range": {
         "startLine": 72,
         "startChar": 21,
