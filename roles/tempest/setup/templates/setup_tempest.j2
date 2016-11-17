@@ -24,6 +24,11 @@ neutron subnet-create \
         --allocation-pool start=192.0.2.50,end=192.0.2.180 \
         --disable-dhcp --gateway 192.0.2.1 $pool_name 192.0.2.0/24
 
+# Discover number of overcloud compute nodes that are in Running power state
+# This is required by tempest migration tests
+#
+min_compute_nodes=$(nova list --name compute |grep Running|wc -l)
+
 # Configure Tempest
 # -----------------
 
@@ -31,4 +36,5 @@ tools/config_tempest.py --out etc/tempest.conf --network-id $public_net_id \
                         --debug --create identity.uri $OS_AUTH_URL \
                           identity.admin_password $OS_PASSWORD \
                           object-storage.operator_role swiftoperator \
-                          orchestration.stack_owner_role heat_stack_owner
+                          orchestration.stack_owner_role heat_stack_owner \
+                          compute.min_compute_nodes $min_compute_nodes
