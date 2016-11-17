@@ -1,0 +1,9 @@
+# Tempest
+# -------
+
+tempest_regex: sahara_tempest_plugin\.tests
+
+# Dist-git
+# --------
+component_dist_git_name: 'openstack-sahara'
+component_dist_git_url: 'git://pkgs.devel.redhat.com/rpms/openstack-sahara'
