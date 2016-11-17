@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_db3eb28a",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T17:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa041b7_c0448174",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 116
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_80579926",
         "filename": "components_config/10/sahara/component.yml",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "I have no idea, copied from the template but I looked inside and these are not used so I will remove them.",
       "parentUuid": "baa041b7_80579926",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_bb41ae0c",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T17:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa041b7_5bb7423a",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_760c5b39",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T17:13:02Z",
+      "side": 1,
+      "message": "\u003e So you are saying that pep8 and unit tests are using\n \u003e \u0027/etc/sahara/sahara.conf\u0027? it shouldn\u0027t. do you have a list of\n \u003e those tests?\n\nYes, take a look here https://rhos-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/me/my-views/view/ssbarnea/job/poc-ssbarnea-sahara-unit-rhos-coreci/28/testReport/",
+      "parentUuid": "baa041b7_db411265",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 42
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4051912f",
         "filename": "components_config/10/sahara/component.yml",
         "patchSetId": 1
@@ -202,6 +274,54 @@
       "side": 1,
       "message": "I marked only the txt part because I want you to change it to .log (yes, suffix change).\n\nCheck our jobs configuration (we archive *.log files).",
       "parentUuid": "baa041b7_3b891e70",
+      "range": {
+        "startLine": 72,
+        "startChar": 21,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_7619fb22",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T17:13:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa041b7_db6a32ed",
+      "range": {
+        "startLine": 72,
+        "startChar": 21,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_164bcf60",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-17T17:13:02Z",
+      "side": 1,
+      "message": "\u003e change to .log as we don\u0027t support .txt in our jobs.\n\nThis would also mean that I should replace installed-rpms.txt with ../logs/installed-rpms.log in ALL COMPONENTS so the file extension and location will match across all our components.\n\nPlease do a search by \"installed-rpms\" inside ocatario and you will see that only the .txt is currently used. \n\nI do agree with you that it should get the .log extension and be stored ind ../logs/ but if I am about to make this change, it should be across all usages not only sahara.",
+      "parentUuid": "baa041b7_4051912f",
       "range": {
         "startLine": 72,
         "startChar": 21,
