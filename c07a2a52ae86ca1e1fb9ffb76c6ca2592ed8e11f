@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa041b7_c0448174",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-17T13:18:43Z",
+      "side": 1,
+      "message": "Don\u0027t put internal information in here. Remove anything regarding Jenknis. Octario can be used manually.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 116
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_80579926",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-17T13:18:43Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 37
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_6056d52b",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-17T13:18:43Z",
+      "side": 1,
+      "message": "Why this is needed for unit and pep8?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 42
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_4051912f",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-17T13:18:43Z",
+      "side": 1,
+      "message": "change to .log as we don\u0027t support .txt in our jobs.",
+      "range": {
+        "startLine": 72,
+        "startChar": 21,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
