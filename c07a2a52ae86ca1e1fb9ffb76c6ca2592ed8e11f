@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "baa041b7_f6886b23",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-17T17:32:13Z",
+      "side": 1,
+      "message": "Try not to put internal urls here.\n\nAnd I get: \"HTTP ERROR 404\" when opening this link. Can you send me (email) the working link?",
+      "parentUuid": "baa041b7_760c5b39",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 42
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baa041b7_4051912f",
         "filename": "components_config/10/sahara/component.yml",
         "patchSetId": 1
@@ -322,6 +346,30 @@
       "side": 1,
       "message": "\u003e change to .log as we don\u0027t support .txt in our jobs.\n\nThis would also mean that I should replace installed-rpms.txt with ../logs/installed-rpms.log in ALL COMPONENTS so the file extension and location will match across all our components.\n\nPlease do a search by \"installed-rpms\" inside ocatario and you will see that only the .txt is currently used. \n\nI do agree with you that it should get the .log extension and be stored ind ../logs/ but if I am about to make this change, it should be across all usages not only sahara.",
       "parentUuid": "baa041b7_4051912f",
+      "range": {
+        "startLine": 72,
+        "startChar": 21,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "c07a2a52ae86ca1e1fb9ffb76c6ca2592ed8e11f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baa041b7_b682e3fd",
+        "filename": "components_config/10/sahara/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-17T17:32:13Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "baa041b7_164bcf60",
       "range": {
         "startLine": 72,
         "startChar": 21,
