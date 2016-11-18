@@ -1,0 +1,73 @@
+# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+pep8:
+    rpm_deps: [ python-hacking ]
+    remove_rpm: [ python-sahara ]
+    run:
+        cat setup.cfg
+        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
+    remove_rpm: [ python-sahara ]
+    run:
+        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
+        sudo usermod -a -G sahara $USER;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  git,
+  mariadb-devel,
+  MySQL-python,
+  postgresql,
+  openstack-sahara,
+  python-babel,
+  python-coverage,
+  python-hacking,
+  python-fixtures,
+  python-mock,
+  python-oslo-sphinx,
+  python-oslotest,
+  python-psycopg2,
+  python-saharaclient,
+
+  python-testrepository,
+  python-testtools,
+  python-tox,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+  ]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps and archiving used by all tester types
+sahara_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    sed -i'.bak' -e "/^version/d" setup.cfg;
+    sed -i'.bak' -e "/vanilla/! { s/default=\[/default=\['vanilla', /g;}" sahara/plugins/base.py;
+    sed -i'.bak' -e "s/version='2.0.6'/version='1.3.2'/" sahara/plugins/hdp/clusterspec.py;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - ../logs/*.log
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+      run: "{{ sahara_virt_run_config.run }}"
+      archive: "{{ sahara_virt_run_config.archive }}"
