@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_853a66cc",
+        "filename": "components_config/5/sahara/component.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-18T13:53:27Z",
+      "side": 1,
+      "message": "still didn\u0027t get answer - why PEP8 require access to sahara.conf?",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 42
+      },
+      "revId": "719d0c51d17f045681ceab909edaa786cc782c3a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
