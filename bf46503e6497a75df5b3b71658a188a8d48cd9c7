@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_1f00e3a9",
+        "filename": "components_config/8/sahara/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-18T08:59:00Z",
+      "side": 1,
+      "message": "I like preserving old config files. It\u0027s actually stored as the git repo so it won\u0027t matter here (git diff setup.cfg), but it\u0027s good habit.",
+      "revId": "bf46503e6497a75df5b3b71658a188a8d48cd9c7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
