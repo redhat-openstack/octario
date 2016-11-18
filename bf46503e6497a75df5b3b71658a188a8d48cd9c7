@@ -34,6 +34,24 @@
       "revId": "bf46503e6497a75df5b3b71658a188a8d48cd9c7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_e5513210",
+        "filename": "components_config/8/sahara/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-18T14:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa53dc9_dfbefbd3",
+      "revId": "bf46503e6497a75df5b3b71658a188a8d48cd9c7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
