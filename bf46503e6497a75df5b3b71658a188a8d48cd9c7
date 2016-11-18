@@ -16,6 +16,24 @@
       "revId": "bf46503e6497a75df5b3b71658a188a8d48cd9c7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_dfbefbd3",
+        "filename": "components_config/8/sahara/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-18T13:53:29Z",
+      "side": 1,
+      "message": "in fact the reason behind the .bak file is portability. sed must be used with it if you want to make it portable. So as a Mac user please always use `sed -i \u0027.bak\u0027 ...` -- .bak can be added to the .gitignore for convenience - long and ugly explanantion http://stackoverflow.com/questions/4247068/sed-command-with-i-option-failing-on-mac-but-works-on-linux/4247319#4247319",
+      "parentUuid": "9aa53dc9_1f00e3a9",
+      "revId": "bf46503e6497a75df5b3b71658a188a8d48cd9c7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
