@@ -22,6 +22,24 @@
       "revId": "719d0c51d17f045681ceab909edaa786cc782c3a",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_a5a9eae1",
+        "filename": "components_config/5/sahara/component.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-18T14:06:20Z",
+      "side": 1,
+      "message": "You are right, I moved the code to the unittest section so it will not run on pep8. Also I changed the code to add user to sahara group which seems like a better approach than chmod.",
+      "parentUuid": "9aa53dc9_853a66cc",
+      "revId": "719d0c51d17f045681ceab909edaa786cc782c3a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
