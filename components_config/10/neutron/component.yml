@@ -90,6 +90,7 @@ dsvm-fullstack:
         mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
         mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
         mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
+        sleep 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
         tox --sitepackages -v -e dsvm-fullstack 2>&1 | tee ../logs/testrun.log
 
 # Current installer doesn't configure qos, so we configure it here.
