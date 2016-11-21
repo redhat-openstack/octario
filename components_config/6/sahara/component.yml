@@ -9,10 +9,9 @@ pep8:
 
 unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
-    remove_rpm: [ python-sahara ]
+    remove_rpm: [ python-sahara, openstack-sahara ]
     run:
         export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
-        sudo usermod -a -G sahara $USER;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
