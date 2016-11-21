@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_9e54ec54",
+        "filename": "components_config/10/python-ceilometerclient/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-21T16:30:51Z",
+      "side": 1,
+      "message": "gcc, really???? What are you building here?",
+      "revId": "0b1caab316cbf5b1b177ea3365a1a2b9cf9674ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_1e60dc34",
+        "filename": "components_config/10/python-ceilometerclient/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-21T16:30:51Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "0b1caab316cbf5b1b177ea3365a1a2b9cf9674ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_fe64184a",
+        "filename": "components_config/10/python-ceilometerclient/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-21T16:30:51Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "0b1caab316cbf5b1b177ea3365a1a2b9cf9674ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_de595490",
+        "filename": "components_config/10/python-ceilometerclient/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-21T16:30:51Z",
+      "side": 1,
+      "message": "No unittest repository enabled for rhos10. Are you not using any deps from the rhelosp-10.0-unittest ??",
+      "revId": "0b1caab316cbf5b1b177ea3365a1a2b9cf9674ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
