@@ -67,6 +67,24 @@
       "revId": "0b1caab316cbf5b1b177ea3365a1a2b9cf9674ca",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_1e957ce3",
+        "filename": "components_config/10/python-ceilometerclient/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-21T16:38:59Z",
+      "side": 1,
+      "message": "nope",
+      "parentUuid": "9aa53dc9_de595490",
+      "revId": "0b1caab316cbf5b1b177ea3365a1a2b9cf9674ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
