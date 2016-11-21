@@ -1,0 +1,98 @@
+# This file is used by the jenkins job
+
+# Dependencies with explicit versions are provided by the copr repository.
+
+pep8:
+
+    rpm_deps: [
+      python-hacking
+    ]
+
+    remove_rpm: []
+
+    run:
+        /usr/bin/sed -i.bak '/whitelist_externals = find/a\\tflake8' tox.ini;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+# (migi) python-novaclient is installed and then removed to satisfy
+#        all runtime dependencies for the nova component.
+#
+unittest:
+
+    rpm_deps: [
+      python-novaclient,
+      python-subunit,
+      python-idna,
+      python-tempest-lib,
+      python-mock,
+      python-requests-mock,
+      python-testscenarios
+    ]
+
+    remove_rpm: [
+      python-novaclient
+    ]
+
+    run:
+
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+# Additional repository required to install testing dependencies
+enable_repos: [
+    rhelosp-10.0-unittest
+]
+
+# Common rpm deps needed for all tester types (pep8 / unittest)
+#
+rpm_deps: [
+    git,
+    python-tox-2.3.1,
+    python-pluggy-0.3.1,
+    python2-virtualenv-14.0.6,
+    python-setuptools-18.5,
+    python-flake8,
+    python-pip,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# (N.B.) We truncate *requirements.txt to ensure we're only using installed
+#        non-test packages.
+#
+#        We remove install_command from tox.ini because it force
+#        upgrades everything, regardless of --sitepackages.
+#
+nova_virt_run_config:
+
+  run: >
+      echo "TBD: pip is a work around for rhbz#1397099";
+      sudo pip install -U --no-deps requests==2.11.1;
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.log;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      /usr/bin/sed -i.bak "s/^install_command\s*=.*$/#&/" tox.ini;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+      - ../logs/*.log
+      - .tox/**/log/*.log
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{nova_virt_run_config.run}}"
+      archive: "{{nova_virt_run_config.archive}}"
