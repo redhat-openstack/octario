@@ -6,9 +6,8 @@ pep8:
 
 unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
-    remove_rpm: [ python-sahara ]
+    remove_rpm: [ python-sahara, openstack-sahara, openstack-sahara-common ]
     run:
-        sudo usermod -a -G sahara $USER;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
@@ -56,8 +55,12 @@ sahara_virt_run_config:
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
 
+    # hacks for keeping test coverage while not supporting all plugins from upstream in the release;
     sed -i'.bak' -e "/^version/d" setup.cfg;
+    sed -i'.bak' -e "/spark/! { s/default=\[/default=\['spark', /g;}" sahara/plugins/base.py;
+    sed -i'.bak' -e "/cdh/! { s/default=\[/default=\['cdh', /g;}" sahara/plugins/base.py;
     sed -i'.bak' -e "/vanilla/! { s/default=\[/default=\['vanilla', /g;}" sahara/plugins/base.py;
+    sed -i'.bak' -e "/hdp/! { s/default=\[/default=\['hdp', /g;}" sahara/plugins/base.py;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
