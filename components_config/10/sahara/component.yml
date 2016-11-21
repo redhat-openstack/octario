@@ -58,6 +58,7 @@ sahara_virt_run_config:
 
     sed -i'.bak' -e "/^version/d" setup.cfg;
     sed -i'.bak' -e "/vanilla/! { s/default=\[/default=\['vanilla', /g;}" sahara/plugins/base.py;
+    sed -i'.bak' -e "/spark/! { s/default=\[/default=\['spark', /g;}" sahara/plugins/base.py;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
