@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_9ec4ec92",
+        "filename": "components_config/10/neutron/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1004066
+      },
+      "writtenOn": "2016-11-21T15:48:49Z",
+      "side": 1,
+      "message": "This is more than 80 chars",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 143
+      },
+      "revId": "9d7532f7689d17f5be70851c118c3609a25748ec",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
