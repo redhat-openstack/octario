@@ -13,7 +13,7 @@
   fetch:
     src="{{ component_path }}/{{ item }}"
     dest="../{{ inventory_dir }}"
-  with_items: "{{ component_config.archive }}"
+  with_items: "{{ component_config.archive | default([]) }}"
 
 - name: Fetch common files
   become: yes
