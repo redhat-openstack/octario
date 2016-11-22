@@ -1,0 +1,70 @@
+# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+pep8:
+    rpm_deps: [ python-pep8, python-flake8, python-hacking ]
+    remove_rpm: [ openstack-sahara, python-saharaclient ]
+    run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
+    remove_rpm: [ openstack-sahara, python-saharaclient ]
+    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  python-openstackclient,
+  python-nose,
+  python-tox,
+  gcc,
+  git,
+  python-devel,
+  python-babel,
+  python-httplib2,
+  python-pip,
+  python-pbr,
+  python-requests-mock,
+
+  python-testtools,
+  python-sphinx,
+  python-coverage,
+  python-psycopg2,
+  MySQL-python,
+  python-testrepository,
+  python-mock,
+  python-mox,
+  python-mox3,
+  python-oslo-log,
+  python-fixtures,
+  python-subunit,
+  python-oslo-sphinx,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+  ]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps and archiving used by all tester types
+saharaclient_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - ../logs/*.log
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+      run: "{{ saharaclient_virt_run_config.run }}"
+      archive: "{{ saharaclient_virt_run_config.archive }}"
