@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_d441303b",
+        "filename": "components_config/10/ceilometer/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-22T14:30:00Z",
+      "side": 1,
+      "message": "maybe adding some comment here why we need this at all?",
+      "revId": "662cf7b371cfe0d3e276c11383b0262336956ab3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_146e78c9",
+        "filename": "components_config/10/ceilometer/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-22T14:30:00Z",
+      "side": 1,
+      "message": "is it ok with you to use sed?",
+      "revId": "662cf7b371cfe0d3e276c11383b0262336956ab3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_d4aff0e1",
+        "filename": "components_config/10/gnocchi/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-22T14:30:00Z",
+      "side": 1,
+      "message": "same as in previous file",
+      "revId": "662cf7b371cfe0d3e276c11383b0262336956ab3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
