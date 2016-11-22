@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_baac53ee",
+        "filename": "components_config/10/gnocchi/component.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-22T20:48:58Z",
+      "side": 1,
+      "message": "Who writes generates all-rpms.log file?\nHow about using globs: ../logs/*.log ?",
+      "revId": "0565be06ecfdc7f75282f494c4f0f5b6bed3f85b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
