@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_1a6e9fc9",
+        "filename": "components_config/10/python-novaclient/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-22T20:46:13Z",
+      "side": 1,
+      "message": "pip usage? wasn\u0027t pip usage banned?",
+      "revId": "94565700296e366ae585749d105875272122e7e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_fa72dbac",
+        "filename": "components_config/10/python-novaclient/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-22T20:46:13Z",
+      "side": 1,
+      "message": "This must be .log and not .txt or it will not be picked by Jenkins",
+      "revId": "94565700296e366ae585749d105875272122e7e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_da6837bd",
+        "filename": "components_config/10/python-novaclient/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-22T20:46:13Z",
+      "side": 1,
+      "message": "This must be .log and not .txt or it will not be picked by Jenkins",
+      "revId": "94565700296e366ae585749d105875272122e7e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_ba6573e2",
+        "filename": "components_config/10/python-novaclient/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-22T20:46:13Z",
+      "side": 1,
+      "message": "How about using glob patterns instead? I used them they do work!\n.tox/**/log/*.log",
+      "revId": "94565700296e366ae585749d105875272122e7e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
