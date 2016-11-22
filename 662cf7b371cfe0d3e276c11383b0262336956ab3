@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9aa53dc9_f4ce74b3",
+        "filename": "components_config/10/ceilometer/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-22T14:38:04Z",
+      "side": 1,
+      "message": "better - let\u0027s remove it :)",
+      "parentUuid": "9aa53dc9_d441303b",
+      "revId": "662cf7b371cfe0d3e276c11383b0262336956ab3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_146e78c9",
         "filename": "components_config/10/ceilometer/component.yml",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-11-22T14:30:00Z",
       "side": 1,
       "message": "is it ok with you to use sed?",
+      "revId": "662cf7b371cfe0d3e276c11383b0262336956ab3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_14caf8a1",
+        "filename": "components_config/10/ceilometer/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-22T14:38:04Z",
+      "side": 1,
+      "message": "As long as we don\u0027t edit the code itself, yes.\nWe are using sed quite a lot. I\u0027m just against using it for source code modifications (tox.ini not included)",
+      "parentUuid": "9aa53dc9_146e78c9",
       "revId": "662cf7b371cfe0d3e276c11383b0262336956ab3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
