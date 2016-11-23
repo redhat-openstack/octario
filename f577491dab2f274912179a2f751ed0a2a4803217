@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_a5a0b891",
+        "filename": "components_config/10/ceilometer/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-11-23T08:19:11Z",
+      "side": 1,
+      "message": "let;s remove this one as well?",
+      "revId": "f577491dab2f274912179a2f751ed0a2a4803217",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
