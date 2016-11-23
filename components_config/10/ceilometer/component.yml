@@ -1,0 +1,157 @@
+# This file is used by the jenkins job
+
+# Dependencies with explicit versions are provided by the copr repository.
+
+# (migi) flake8 and bash are added to tox.ini for removing ugly warning:
+#        WARNING:test command found but not installed in testenv
+pep8:
+
+    rpm_deps: [
+      python-flake8,
+      python-hacking-0.10.2
+    ]
+
+    remove_rpm: []
+
+    run:
+        sed -i '/\[testenv\:pep8\]/a whitelist_externals = flake8\n   bash' tox.ini;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+# (migi) python-ceilometer is installed and then removed to satisfy all runtime
+#        dependencies for the ceilometer component.
+unittest:
+
+    rpm_deps: [
+        gcc,
+        python-ceilometer,
+        postgresql-devel,
+        python2-pbr,
+        python-os-testr,
+        python-testrepository,
+        python2-requests-aws,
+        python-mox,
+        python-testscenarios,
+        python-beautifulsoup4,
+        python-waitress,
+        python-webtest,
+        python-mock,
+        python-oslotest,
+        python-oslo-messaging,
+        python-novaclient,
+        python-oslo-db,
+        python-keystoneclient,
+        python-neutronclient,
+        python-tooz,
+        python-kafka,
+        python-swiftclient,
+        python-glanceclient,
+        python-pecan,
+        python-keystonemiddleware,
+        python-wsme,
+        python-overtest,
+        python-ceilometerclient,
+        python-gnocchiclient,
+        python-os-win
+    ]
+
+    remove_rpm: [
+        python-ceilometer
+    ]
+
+    run:
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+
+# (migi) python-ceilometer is installed and then removed to satisfy all runtime
+#        dependencies for the nova component.
+#
+functional:
+
+    rpm_deps: [
+        gcc,
+        python-ceilometer,
+        python-pymongo,
+        mongodb-server,
+        python-os-testr,
+        python-colorama,
+        python-wsgi_intercept,
+        python2-gabbi,
+        python2-pbr,
+        python-testrepository,
+        python-mox,
+        python-testscenarios,
+        python-beautifulsoup4,
+        python-waitress,
+        python-webtest,
+        python-mock,
+        python-oslotest,
+        python-oslo-messaging,
+        python-novaclient,
+        python-oslo-db,
+        python-keystoneclient,
+        python-neutronclient,
+        python-tooz,
+        python-swiftclient,
+        python-glanceclient,
+        python-pecan,
+        python-keystonemiddleware,
+        python-wsme,
+        python-overtest,
+        python-ceilometerclient
+    ]
+
+    remove_rpm: [
+        python-ceilometer
+    ]
+
+    run: tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+
+
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+#
+# (migi) python-virtualenv is also available in copr and it gets
+#        installed from copr as dependency for python-tox.
+rpm_deps: [
+    git,
+    python-pbr,
+    python-pep8,
+    python-pluggy-0.3.1,
+    python-tox-2.3.1,
+    python-virtualenv-1.11.6,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# (N.B.) We truncate *requirements.txt to ensure we're only using installed
+#        non-test packages.
+#
+# Common pre-run steps and files to archive
+ceilo_virt_run_config:
+
+    run: >
+        rpm -qa | sort > installed-rpms.log;
+        truncate --size 0 requirements.txt;
+        truncate --size 0 test-requirements.txt;
+        {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+    archive:
+        - ../logs/venv-testrun.log
+        - installed-rpms.log
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{ceilo_virt_run_config.run}}"
+      archive: "{{ceilo_virt_run_config.archive}}"
