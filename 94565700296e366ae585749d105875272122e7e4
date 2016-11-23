@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9aa53dc9_65aab072",
+        "filename": "components_config/10/python-novaclient/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-23T09:27:36Z",
+      "side": 1,
+      "message": "This is a work around and bug is already logged.\nOnce the bug is resolved pip will be removed.",
+      "parentUuid": "9aa53dc9_1a6e9fc9",
+      "revId": "94565700296e366ae585749d105875272122e7e4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9aa53dc9_fa72dbac",
         "filename": "components_config/10/python-novaclient/component.yml",
         "patchSetId": 3
