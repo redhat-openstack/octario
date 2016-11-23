@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa53dc9_8577f401",
+        "filename": "components_config/10/python-novaclient/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-23T09:18:41Z",
+      "side": 1,
+      "message": "I know that\u0027s outside the scope but in the future, please always use `sed -i .bak ...` -- if you fail to specify the backup file it will fail on BSD versions of sed which do not work with no or empty parameter for \"i\". Long story at http://stackoverflow.com/questions/5694228/sed-in-place-flag-that-works-both-on-mac-bsd-and-linux",
+      "revId": "697404070c1929584330d7f6c2d026c96d0ff160",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
