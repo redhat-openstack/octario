@@ -1,4 +1,4 @@
-# This hack is required to pin to free (non patent guarded) # version of  erasurecodes
+# python-pyeclib-1.1.0 and 'ls -s hack' is required to pin to free (non patent guarded) # version of  erasurecodes
 unittest:
   rpm_deps: []
   run: >
@@ -35,15 +35,18 @@ rpm_deps_common: [
   python-six,
   libffi-devel,
   pyxattr,
+  python-cryptography,
   openstack-swift-account,
   openstack-swift-container,
   openstack-swift-object,
   openstack-swift-proxy
 ]
 
+# Note: we need python-nose-1.3.7 to be installed because test_PUT_send_exception_with_unicode_path
+# fails on issue described at https://github.com/nose-devs/nose/issues/680
 rpm_deps_tests_req: [
   python-coverage,
-  python-nose,
+  python-nose-1.3.7,
   python-oslo-sphinx,
   python-sphinx,
   python-mock,
