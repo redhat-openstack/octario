@@ -16,6 +16,24 @@
       "revId": "697404070c1929584330d7f6c2d026c96d0ff160",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_803482de",
+        "filename": "components_config/10/python-novaclient/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-23T09:27:36Z",
+      "side": 1,
+      "message": "Actually it has to be sed -i.bak  (without whitespace between)",
+      "parentUuid": "9aa53dc9_8577f401",
+      "revId": "697404070c1929584330d7f6c2d026c96d0ff160",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
