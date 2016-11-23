@@ -1,7 +1,9 @@
-# This hack is required to pin to free (non patent guarded) # version of  erasurecodes
+# we need python-nose-1.3.7 to be installed because test_PUT_send_exception_with_unicode_path fails on issue described at https://github.com/nose-devs/nose/issues/680
+# python-pyeclib-1.1.0 and 'ls -s hack' is required to pin to free (non patent guarded) # version of  erasurecodes
 unittest:
   rpm_deps: [python-netifaces]
   run: >
+      sudo yum -y install  http://download.eng.bos.redhat.com/brewroot/packages/python-nose/1.3.7/4.ec2/noarch/python-nose-1.3.7-4.ec2.noarch.rpm
       sudo yum -y install  http://download.eng.bos.redhat.com/brewroot/packages/python-pyeclib/1.1.0/1.el7ost/x86_64/python-pyeclib-1.1.0-1.el7ost.x86_64.rpm;
       sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
       sudo ln -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
@@ -42,7 +44,6 @@ rpm_deps_common: [
 
 rpm_deps_tests_req: [
   python-coverage,
-  python-nose,
   python-oslo-sphinx,
   python-sphinx,
   python-mock,
