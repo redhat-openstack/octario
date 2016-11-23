@@ -42,7 +42,6 @@ rpm_deps_common: [
 
 rpm_deps_tests_req: [
   python-coverage,
-  python-nose,
   python-oslo-sphinx,
   python-sphinx,
   python-mock,
