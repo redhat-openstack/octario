@@ -7,9 +7,30 @@
 # - 'Pass or Fail' is included in 'collect_logs' role since it should be the last task in the last role, so it can collect logs before Ansible stops running.
 # - Collect logs rc ignored, since the command can fail although results were onvereted.
 
-- name: Fetch files that mentioned in component configuration's archive section
-  vars:
+- name: "Set component_path"
+  set_fact:
     component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
+
+- name: "Prepend component_path to common log directories"
+  set_fact:
+    component_log_paths={{ component_path + '/' + common_log_directories | join(',{{ component_path }}/')}}
+
+- name: Find *.log files in the common log directories
+  find:
+    paths: "{{ component_log_paths.split(',') }}"
+    patterns: "*.log"
+    file_type: file
+    recurse: yes
+    age: "-1d"
+  register: log_files_common
+
+- name: Fetch log files from the common log directories
+  fetch:
+    src="{{ item.path }}"
+    dest="../{{ inventory_dir }}"
+  with_items: "{{ log_files_common.files }}"
+
+- name: Fetch files that mentioned in component configuration's archive section
   fetch:
     src="{{ component_path }}/{{ item }}"
     dest="../{{ inventory_dir }}"
@@ -23,8 +44,6 @@
   with_items: "{{ common_fetch_list }}"
 
 - name: Copy test results to convert them into junit xml format
-  vars:
-    component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
   shell: |
     find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
     | while read name; do cat "$name"; done \
