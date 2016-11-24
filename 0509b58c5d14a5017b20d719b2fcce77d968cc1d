@@ -40,6 +40,24 @@
       "revId": "0509b58c5d14a5017b20d719b2fcce77d968cc1d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_045cfd23",
+        "filename": "requirements.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-24T14:53:02Z",
+      "side": 1,
+      "message": "quite long answer for a short question.\nso you are saying that it will break if ansible\u003d\u003d2.0 or 2.1?",
+      "parentUuid": "9aa53dc9_b3aa3918",
+      "revId": "0509b58c5d14a5017b20d719b2fcce77d968cc1d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
