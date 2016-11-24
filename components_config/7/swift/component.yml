@@ -2,6 +2,8 @@
 unittest:
   rpm_deps: [python-netifaces]
   run: >
+      sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
+      sudo ln -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
       tox --sitepackages -v -epy27 -- --xunit-file=test_nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 pep8:
@@ -31,6 +33,7 @@ rpm_deps_common: [
   python-six,
   libffi-devel,
   pyxattr,
+  python-pyeclib,
   openstack-swift-account,
   openstack-swift-container,
   openstack-swift-object,
