@@ -22,6 +22,24 @@
       "revId": "0509b58c5d14a5017b20d719b2fcce77d968cc1d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aa53dc9_b3aa3918",
+        "filename": "requirements.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-11-24T09:59:12Z",
+      "side": 1,
+      "message": "Unless you have a clear example where we are forced to use an older version of ansible I would argue that not assuring a minimal version would break things. I am almost sure that it will not work with 1.9.x, Ansible product is quite dynamic and I prefer not to hit again bugs that were fixed by new releases. I think that even before we temporarily added `,\u003c2.2` we had the `\u003e2.0`.",
+      "parentUuid": "9aa53dc9_65e4f03a",
+      "revId": "0509b58c5d14a5017b20d719b2fcce77d968cc1d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
