@@ -81,10 +81,6 @@ nova_virt_run_config:
       /usr/bin/sed -i.bak "s/^install_command\s*=.*$/#&/" tox.ini;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
-  archive:
-      - ../logs/*.log
-      - .tox/**/log/*.log
-
 
 # NOTE: This is the main section. It must exist.
 test_config:
@@ -95,4 +91,3 @@ test_config:
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
       run: "{{nova_virt_run_config.run}}"
-      archive: "{{nova_virt_run_config.archive}}"

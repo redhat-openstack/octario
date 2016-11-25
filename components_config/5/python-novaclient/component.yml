@@ -91,29 +91,11 @@ remove_rpm: [
 ]
 
 
-nova_virt_run_config_rhel7:
-  archive:
-      - ../logs/installed-rpms.txt
-      - ../logs/testrun.log
-      - tox/py27/log/py27-0.log
-      - tox/py27/log/py27-1.log
-      - tox/py27/log/py27-1.log
-
-
-nova_virt_run_config_rhel6:
-  archive:
-      - ../logs/installed-rpms.txt
-      - ../logs/testrun.log
-      - tox/py26/log/py26-0.log
-      - tox/py26/log/py26-1.log
-      - tox/py26/log/py26-1.log
-
-
 nova_virt_run_config:
 
   run: >
       set -o pipefail;
-      rpm -qa | sort > ../logs/installed-rpms.txt;
+      rpm -qa | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
       sed -i "s/^install_command\s*=.*$//" tox.ini;
@@ -128,11 +110,9 @@ test_config:
         install: "{{rpm_deps_rhel7}}"
         remove: "{{ remove_rpm }}"
       run: "{{nova_virt_run_config.run}}"
-      archive: "{{nova_virt_run_config_rhel7.archive}}"
 
     RedHat-6:
       setup:
         install: "{{rpm_deps_rhel6}}"
         remove: "{{ remove_rpm }}"
       run: "{{nova_virt_run_config.run}}"
-      archive: "{{nova_virt_run_config_rhel6.archive}}"

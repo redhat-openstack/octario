@@ -140,23 +140,10 @@ nova_virt_run_config:
 
   run: >
       set -o pipefail;
-      rpm -qa | sort > ../logs/installed-rpms.txt;
+      rpm -qa | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
-
-  archive:
-      - ../logs/installed-rpms.txt
-      - ../logs/testrun.log
-      - .tox/py27/log/py27-0.log
-      - .tox/py27/log/py27-1.log
-      - .tox/py27/log/py27-2.log
-      - .tox/pep8/log/pep8-0.log
-      - .tox/pep8/log/pep8-1.log
-      - .tox/pep8/log/pep8-2.log
-      - .tox/functional/log/functional-0.log
-      - .tox/functional/log/functional-1.log
-      - .tox/functional/log/functional-2.log
 
 
 # NOTE: This is the main section. It must exist.
@@ -167,4 +154,3 @@ test_config:
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
       run: "{{nova_virt_run_config.run}}"
-      archive: "{{nova_virt_run_config.archive}}"
