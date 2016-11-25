@@ -62,12 +62,9 @@ neutron_virt_run_config:
         sed -i "s/-egit.*$//g" tox.ini;
         truncate --size 0 requirements.txt;
         truncate --size 0 test-requirements.txt;
-        rpm -qa > installed-rpms.txt;
+        rpm -qa > ../logs/installed-rpms.log;
         {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
-    archive:
-        - installed-rpms.txt
-        - ../logs/testrun.log
 
 # This is the main section
 test_config:
@@ -77,4 +74,3 @@ test_config:
                 install: "{{ rpm_deps }}"
                 remove: "{{ remove_rpm }}"
             run: "{{neutron_virt_run_config.run}}"
-            archive: "{{neutron_virt_run_config.archive}}"

@@ -129,17 +129,13 @@ remove_rpm: [
 # (N.B.) We truncate *requirements.txt to ensure we're only using installed
 #        non-test packages.
 #
-# Common pre-run steps and files to archive
+# Common pre-run steps
 aodh_virt_run_config:
 
     run: >
         truncate --size 0 requirements.txt;
         truncate --size 0 test-requirements.txt;
         {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
-
-    archive:
-        - ../logs/venv-testrun.log
-        - all-rpms.txt
 
 
 # NOTE: This is the main section. It must exist.
@@ -150,4 +146,3 @@ test_config:
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
       run: "{{aodh_virt_run_config.run}}"
-      archive: "{{aodh_virt_run_config.archive}}"

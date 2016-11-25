@@ -70,20 +70,16 @@ remove_rpm: [
 # (N.B.) We truncate *requirements.txt to ensure we're only using installed
 #        non-test packages.
 #
-# Common pre-run steps and files to archive
+# Common pre-run steps
 gnocchi_virt_run_config:
 
     run: >
-        rpm -qa | sort > installed-rpms.log;
+        rpm -qa | sort > ../logs/installed-rpms.log;
         sed -i '/\[testenv\]/a whitelist_externals = doc8\n   oslo-config-generator' tox.ini;
         sed -i '/deps = \.\[test\]/,/py{27,34}-mysql: \.\[mysql,swift,ceph,file\]/d' tox.ini;
         truncate --size 0 requirements.txt;
         truncate --size 0 test-requirements.txt;
         {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
-
-    archive:
-        - ../logs/venv-testrun.log
-        - installed-rpms.log
 
 
 # NOTE: This is the main section. It must exist.
@@ -94,4 +90,3 @@ test_config:
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
       run: "{{gnocchi_virt_run_config.run}}"
-      archive: "{{gnocchi_virt_run_config.archive}}"

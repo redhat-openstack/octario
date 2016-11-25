@@ -53,18 +53,15 @@ remove_rpm: [ python-cinder, "{{ hostvars[inventory_hostname][tester.component.t
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional]
 #
-# Common pre-run steps and files to archive
+# Common pre-run steps
 cinder_virt_run_config:
   run: >
     set -o pipefail;
-    rpm -qa > installed-rpms.txt;
+    rpm -qa > ../logs/installed-rpms.log;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
-  archive:
-    - - installed-rpms.txt
-    - ../logs/testrun.log
 
 # NOTE: This is the main section. It must exist.
 test_config:
@@ -73,9 +70,7 @@ test_config:
       setup:
         install: "{{rpm_deps}}"
       run: "{{cinder_virt_run_config.run}}"
-      archive: "{{cinder_virt_run_config.archive}}"
     RedHat-6:
       setup:
         install: "{{rpm_deps}}"
       run: "{{cinder_virt_run_config.run}}"
-      archive: "{{cinder_virt_run_config.archive}}"

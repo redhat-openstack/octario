@@ -54,19 +54,16 @@ rpm_deps: [
 # The rpms that shouldn't be installed on system, when running tests
 remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
 
-# Common pre-run steps and archiving used by all tester types
+# Common pre-run steps used by all tester types
 manila_virt_run_config:
   run: >
     set -o pipefail;
-    rpm -qa | sort > installed-rpms.txt;
+    rpm -qa | sort > ../logs/installed-rpms.log;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
-  archive:
-    - ../logs/testrun.log
-    - installed-rpms.txt
 
 # NOTE: This is the main section. It must exist.
 test_config:
@@ -76,4 +73,3 @@ test_config:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
       run: "{{ manila_virt_run_config.run }}"
-      archive: "{{ manila_virt_run_config.archive }}"

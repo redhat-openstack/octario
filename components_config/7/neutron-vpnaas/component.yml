@@ -47,8 +47,6 @@ neutron_virt_run_config:
     truncate --size 0 test-requirements.txt;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
-  archive:
-    - ../logs/testrun.log
 
 ### This is the main section
 test_config:
@@ -57,4 +55,3 @@ test_config:
       setup:
         install: "{{rpm_deps}}"
       run: "{{neutron_virt_run_config.run}}"
-      archive: "{{neutron_virt_run_config.archive}}"

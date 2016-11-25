@@ -62,15 +62,11 @@ virt_run_config:
     export OPENSSL_ENABLE_MD5_VERIFY=1;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
-    rpm -qa > all-rpms.txt;
+    rpm -qa > ../logs/installed-rpms.log;
     export NOSE_WITH_XUNIT=1;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
  
   archive:
-    - ../logs/testrun.log
-    - all-rpms.txt
-    - requirements.txt
-    - test-requirements.txt
     - nosetests.xml
 
 ### actual test_config: starts here: used by khaleesi ###
