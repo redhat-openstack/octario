@@ -1,0 +1,93 @@
+# Dependencies with explicit versions are provided by the copr repository.
+pep8:
+
+    rpm_deps: [
+      python-eventlet,
+      python-hacking-0.9.2
+    ]
+
+    remove_rpm: []
+
+    run:
+        sed -i '/flake8 {posargs}/a whitelist_externals = flake8' tox.ini;
+        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+# openstack-ironic-{api, conductor} is installed and then removed to satisfy
+# all runtime dependencies for the ironic component.
+unittest:
+
+    rpm_deps: [
+      openstack-ironic-common,
+      openstack-ironic-api,
+      openstack-ironic-conductor,
+      python-ironicclient,
+      python-websockify,
+      python-mock,
+      python-subunit,
+      python-testrepository,
+      python-tempest-lib,
+      python-testscenarios-0.4,
+      python-oslotest,
+      python-testresources,
+      python-requests-mock
+    ]
+
+    remove_rpm: [
+      openstack-ironic-common,
+      openstack-ironic-api,
+      openstack-ironic-conductor,
+    ]
+
+    run:
+        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+rpm_deps: [
+    git,
+    python-virtualenv,
+    python-pbr,
+    python-tox-1.8.1,
+    pyflakes-0.8.1,
+    python-pip-1.5.6,
+    python-mccabe-0.2.1,
+    python-flake8-2.1.0,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+# penstack-ironic-{api, conductor} is installed and then
+# removed to satisfy other dependencies
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# We truncate *requirements.txt to ensure we're only using installed
+# non-test packages.
+ironic_virt_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.log;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      sed -i "s/^install_command\s*=.*$//" tox.ini;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+      - ../logs/installed-rpms.log
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{ironic_virt_run_config.run}}"
+      archive: "{{ironic_virt_run_config.archive}}"
