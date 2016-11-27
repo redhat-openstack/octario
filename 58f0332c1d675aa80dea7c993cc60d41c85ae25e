@@ -22,6 +22,30 @@
       "revId": "58f0332c1d675aa80dea7c993cc60d41c85ae25e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aaa499b_3e2f29a3",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-27T19:40:15Z",
+      "side": 1,
+      "message": "btw, any reason you don\u0027t put it in copr?",
+      "parentUuid": "7aaa499b_7e25b1c0",
+      "range": {
+        "startLine": 6,
+        "startChar": 144,
+        "endLine": 6,
+        "endChar": 145
+      },
+      "revId": "58f0332c1d675aa80dea7c993cc60d41c85ae25e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
