@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaa499b_fe178152",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-27T19:41:58Z",
+      "side": 1,
+      "message": "where is the \u0027;\u0027?\n\nalso, any reason you use direct links instead of copr?\nwe used direct links when uploading to COPR wasn\u0027t an option.",
+      "range": {
+        "startLine": 5,
+        "startChar": 155,
+        "endLine": 5,
+        "endChar": 156
+      },
+      "revId": "9d9fb0699d768d2bcb75108b87ed2e13de2a1de3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
