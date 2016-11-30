@@ -22,6 +22,30 @@
       "revId": "b776847632594edb970f9abdb6fb825371b2dccc",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aaa499b_2f9b66cb",
+        "filename": "roles/tempest/setup/templates/setup_tempest.j2",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-11-30T12:58:12Z",
+      "side": 1,
+      "message": "Arie scheduler filter can be either \"all\" or specified by config in nova.conf.\n\nBy default tempest is using \"all\" value for scheduler filters, so I think the comment is correct.",
+      "parentUuid": "7aaa499b_af6896bb",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "b776847632594edb970f9abdb6fb825371b2dccc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
