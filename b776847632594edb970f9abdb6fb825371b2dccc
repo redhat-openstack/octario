@@ -46,6 +46,30 @@
       "revId": "b776847632594edb970f9abdb6fb825371b2dccc",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aaa499b_cfa9a2e1",
+        "filename": "roles/tempest/setup/templates/setup_tempest.j2",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-11-30T13:00:35Z",
+      "side": 1,
+      "message": "oh I was missing the quotes for \u0027all\u0027 word. Now it\u0027s clear.",
+      "parentUuid": "7aaa499b_2f9b66cb",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "b776847632594edb970f9abdb6fb825371b2dccc",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
