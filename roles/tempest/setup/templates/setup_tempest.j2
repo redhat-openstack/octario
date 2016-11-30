@@ -11,6 +11,12 @@ pool_name=`ssh -o "StrictHostKeyChecking no" heat-admin@$controller "sudo grep -
 #
 min_compute_nodes=$(nova list --name compute |grep Running|wc -l)
 
+# Use scheduler filters from nova.conf
+# By default "all" scheduler filters are used in Tempest which causes some
+# tests to fail.
+#
+nova_sched_filters=$(sudo sed -n '/^scheduler_default_filters=/p' /etc/nova/nova.conf | cut -f2 -d=)
+
 source {{ rc_file | default(overcloud_rc_file) }}
 
 # Create external network
@@ -38,4 +44,5 @@ tools/config_tempest.py --out etc/tempest.conf --network-id $public_net_id \
                           identity.admin_password $OS_PASSWORD \
                           object-storage.operator_role swiftoperator \
                           orchestration.stack_owner_role heat_stack_owner \
-                          compute.min_compute_nodes $min_compute_nodes
+                          compute.min_compute_nodes $min_compute_nodes \
+                          compute-feature-enabled.scheduler_available_filters $nova_sched_filters
