@@ -35,4 +35,4 @@
     component_version: "{{ component.version | default(rhos_default_version) }}"
   become: yes
   become_method: sudo
-  shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} -d {{ component_version }}"
+  shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }}"
