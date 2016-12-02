@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5aa745d1_cc6d37ce",
+        "filename": "components_config/10/python-saharaclient/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-12-02T14:55:04Z",
+      "side": 1,
+      "message": "Right! BTW, considering that this line of code applies to all our repositories wouldn\u0027t it be easier if we would take it out of 10/component/component.yml and make the inclusion as a default for RHOS10?",
+      "parentUuid": "5aa745d1_208dc47b",
+      "revId": "6e030ab37956c32c3485685c6d864ba3c878e410",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aa745d1_6093cca4",
         "filename": "components_config/6/python-saharaclient/component.yml",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "5aa745d1_ec78f391",
+        "filename": "components_config/6/python-saharaclient/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-12-02T14:55:04Z",
+      "side": 1,
+      "message": "Package dependencies are not split in sections inside the test-requirements.txt file and I don\u0027t see any good reason to spend hours trying to find which ones are not needed by pep8 and only needed by unit (or any other tox target). Doing this would mean a lot of additional work for us that has no real benefits. \n\nIn fact I am inclined to believe that it does also increases the chances to have build failures due to not-updated dependencies.\n\nIf you are afraid that this increase the build time, let check the numbers: I suspect that installing all of these increase the build time with ~2-3 seconds (in total). I would argue that if we would merge pep8 and unit testing into a single job we would cut *minutes* on build time because 90% of the time is spend on provisioning. A side effect would be less jobs to run on Jenkins so lower resources needed.",
+      "parentUuid": "5aa745d1_6093cca4",
+      "revId": "6e030ab37956c32c3485685c6d864ba3c878e410",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aa745d1_00e9a81a",
         "filename": "components_config/7/python-saharaclient/component.yml",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2016-12-01T19:51:11Z",
       "side": 1,
       "message": "You are removing sahara and saharaclient, but where are you installing those dependencies?",
+      "revId": "6e030ab37956c32c3485685c6d864ba3c878e410",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aa745d1_0c267fba",
+        "filename": "components_config/7/python-saharaclient/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-12-02T14:55:04Z",
+      "side": 1,
+      "message": "Have you considered that the execution may happen towards a machine that already has these installed? On CI is not the case because we spawn new instances but for individual machines this may be different. If these are installed there is a high change that we would not be testing  the same code.\n\nPS. I don\u0027t mind making the remove_rpm \u003d [] if you think is better.",
+      "parentUuid": "5aa745d1_00e9a81a",
       "revId": "6e030ab37956c32c3485685c6d864ba3c878e410",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
