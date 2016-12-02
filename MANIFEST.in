@@ -1,0 +1,28 @@
+# Include all component.yml from the components_config
+recursive-include octario/ansible/components_config component.yml
+
+# Include all common files that are used by component.yml
+recursive-include octario/ansible/components_config/common *.yml
+
+# Include all Ansible playbook files
+recursive-include octario/ansible/playbooks *.yml
+
+# Include Ansible roles
+recursive-include octario/ansible/roles *
+
+# Include Ansible plugins
+recursive-include octario/ansible/plugins *
+
+# Exclude unsupported by the CLI custom testers
+exclude octario/ansible/components_config/custom_role.yml
+exclude octario/ansible/components_config/custom-tester.yml
+exclude octario/ansible/playbooks/custom-role.yml
+exclude octario/ansible/playbooks/custom-tester.yml
+
+# Exclude example component file
+exclude octario/ansible/components_config/example_component.yml
+
+# Include Ansible config file
+include octario/ansible/ansible.cfg
+include octario/ansible/local_hosts
+
