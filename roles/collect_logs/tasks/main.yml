@@ -11,6 +11,10 @@
   set_fact:
     component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
 
+- name: "Set destination log directory path"
+  set_fact:
+    destination_log_folder: "{{ lookup('env', 'PWD') }}"
+
 - name: "Prepend component_path to common log directories"
   set_fact:
     component_log_paths={{ component_path + '/' + common_log_directories | join(',{{ component_path }}/')}}
@@ -27,20 +31,20 @@
 - name: Fetch log files from the common log directories
   fetch:
     src="{{ item.path }}"
-    dest="../{{ inventory_dir }}"
+    dest="{{ destination_log_folder }}"
   with_items: "{{ log_files_common.files | default([]) }}"
 
 - name: Fetch files that mentioned in component configuration's archive section
   fetch:
     src="{{ component_path }}/{{ item }}"
-    dest="../{{ inventory_dir }}"
+    dest="{{ destination_log_folder }}"
   with_items: "{{ component_config.archive | default([]) }}"
 
 - name: Fetch common files
   become: yes
   fetch:
     src="{{ item }}"
-    dest="../{{ inventory_dir }}"
+    dest="{{ destination_log_folder }}"
   with_items: "{{ common_fetch_list }}"
 
 - name: Copy test results to convert them into junit xml format
@@ -63,7 +67,7 @@
 - name: Fetch converted test results from remote host
   fetch:
     src="{{ ansible_env.HOME }}/{{ component.name }}/tests_results.xml"
-    dest="{{ lookup('env', 'PWD') }}/tests_results.xml"
+    dest="{{ destination_log_folder }}/tests_results.xml"
     flat=yes
   ignore_errors: true
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)

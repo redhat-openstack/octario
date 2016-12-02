@@ -1,1 +1,5 @@
 /.tox
+*.pyc
+/octario.egg-info
+/build
+/dist
