@@ -53,10 +53,12 @@ unittest:
 
 # Tempest target
 tempest:
-     rpm_deps: []
-     remove_rpm: []
-     run: ""
-
+   rpm_deps: [ python-keystone-tests ]
+   remove_rpm: []
+   run: >
+     if ! grep -q -i dvr /home/stack/deploy_overcloud.sh; then
+         sed -i -E s/,dvr,\?//g /home/stack/tempest/etc/tempest.conf;
+     fi
 
 # Additional repository required to install testing dependencies
 enable_repos: [
@@ -72,6 +74,7 @@ rpm_deps: [
     python-pluggy-0.3.1,
     python2-virtualenv-14.0.6,
     python-setuptools-18.5,
+    python-tempest-lib,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
