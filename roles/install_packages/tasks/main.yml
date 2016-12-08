@@ -1,23 +1,30 @@
 # This file handles everything related to packaging.
 
 - name: Disable any repos specified
+  # TBD: when ansible 2.1 is min version we should be using
+  #      https://docs.ansible.com/ansible/yum_repository_module.html
+  #      https://github.com/ansible/ansible-modules-extras/issues/2384
   become: yes
-  yum_repository:
-    name: "{{ item }}"
-    enabled: no
+  shell: yum-config-manager --disable {{ item }}
+  args:
+    warn: no
   with_items: "{{ component_config.setup.disable_repos | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.disable_repos | default(false)
-  register: result
-  changed_when: "result.rc != 0"
+  tags:
+    - skip_ansible_lint
 
 - name: Enable any additional repos to be used
+  # TBD: when ansible 2.1 is min version we should be using
+  #      https://docs.ansible.com/ansible/yum_repository_module.html
+  #      https://github.com/ansible/ansible-modules-extras/issues/2384
   become: yes
-  yum_repository:
-    name: "{{ item }}"
-    state: present
-    enabled: yes
+  shell: yum-config-manager --enable {{ item }}
+  args:
+    warn: no
   with_items: "{{ component_config.setup.enable_repos | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.enable_repos | default(false)
+  tags:
+    - skip_ansible_lint
 
 - name: Print summary of all the repositories enabled on the host
   shell: "{{ yum_bin }} repolist all"
