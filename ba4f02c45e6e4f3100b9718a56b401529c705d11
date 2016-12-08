@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aa745d1_b706a51e",
+        "filename": "cli/octario.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-08T14:07:23Z",
+      "side": 1,
+      "message": "missing space.\n\nYou get \"testervia\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 42,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "ba4f02c45e6e4f3100b9718a56b401529c705d11",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
