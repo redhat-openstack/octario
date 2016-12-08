@@ -42,12 +42,13 @@
     name=rdopkg
     version=0.38
 
+# TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 # EPEL is removed, since it is used only for installing rdopkg
+# https://github.com/ansible/ansible-modules-extras/issues/2384
 - name: Remove epel repository
   become: yes
-  yum_repository:
-    name: epel-*
-    state: absent
+  shell: "yum remove -y epel-*"
+  warn: no
 
 # mock group is needed for for the mockbuild
 # without creating mock group, rdopkg will try to use root and ask for password
