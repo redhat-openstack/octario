@@ -1,0 +1,155 @@
+# This file is used by the octario testing framework to configure system
+# for various tests like pep8, unit, functional or tempest.
+
+# Dependencies are installed from repositories configured on the
+# testing system.
+
+# Dependecies should not have explicit versions if they are satisfied by RHOSP
+# repository. If the version or dependency itself is not satisfied by the
+# RHOSP repository it should contain specified version e.g. python-hacking-1.0
+# If no version is specified in such case the highest one will get installed
+# and it will be hard to control from where the dependencies are used.
+
+# Comments should be put above tester definition, otherwise error will occur.
+
+# Each shell command should end with ';' if multiple are specified.
+
+# Any hard coded install commands that will use pip installation
+# method from the tox.ini should be removed, see example /usr/bin/sed below.
+# It is because pip installation method should not be used / mixed with rpm.
+# In below example install_command and deps are commented out. Those two
+# shell commands are duplicated across other testers except tempest, where
+# is not needed. If all testers were requiring such commands then that part
+# could be easilly moved to run from nova_virt_run_config section and less
+# duplication would occur.
+#
+pep8:
+
+    rpm_deps: [
+      python-hacking,
+      python-flake8,
+      bandit
+    ]
+
+    remove_rpm: []
+
+    run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/.*\.\[/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        /usr/bin/sed -i 's/^       nose/#&/' tox.ini;
+        /usr/bin/sed -i 's/^     {\[/#&/' tox.ini;
+        /usr/bin/sed -i '/whitelist_externals =/a \  bandit\n  bashate\n  flake8' tox.ini;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+# python-nova is installed to satisfy all runtime dependencies for the nova
+# component. It is then removed, so all dependent packages are present but
+# the test runs against codebase from gerrit and not the system one.
+#
+unittest:
+
+    rpm_deps: [
+      python-keystoneclient,
+      python-pep8
+    ]
+
+    remove_rpm: [
+      python-nova
+    ]
+
+    run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/.*\.\[/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        /usr/bin/sed -i 's/^       nose/#&/' tox.ini;
+        /usr/bin/sed -i 's/^     {\[/#&/' tox.ini;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
+
+
+# openstack-nova is installed and then all nova packages are removed
+# to satisfy all runtime dependencies for the nova component. Similarly to
+# above unittest tester, however it pulls much more codebase from nova
+# which is also present in the nova git repository.
+#
+functional:
+
+    rpm_deps: [
+      openstack-keystone
+    ]
+
+    remove_rpm: []
+
+    run:
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+
+# Additional repository required to install testing dependencies
+# This is for all testers
+#
+enable_repos: [
+    rhelosp-10.0-unittest
+]
+
+
+# Common rpm deps needed for all tester types:
+#     (pep8 / unittest / functional / tempest)
+#
+# Note the explicit versions (explained in line 7 of this example)
+#
+# The line with "hostvars[inventory_hostname][tester.component.tox_target]"
+# simply calls the section ['rpm_deps'] for the particular tester within this
+# configuration file. The tox_target is tester like pep8, unittest, functional
+# tempest or any other and allows to use below rpm_deps that is common
+# for all testers that calls rpm_deps for specific one.
+#
+rpm_deps: [
+    git,
+    python-tox-2.3.1,
+    python-pluggy-0.3.1,
+    python-py-1.4.26,
+    python2-virtualenv-14.0.6,
+    python-setuptools-18.5,
+    python-pep8-1.5.7,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+#
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# Common run and archive section.
+# This will be executed for every tester type.
+#
+# We truncate *requirements.txt to ensure we are using dependencies from RPM
+# only and we do not mix them with ones installed by pip.
+#
+# archive: section to define extra log files that will be archived
+#          common *.log files from ../logs and ./tox directories will be
+#          collected even if this section is removed.
+#
+keystone_virt_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.log;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+# NOTE: This is the main section. It must exist.
+# RedHat-7 is common for all across different RHEL 7 minor releases such as
+# RHEL 7.2, RHEL 7.3. You can be more specific here and define sections for
+# particular RHEL releases only e.g. RedHat-6, RedHat-7.3
+#
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{keystone_virt_run_config.run}}"
