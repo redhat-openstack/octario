@@ -20,11 +20,15 @@
     - 'openssl-devel'
     - 'git'
 
+# TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
+# EPEL is removed, since it is used only for installing python-pip
+# https://github.com/ansible/ansible-modules-extras/issues/2384
 - name: Remove epel repository
   become: yes
-  yum:
-    name="epel-*"
-    status=absent
+  shell: "yum remove -y epel-*"
+  args:
+    warn: no
+  changed_when: true
 
 - name: Install pip packages
   become: yes
