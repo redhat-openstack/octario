@@ -50,6 +50,12 @@ unittest:
         /usr/bin/sed -i 's/^     {\[/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
 
+# python-keystoneclient functional
+functional:
+   rpm_deps: [ python-keystoneclient ]
+   remove_rpm: []
+   run: >
+       tox -e functional
 
 # Tempest target
 tempest:
