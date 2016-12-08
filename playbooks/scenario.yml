@@ -5,7 +5,7 @@
       component:
         tox_target: scenario
   roles:
-    - { role: patch_rpm }
+    - { role: patch_rpms }
     - { role: setup_repos }
     - { role: setup_environment }
     - { role: install_packages }

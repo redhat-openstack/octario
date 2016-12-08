@@ -13,8 +13,6 @@
 - name: Install epel repoistory
   become: yes
   shell: yum localinstall -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-  tags:
-    - skip_ansible_lint
 
 # Although pyrpkg pulled by rhpkg, we install it directly because at the moment, an older
 # version of pyrpkg is pulled (1.40) while we need a newer version (1.43)
@@ -42,12 +40,11 @@
     name=rdopkg
     version=0.38
 
+# TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 # EPEL is removed, since it is used only for installing rdopkg
 - name: Remove epel repository
   become: yes
-  yum_repository:
-    name: epel-*
-    state: absent
+  shell: "yum remove -y epel-*"
 
 # mock group is needed for for the mockbuild
 # without creating mock group, rdopkg will try to use root and ask for password
@@ -72,34 +69,27 @@
     accept_hostkey=true
 
 - name: Prepare branch for patching
-  shell: "git checkout -b gerrit-patch && git branch rhos-{{ component.version }}.0-patches"
+  shell: "git checkout -b gerrit-patch; git branch rhos-{{ component.version }}.0-patches"
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
-  tags:
-    - skip_ansible_lint
 
 - name: Prepare dist-git repo for patching
   shell: >
-    git remote add -f patches {{ ansible_env.HOME}}/{{ component.name }} &&
-    git fetch patches &&
-    git fetch patches --tags &&
+    git remote add -f patches {{ ansible_env.HOME}}/{{ component.name }};
+    git fetch patches;
+    git fetch patches --tags;
     git branch rhos-{{ component.version }}.0-patches patches/gerrit-patch;
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
-  tags:
-    - skip_ansible_lint
 
 # The actual patching part
 - name: Apply patch(es) on dist-git repo and bump release
   shell: >
-    git config --global user.name patchy &&
-    git config --global user.email patchy@patch.com &&
+    git config --global user.name patchy;
+    git config --global user.email patchy@patch.com;
     rdopkg patch;
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
-  changed_when: true
-  tags:
-    - skip_ansible_lint
 
 # Now that the repo is patched, generate RPMs from it
 - name: Build new RPM from patched dist-git repo
@@ -108,9 +98,6 @@
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
   register: rpm_mockbuild
-  changed_when: true
-  tags:
-    - skip_ansible_lint
 
 # Some build errors are lagitimate and should not fail the run
 # Like '.gitreview: does not exist in index'
@@ -120,7 +107,6 @@
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
   register: common_build_errors
-  changed_when: false
 
 - name: Fail run if mockbuild failed
   fail: msg="The mockbuild has failed for some reason. Check tags exist and you have sudo on remote host"
@@ -149,7 +135,6 @@
 - name: Save patching logs
   become: yes
   shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.log /var/log/patching_logs"
-  changed_when: true
 
 - name: Create repository for patched RPMs
   shell: "createrepo /patched_rpms;"

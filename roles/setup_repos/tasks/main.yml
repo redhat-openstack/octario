@@ -4,7 +4,6 @@
 - name: Register all the repsitories
   shell: "{{ ls_bin }} /etc/yum.repos.d/*.repo"
   register: yum_repos
-  changed_when: False
 
 - name: Disable any existing repos
   become: yes
@@ -21,11 +20,13 @@
   vars:
     component_version: "{{ component.version | default(rhos_default_version) }}"
   become: yes
+  become_method: sudo
   template: src=../templates/component-test-copr-repo.j2 dest=/etc/yum.repos.d/test-reqs-copr.repo
 
 # rhos-release used for installing the rhos repos.
 - name: Install rhos-release
   become: yes
+  become_method: sudo
   yum:
     name="http://rhos-release.virt.bos.redhat.com/repos/rhos-release/rhos-release-latest.noarch.rpm"
 
@@ -33,5 +34,5 @@
   vars:
     component_version: "{{ component.version | default(rhos_default_version) }}"
   become: yes
+  become_method: sudo
   shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }}"
-  changed_when: true
