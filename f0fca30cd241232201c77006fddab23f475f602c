@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aa745d1_7e8d927a",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-09T13:25:26Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be above \"- name\"?",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 70
+      },
+      "revId": "f0fca30cd241232201c77006fddab23f475f602c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5aa745d1_5ee9b619",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-09T13:25:26Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 70
+      },
+      "revId": "f0fca30cd241232201c77006fddab23f475f602c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
