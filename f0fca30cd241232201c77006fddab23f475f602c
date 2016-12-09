@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "5aa745d1_9e061e1f",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-12-09T15:25:26Z",
+      "side": 1,
+      "message": "Considering that this comment is specific to this task and applies to the first line after the comment (shell line) I considered this to be the best place to put the comment.  If I put it outside the block it may appear as applying to the entire playbook, or worse someone could miss moving the comment when changing the order of the tasks.\n\nI was even considering keeping the new syntax linex commented until we get the bug fixed.\n\nIf you think is better to move them before the task block I will do it just say it.",
+      "parentUuid": "5aa745d1_7e8d927a",
+      "revId": "f0fca30cd241232201c77006fddab23f475f602c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aa745d1_5ee9b619",
         "filename": "roles/install_packages/tasks/main.yml",
         "patchSetId": 2
