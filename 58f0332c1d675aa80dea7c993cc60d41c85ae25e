@@ -46,6 +46,30 @@
       "revId": "58f0332c1d675aa80dea7c993cc60d41c85ae25e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab451fb_824b7e2b",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2016-12-11T17:55:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aaa499b_3e2f29a3",
+      "range": {
+        "startLine": 6,
+        "startChar": 144,
+        "endLine": 6,
+        "endChar": 145
+      },
+      "revId": "58f0332c1d675aa80dea7c993cc60d41c85ae25e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
