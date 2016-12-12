@@ -47,7 +47,6 @@ rpm_deps: [
   python-oslo-vmware,
   python-testresources,
   python-testscenarios,
-  python-barbicanclient,
   python-os-win,
   python-crypto,
 
