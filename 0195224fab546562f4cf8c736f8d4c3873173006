@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab451fb_a50d6439",
+        "filename": "components_config/10/swift/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-12T07:52:54Z",
+      "side": 1,
+      "message": "ls?",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "0195224fab546562f4cf8c736f8d4c3873173006",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
