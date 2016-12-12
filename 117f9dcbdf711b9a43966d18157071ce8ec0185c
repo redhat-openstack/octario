@@ -70,6 +70,30 @@
       "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab451fb_6bc72d46",
+        "filename": "cli/tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-12-12T14:26:07Z",
+      "side": 1,
+      "message": "Arie,\nWe could either:\n\n1. add some extra value in the playbook itself (e.g. supported) and then CLI can print WARNING saying that some tester isn\u0027t really supported one, but still work or:\n\n2. move supported by the CLI testers into one folder and then custom/unsupported to another.",
+      "parentUuid": "3ab451fb_0bb669dc",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
