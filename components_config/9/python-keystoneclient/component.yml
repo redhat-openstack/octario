@@ -37,8 +37,7 @@ pep8:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/.*\.\[/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        /usr/bin/sed -i 's/^       nose/#&/' tox.ini;
-        /usr/bin/sed -i 's/^     {\[/#&/' tox.ini;
+        /usr/bin/sed -i 's/^       -r/#&/' tox.ini;
         /usr/bin/sed -i '/whitelist_externals =/a \  bandit\n  bashate\n  flake8' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
@@ -55,15 +54,14 @@ unittest:
     ]
 
     remove_rpm: [
-      python-nova
+      python-keystoneclient
     ]
 
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/.*\.\[/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        /usr/bin/sed -i 's/^       nose/#&/' tox.ini;
-        /usr/bin/sed -i 's/^     {\[/#&/' tox.ini;
+        /usr/bin/sed -i 's/^       -r/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
 
 
