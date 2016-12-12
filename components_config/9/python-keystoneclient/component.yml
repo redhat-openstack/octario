@@ -45,12 +45,24 @@ pep8:
 # python-nova is installed to satisfy all runtime dependencies for the nova
 # component. It is then removed, so all dependent packages are present but
 # the test runs against codebase from gerrit and not the system one.
-#
+
 unittest:
 
     rpm_deps: [
       python-keystoneclient,
-      python-pep8
+      python-fixtures,
+      python-keyring,
+      python-lxml,
+      python-mock,
+      python-oauthlib,
+      python-oslotest,
+      python-pep8,
+      python-requests-mock,
+      python-sphinx,
+      python-os-testr,
+      python-testresources,
+      python-testscenarios,
+      python-testtools
     ]
 
     remove_rpm: [
