@@ -46,6 +46,30 @@
       "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab451fb_0bb669dc",
+        "filename": "cli/tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-12T14:23:24Z",
+      "side": 1,
+      "message": "Today, if I want to add a new tester I need to:\n1. Create a playbook for it\n2. Update readme\n3. Use it with at least one component (unless it\u0027s a general tester, but we don\u0027t have anything like that at the moment).\n\nNow you want to add 4. add to CLI source code.\n\nCan\u0027t we make it more dynamic by perhaps using the playbooks? support testers based on existing files/playbooks (\u003dtesters)\n\nI\u0027m just trying to figure out if we can avoid this additional maintenance/step",
+      "parentUuid": "3ab451fb_d034ac4b",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
