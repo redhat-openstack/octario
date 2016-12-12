@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab451fb_b0b480d1",
+        "filename": "cli/tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-12T11:51:45Z",
+      "side": 1,
+      "message": "1. This is not the full list of testers\n2. It\u0027s static. Which means each time we add new tester we need to modify the client code. Can we make it dynamic or is it too complex?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
