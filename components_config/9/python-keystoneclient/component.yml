@@ -50,7 +50,13 @@ unittest:
 
     rpm_deps: [
       python-keystoneclient,
-      python-pep8
+      python-os-testr,
+      python-pep8,
+      python-mock,
+      python-requests-mock,
+      python-testresources,
+      python-testscenarios,
+      python-oslotest
     ]
 
     remove_rpm: [
