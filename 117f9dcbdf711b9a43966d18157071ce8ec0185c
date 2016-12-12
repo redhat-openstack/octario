@@ -94,6 +94,30 @@
       "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab451fb_cb59a190",
+        "filename": "cli/tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-12T14:52:39Z",
+      "side": 1,
+      "message": "why we need to add anything?\n\nisn\u0027t every playbook in the playbooks directory \u003d\u003d supported tester?",
+      "parentUuid": "3ab451fb_6bc72d46",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
