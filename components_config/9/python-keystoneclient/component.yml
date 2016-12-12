@@ -49,8 +49,7 @@ pep8:
 unittest:
 
     rpm_deps: [
-      python-keystoneclient,
-      python-pep8
+      python-keystoneclient
     ]
 
     remove_rpm: [
@@ -94,6 +93,7 @@ functional:
 #
 rpm_deps: [
     git,
+    python-hacking,
     python-tox-2.3.1,
     python-devel-2.7.5,
     python-pluggy-0.3.1,
