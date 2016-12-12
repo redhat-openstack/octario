@@ -22,6 +22,30 @@
       "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab451fb_d034ac4b",
+        "filename": "cli/tester.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-12-12T12:09:11Z",
+      "side": 1,
+      "message": "Arie,\nThis is very much intentional.\nWe can add here as many testers as we want, but it has to be supported and stable list of testers.\n\nSo yes this is the only place that will require modification if we want the CLI to support tester.\n\nFor other testers still \u0027old\u0027 ansible-playbook way is possible.\n\nThis way we can separate what we really want to support and stabilize vs new testers/custom testers.",
+      "parentUuid": "3ab451fb_b0b480d1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "117f9dcbdf711b9a43966d18157071ce8ec0185c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
