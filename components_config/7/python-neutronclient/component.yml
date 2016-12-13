@@ -6,6 +6,7 @@ pep8:
 unittest:
     rpm_deps: [ python-neutronclient,
                 python-cliff-tablib,
+                python-tablib,
                 python-mox3,
                 python-oslotest,
                 python-requests-mock ]
@@ -21,6 +22,11 @@ functional:
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.name can be one of the following: [unittest, pep8, dsvm-functional]
+
+# Additional repository required to install testing dependencies
+enable_repos: [
+    rhelosp-7.0-override
+]
 
 # Common rpm deps needed for all tester types
 rpm_deps: [ gcc,
@@ -55,4 +61,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
+        enable_repos: "{{enable_repos}}"
       run: "{{ neutronclient_virt_run_config.run }}"
