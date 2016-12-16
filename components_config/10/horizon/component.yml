@@ -11,7 +11,7 @@ pep8:
 
     rpm_deps: [
       babel,
-      python-babel-0.9.6,
+      python-babel,
       python2-django-babel-0.4.0,
       python-hacking
     ]
