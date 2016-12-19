@@ -1,0 +1,16 @@
+- name: Install needed pip packages for saving tempest results in xml format
+  become: true
+  become_method: sudo
+  pip:
+    name="{{ item }}"
+    state=present
+    virtualenv="{{ tempest_venv | default(overcloud_venv) }}"
+  with_items:
+    - 'junitxml'
+    - 'unittest2'
+
+- name: Run Tempest - git
+  shell: "tempest/venv ./tools/run-tests.sh {{ tempest_regex | default('') }} --skip-file ./skipfile"
+  ignore_errors: true
+  tags:
+    - skip_ansible_lint

@@ -1,7 +1,7 @@
 # Tempest
 # -------
 
-tempest_regex: tempest\.api\.share\|tempest\.scenario\.*share
+tempest_regex: manila_tempest_tests.tests.api
 
 # Dist-git
 # --------
