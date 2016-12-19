@@ -2,6 +2,7 @@
   shell: "tempest/venv testr init"
   args:
     creates: "tempest/.testrepository"
+  when: tempest_install_type == "git"
   tags:
     - skip_ansible_lint
 
@@ -11,11 +12,24 @@
   tags:
     - skip_ansible_lint
 
-- name: Run Tempest
+# TODO: why we need this tempest_concurrency param?
+- name: Run Tempest - git
   shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
   ignore_errors: true
+  when: tempest_install_type == "git"
   tags:
     - skip_ansible_lint
+
+# The number of workers to use, defaults to the number
+- name: Run Tempest - rpm
+  shell: "tempest run --regex {{ tempest_regex | default('') }} --blacklist-file ./skipfile"
+  ignore_errors: true
+  args:
+    chdir: tempest
+  when: tempest_install_type == "rpm"
+  tags:
+    - skip_ansible_lint
+
 
 - name: Fetch Tempest results
   fetch:
