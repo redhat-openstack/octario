@@ -1,4 +1,42 @@
 - name: Install tempest RPM
-  yum:
-    name=openstack-tempest
-    state=present
+  become: true
+  become_method: sudo
+  yum: state=present name={{ item }}
+  with_items:
+     - subunit-filters
+     - python-junitxml
+     - python-tox
+     - python-ddt
+     - python-testscenarios
+     - python-junitxml
+     - subunit-filters
+     - python-jsonschema
+     - python-subunit
+     - python-os-testr
+     - openstack-tempest
+     - openstack-tempest-all
+
+- name: Clone Red Hat Tempest repo
+  git:
+    repo="https://github.com/redhat-openstack/tempest.git"
+    version='HEAD'
+    dest="/tmp/tempest"
+
+#TODO (dsariel) checkout relevant branch 
+
+- name: Copy files from foo to bar
+  copy: remote_src=True src=/tmp/tempest/{{ item }}  dest=tempest
+  with_items: 
+    - test-requirements.txt
+    - requirements.txt
+
+
+- name: Ensure tempest dir exists
+  file: path=tempest state=directory
+
+- name: Configure tempest directory
+  shell: /usr/share/openstack-tempest-`yum info python-tempest | grep Version | awk '{ print $3; }' | sort -u`/tools/configure-tempest-directory
+  args:
+    chdir: tempest
+
+
