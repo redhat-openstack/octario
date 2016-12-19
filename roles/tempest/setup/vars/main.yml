@@ -1,0 +1,17 @@
+rhos_upstream_map:
+  12:
+    release: pike
+  11:
+    release: ocata
+  10:
+    release: newton
+  9:
+    release: mitaka
+  8:
+    release: liberty
+  7:
+    release: kilo
+  6:
+    release: juno
+  5:
+    release: icehouse
