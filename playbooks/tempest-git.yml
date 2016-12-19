@@ -1,4 +1,5 @@
 # Run Tempest tests and install it from git
+# NOTE: use this playbook for rhos5-rhos6 branches
 # -----------------------------------------
 - name: Run Octario - Tempest
   hosts: tester
@@ -8,6 +9,7 @@
         tox_target: tempest
     tempest_install_type: git
   roles:
+    - { role: setup_repos }
     - { role: setup_environment }
     - { role: tempest/setup }
     - { role: tempest/run }
