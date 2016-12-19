@@ -8,6 +8,7 @@
         tox_target: tempest
     tempest_install_type: git
   roles:
+    - { role: setup_repos }
     - { role: setup_environment }
     - { role: tempest/setup }
     - { role: tempest/run }
