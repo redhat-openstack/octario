@@ -13,10 +13,57 @@ unittest:
     run: >
        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
+
 tempest:
-   rpm_deps: []
+   rpm_deps: [
+        crudini,
+        python-tox,
+        openstack-manila,
+        openstack-manila-share,
+        python-manila,
+        python-ddt,
+        python-testscenarios,
+        python-junitxml,
+        subunit-filters,
+        python-jsonschema,
+        python-subunit,
+        python-os-testr,
+        openstack-tempest,
+        openstack-tempest-all,
+        python-manila-tests
+   ]
    remove_rpm: []
-   run: ""
+   run: >
+        crudini --set /home/stack/tempest/etc/tempest.conf service_available manila True;
+        crudini --set /home/stack/tempest/etc/tempest.conf auth use_dynamic_credentials True;
+        crudini --set /home/stack/tempest/etc/tempest.conf compute max_microversion latest;
+        crudini --set /home/stack/tempest/etc/tempest.conf compute fixed_network_name private;
+        crudini --set /home/stack/tempest/etc/tempest.conf compute ssh_connect_method floating;
+        crudini --set /home/stack/tempest/etc/tempest.conf identity uri_v3;
+        crudini --set /home/stack/tempest/etc/tempest.conf network-feature-enabled api_extensions all;
+        crudini --set /home/stack/tempest/etc/tempest.conf network public_router_id;
+        crudini --set /home/stack/tempest/etc/tempest.conf network project_networks_reachable false;
+        crudini --set /home/stack/tempest/etc/tempest.conf network api_version 2.0;
+        crudini --set /home/stack/tempest/etc/tempest.conf identity-feature-enabled api_v3 False;
+        crudini --set /home/stack/tempest/etc/tempest.conf share capability_storage_protocol CEPHFS;
+        crudini --set /home/stack/tempest/etc/tempest.conf share run_consistency_group_tests False;
+        crudini --set /home/stack/tempest/etc/tempest.conf share run_snapshot_tests False;
+        crudini --set /home/stack/tempest/etc/tempest.conf share multitenancy_enabled False;
+        crudini --set /home/stack/tempest/etc/tempest.conf share run_shrink_tests True;
+        crudini --set /home/stack/tempest/etc/tempest.conf share run_extend_tests True;
+        crudini --set /home/stack/tempest/etc/tempest.conf share multi_backend False;
+        crudini --set /home/stack/tempest/etc/tempest.conf share suppress_errors_in_cleanup True;
+        crudini --set /home/stack/tempest/etc/tempest.conf share share_creation_retry_number 2;
+        crudini --set /home/stack/tempest/etc/tempest.conf share run_manage_unmanage_tests False;
+        crudini --set /home/stack/tempest/etc/tempest.conf share backend_names ceph_native;
+        crudini --set /home/stack/tempest/etc/tempest.conf share capability_snapshot_support True;
+        crudini --set /home/stack/tempest/etc/tempest.conf share enable_cephx_rules_for_protocols cephfs;
+        crudini --set /home/stack/tempest/etc/tempest.conf share enable_cert_rules_for_protocols;
+        crudini --set /home/stack/tempest/etc/tempest.conf share enable_ip_rules_for_protocols;
+        crudini --set /home/stack/tempest/etc/tempest.conf share storage_protocol CEPHFS;
+        crudini --set /home/stack/tempest/etc/tempest.conf share enable_protocols cephfs;
+        crudini --set /home/stack/tempest/etc/tempest.conf share image_with_share_tools manila-service-image-master;
+
    blacklist: []
 
 
@@ -55,6 +102,8 @@ rpm_deps: [
   python-subunit,
   python-pep8,
   python-bashate,
+
+  crudini,
 
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
