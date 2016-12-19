@@ -10,6 +10,12 @@
     - 'openssl-devel'
     - 'subunit-filters'
 
+- name: Install per-component tempest test dependencies RPMs needed
+  become: yes
+  yum: pkg="{{ item }}" state=latest
+  with_items: "{{ tempest.rpm_deps | default([]) }}"
+  when: tempest | default(false) and tempest.rpm_deps | default(false)
+
 - include: "{{ tempest_install_type }}.yml"
 
 - name: Deploy tempest configuration script
