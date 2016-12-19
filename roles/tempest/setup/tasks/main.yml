@@ -10,6 +10,12 @@
     - 'openssl-devel'
     - 'subunit-filters'
 
+- name: Install per-component tempest test dependencies RPMs needed
+  become: yes
+  yum: pkg="{{ item }}" state=latest
+  with_items: "{{ tempest.rpm_deps | default([]) }}"
+  when: tempest | default(false) and tempest.rpm_deps | default(false)
+
 - include: "{{ tempest_install_type }}.yml"
 
 - name: Deploy tempest configuration script
@@ -18,12 +24,22 @@
     dest='tempest/setup_tempest.sh'
     mode=0755
 
-- name: Configure tempest
+- name: Configure tempest - git
   shell: >
     source {{ rc_file | default(overcloud_rc_file) }};
     tempest/venv ./setup_tempest.sh
   args:
     creates: "~/tempest/etc/tempest.conf"
+  when: tempest_install_type == "git"
+
+- name: Configure tempest - rpm
+  shell: >
+    source {{ rc_file | default(overcloud_rc_file) }};
+    tools/config_tempest.py --create --debug identity.uri $OS_AUTH_URL identity.admin_password $OS_PASSWORD
+  args:
+    chdir: tempest
+  when: tempest_install_type == "rpm"
+
 
 # If no skipfile is present, tempest will fail to run
 - name: Create empty skip file
