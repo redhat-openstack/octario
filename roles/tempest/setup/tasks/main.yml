@@ -1,6 +1,5 @@
 - name: Install needed RPMs for running tempest
   become: true
-  become_method: sudo
   yum:
     name="{{ item }}"
     state=present
@@ -10,6 +9,12 @@
     - 'openssl-devel'
     - 'subunit-filters'
 
+- name: Install per-component tempest test dependencies RPMs needed
+  become: yes
+  yum: pkg="{{ item }}" state=latest
+  with_items: "{{ tempest.rpm_deps | default([]) }}"
+  when: tempest | default(false) and tempest.rpm_deps | default(false)
+
 - include: "{{ tempest_install_type }}.yml"
 
 - name: Deploy tempest configuration script
@@ -18,12 +23,42 @@
     dest='tempest/setup_tempest.sh'
     mode=0755
 
+
+- name: Install pip
+  become: yes
+  command: "easy_install pip"
+
+- name: Install virtualenv
+  become: yes
+  yum:
+    name=python-virtualenv
+    state=present
+
+- name: Install tempest virtualenv
+  shell: python tempest/tools/install_venv.py tempest
+
+- name: Deploy 'venv' script to run tempest related commands inside virtualenv
+  copy:
+    src="venv"
+    dest="tempest/venv"
+    mode=0755
+
+- name: Install needed pip packages for running tempest
+  pip:
+    name="{{ item }}"
+    state=present
+    virtualenv="{{ tempest_venv | default(overcloud_venv) }}"
+  with_items:
+    - 'junitxml'
+    - 'unittest2'
+
 - name: Configure tempest
   shell: >
     source {{ rc_file | default(overcloud_rc_file) }};
     tempest/venv ./setup_tempest.sh
   args:
     creates: "~/tempest/etc/tempest.conf"
+
 
 # If no skipfile is present, tempest will fail to run
 - name: Create empty skip file
@@ -38,7 +73,7 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "+{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: "{{ tempest.whitelist }}"
+  with_items: tempest.whitelist
   when: tempest.whitelist is defined
 
 - name: create skip list - Blacklist
@@ -47,5 +82,5 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "-{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: "{{ tempest.blacklist }}"
+  with_items: tempest.blacklist
   when: tempest.blacklist is defined
