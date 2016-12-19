@@ -11,14 +11,20 @@
   tags:
     - skip_ansible_lint
 
-- name: Run Tempest
-  shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
-  ignore_errors: true
-  tags:
-    - skip_ansible_lint
+#- name: lauch the tempest tests
+#  shell: tools/run-tests.sh manila_tempest_tests.tests.api
+#  args:
+#    chdir: "~/{{ tester.dir }}"
+#  ignore_errors: true
 
-- name: Fetch Tempest results
-  fetch:
-    src=/home/stack/tempest/tempest.xml
-    dest={{ lookup('env', 'PWD') }}/tempest.xml
-    flat=yes
+#- name: Run Tempest
+#  shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
+#  ignore_errors: true
+#  tags:
+#    - skip_ansible_lint
+
+#- name: Fetch Tempest results
+#  fetch:
+#    src=/home/stack/tempest/tempest.xml
+#    dest={{ lookup('env', 'PWD') }}/tempest.xml
+#    flat=yes
