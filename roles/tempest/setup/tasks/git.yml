@@ -34,3 +34,10 @@
   with_items:
     - 'junitxml'
     - 'unittest2'
+
+- name: Configure tempest - git
+  shell: >
+    source {{ rc_file | default(overcloud_rc_file) }};
+    tempest/venv ./setup_tempest.sh
+  args:
+    creates: "~/tempest/etc/tempest.conf"
