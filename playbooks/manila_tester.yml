@@ -1,0 +1,244 @@
+---
+- name: Run Octario - Tempest
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: tempest
+    tempest_install_type: git
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: tempest/setup }
+
+- name: Run manila tempest plugin tests
+  hosts: tester
+  vars:
+    tester:
+      dir: tempest
+  tasks:
+
+     - name: Install the COPR test depedencies repo
+       become: yes
+       become_method: sudo
+       template: src=./templates/component-test-copr-repo.j2 dest=/etc/yum.repos.d/test-reqs-copr.repo
+
+     - name: install the python-tox package
+       become: yes
+       become_method: sudo
+       yum: name={{ item }} state=latest
+       with_items:
+         - subunit-filters
+         - python-junitxml
+         - python-tox
+         - openstack-manila
+         - openstack-manila-share
+         - python-manila
+         - python-ddt
+         - python-testscenarios
+         - python-junitxml
+         - subunit-filters
+         - python-jsonschema
+         - python-subunit
+         - python-os-testr
+         - openstack-tempest
+         - openstack-tempest-all
+         - python-manila-tests
+
+#     - name: reinstall manila from mock-rpm
+#       become: yes
+#       become_method: sudo
+#       shell: sudo rpm -i *.rpm --replacepkgs
+#       args:
+#         chdir: "{{ ansible_env.HOME }}/dist-git/openstack-manila"
+#         chdir: "/home/{{ ansible_ssh_user }}/dist-git/openstack-manila"
+
+#     - fail: msg="Stop here"
+     - name: StartHere
+       shell: ls   
+
+     - name: add the available Manila plugins to Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "service_available"
+          option: "manila"
+          value: "True"
+
+
+     - name: update auth secton of Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "auth"
+          option: "use_dynamic_credentials"
+          value: "True"
+
+     - name: update compute section of Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "compute"
+          option: "max_microversion"
+          value: "latest"
+
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "compute"
+          option: "fixed_network_name"
+          value: "private"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "compute"
+          option: "ssh_connect_method"
+          value: "floating"
+
+
+
+     - name: update identity section of Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "identity"
+          option: "uri_v3"
+          value: ""
+
+
+     - name: update network-feature-enabled section of Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "network-feature-enabled"
+          option: "api_extensions"
+          value: "all"
+
+
+     - name: update network section of Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "network"
+          option: "public_router_id"
+          value: ""
+
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "network"
+          option: "project_networks_reachable"
+          value: "false"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "network"
+          option: "api_version"
+          value: "2.0"
+
+
+     - name: update identity-feature-enabled section of Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "identity-feature-enabled"
+          option: "api_v3"
+          value: "False"
+
+
+
+     - name: add share section to Tempest config
+       ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "capability_storage_protocol"
+          value: "CEPHFS"
+
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "run_consistency_group_tests"
+          value: "False"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "run_snapshot_tests"
+          value: "False"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "multitenancy_enabled"
+          value: "False"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "run_shrink_tests"
+          value: "True"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "run_extend_tests"
+          value: "True"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "multi_backend"
+          value: "False"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "suppress_errors_in_cleanup"
+          value: "True"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "share_creation_retry_number"
+          value: "2"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "run_manage_unmanage_tests"
+          value: "False"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "backend_names"
+          value: "ceph_native"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "capability_snapshot_support"
+          value: "True"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "enable_cephx_rules_for_protocols"
+          value: "cephfs"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "enable_cert_rules_for_protocols"
+          value: ""
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "enable_ip_rules_for_protocols"
+          value: ""
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "storage_protocol"
+          value: "CEPHFS"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "enable_protocols"
+          value: "cephfs"
+     - ini_file:
+          dest: "~/{{ tester.dir }}/etc/tempest.conf"
+          section: "share"
+          option: "image_with_share_tools"
+          value: "manila-service-image-master"
+
+
+     - name: lauch the tempest tests
+       shell: tools/run-tests.sh manila_tempest_tests.tests.api  
+       args:
+         chdir: "~/{{ tester.dir }}"
+       ignore_errors: true
+
+     - name: Fetch Tempest results
+       fetch:
+         src=/home/stack/tempest/tempest.xml
+         dest={{ lookup('env', 'PWD') }}/tempest.xml
+         flat=yes
+
