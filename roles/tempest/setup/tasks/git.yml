@@ -4,33 +4,4 @@
     version='HEAD'
     dest="tempest"
 
-- name: Install pip
-  become: yes
-  command: "easy_install pip"
-
-- name: Install virtualenv
-  become: yes
-  become_method: sudo
-  yum:
-    name=python-virtualenv
-    state=present
-
-- name: Install tempest virtualenv
-  shell: python tempest/tools/install_venv.py tempest
-
-- name: Deploy 'venv' script to run tempest related commands inside virtualenv
-  copy:
-    src="venv"
-    dest="tempest/venv"
-    mode=0755
-
-- name: Install needed pip packages for running tempest
-  become: true
-  become_method: sudo
-  pip:
-    name="{{ item }}"
-    state=present
-    virtualenv="{{ tempest_venv | default(overcloud_venv) }}"
-  with_items:
-    - 'junitxml'
-    - 'unittest2'
+#TODO (dsariel) checkout relevant branch
