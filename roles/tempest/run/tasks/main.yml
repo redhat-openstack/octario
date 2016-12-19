@@ -11,11 +11,6 @@
   tags:
     - skip_ansible_lint
 
-- name: Run Tempest
-  shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
-  ignore_errors: true
-  tags:
-    - skip_ansible_lint
 
 - name: Fetch Tempest results
   fetch:
