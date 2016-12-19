@@ -1,4 +1,29 @@
 - name: Install tempest RPM
   yum:
     name=openstack-tempest
+
+- name: Install pip
+  become: yes
+  command: "easy_install pip"
+
+- name: Install virtualenv
+  become: yes
+  become_method: sudo
+  yum:
+    name=python-virtualenv
     state=present
+
+- name: Ensure tempest dir exists
+  file: path=tempest state=directory
+
+- name: Configure tempest directory
+  shell: /usr/share/openstack-tempest-13.0.0/tools/configure-tempest-directory 
+  args:
+    chdir: tempest
+
+- name: Deploy 'venv' script to run tempest related commands inside virtualenv
+  copy:
+    src="venv"
+    dest="tempest/venv"
+    mode=0755
+    
