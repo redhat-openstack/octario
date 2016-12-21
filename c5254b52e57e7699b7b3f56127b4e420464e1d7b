@@ -98,6 +98,30 @@
       "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab14d0d_8e939ea3",
+        "filename": "setup.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2016-12-21T19:59:03Z",
+      "side": 1,
+      "message": "rhos-ci@redhat.com",
+      "parentUuid": "1ab14d0d_ce808649",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
