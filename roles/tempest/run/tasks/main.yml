@@ -1,7 +1,8 @@
 - name: Run testr init
-  shell: "tempest/venv testr init"
+  shell: "{{ tempest_prefix }}testr init"
   args:
     creates: "tempest/.testrepository"
+    chdir: tempest
   tags:
     - skip_ansible_lint
 
@@ -12,13 +13,15 @@
     - skip_ansible_lint
 
 - name: Run Tempest
-  shell: "tempest/venv ./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
+  shell: "{{ tempest_prefix }}./tools/run-tests.sh --parallel --concurrency={{ tempest_concurrency | default('4') }} {{ tempest_regex | default('') }} --skip-file ./skipfile"
+  args:
+    chdir: tempest
   ignore_errors: true
   tags:
     - skip_ansible_lint
 
 - name: Fetch Tempest results
   fetch:
-    src=/home/stack/tempest/tempest.xml
-    dest={{ lookup('env', 'PWD') }}/tempest.xml
+    src="{{ ansible_env.HOME }}/tempest/tempest.xml"
+    dest="{{ lookup('env', 'PWD') }}/tempest.xml"
     flat=yes
