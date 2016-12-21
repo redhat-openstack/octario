@@ -14,6 +14,13 @@ unittest:
         export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
+tempest:
+    rpm_deps: [ crudini ]
+    remove_rpm: []
+    run:
+      crudini --set ../tempest/etc/tempest.conf service_available sahara True
+      crudini --set ../tempest/etc/tempest.conf data_processing-feature-enabled plugins "hdp, cdh"
+
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
 
