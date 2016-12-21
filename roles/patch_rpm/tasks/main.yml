@@ -16,6 +16,13 @@
   tags:
     - skip_ansible_lint
 
+# Koji 1.11 will cause 'rdopkg patch' to fail
+# See the following bug: https://bugzilla.redhat.com/show_bug.cgi?id=1406383
+- name: Install Koji 1.10
+  yum:
+    name="http://mirror.centos.org/centos/7/extras/x86_64/Packages/koji-1.10.1-1.el7.centos.noarch.rpm"
+    state=present
+
 # Although pyrpkg pulled by rhpkg, we install it directly because at the moment, an older
 # version of pyrpkg is pulled (1.40) while we need a newer version (1.43)
 - name: Install packages required for patching
