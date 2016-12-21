@@ -2,3 +2,19 @@
   yum:
     name=openstack-tempest
     state=present
+  become: yes
+
+- name: Ensures ~/tempest dir exists
+  file:
+    path=tempest
+    state=directory
+
+# we cannot use tempest from its location because it writes some files there
+- name: configure-tempest-directory
+  shell: "/usr/share/openstack-tempest-kilo/tools/configure-tempest-directory"
+  args:
+    chdir: tempest
+    warn: no
+
+- set_fact:
+    tempest_prefix: ""
