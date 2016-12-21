@@ -12,11 +12,32 @@
 
 - include: "{{ tempest_install_type }}.yml"
 
+# If installed from RPM tempest folder does not exist
+- name: Create tempest directory
+  file:
+    path=tempest
+    state=directory
+    mode=0755
+
 - name: Deploy tempest configuration script
   template:
     src=setup_tempest.j2
     dest='tempest/setup_tempest.sh'
     mode=0755
+
+- debug: var=rc_file
+
+- debug: var=overcloud_rc_file
+
+- name: Ensures /home/stack/ dir exists
+  file:
+    path=/home/stack/
+    state=directory
+
+- name: Copy keystonerc into /home/stack/stackrc
+  file:
+    src="{{ inventory_dir }}/keystonerc"
+    dest=/home/stack/overcloudrc
 
 - name: Configure tempest
   shell: >
