@@ -1,7 +1,15 @@
 # Tempest
 # -------
 
-tempest_regex: sahara_tempest_plugin\.tests
+# this is probably for newer versions
+#tempest_regex: sahara_tempest_plugin\.tests
+
+# this should be fine for rhos7 and below
+#tempest_regex: tempest.*\.data_processing
+
+# keep the single quotes inside the string for the sake of bash command using it
+tempest_regex: "'(tempest.*\\.data_processing|sahara_tempest_plugin\\.tests)'"
+
 
 # Dist-git
 # --------
