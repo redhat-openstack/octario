@@ -34,6 +34,23 @@
       "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab14d0d_b38923cd",
+        "filename": "octario/lib/cli.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2016-12-21T18:42:43Z",
+      "side": 1,
+      "message": "maybe grab exception here and either trace or re-raise the original exception, otherwise it just eats the exception, and you only get backtrace to here with no leads for what failed.",
+      "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
