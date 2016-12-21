@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab14d0d_3a73a84f",
+        "filename": "ansible.cfg",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2016-12-21T09:19:07Z",
+      "side": 1,
+      "message": "I don\u0027t like this implementation that hardcodes the location, it will clearly break on py3. Still, don\u0027t mark it as a blocker unless you already know a way to avoid it.",
+      "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
