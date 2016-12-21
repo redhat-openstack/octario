@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1ab14d0d_4e8d967a",
+        "filename": "octario/lib/cli.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-12-21T20:08:07Z",
+      "side": 1,
+      "message": "Jon,\n\nI think the current behavior is correct, when I inject exception in the run() function then I get the full stack as the raise within Exception that has no arguments re-raises the last exception.\n\nHere is little test\n[1]\nCurrent way:\n$ octario -t pep8 /home/migi/Development/python-novaclient/\nINFO    Component: python-novaclient\nINFO    RHOS release: 5\nWARNING Inventory file does not exists: /home/migi/Development/OCTARIO_CLI/hosts\nWARNING Falling back to inventory: /home/migi/Development/OCTARIO_CLI/test/lib/python2.7/site-packages/octario/lib/../ansible/local_hosts\nINFO    Using ansible config from current dir: /home/migi/Development/OCTARIO_CLI/ansible.cfg\nTraceback (most recent call last):\n  File \"/home/migi/Development/OCTARIO_CLI/test/bin/octario\", line 11, in \u003cmodule\u003e\n    sys.exit(main())\n  File \"/home/migi/Development/OCTARIO_CLI/test/lib/python2.7/site-packages/octario/lib/cli.py\", line 106, in main\n    OctarioShell().main(args)\n  File \"/home/migi/Development/OCTARIO_CLI/test/lib/python2.7/site-packages/octario/lib/cli.py\", line 95, in main\n    ansible_playbook.run()\n  File \"/home/migi/Development/OCTARIO_CLI/test/lib/python2.7/site-packages/octario/lib/execute.py\", line 64, in run\n    raise ValueError(\u0027Test\u0027)\nValueError: Test\n\n\n\n\n[2] Modified to \"Exception, ex; raise ex\":\n$ octario -t pep8 /home/migi/Development/python-novaclient/\nINFO    Component: python-novaclient\nINFO    RHOS release: 5\nWARNING Inventory file does not exists: /home/migi/Development/OCTARIO_CLI/hosts\nWARNING Falling back to inventory: /home/migi/Development/OCTARIO_CLI/test/lib/python2.7/site-packages/octario/lib/../ansible/local_hosts\nINFO    Using ansible config from current dir: /home/migi/Development/OCTARIO_CLI/ansible.cfg\nTraceback (most recent call last):\n  File \"/home/migi/Development/OCTARIO_CLI/test/bin/octario\", line 11, in \u003cmodule\u003e\n    sys.exit(main())\n  File \"/home/migi/Development/OCTARIO_CLI/test/lib/python2.7/site-packages/octario/lib/cli.py\", line 112, in main\n    raise ex\nValueError: Test\n\n\n\nYou can see that what you are describing is second scenario, but currently implemented is first.",
+      "parentUuid": "1ab14d0d_b38923cd",
+      "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ab14d0d_8e65dee2",
         "filename": "setup.py",
         "patchSetId": 9
