@@ -12,6 +12,13 @@
 
 - include: "{{ tempest_install_type }}.yml"
 
+# If installed from RPM tempest folder does not exist
+- name: Create tempest directory
+  file:
+    path=tempest
+    state=directory
+    mode=0755
+
 - name: Deploy tempest configuration script
   template:
     src=setup_tempest.j2
