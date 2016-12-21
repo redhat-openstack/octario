@@ -24,6 +24,10 @@
     dest="tempest/venv"
     mode=0755
 
+- set_fact:
+     # keep a space after it
+     tempest_prefix: "tempest/venv "
+
 - name: Install needed pip packages for running tempest
   become: true
   become_method: sudo
@@ -34,3 +38,7 @@
   with_items:
     - 'junitxml'
     - 'unittest2'
+
+- name: Save tempest install path
+  set_fact:
+    tempest_install_path: "{{ ansible_env.HOME }}/tempest/"
