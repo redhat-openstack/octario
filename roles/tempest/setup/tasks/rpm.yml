@@ -2,3 +2,10 @@
   yum:
     name=openstack-tempest
     state=present
+  become: yes
+
+# we cannot use tempest from its location because it writes some files there
+- name: fetch tempest from install location
+  shell: "rsync -ah /usr/share/openstack-tempest-kilo/ {{ ansible_env.HOME }}/tempest/"
+  args:
+    warn: no
