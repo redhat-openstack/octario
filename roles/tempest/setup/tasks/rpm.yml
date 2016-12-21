@@ -2,3 +2,8 @@
   yum:
     name=openstack-tempest
     state=present
+  become: yes
+
+- name: Save tempest install path
+  set_fact:
+    tempest_install_path: /usr/share/openstack-tempest-kilo/

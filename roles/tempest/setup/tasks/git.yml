@@ -34,3 +34,7 @@
   with_items:
     - 'junitxml'
     - 'unittest2'
+
+- name: Save tempest install path
+  set_fact:
+    tempest_install_path: "{{ ansible_env.HOME }}/tempest/"
