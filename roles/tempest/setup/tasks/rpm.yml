@@ -2,3 +2,4 @@
   yum:
     name=openstack-tempest
     state=present
+  become: yes
