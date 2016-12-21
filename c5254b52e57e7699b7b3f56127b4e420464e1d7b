@@ -16,6 +16,24 @@
       "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab14d0d_7d792a2f",
+        "filename": "ansible.cfg",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2016-12-21T11:34:34Z",
+      "side": 1,
+      "message": "Sorin,\n\n100% agree on that, however octario was never tested in python3 and that should be separate review when we make appropriate changes when we move to python3.",
+      "parentUuid": "1ab14d0d_3a73a84f",
+      "revId": "c5254b52e57e7699b7b3f56127b4e420464e1d7b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
