@@ -35,7 +35,6 @@ rpm_deps: [
   python-mock,
   python-mox,
   python-mox3,
-  python-oslo-log,
   python-fixtures,
   python-subunit,
   python-oslo-sphinx,
