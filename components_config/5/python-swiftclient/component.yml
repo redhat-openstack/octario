@@ -1,0 +1,69 @@
+### This file is used by python-swiftclient component jobs
+
+pep8:
+    rpm_deps: [ pyflakes-0.7.3, python-pep8-1.4.5, python-flake8-2.0, python-hacking-0.8.0 ]
+    remove_rpm: [ python-swiftclient ]
+    run: >
+       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+unittest:
+    rpm_deps: [ ]
+    remove_rpm: [ python-swiftclient ]
+    run: >
+        if grep -q -i release.6 /etc/redhat-release; then
+            sudo yum install -y python-discover;
+            tox --sitepackages -v -e py26 2>&1 | tee ../logs/testrun.log;
+        else
+            tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+        fi
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  python-tox,
+  gcc,
+  git,
+  python-devel,
+  python-requests,
+  python-simplejson,
+  
+  python-coverage,
+  python-mock,
+  python-keystoneclient,
+  python-sphinx,
+  python-testrepository,
+  python-testtools,
+
+
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps used by all tester types
+swiftclient_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+      run: "{{ swiftclient_virt_run_config.run }}"
+    RedHat-6:
+      setup:
+        install: "{{rpm_deps}}"
+      run: "{{swiftclient_virt_run_config.run}}"
