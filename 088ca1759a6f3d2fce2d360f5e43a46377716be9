@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_786f9d2b",
+        "filename": "plugins/callbacks/debug.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-01-23T15:59:32Z",
+      "side": 1,
+      "message": "indentation?",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "088ca1759a6f3d2fce2d360f5e43a46377716be9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
