@@ -3,3 +3,6 @@
 /octario.egg-info
 /build
 /dist
+.DS_Store
+.idea
+*.retry

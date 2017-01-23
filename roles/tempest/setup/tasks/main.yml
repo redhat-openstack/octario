@@ -38,7 +38,7 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "+{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: tempest.whitelist
+  with_items: "{{ tempest.whitelist }}"
   when: tempest.whitelist is defined
 
 - name: create skip list - Blacklist
@@ -47,5 +47,5 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "-{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: tempest.blacklist
+  with_items: "{{ tempest.blacklist }}"
   when: tempest.blacklist is defined

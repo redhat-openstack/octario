@@ -1,0 +1,14 @@
+#!/usr/bin/env ansible-playbook -i localhost, -v
+---
+- name: sample playbook
+  hosts: localhost
+  gather_facts: no
+  vars:
+      ansible_connection: local
+      base_dir: "{{ base_dir }}"
+  tasks:
+
+    - name: "This is the sample task name"
+      shell: |
+         echo "1\n2\n3"
+         echo "error 1\nerror 2\nerror 3" >&2

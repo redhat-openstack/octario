@@ -120,5 +120,6 @@ def main(args=None):
         LOG.debug('Run time: %s [H]:[M]:[S].[ms]' %
                   str(finish_time - start_time))
 
+
 if __name__ == "__main__":
     main()
