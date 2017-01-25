@@ -45,4 +45,4 @@ tools/config_tempest.py --out etc/tempest.conf --network-id $public_net_id \
                           object-storage.operator_role swiftoperator \
                           orchestration.stack_owner_role heat_stack_owner \
                           compute.min_compute_nodes $min_compute_nodes \
-                          compute-feature-enabled.scheduler_available_filters $nova_sched_filters
+                          compute-feature-enabled.scheduler_available_filters "$nova_sched_filters"
