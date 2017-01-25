@@ -1,7 +1,6 @@
-# openstack-neutron needed to get neutron-db-manage which is used when running PEP8 tests
 pep8:
     rpm_deps: [ python-hacking ]
-    remove_rpm: [ python-neutron-lbaas, openstack-neutron ]
+    remove_rpm: [ python-neutron-lbaas ]
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
