@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_099840bf",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2017-01-26T17:32:17Z",
+      "side": 1,
+      "message": "There should be a script to do this copy inside /usr/share/openstack-tempest-kilo/tools/configure-tempest-directory, please use it.",
+      "revId": "36151fba672dda3c6314ec052a3ef01d83da51b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
