@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_2ad404bb",
+        "filename": "octario/lib/component.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-01-30T16:21:07Z",
+      "side": 1,
+      "message": "if s not in s?\n\nalso \u0027if s and \"tag:\" not in s and \"HEAD\" not in s\u0027 \u003d\u003d \u0027if s and \"tag:\" and \"HEAD\" not in s",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 61
+      },
+      "revId": "5936bfca812e915c777fb44333cb4314e30e8e23",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
