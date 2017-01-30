@@ -22,6 +22,30 @@
       "revId": "5936bfca812e915c777fb44333cb4314e30e8e23",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_ca9108f3",
+        "filename": "octario/lib/component.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-01-30T16:30:33Z",
+      "side": 1,
+      "message": "if s - (this is to get off empty lines)\n\nand\n\n\"tag:\" not in s - (we don\u0027t want to have tags mixed, just branch names)\n\nand\n\n\"HEAD\" not in s - (get of the HEAD)",
+      "parentUuid": "fabf19d9_2ad404bb",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 61
+      },
+      "revId": "5936bfca812e915c777fb44333cb4314e30e8e23",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
