@@ -178,7 +178,9 @@ class ComponentUtils(object):
         except TypeError:
             # Git repo is most likely in detached state
             # Fallback method of getting branch name, much slower
-            head_branch = g.log('--pretty=%d').splitlines()[0]
+            head_branch = os.linesep.join(
+                [s for s in g.log('--pretty=%d').splitlines()
+                 if s and "tag:" not in s and "HEAD" not in s])
             r_index = head_branch.rfind("/")
             branch_name = head_branch[r_index + 1:-1]
 
