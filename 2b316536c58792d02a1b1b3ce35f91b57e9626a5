@@ -94,6 +94,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_f005c179",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 26
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-06T11:59:39Z",
+      "side": 1,
+      "message": "While working on sahara I discovered that configuring tempest-rpm would work only if task runs as root (also if tempest runs as root), something I didn\u0027t want. Instead I copied tempest config folder to current user folder (chowned) and did the configuration there. This allowed me to run tempest using a normal user instead of root.",
+      "parentUuid": "fabf19d9_30745934",
+      "revId": "2b316536c58792d02a1b1b3ce35f91b57e9626a5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_f0a261ad",
         "filename": "roles/tempest/setup/tasks/rpm.yml",
         "patchSetId": 26
