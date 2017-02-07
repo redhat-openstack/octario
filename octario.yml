@@ -17,3 +17,11 @@ component:
 # tempest_skipfile (tempest skip file path)
 # tempes_venv (tempest virtual environment path)
 # rc_file (rc file path)
+
+
+# repo setup parameters
+repos:
+  - type: package
+    pkg_url: http://rhos-release.virt.bos.redhat.com/repos/rhos-release/rhos-release-latest.noarch.rpm
+    repo_cmd_after: |
+      "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }}"

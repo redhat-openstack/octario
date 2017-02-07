@@ -2,3 +2,4 @@ ansible==2.1
 jinja2>=2.7
 colorlog>=2.6.1
 gitpython>=2.0.8
+git+https://git.openstack.org/openstack/tripleo-quickstart-extras/#egg=tripleo-quickstart-extras
