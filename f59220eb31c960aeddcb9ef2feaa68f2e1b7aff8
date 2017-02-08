@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_b104dd49",
+        "filename": "components_config/9/sahara/component.yml",
+        "patchSetId": 34
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-08T12:42:44Z",
+      "side": 1,
+      "message": "I guess that at least 2 config options should be updated for 9 as was done for 7",
+      "revId": "f59220eb31c960aeddcb9ef2feaa68f2e1b7aff8",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
