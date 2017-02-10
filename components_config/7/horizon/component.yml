@@ -45,6 +45,12 @@ unittest:
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
+# Additional repository required to install testing dependencies
+enable_repos: [
+    rhelosp-7.0-unittest,
+    rhelosp-7.0-testdeps
+]
+
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
 #
 # (migi) python-virtualenv is also available in copr and it gets
@@ -53,7 +59,7 @@ rpm_deps: [
     git,
     python-django-horizon,
     openstack-dashboard,
-    python-django-nose,
+    python-django-nose-1.4.1,
     python-pbr-0.11.0,
     python-pep8-1.5.7,
     python-eventlet,
@@ -91,4 +97,5 @@ test_config:
       setup:
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
+        enable_repos: "{{enable_repos}}"
       run: "{{horizon_run_config.run}}"
