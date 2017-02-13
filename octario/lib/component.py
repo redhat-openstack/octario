@@ -26,6 +26,8 @@ from urlparse import urlparse
 
 LOG = logger.LOG
 
+GITREVIEW_FILENAME = ".gitreview"
+
 
 class RepoType(object):
     """Enumeration for the repository type."""
@@ -149,6 +151,34 @@ class ComponentUtils(object):
 
         return component_name
 
+    def __get_branch_from_gitreview(self, path):
+        """Gets branch from local .gitreview file.
+
+        Args:
+            path (:obj:`str`): Path to the git directory.
+
+        Returns:
+            str: branch name or None if branch name was not found
+        """
+
+        branch_name = None
+        gitreview_path = os.path.join(path, GITREVIEW_FILENAME)
+
+        try:
+            with open(gitreview_path, 'r') as f_op:
+                for line in f_op:
+                    if 'defaultbranch=' in line:
+                        default_branch = line.split("=", 1)[1]
+                        r_index = default_branch.rfind("/")
+                        branch_name = default_branch[r_index + 1:-1]
+        except IOError as ex:
+            # Log error in debug mode, but do nothing about this
+            # because this is fallback method for getting branch name
+            LOG.debug(ex)
+            LOG.debug('Failed to get branch from %s' % gitreview_path)
+
+        return branch_name
+
     def __get_branch_url_from_git(self, path):
         """Gets repo_url and branch from local git directory.
 
@@ -176,14 +206,20 @@ class ComponentUtils(object):
             LOG.error(git_ex)
             raise exceptions.NotValidGitRepoException(path)
         except TypeError:
-            # Git repo is most likely in detached state
-            # Fallback method of getting branch name, much slower
-            LOG.debug('HEAD detached, fallback method to get branch name')
-            head_branch = os.linesep.join(
-                [s for s in g.log('--pretty=%d').splitlines()
-                 if s and "tag:" not in s and "HEAD" not in s])
-            r_index = head_branch.rfind("/")
-            branch_name = head_branch[r_index + 1:-1]
+            # If not found directly from git, try to get the branch name
+            # from .gitreview file which should be pointing to the proper
+            # branch.
+            LOG.debug('Fallback method to get branch name from .gitreview')
+            branch_name = self.__get_branch_from_gitreview(path)
+            if not branch_name:
+                # Git repo is most likely in detached state
+                # Fallback method of getting branch name, much slower
+                LOG.debug('HEAD detached, fallback method to get branch name')
+                head_branch = os.linesep.join(
+                    [s for s in g.log('--pretty=%d').splitlines()
+                     if s and "tag:" not in s])
+                r_index = head_branch.rfind("/")
+                branch_name = head_branch[r_index + 1:-1]
 
         LOG.debug('Component repository: %s' % repo_url)
         LOG.debug('Component branch: %s' % branch_name)
