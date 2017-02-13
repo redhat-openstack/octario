@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_4f8edf2e",
+        "filename": "octario/lib/component.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-02-13T21:29:28Z",
+      "side": 1,
+      "message": "might we want to check if file even exists? \n\nos.path.exists() ??",
+      "range": {
+        "startLine": 167,
+        "startChar": 8,
+        "endLine": 167,
+        "endChar": 12
+      },
+      "revId": "5e0d8f9a8ad4ba014dc5bac8e0f7d6d563f0eb31",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_2f816bfb",
+        "filename": "octario/lib/component.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-02-13T21:29:28Z",
+      "side": 1,
+      "message": "Might have some whitespace mismatch from quick look at gerrit markup.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 16
+      },
+      "revId": "5e0d8f9a8ad4ba014dc5bac8e0f7d6d563f0eb31",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
