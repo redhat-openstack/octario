@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fabf19d9_3ddf623b",
+        "filename": "components_config/10/manila/component.yml",
+        "patchSetId": 26
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-14T17:52:55Z",
+      "side": 1,
+      "message": "Please do NOT hardcode the home directory path! This playbook may run under different username and the code should work.: use $HOME instead.",
+      "revId": "2b316536c58792d02a1b1b3ce35f91b57e9626a5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_10715544",
         "filename": "components_config/common/manila.yml",
         "patchSetId": 26
