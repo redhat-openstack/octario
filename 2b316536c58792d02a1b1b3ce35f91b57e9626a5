@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_40f589ea",
+        "filename": "components_config/10/manila/component.yml",
+        "patchSetId": 26
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-15T07:17:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_3ddf623b",
+      "revId": "2b316536c58792d02a1b1b3ce35f91b57e9626a5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_10715544",
         "filename": "components_config/common/manila.yml",
         "patchSetId": 26
@@ -154,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_c08ab963",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 26
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-15T07:17:27Z",
+      "side": 1,
+      "message": "+1 Since tempest_concurrency var is not used, I\u0027m removing this hardcoded value. Unless Arie will tell us that he has plans to use tempest_concurrency variable.",
+      "parentUuid": "fabf19d9_5d257659",
+      "revId": "2b316536c58792d02a1b1b3ce35f91b57e9626a5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_30745934",
         "filename": "roles/tempest/setup/tasks/main.yml",
         "patchSetId": 26
@@ -225,6 +261,24 @@
       "side": 1,
       "message": "David, not sure what you mean here because I didn\u0027t make previous comments on this review. Still, I do remember me making some changes in that area on my pending sahara tempest work:\n\nI remarked that previous code was hardcoded to use /home/stack user which is clearly wrong because this user may not exist. We are running ansible with the default user: cloud-user and that\u0027s where I install tempest.\n\nWe need to compare the tempest role changes with the ones from https://review.gerrithub.io/c/307001/ in order to avoid making divergent changes.",
       "parentUuid": "fabf19d9_3d43e214",
+      "revId": "2b316536c58792d02a1b1b3ce35f91b57e9626a5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_80ef211d",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 26
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-15T07:17:27Z",
+      "side": 1,
+      "message": "??. The path was always a relative one here.",
+      "parentUuid": "fabf19d9_fd1e8a0a",
       "revId": "2b316536c58792d02a1b1b3ce35f91b57e9626a5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
