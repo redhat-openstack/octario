@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_176d92cb",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 29
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-16T10:13:43Z",
+      "side": 1,
+      "message": "are you sure that this will work correctly when tempest_regex is not defined? I don\u0027t know how default(\u0027\u0027) is expanded. Looking at the line 24 I imagine that one of these two lines is broken (not sure which one)",
+      "revId": "316d0fbfeae9bf00d068a672e58cf5f959d2346a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
