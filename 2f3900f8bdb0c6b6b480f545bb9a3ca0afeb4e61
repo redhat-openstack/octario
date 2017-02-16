@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_d7295ae7",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-16T12:48:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_978f6274",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_77b3ae4d",
         "filename": "roles/tempest/setup/tasks/git.yml",
         "patchSetId": 30
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-16T10:07:07Z",
       "side": 1,
       "message": "space",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_178232c8",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-16T12:48:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_77b3ae4d",
       "range": {
         "startLine": 7,
         "startChar": 40,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_77716e0b",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-16T12:48:13Z",
+      "side": 1,
+      "message": "Good question. I have also asked my self that question. All I did is just copied your code from setup/git.yml.\n\nAs a matter if fact rpm path requires venv only to configure\ntempests in a proper way. I assume that you have added those packages to be able to filter the output of the testr and to save it xml-wise.\n\nI will move this code to roles/run/tasks/git.yml",
+      "parentUuid": "fabf19d9_d7b27a4b",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_d76b9ab5",
         "filename": "roles/tempest/setup/tasks/rpm.yml",
         "patchSetId": 30
@@ -82,6 +154,30 @@
       "writtenOn": "2017-02-16T10:07:07Z",
       "side": 1,
       "message": "space",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_57caea1b",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-16T12:48:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_d76b9ab5",
       "range": {
         "startLine": 25,
         "startChar": 40,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_d7defadb",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-16T12:48:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_b766e6ea",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_d7e03a2b",
         "filename": "roles/tempest/setup/tasks/rpm.yml",
         "patchSetId": 30
@@ -128,6 +248,24 @@
       "writtenOn": "2017-02-16T10:13:43Z",
       "side": 1,
       "message": "I think you can use * approach instead of the yum line which worries me as being likely to fail: https://review.gerrithub.io/c/307001/36/roles/tempest/setup/tasks/rpm.yml#13",
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_57bf8a60",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-16T12:48:13Z",
+      "side": 1,
+      "message": "right. I also like this approach from infrared tester. As a matter of fact we need to consider removing the part of setting up tempest and running tempest form octario, Octario is a component CI configuration project and as a such should contain only component specific configurations. But this should be defined as a different task.",
+      "parentUuid": "fabf19d9_d7e03a2b",
       "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
