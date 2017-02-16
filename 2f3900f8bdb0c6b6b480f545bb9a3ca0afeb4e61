@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_978f6274",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-02-16T10:07:07Z",
+      "side": 1,
+      "message": "how about having tempest/tasks/rpm.yml and tempest/tasks/git.yml\n\nso they will include the setup + running tasks instead of using \u0027when\u0027 in run.yml",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_77b3ae4d",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-02-16T10:07:07Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_d7b27a4b",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-02-16T10:07:07Z",
+      "side": 1,
+      "message": "why not RPMs? also, it\u0027s not something that is listed in tempest/requirements.txt?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 17
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_d76b9ab5",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-02-16T10:07:07Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 25,
+        "startChar": 40,
+        "endLine": 25,
+        "endChar": 41
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_b766e6ea",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-02-16T10:07:07Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 30,
+        "startChar": 19,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
