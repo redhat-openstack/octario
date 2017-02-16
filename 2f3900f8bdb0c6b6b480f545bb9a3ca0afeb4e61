@@ -114,6 +114,23 @@
       "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_d7e03a2b",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 30
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-16T10:13:43Z",
+      "side": 1,
+      "message": "I think you can use * approach instead of the yum line which worries me as being likely to fail: https://review.gerrithub.io/c/307001/36/roles/tempest/setup/tasks/rpm.yml#13",
+      "revId": "2f3900f8bdb0c6b6b480f545bb9a3ca0afeb4e61",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
