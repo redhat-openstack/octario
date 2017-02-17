@@ -1,0 +1,54 @@
+# This file is used by the jenkins job
+
+# pep8 tox target
+pep8:
+
+    rpm_deps: []
+
+    remove_rpm: []
+
+    run: >
+        bundle install 2>&1 | tee ../logs/testrun.log;
+        bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
+        bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
+
+
+# Additional repository required to install testing dependencies
+enable_repos: [
+    rhelosp-10.0-unittest
+]
+
+
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+rpm_deps: [
+    git,
+    rubygem-bundler
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# (N.B.) We truncate *requirements.txt to ensure we're only using installed
+#        non-test packages.
+puppet_tripleo_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.log;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{puppet_tripleo_run_config.run}}"
