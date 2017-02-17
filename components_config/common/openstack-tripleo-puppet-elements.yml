@@ -1,0 +1,2 @@
+component_dist_git_name: 'openstack-tripleo-puppet-elements'
+component_dist_git_url: 'git://pkgs.devel.redhat.com/rpms/openstack-tripleo-puppet-elements'
