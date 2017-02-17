@@ -1,0 +1,68 @@
+# This file is used by the jenkins job
+
+# pep8 tox target
+pep8:
+    rpm_deps: [
+        python-flake8,
+    ]
+    remove_rpm: []
+    run: >
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: [
+        python-hacking,
+        python-sphinx,
+        python-oslotest,
+        python-testrepository,
+    ]
+remove_rpm: [ openstack-tripleo-puppet-elements ]
+    run: >
+        tox --sitepackages -v -e py27 2>&1 |  tee ../logs/testrun.log;
+
+# Additional repository required to install testing dependencies
+enable_repos: [
+    rhelosp-10.0-unittest
+]
+
+
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+rpm_deps: [
+    git,
+    python-pbr,
+    python-tox-2.3.1,
+    python-pluggy-0.3.1,
+    python2-virtualenv-14.0.6,
+    python-setuptools-18.5,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# (N.B.) We truncate *requirements.txt to ensure we're only using installed
+#        non-test packages.
+openstack_tripleo_puppet_elements_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.log;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{openstack_tripleo_puppet_elements_run_config.run}}"
+
