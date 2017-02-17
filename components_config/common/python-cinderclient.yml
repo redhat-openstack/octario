@@ -1,3 +1,8 @@
+# Tempest
+# -------
+
+tempest_regex: tempest\.api\.volume\|tempest\.scenario\.*volume|tempest\.api\.compute
+
 # Dist-git
 # --------
 component_dist_git_name: 'python-cinderclient'
