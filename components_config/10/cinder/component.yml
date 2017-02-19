@@ -22,11 +22,7 @@ tempest:
    run: ""
    blacklist: [
       tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes.test_encrypted_cinder_volumes_cryptsetup,
-      tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes.test_encrypted_cinder_volumes_luks,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_backup_create_attached_volume,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV2Test.test_volume_backup_create_get_detailed_list_restore_delete,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_backup_create_attached_volume,
-      tempest.api.volume.test_volumes_backup.VolumesBackupsV1Test.test_volume_backup_create_get_detailed_list_restore_delete]
+      tempest.scenario.test_encrypted_cinder_volumes.TestEncryptedCinderVolumes.test_encrypted_cinder_volumes_luks]
 
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
