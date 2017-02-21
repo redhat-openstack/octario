@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_5c6678ed",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-21T20:40:44Z",
+      "side": 1,
+      "message": "Needed. Otherwise tempest will not be properly configured.",
+      "parentUuid": "fabf19d9_59f68a8f",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_b9336661",
         "filename": "roles/tempest/setup/tasks/main.yml",
         "patchSetId": 33
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-21T15:17:56Z",
       "side": 1,
       "message": "This doesn\u0027t make much sense to me: installing a virtualenv and after this installing python packages as root. This is clearly not good as I know that tempest can run as a non-root user. I guess that removing become* from here is needed.",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_1c5c8017",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-21T20:40:44Z",
+      "side": 1,
+      "message": "Good point. Removing. I have moved this code from the git.yml and paid no attention to this.",
+      "parentUuid": "fabf19d9_b9336661",
       "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_dca048f6",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-21T20:40:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_79426eaf",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_394876cb",
         "filename": "roles/tempest/setup/tasks/rpm.yml",
         "patchSetId": 33
@@ -64,6 +118,24 @@
       "writtenOn": "2017-02-21T15:17:56Z",
       "side": 1,
       "message": "hardcoded path, will break if two tasks are trying to run tempest on the same machine. I think that the correct way to do it via \"mktemp -d\" (or ansible interface).",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_9ca6500d",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-21T20:40:44Z",
+      "side": 1,
+      "message": "Good point. Thanks!",
+      "parentUuid": "fabf19d9_394876cb",
       "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
