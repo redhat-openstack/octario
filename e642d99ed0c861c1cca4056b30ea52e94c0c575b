@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_c3974738",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-21T12:22:46Z",
+      "side": 1,
+      "message": "make it from dest from repo ?",
+      "revId": "e642d99ed0c861c1cca4056b30ea52e94c0c575b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_a39a1360",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-21T12:22:46Z",
+      "side": 1,
+      "message": "Same comment as above",
+      "range": {
+        "startLine": 29,
+        "startChar": 32,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "e642d99ed0c861c1cca4056b30ea52e94c0c575b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_6393db5b",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-21T12:22:46Z",
+      "side": 1,
+      "message": "should this be a variable with default tempest?",
+      "revId": "e642d99ed0c861c1cca4056b30ea52e94c0c575b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_c38067f9",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-21T12:22:46Z",
+      "side": 1,
+      "message": "this as well is not variable and below you are making it variable, possibly the dest here should be tempest_prefix, but then order should be different.",
+      "revId": "e642d99ed0c861c1cca4056b30ea52e94c0c575b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_4375772f",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-21T12:22:46Z",
+      "side": 1,
+      "message": "If you make clone tempest repo variable this should be made variable and default will be taken form repo default",
+      "revId": "e642d99ed0c861c1cca4056b30ea52e94c0c575b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
