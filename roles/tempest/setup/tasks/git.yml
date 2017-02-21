@@ -1,8 +1,21 @@
+- name: Install needed RPMs for running tempest from git
+  become: true
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'gcc'
+    - 'libffi-devel'
+    - 'openssl-devel'
+    - 'python-unittest2'
+    - 'python-junitxml'
+
 - name: Clone Red Hat Tempest repo
   git:
     repo="https://github.com/redhat-openstack/tempest.git"
     version='HEAD'
-    dest="tempest"
+    dest="{{ tempest_cwd }}"
 
 - name: Install pip
   become: yes
@@ -17,20 +30,3 @@
 
 - name: Install tempest virtualenv
   shell: python tempest/tools/install_venv.py tempest
-
-- name: Deploy 'venv' script to run tempest related commands inside virtualenv
-  copy:
-    src="venv"
-    dest="tempest/venv"
-    mode=0755
-
-- name: Install needed pip packages for running tempest
-  become: true
-  become_method: sudo
-  pip:
-    name="{{ item }}"
-    state=present
-    virtualenv="{{ tempest_venv | default(overcloud_venv) }}"
-  with_items:
-    - 'junitxml'
-    - 'unittest2'
