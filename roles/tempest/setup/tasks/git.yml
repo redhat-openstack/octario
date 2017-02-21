@@ -1,3 +1,14 @@
+- name: Install needed RPMs for running tempest from git
+  become: true
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'gcc'
+    - 'libffi-devel'
+    - 'openssl-devel'
+
 - name: Clone Red Hat Tempest repo
   git:
     repo="https://github.com/redhat-openstack/tempest.git"
@@ -24,6 +35,10 @@
     dest="tempest/venv"
     mode=0755
 
+- set_fact:
+     # keep a space after it
+     tempest_prefix: "tempest/venv "
+
 - name: Install needed pip packages for running tempest
   become: true
   become_method: sudo
@@ -34,3 +49,7 @@
   with_items:
     - 'junitxml'
     - 'unittest2'
+
+- name: Save tempest install path
+  set_fact:
+    tempest_install_path: "{{ ansible_env.HOME }}/tempest/"

@@ -1,3 +1,3 @@
-overcloud_rc_file: '/home/stack/overcloudrc'
-overcloud_venv: '/home/stack/tempest/.venv'
-overcloud_skipfile: '/home/stack/tempest/skipfile'
+overcloud_rc_file: '{{ ansible_env.HOME }}/overcloudrc'
+overcloud_venv: '{{ ansible_env.HOME }}/tempest/.venv'
+overcloud_skipfile: '{{ ansible_env.HOME }}/tempest/skipfile'
