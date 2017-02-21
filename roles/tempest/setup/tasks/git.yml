@@ -1,8 +1,19 @@
+- name: Install needed RPMs for running tempest from git
+  become: true
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'gcc'
+    - 'libffi-devel'
+    - 'openssl-devel'
+
 - name: Clone Red Hat Tempest repo
   git:
     repo="https://github.com/redhat-openstack/tempest.git"
     version='HEAD'
-    dest="tempest"
+    dest="{{ tempest_cwd }}"
 
 - name: Install pip
   become: yes
@@ -23,6 +34,10 @@
     src="venv"
     dest="tempest/venv"
     mode=0755
+
+- set_fact:
+     # keep a space after it
+     tempest_prefix: "tempest/venv "
 
 - name: Install needed pip packages for running tempest
   become: true
