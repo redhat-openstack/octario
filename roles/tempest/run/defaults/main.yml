@@ -1,0 +1,9 @@
+tempest_cwd: '{{ ansible_env.HOME }}/tempest'
+overcloud_venv: '{{ tempest_cwd }}/.venv'
+tempest_venv_activate: |
+    {% if tempest_install_type == 'git' %}
+    if [[ -d '{{ overcloud_venv }}' ]]; then
+      source '{{ overcloud_venv}}/bin/activate'
+      pip install junitxml
+    fi
+    {% endif %}
