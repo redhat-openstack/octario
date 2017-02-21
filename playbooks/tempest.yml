@@ -1,0 +1,15 @@
+# Run Tempest tests and install it from git
+# -----------------------------------------
+- name: Run Octario - Tempest
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: tempest
+    # for rhos < 7 it will use 'git' and for others 'rpm'
+    tempest_install_type: "{% if component is defined and component.version|default(9)|int < 7 %}git{% else %}rpm{% endif %}"
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: tempest/setup }
+    - { role: tempest/run }
