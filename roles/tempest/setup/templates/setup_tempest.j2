@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source {{ rc_file | default('/home/stack/stackrc') }}
+source {{ rc_file | default('{{ ansible_env.HOME }}/stackrc') }}
 
 # Get default floating IP pool name
 controller=`nova list | grep controller | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -n1`
