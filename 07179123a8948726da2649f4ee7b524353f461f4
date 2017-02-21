@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_36a766a8",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 38
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2017-02-21T09:34:19Z",
+      "side": 1,
+      "message": "gcc, libffi-devel and openssl-devel are only needed in the git method, not RPM",
+      "revId": "07179123a8948726da2649f4ee7b524353f461f4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
