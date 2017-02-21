@@ -1,3 +1,7 @@
-overcloud_rc_file: '/home/stack/overcloudrc'
-overcloud_venv: '/home/stack/tempest/.venv'
-overcloud_skipfile: '/home/stack/tempest/skipfile'
+rhos_default_version: 9
+tempest_cwd: '{{ ansible_env.HOME }}/tempest'
+overcloud_rc_file: '{{ ansible_env.HOME }}/overcloudrc'
+overcloud_venv: '{{ tempest_cwd }}/.venv'
+overcloud_skipfile: '{{ tempest_cwd }}/skipfile'
+tempest_venv_activate: "{% if tempest_install_type == 'git' %}[[ -d '{{ overcloud_venv }}' ]] && source '{{ overcloud_venv}}/bin/activate'{% endif %}"
+tempest_skipfile: "{{ tempest_cwd }}/skipfile"

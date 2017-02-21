@@ -9,7 +9,14 @@
      - python-subunit
      - python-os-testr
      - openstack-tempest
-     - openstack-tempest-all
+
+# this task is needed only for rhos_version==10
+- name: Install optional Tempest dependencies
+  vars:
+     component_version: "{{ component.version | default(rhos_default_version) }}"
+  become: true
+  yum: state=present name=openstack-tempest-all
+  when: "component_version == 10"
 
 - name: Install dependencies for filtering and collecting logs
   become: true
@@ -51,4 +58,3 @@
       chdir: "~/tempest"
       creates: "~/tempest/LICENSE"
   when: configure_tempest_dir.rc == 0
-
