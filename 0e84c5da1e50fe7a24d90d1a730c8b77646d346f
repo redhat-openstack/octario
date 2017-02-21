@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_59f68a8f",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-21T15:17:56Z",
+      "side": 1,
+      "message": "I don\u0027t know if we really need a virtualenv to run tempest when is installed from rpm. I successfully used tempest (rpm) without a virtualenv on sahara.\n\nAlso remove \"become\" from this en previous task, tempest should run as a normal user.",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_b9336661",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-21T15:17:56Z",
+      "side": 1,
+      "message": "This doesn\u0027t make much sense to me: installing a virtualenv and after this installing python packages as root. This is clearly not good as I know that tempest can run as a non-root user. I guess that removing become* from here is needed.",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_79426eaf",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-21T15:17:56Z",
+      "side": 1,
+      "message": "become_method is not needed in newer ansible, simple become: true is enough, and more portable.",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_394876cb",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-21T15:17:56Z",
+      "side": 1,
+      "message": "hardcoded path, will break if two tasks are trying to run tempest on the same machine. I think that the correct way to do it via \"mktemp -d\" (or ansible interface).",
+      "revId": "0e84c5da1e50fe7a24d90d1a730c8b77646d346f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
