@@ -1,5 +1,64 @@
+- name: Install needed RPMs for running tempest from git
+  become: true
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'gcc'
+    - 'git'
+    - 'libffi-devel'
+    - 'openssl-devel'
+    - 'python-unittest2'
+    - 'python-junitxml'
+
 - name: Clone Red Hat Tempest repo
   git:
     repo="https://github.com/redhat-openstack/tempest.git"
-    version="{{ rhos_upstream_map[component.version].release }}"
-    dest="tempest"
+    version='HEAD'
+    dest="{{ tempest_cwd }}"
+
+- name: Install pip
+  become: yes
+  easy_install:
+      name: pip
+      state: latest
+
+- name: Install virtualenv
+  become: yes
+  become_method: sudo
+  yum:
+    name=python-virtualenv
+    state=present
+
+- name: Create venv with latest pip, setuptools and pbr
+  pip:
+      virtualenv: "{{ tempest_cwd }}/.venv"
+      virtualenv_site_packages: yes
+      name: "{{ item }}"
+      state: latest
+  with_items:
+      - pip
+      - setuptools
+      - pbr
+
+- name: Quickly workaround recent requests bug in 2.12
+  pip:
+      name: "requests"
+      version: "2.11.1"
+      virtualenv: "{{ tempest_cwd }}/.venv"
+
+- name: Get repo requirements
+  pip:
+      virtualenv: "{{ tempest_cwd }}/.venv"
+      chdir: "{{ tempest_cwd }}"
+      requirements: "{{ item }}"
+  with_items:
+      - requirements.txt
+      - test-requirements.txt
+- name: Install Tempest package
+  pip:
+      chdir: "{{ tempest_cwd }}"
+      virtualenv: "{{ tempest_cwd }}/.venv"
+      name: "."
+      editable: true
