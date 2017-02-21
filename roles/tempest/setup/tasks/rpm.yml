@@ -7,9 +7,22 @@
      - python-testscenarios
      - python-jsonschema
      - python-subunit
-     - python-os-testr
      - openstack-tempest
-     - openstack-tempest-all
+
+- debug:
+    msg: "{{ component_version }} : {{ rhos_default_version }}"
+
+# cannot be installed on rhos < 8 due to conflict
+- name: Install optional Tempest dependencies (python-os-testr)
+  become: true
+  yum: state=present name=python-os-testr
+  when: "component_version >= 8"
+
+# this task is needed only for rhos_version==10
+- name: Install optional Tempest dependencies (openstack-tempest-all)
+  become: true
+  yum: state=present name=openstack-tempest-all
+  when: "component_version == 10"
 
 - name: Install dependencies for filtering and collecting logs
   become: true
@@ -18,27 +31,10 @@
      - subunit-filters
      - python-junitxml
 
-- name: Create tmp dir
-  shell: mktemp -d
-  register: random_tmp_dir
-
-- name: Clone Red Hat Tempest repo
-  git:
-    repo="https://github.com/redhat-openstack/tempest.git"
-    version="{{ rhos_upstream_map[component.version].release }}"
-    dest="{{ random_tmp_dir.stdout_lines[0] }}"
-
 - name: Create ~/tempest directory if not exists
   file:
-    path=tempest
+    path="{{ tempest_cwd }}"
     state=directory
-
-- name: Copy files required to setup virtual env to run the tempest configuration
-  copy: remote_src=True src={{ random_tmp_dir.stdout_lines[0] }}/{{ item }}  dest=tempest
-  with_items:
-    - test-requirements.txt
-    - requirements.txt
-
 
 - name: Locate the script which configures the tempest directory
   shell: ls -d /usr/share/openstack-tempest-*/tools/configure-tempest-directory
@@ -51,4 +47,3 @@
       chdir: "~/tempest"
       creates: "~/tempest/LICENSE"
   when: configure_tempest_dir.rc == 0
-
