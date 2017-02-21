@@ -4,10 +4,9 @@
     name="{{ item }}"
     state=present
   with_items:
-    - 'gcc'
-    - 'libffi-devel'
-    - 'openssl-devel'
     - 'subunit-filters'
+    - 'python-junitxml'
+    - 'python-neutronclient'
 
 - name: Install per-component tempest test dependencies RPMs needed
   become: yes
@@ -17,53 +16,40 @@
 
 - include: "{{ tempest_install_type }}.yml"
 
-- name: Deploy tempest configuration script
-  template:
-    src=setup_tempest.j2
-    dest='tempest/setup_tempest.sh'
-    mode=0755
-
-
-- name: Install pip
-  become: yes
-  command: "easy_install pip"
-
-- name: Install virtualenv
-  become: yes
-  yum:
-    name=python-virtualenv
-    state=present
-
-- name: Install tempest virtualenv
-  shell: python tempest/tools/install_venv.py tempest
-
-- name: Deploy 'venv' script to run tempest related commands inside virtualenv
+- name: Copy keystonerc into overcloud_rc_file
   copy:
-    src="venv"
-    dest="tempest/venv"
-    mode=0755
+    src="{{ inventory_dir }}/keystonerc"
+    dest="{{ overcloud_rc_file }}"
+    mode=0644
+  become: true
 
-- name: Install needed pip packages for running tempest
-  pip:
-    name="{{ item }}"
-    state=present
-    virtualenv="{{ tempest_venv | default(overcloud_venv) }}"
-  with_items:
-    - 'junitxml'
-    - 'unittest2'
+- name: run tempest configuration tool
+  shell: |
+      source {{ overcloud_rc_file }}
 
-- name: Configure tempest
-  shell: >
-    source {{ rc_file | default(overcloud_rc_file) }};
-    tempest/venv ./setup_tempest.sh
+      public_net_id=$(neutron net-show ${pool_name:-public} -f value -c id)
+
+      neutron subnet-create \
+        --name ext-subnet \
+        --allocation-pool start=192.0.2.50,end=192.0.2.180 \
+        --disable-dhcp --gateway 192.0.2.1 ${pool_name:-public} 192.0.2.0/24
+
+      {{ tempest_venv_activate }}
+      ./tools/config_tempest.py --out etc/tempest.conf --network-id ${public_net_id} \
+                              --debug --create identity.uri $OS_AUTH_URL \
+                                identity.admin_password $OS_PASSWORD \
+                                object-storage.operator_role {% if component_version|int < 7 %}SwiftOperator{% else %}swiftoperator{% endif%} \
+                                orchestration.stack_owner_role heat_stack_owner \
+                                compute.min_compute_nodes ${min_compute_nodes:-0} \
+                                compute-feature-enabled.scheduler_available_filters ${nova_sched_filters:-RetryFilter,AvailabilityZoneFilter,RamFilter,ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,CoreFilter}
   args:
-    creates: "~/tempest/etc/tempest.conf"
-
+      chdir: "{{ tempest_cwd }}"
+      creates: "{{ tempest_cwd }}/etc/tempest.conf"
 
 # If no skipfile is present, tempest will fail to run
 - name: Create empty skip file
   file:
-    path='tempest/skipfile'
+    path="{{ tempest_skipfile | default(overcloud_skipfile) }}"
     state=touch
     mode=0555
 
@@ -73,8 +59,7 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "+{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: tempest.whitelist
-  when: tempest.whitelist is defined
+  with_items: "{{ tempest.whitelist | default([]) }}"
 
 - name: create skip list - Blacklist
   lineinfile:
@@ -82,5 +67,4 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "-{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: tempest.blacklist
-  when: tempest.blacklist is defined
+  with_items: "{{ tempest.blacklist | default([]) }}"
