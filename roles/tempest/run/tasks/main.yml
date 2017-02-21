@@ -1,21 +1,37 @@
 - name: Run testr init
-  shell: "tempest/venv testr init"
+  shell: |
+    {{ tempest_venv_activate }}
+    testr init
   args:
-    creates: "tempest/.testrepository"
+    creates: "{{ tempest_cwd }}/.testrepository"
+    chdir: "{{ tempest_cwd }}"
   tags:
     - skip_ansible_lint
 
 - name: Run component specific commands
-  shell: "{{ component_config.run.replace('\n', '') }}"
+  shell: "{{ component_config.run }}"
+  args:
+    chdir: "{{ component.name }}"
   changed_when: true
   tags:
     - skip_ansible_lint
 
-- include: "{{ tempest_install_type }}.yml"
+- name: Run Tempest
+  shell: |
+    set -eo pipefail
+    {{ tempest_venv_activate }}
+    set -u
+    ./tools/run-tests.sh --parallel {{ tempest_regex | default('') }} --skip-file ./skipfile | tee tempest.log | tail -n200
+  # set -u should be after activate to avoid https://github.com/pypa/virtualenv/issues/150
+  args:
+    chdir: "{{ tempest_cwd }}"
+  ignore_errors: true
+  tags:
+    - skip_ansible_lint
 
 - name: Fetch Tempest results
   fetch:
-    src=/home/stack/tempest/tempest.xml
+    src="{{ tempest_cwd }}/{{ item }}"
     dest="{{ lookup('env', 'PWD') }}/{{ item }}"
     flat=yes
   with_items:
