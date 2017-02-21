@@ -16,6 +16,42 @@
       "revId": "36151fba672dda3c6314ec052a3ef01d83da51b1",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_76c83e55",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-21T09:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_099840bf",
+      "revId": "36151fba672dda3c6314ec052a3ef01d83da51b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_96cd1268",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 23
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-02-21T09:36:29Z",
+      "side": 1,
+      "message": "Done, rsync doesn\u0027t exist anymore.",
+      "parentUuid": "fabf19d9_099840bf",
+      "revId": "36151fba672dda3c6314ec052a3ef01d83da51b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
