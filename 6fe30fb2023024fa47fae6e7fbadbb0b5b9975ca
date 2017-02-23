@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_0478978e",
+        "filename": "roles/tempest/run/tasks/git.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "wasn\u0027t this already in main role?",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_24739bb6",
+        "filename": "roles/tempest/run/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "to which number it defaults?",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_843dc7bd",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "Something default to?",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_244cbb75",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "Is easy_install installed somewhere before?",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_2425dbad",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "Please split this into 2 tasks:\nInstall test dependencies required to run Tempest and collect logs \nInstall tempest from RPM",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_e41ec35e",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "Use module:\nhttps://docs.ansible.com/ansible/tempfile_module.html",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_c423bfa6",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "Whitespace",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_a439ebda",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "Maybe make default to HEAD or master",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_8436e7e5",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "Use ansible stat module to ensure if directory exists or modify name of this task to:\n\"Create ~/tempest directory if not exists\"",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_6433d3f7",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-23T23:00:44Z",
+      "side": 1,
+      "message": "I won\u0027t complain here about using shell, but change the name to reflect what it does.\n\nI think it\u0027s \"Locating\" configuration script rather then getting.",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
