@@ -1,0 +1,7 @@
+Code-Review+2: Michal Pryc <mpryc@redhat.com>
+Verified+1: David Sariel <dsariel@redhat.com>
+Submitted-by: David Sariel <dsariel@redhat.com>
+Submitted-at: Thu, 23 Feb 2017 18:35:42 -0500
+Reviewed-on: https://review.gerrithub.io/306662
+Project: redhat-openstack/octario
+Branch: refs/heads/master
