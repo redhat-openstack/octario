@@ -1,0 +1,67 @@
+---
+# This file is used by the jenkins job
+#
+# Repos to enable for compontent test
+#
+enable_repos: [
+  rhelosp-8.0-unittest,
+]
+#
+# The project run config.
+#
+openstack_tripleo_heat_templates_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+#
+# The pep8 target
+# We also run bundler because the puppet items were in this package for
+# RHOS9 and below. In RHOS10+ they are in puppet-tripleo.
+#
+pep8:
+  remove_rpm: []
+  rpm_deps: [
+    gcc,
+    gcc-c++,
+    ruby-devel,
+    rubygem-bundler,
+    zlib-devel,
+  ]
+  run: >
+    tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+    bundle install 2>&1 | tee ../logs/testrun.log;
+    PATH=~/bin:$PATH;
+    bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
+    sed -i -e "\$aPuppetSyntax.fail_on_deprecation_notices = false" Rakefile;
+    bundle exec rake syntax 2>&1 | tee -a ../logs/testrun.log;
+#
+# The rpms that shouldn't be installed when running tests
+#
+remove_rpm: [
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+#
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+#
+rpm_deps: [
+  git,
+  python-tox-2.3.1,
+  python-pluggy-0.3.1,
+  python2-virtualenv-14.0.6,
+  python-setuptools-18.5,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+#
+# Main test configuration section
+#
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{openstack_tripleo_heat_templates_run_config.run}}"
