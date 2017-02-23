@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_445e8f13",
+        "filename": "roles/tempest/run/tasks/git.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_0478978e",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_24739bb6",
         "filename": "roles/tempest/run/tasks/rpm.yml",
         "patchSetId": 40
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-23T23:00:44Z",
       "side": 1,
       "message": "to which number it defaults?",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_249a7bc6",
+        "filename": "roles/tempest/run/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_24739bb6",
       "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_c4a85fde",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "Just letting him to fail of no component.version is specified. This way one can be rest assured that tempest \nis taked from the right branch. With default version number \nthe brach that is checked out might be silently wrong.",
+      "parentUuid": "fabf19d9_843dc7bd",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_244cbb75",
         "filename": "roles/tempest/setup/tasks/main.yml",
         "patchSetId": 40
@@ -64,6 +118,24 @@
       "writtenOn": "2017-02-23T23:00:44Z",
       "side": 1,
       "message": "Is easy_install installed somewhere before?",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_64b8732b",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "no. this is the first and only place in octario,",
+      "parentUuid": "fabf19d9_244cbb75",
       "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_04865765",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_2425dbad",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_e41ec35e",
         "filename": "roles/tempest/setup/tasks/rpm.yml",
         "patchSetId": 40
@@ -98,6 +188,24 @@
       "writtenOn": "2017-02-23T23:00:44Z",
       "side": 1,
       "message": "Use module:\nhttps://docs.ansible.com/ansible/tempfile_module.html",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_24815b4e",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "is not working with the version of ansible we are currently use.",
+      "parentUuid": "fabf19d9_e41ec35e",
       "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_c4f61ff9",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "I prefer to fall on error rather then to silently switch to the \"wrong\" branch.",
+      "parentUuid": "fabf19d9_a439ebda",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_8436e7e5",
         "filename": "roles/tempest/setup/tasks/rpm.yml",
         "patchSetId": 40
@@ -149,6 +275,24 @@
       "writtenOn": "2017-02-23T23:00:44Z",
       "side": 1,
       "message": "Use ansible stat module to ensure if directory exists or modify name of this task to:\n\"Create ~/tempest directory if not exists\"",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_a4dc4b75",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_8436e7e5",
       "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
