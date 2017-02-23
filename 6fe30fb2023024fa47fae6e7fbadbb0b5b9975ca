@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_043bf79d",
+        "filename": "roles/tempest/run/tasks/git.yml",
+        "patchSetId": 40
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-23T23:35:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabf19d9_0478978e",
+      "revId": "6fe30fb2023024fa47fae6e7fbadbb0b5b9975ca",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_24739bb6",
         "filename": "roles/tempest/run/tasks/rpm.yml",
         "patchSetId": 40
