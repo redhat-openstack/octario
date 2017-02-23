@@ -1,0 +1,58 @@
+---
+# This file is used by the jenkins job
+#
+# Repos to enable for compontent test
+#
+enable_repos: [
+  rhelosp-10.0-unittest,
+]
+#
+# The pep8 target
+# For puppet-tripleo we use bundler and rake to do lint/syntax
+#
+pep8:
+  remove_rpm: []
+  rpm_deps: [
+    git,
+    gcc,
+    gcc-c++,
+    ruby-devel,
+    rubygem-bundler,
+    zlib-devel,
+  ]
+  run: >
+    bundle install 2>&1 | tee ../logs/testrun.log;
+    PATH=~/bin:$PATH;
+    bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
+    bundle exec rake syntax 2>&1 | tee -a ../logs/testrun.log;
+#
+# The project run config.
+#
+puppet_tripleo_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+#
+# The rpms that shouldn't be installed when running tests
+#
+remove_rpm: [
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+#
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+#
+rpm_deps: [
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+#
+# Main test configuration section
+#
+test_config:
+  virt:
+    RedHat-7:
+      run: "{{puppet_tripleo_run_config.run}}"
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"

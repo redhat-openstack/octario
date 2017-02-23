@@ -1,0 +1,100 @@
+# This file is used by the jenkins job
+
+# Dependencies with explicit versions are provided by the copr repository.
+
+# (migi) to keep track of exact packages from outside of rhelosp repo
+#        all deps from copr are listed, even if those were dependency
+#        requirements from other packages being installed
+#        python-pbr and python-virtualenv is also available in the rhelosp
+#        repository, however newer version is in the copr
+pep8:
+
+    rpm_deps: [
+      babel,
+      python-babel,
+      python2-django-babel-0.4.0,
+      python-hacking
+    ]
+
+    remove_rpm: []
+
+    run:
+        export PBR_VERSION="12.0.0";
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+# (migi) python-django-horizon is installed and then removed to satisfy all
+#        runtime dependencies for the horizon component.
+#
+unittest:
+
+    rpm_deps: [
+      python-django-horizon,
+      openstack-dashboard,
+      python-django-nose-1.4.1,
+      python-mox3-0.18.0,
+      python-mock,
+      python-selenium-2.53.2,
+      python-nose-exclude-0.1.9,
+      python-testrepository
+    ]
+
+    remove_rpm: [
+      python-django-horizon,
+      openstack-dashboard
+    ]
+
+    run:
+        export PBR_VERSION="12.0.0";
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+
+# Additional repository required to install testing dependencies
+enable_repos: [
+    rhelosp-10.0-unittest
+]
+
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+#
+# (migi) python-virtualenv is also available in copr and it gets
+#        installed from copr as dependency for python-tox.
+rpm_deps: [
+    git,
+    python-pbr,
+    python-pep8,
+    python-eventlet,
+    python-pluggy-0.3.1,
+    python-tox-2.3.1,
+    python-setuptools-18.5,
+    python2-virtualenv-14.0.6,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# (N.B.) We truncate *requirements.txt to ensure we're only using installed
+#        non-test packages.
+horizon_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.log;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+        enable_repos: "{{enable_repos}}"
+      run: "{{horizon_run_config.run}}"

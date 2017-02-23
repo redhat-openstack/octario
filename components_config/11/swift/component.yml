@@ -1,0 +1,96 @@
+# 'ln -s hack' is required to use the free (non patent guarded) version of  erasurecodes
+unittest:
+  rpm_deps: []
+  run: >
+      sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
+      sudo ln -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
+      tox --sitepackages -v -epy27 -- --xunit-file=test_nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
+
+pep8:
+  rpm_deps: [ pyflakes, python-pep8, python-flake8, python-hacking ]
+  run: >
+      tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+tempest:
+   rpm_deps: [ python-swift-tests ]
+   remove_rpm: []
+   run: ""
+   blacklist: []
+
+# Note: The order of packages is important
+rpm_deps_common: [
+  git,
+  python-tox,
+  gcc,
+  python-devel,
+  python-pip,
+  python-pbr,
+  python-dns,
+  python-eventlet,
+  python-greenlet,
+  python-netifaces,
+  python-paste-deploy,
+  python-simplejson,
+  python-six,
+  libffi-devel,
+  pyxattr,
+  python-pyeclib,
+  python-cryptography,
+  openstack-swift-account,
+  openstack-swift-container,
+  openstack-swift-object,
+  openstack-swift-proxy
+]
+
+# Note: we need python-nose-1.3.7 to be installed because test_PUT_send_exception_with_unicode_path
+# fails on issue described at https://github.com/nose-devs/nose/issues/680
+rpm_deps_tests_req: [
+  python-coverage,
+  python-nose-1.3.7,
+  python-oslo-sphinx,
+  python-sphinx,
+  python-mock,
+  python-swiftclient,
+  python-keystoneclient
+]
+
+rpm_deps_7: [
+  "{{rpm_deps_tests_req}}",
+  "{{rpm_deps_common}}",
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+rpm_remove: [
+  openstack-swift-account,
+  openstack-swift-container,
+  openstack-swift-object,
+  openstack-swift-proxy
+]
+
+# NSS_HASH_ALG_SUPPORT and OPENSSL_ENABLE_MD5_VERIFY are required by erasurecodes
+# NOSE_WITH_XUNIT set to provide test results in the standard XUnit XML format
+virt_run_config:
+  run: >
+    set -o pipefail;
+    sudo rm -Rf .tox;
+    export NSS_HASH_ALG_SUPPORT=+MD5;
+    export OPENSSL_ENABLE_MD5_VERIFY=1;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+    rpm -qa > ../logs/installed-rpms.log;
+    export NOSE_WITH_XUNIT=1;
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - test_nosetests.xml
+
+### actual test_config: starts here: used by khaleesi ###
+### NOTE: test_config.virt must be defined ###
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{rpm_deps_7}}"
+        remove: "{{rpm_remove}}"
+      run: "{{virt_run_config.run}}"
+      archive: "{{virt_run_config.archive}}"

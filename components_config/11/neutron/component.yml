@@ -1,0 +1,160 @@
+### This file is used by neutron component jobs
+
+# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+pep8:
+    rpm_deps: [ python-neutron, pylint, python-neutron-tests, openstack-tempest ]
+    remove_rpm: [ ]
+    run: >
+      sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
+      tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: [ python-neutron, python-cliff, python-requests-mock, python-webtest, python-mock,
+                python-oslotest, python-testresources, python-pep8, python-designateclient,
+                python-flake8, openstack-neutron-openvswitch ]
+    remove_rpm: [ python-neutron ]
+    run: >
+      sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
+      sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
+      tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+# FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
+# functional has is own requirements file, which is truncated to use RPMs instead of pip.
+dsvm-functional:
+    rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-testresources,
+                python-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
+                mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
+                psmisc ]
+    remove_rpm: []
+    run: >
+        sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182321-python-waitress/python-waitress-0.8.9-4.el7.centos.noarch.rpm;
+        sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182329-python-beautifulsoup4/python-beautifulsoup4-4.3.2-1.el7.centos.noarch.rpm;
+        sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00153998-python-webtest/python-webtest-2.0.19-2.el7.centos.noarch.rpm;
+        sudo setenforce 0;
+        sudo modprobe bridge;
+        sudo modprobe br_netfilter;
+        sudo chmod -R 777 /etc/neutron;
+        sudo chmod 777 /opt;
+        sudo systemctl start openvswitch;
+        sed -i s@OS_FAIL_ON_MISSING_DEPS=1@OS_FAIL_ON_MISSING_DEPS=0@ tox.ini;
+        truncate --size 0 neutron/tests/functional/requirements.txt;
+        sudo systemctl start mysqld;
+        sudo mysqladmin -u root password secretmysql;
+        sudo sed -i '/\[mysqld\]/a bind-address=0.0.0.0' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a sql_mode=STRICT_ALL_TABLES' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a default-storage-engine=InnoDB' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a max_connections=1024' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_type=OFF' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_size=0' /etc/my.cnf;
+        sudo systemctl restart mysqld;
+        mysql -u root --password=secretmysql -e "CREATE USER 'openstack_citest' IDENTIFIED BY 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest'@'localhost';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
+        mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
+        tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
+
+dsvm-fullstack:
+    rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-testresources,
+                python-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
+                mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
+                psmisc, rabbitmq-server ]
+    remove_rpm: []
+    run: >
+        sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182321-python-waitress/python-waitress-0.8.9-4.el7.centos.noarch.rpm;
+        sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182329-python-beautifulsoup4/python-beautifulsoup4-4.3.2-1.el7.centos.noarch.rpm;
+        sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00153998-python-webtest/python-webtest-2.0.19-2.el7.centos.noarch.rpm;
+        CHAIN_NAME="openstack-INPUT";
+        sudo iptables -n --list $CHAIN_NAME 1> /dev/null 2>&1 || CHAIN_NAME="INPUT";
+        sudo iptables -I $CHAIN_NAME -s 240.0.0.0/8 -p tcp -m tcp -d 240.0.0.0/8 --dport 5672 -j ACCEPT;
+        sudo systemctl start rabbitmq-server;
+        sudo setenforce 0;
+        sudo modprobe bridge;
+        sudo modprobe br_netfilter;
+        sudo chmod -R 777 /etc/neutron;
+        sudo chmod -R 777 /usr/share/neutron/neutron-dist.conf;
+        sudo systemctl start openvswitch;
+        sudo chmod 777 /opt;
+        truncate --size 0 neutron/tests/functional/requirements.txt;
+        sudo systemctl start mysqld;
+        sudo mysqladmin -u root password secretmysql;
+        sudo sed -i '/\[mysqld\]/a bind-address=0.0.0.0' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a sql_mode=STRICT_ALL_TABLES' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a default-storage-engine=InnoDB' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a max_connections=1024' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_type=OFF' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_size=0' /etc/my.cnf;
+        sudo systemctl restart mysqld;
+        mysql -u root --password=secretmysql -e "CREATE USER 'openstack_citest' IDENTIFIED BY 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest'@'localhost';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
+        mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
+        tox --sitepackages -v -e dsvm-fullstack 2>&1 | tee ../logs/testrun.log
+
+# Current installer doesn't configure qos, so we configure it here.
+# We use neutron-sanity-check before running API tests.
+api:
+    rpm_deps: []
+    remove_rpm: []
+    run: >
+        sudo sed -i "/^extension/s/$/,qos/" /etc/neutron/plugin.ini;
+        sudo sed -i "/^service_plugins/s/$/,qos/" /etc/neutron/neutron.conf;
+        sudo sed -i "/^extension/s/$/,qos/" /etc/neutron/plugins/ml2/ml2_conf.ini;
+        sudo systemctl restart neutron-server;
+        sanity_parameters=$(grep neutron.conf /usr/lib/systemd/system/neutron-server.service | sed 's/.*bin\/neutron-server//');
+        sudo neutron-sanity-check --nodnsmasq_version $sanity_parameters && tox --sitepackages -v -e api 2>&1 | tee ../logs/testrun.log;
+
+# Router scheduling skipped due to https://bugzilla.redhat.com/show_bug.cgi?id=1348402
+# Test shelve is not a network test, but picked up by the network tests regex
+tempest:
+   rpm_deps: [ python-neutron-tests ]
+   remove_rpm: []
+   run: >
+     if ! grep -q -i dvr /home/stack/deploy_overcloud.sh; then
+         sed -i -E s/,dvr,\?//g /home/stack/tempest/etc/tempest.conf;
+     fi
+   blacklist: [tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_router_rescheduling,
+               tempest.scenario.test_shelve_instance.TestShelveInstance.test_shelve_volume_backed_instance]
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  gcc, git, python-devel, python-tox, python-testrepository, python-pip,
+  python-testscenarios, python-tempest-lib, libffi-devel, openssl-devel,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps used by all tester types
+neutron_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+
+    export DEBUG_FALSE=#\ debug\ =\ False;
+    export DEBUG_TRUE=debug\ =\ True;
+    sudo sed -i "s/$DEBUG_FALSE/$DEBUG_TRUE/g" /etc/neutron/neutron.conf;
+
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - /tmp/dsvm-functional-logs
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: [rhelosp-10.0-unittest]
+      run: "{{ neutron_virt_run_config.run }}"
+      archive: "{{ neutron_virt_run_config.archive }}"
