@@ -15,6 +15,23 @@ unittest:
        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
+# python-cinder is installed and then removed to satisfy all runtime
+# dependencies for the cinder component.
+
+functional:
+    rpm_deps: [
+      openstack-cinder,
+      python-testresources,
+      python-os-testr,
+      python-oslotest,
+    ]
+
+    remove_rpm: [
+      python-cinder,
+    ]
+
+    run:
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 # Tempest target
 tempest:
    rpm_deps: []
