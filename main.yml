@@ -1,0 +1,26 @@
+- name: Octario-Infrared discover
+  hosts: localhost
+  gather_facts: yes
+  any_errors_fatal: true
+  vars:
+      tester_directory: "{{ test.dir }}"
+  tasks:
+      - name: "Discover release version"
+        script: "ir-plugin/osp_version_name.py {{ tester_directory }}"
+        run_once: true
+        register: release_name
+
+      - name: "Convert discovered component details into variables"
+        set_fact:
+          componentinfo="{{ release_name.stdout | from_json }}"
+        when:
+            release_name != 0
+
+
+- name: Perform Octario execution
+  vars:
+      tester_type: "{{ test.t }}"
+      component: "{{ componentinfo }}"
+  include: "playbooks/{{ tester_type }}.yml"
+  tags:
+      - run
