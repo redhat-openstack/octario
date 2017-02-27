@@ -15,6 +15,28 @@ unittest:
        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
+# python-nova is installed and then removed to satisfy all runtime
+# dependencies for the nova component.
+
+functional:
+
+    rpm_deps: [
+      openstack-cinder,
+      python-ironicclient,
+      python-testresources,
+      python-os-testr,
+      python-oslotest,
+    ]
+
+    remove_rpm: [
+      python-cinder,
+
+    ]
+
+    run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 # Tempest target
 tempest:
    rpm_deps: []
