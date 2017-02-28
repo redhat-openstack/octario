@@ -16,6 +16,24 @@
       "revId": "e07e75e03a15a5529dbccbb225633411751def2d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_545f4b75",
+        "filename": "requirements.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-02-28T18:27:11Z",
+      "side": 1,
+      "message": "In theory yes that\u0027s the ideal situation, but we should not be less then InfraRed, otherwise we break the IR.\n\nThis is something IR team will work on (to support different versions of requirements by plugins, but as for now for this plugin to work we need to be in sync with IR).",
+      "parentUuid": "fabf19d9_ef7690d7",
+      "revId": "e07e75e03a15a5529dbccbb225633411751def2d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
