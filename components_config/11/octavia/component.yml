@@ -1,5 +1,5 @@
 pep8:
-    rpm_deps: [ python-hacking ]
+    rpm_deps: [ python-pep8-1.5.6, libjpeg-turbo-devel, zlib-devel, python-flake8-2.1.0 ]
     remove_rpm: []
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
@@ -24,6 +24,8 @@ rpm_deps: [ gcc,
             python-pbr,
             python-tox,
             python-testrepository,
+            openssl-devel,
+            libffi-devel,
             "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}" ]
 
 # The rpms that shouldn't be installed when running tests
@@ -34,7 +36,10 @@ octavia_virt_run_config:
     run: >
         set -o pipefail;
         sudo rm -Rf .tox;
-        sed -i "s/-egit.*$//g" tox.ini;
+        /usr/bin/sed -i "/cgit/d" tox.ini;
+        /usr/bin/sed -i "/doc8/d" tox.ini;
+        /usr/bin/sed -i "/README/d" tox.ini;
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         truncate --size 0 requirements.txt;
         truncate --size 0 test-requirements.txt;
         rpm -qa > ../logs/installed-rpms.log;
