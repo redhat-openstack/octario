@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_ef7690d7",
+        "filename": "requirements.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-28T07:55:20Z",
+      "side": 1,
+      "message": "infrared/requirements.txt us using bigger version. \nShouldn\u0027t all plugins use the same version of ansible as a general infrared framework?",
+      "revId": "e07e75e03a15a5529dbccbb225633411751def2d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
