@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_8502530a",
+        "filename": "components_config/10/cinder/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-02-28T11:04:22Z",
+      "side": 1,
+      "message": "blank line",
+      "revId": "a7c31acbabbe54a51047ac4ecf6006a7d5e18c38",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_68fef606",
+        "filename": "components_config/9/cinder/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-02-28T11:04:22Z",
+      "side": 1,
+      "message": "blank line",
+      "revId": "a7c31acbabbe54a51047ac4ecf6006a7d5e18c38",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
