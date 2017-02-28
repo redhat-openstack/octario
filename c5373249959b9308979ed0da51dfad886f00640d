@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_12456b16",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-02-28T08:28:15Z",
+      "side": 1,
+      "message": "This code can be seen in infrared testser and in tempest git repo (if I remember correctly in tempest/setup_tempest.sh).\nIMHO, no need to invest efforts in replacing tempest/setup_tempest.sh by the code that is tri-plicated. \n\nI think that we need to remove tempest configuration and running part from octario at all leaving those two task to infrared tester plugin. Octario should remain a component specific configuration project.",
+      "revId": "c5373249959b9308979ed0da51dfad886f00640d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
