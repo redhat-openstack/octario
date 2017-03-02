@@ -16,6 +16,24 @@
       "revId": "563be7a5cd3b5e6c26938eb43856ed22bbcb76b5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_9d4aa0ab",
+        "filename": "requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-02T10:27:37Z",
+      "side": 1,
+      "message": "It\u0027s copy paste from InfraRed to be in sync:\nhttps://github.com/redhat-openstack/infrared/blob/master/requirements.txt#L6",
+      "parentUuid": "fabf19d9_fd407c37",
+      "revId": "563be7a5cd3b5e6c26938eb43856ed22bbcb76b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
