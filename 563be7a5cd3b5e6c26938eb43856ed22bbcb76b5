@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_fd407c37",
+        "filename": "requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-02T09:38:10Z",
+      "side": 1,
+      "message": "What I would usually do is ansible\u003e\u003d2.1.3.0,\u003c2.2.0.0 as this seems to require less maintenance, be less likely to cause conflicts and also safe. How often did we see failures due to a minor version update? I think is more likely to have something fixes than to introduce a new problem in a minor release.",
+      "revId": "563be7a5cd3b5e6c26938eb43856ed22bbcb76b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
