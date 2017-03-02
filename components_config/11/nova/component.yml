@@ -22,6 +22,7 @@ pep8:
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
 #
+# python-pip is installed temporary to satisfy os-xenapi, ddt and osprofiler
 unittest:
 
     rpm_deps: [
@@ -33,7 +34,8 @@ unittest:
       python-oslotest,
       python-requests-mock,
       python-pep8,
-      genisoimage
+      genisoimage,
+      python-pip
     ]
 
     remove_rpm: [
@@ -41,6 +43,9 @@ unittest:
     ]
 
     run:
+        sudo pip install -U --no-deps os-xenapi==0.1.1;
+        sudo pip install -U --no-deps ddt==1.0.1;
+        sudo pip install -U --no-deps osprofiler==1.4.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
@@ -96,15 +101,11 @@ enable_repos: [
 
 
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
-#
-# python-pip is installed temporary to satisfy gabbi installation
 rpm_deps: [
     git,
     python-tox-2.3.1,
     python-pluggy-0.3.1,
-    python2-virtualenv-14.0.6,
-    python-setuptools-18.5,
-    python-pip,
+    python-virtualenv-12.0.7,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -116,14 +117,11 @@ remove_rpm: [
 ]
 
 
-# (N.B.) We truncate *requirements.txt to ensure we're only using installed
-#        non-test packages.
-#
-#        gabbi installation is temporary and rpm should be updated.
+# We truncate *requirements.txt to ensure we're only using installed
+# non-test packages.
 nova_virt_run_config:
 
   run: >
-      sudo pip install -U --no-deps gabbi==1.24.0;
       set -o pipefail;
       rpm -qa | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
