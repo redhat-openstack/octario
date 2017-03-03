@@ -2,40 +2,71 @@
 
 # Dependencies with explicit versions are provided by the copr repository.
 
-# (migi) to keep track of exact packages from outside of rhelosp repo
-#        all deps from copr are listed, even if those were dependency
-#        requirements from other packages being installed
-#        python-pbr and python-virtualenv is also available in the rhelosp
-#        repository, however newer version is in the copr
 pep8:
 
     rpm_deps: [
+      python-cinderclient,
+      python-glanceclient,
+      python-heatclient,
+      python-neutronclient,
+      python-novaclient,
+      python-XStatic-jQuery,
+      python-XStatic-JQuery-Migrate,
+      python-XStatic-Angular,
+      python-XStatic-Angular-Bootstrap,
+      python-XStatic-Angular-Gettext,
+      python-XStatic-Angular-lrdragndrop,
+      python-XStatic-smart-table,
+      python-XStatic-Angular-FileUpload,
+      python-XStatic-D3,
+      python-XStatic-JQuery-quicksearch,
+      python-XStatic-JQuery-TableSorter,
+      python-XStatic-Spin,
+      python-XStatic-jquery-ui,
+      python-XStatic-Bootstrap-SCSS,
+      python-XStatic-Bootstrap-Datepicker,
+      python-XStatic-Hogan,
+      python-XStatic-Rickshaw,
+      python-XStatic-JSEncrypt,
+      python-XStatic-objectpath,
+      python-XStatic-tv4,
+      python-XStatic-Angular-Schema-Form,
+      python-XStatic-Font-Awesome,
+      python-XStatic-bootswatch,
+      python-XStatic-roboto-fontface,
+      python-XStatic-mdi,
+      python-XStatic-Jasmine,
+      python-XStatic-termjs,
+      python-oslo-concurrency,
+      python-django-pyscss,
+      python-django-compressor,
+      python-django-openstack-auth,
       babel,
       python-babel,
-      python2-django-babel-0.4.0,
-      python-hacking
+      python-hacking,
+      python-django-babel
     ]
 
     remove_rpm: []
 
     run:
         export PBR_VERSION="12.0.0";
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
 # (migi) python-django-horizon is installed and then removed to satisfy all
 #        runtime dependencies for the horizon component.
-#
 unittest:
 
     rpm_deps: [
       python-django-horizon,
       openstack-dashboard,
-      python-django-nose-1.4.1,
-      python-mox3-0.18.0,
+      python-django-nose,
+      python-mox3,
       python-mock,
-      python-selenium-2.53.2,
-      python-nose-exclude-0.1.9,
+      python-selenium,
+      python-nose-exclude,
       python-testrepository
     ]
 
@@ -46,18 +77,20 @@ unittest:
 
     run:
         export PBR_VERSION="12.0.0";
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
 # Additional repository required to install testing dependencies
 enable_repos: [
-    rhelosp-10.0-unittest
+    rhelosp-11.0-unittest
 ]
 
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
 #
-# (migi) python-virtualenv is also available in copr and it gets
-#        installed from copr as dependency for python-tox.
+# Work-around:
+# python-pip is installed as this package requires
+# tox >= 2.3.2 which isn't available as RPM yet
 rpm_deps: [
     git,
     python-pbr,
@@ -65,8 +98,8 @@ rpm_deps: [
     python-eventlet,
     python-pluggy-0.3.1,
     python-tox-2.3.1,
-    python-setuptools-18.5,
-    python2-virtualenv-14.0.6,
+    python-virtualenv-12.0.7,
+    python-pip-1.5.6,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -79,10 +112,13 @@ remove_rpm: [
 
 # (N.B.) We truncate *requirements.txt to ensure we're only using installed
 #        non-test packages.
+#
+# Work-around: tox is installed from pip
 horizon_run_config:
 
   run: >
       set -o pipefail;
+      sudo pip install --no-deps tox==2.3.2;
       rpm -qa | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
