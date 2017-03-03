@@ -20,7 +20,7 @@
 - name: Perform Octario execution
   vars:
       tester_type: "{{ test.t }}"
-      component: "{{ componentinfo }}"
+      component: "{{ hostvars['localhost']['componentinfo'] }}"
   include: "playbooks/{{ tester_type }}.yml"
   tags:
       - run
