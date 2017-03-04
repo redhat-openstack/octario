@@ -21,7 +21,7 @@
   vars:
     component_version: "{{ component.version | default(rhos_default_version) }}"
   become: yes
-  template: src=../templates/component-test-copr-repo.j2 dest=/etc/yum.repos.d/test-reqs-copr.repo
+  template: src=component-test-copr-repo.j2 dest=/etc/yum.repos.d/test-reqs-copr.repo
 
 # rhos-release used for installing the rhos repos.
 - name: Install rhos-release
