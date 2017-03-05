@@ -34,12 +34,46 @@ unittest:
     run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 functional:
-    rpm_deps: []
+    rpm_deps: [ python-os-testr,
+                python-netifaces,
+                python-oslo-utils,
+                python-oslo-config,
+                python-pecan,
+                python-oslo-messaging,
+                python-testresources,
+                python-pyroute2,
+                python-flask,
+                python-oslotest,
+                python-glanceclient,
+                python-oslo-db,
+                python-keystoneauth1,
+                python-sqlalchemy,
+                python-ipaddress,
+                python-oslo-policy,
+                python-neutronclient,
+                python-oslo-log ]
     remove_rpm: []
     run: tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 functional-py35:
-    rpm_deps: []
+    rpm_deps: [ python-os-testr,
+                python-netifaces,
+                python-oslo-utils,
+                python-oslo-config,
+                python-pecan,
+                python-testresources,
+                python-keystoneauth1,
+                python-oslotest,
+                python-glanceclient,
+                python-oslo-messaging,
+                python-pyroute2,
+                python-flask,
+                python-oslo-db,
+                python-sqlalchemy,
+                python-ipaddress,
+                python-oslo-policy,
+                python-neutronclient,
+                python-oslo-log ]
     remove_rpm: []
     run: tox --sitepackages -v -e functional-py35 2>&1 | tee ../logs/testrun.log;
 
