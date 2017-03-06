@@ -5,7 +5,13 @@ pep8:
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
-    rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
+    rpm_deps: [
+        python-cliff,
+        python-mock,
+        python-os-testr,
+        python-requests-mock,
+        python-webtest,
+    ]
     remove_rpm: [ ]
     run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
