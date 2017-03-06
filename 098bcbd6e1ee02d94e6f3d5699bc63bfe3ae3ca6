@@ -71,6 +71,52 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_998185fe",
+        "filename": "roles/tempest/run/defaults/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-06T17:57:47Z",
+      "side": 1,
+      "message": "i guess that\u0027s a leftover since we were not using --site-packages",
+      "range": {
+        "startLine": 8,
+        "startChar": 18,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_d98edd26",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-06T17:57:47Z",
+      "side": 1,
+      "message": "Look at all run sections on our components, all of them are assuming that the commands are running inside the component directory, default ansible directory is the ~ of the user, so tasks will fail if you try to \"pip install -r requirements.txt\" (most command fist command).",
+      "range": {
+        "startLine": 12,
+        "startChar": 13,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_bea54fb6",
         "filename": "roles/tempest/run/tasks/main.yml",
         "patchSetId": 33
@@ -117,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "fabf19d9_59952d3e",
+        "filename": "roles/tempest/setup/defaults/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-06T17:57:47Z",
+      "side": 1,
+      "message": "Maybe you know something I am not aware of, but as far as I know there is no implied default version that I can default to. Octario config. The value is used as: \"component_version: \"{{ component.version | default(rhos_default_version) }}\" so if you have a better idea, I would like to see your alternative.",
+      "parentUuid": "fabf19d9_9eaa8b84",
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fabf19d9_7eafb794",
         "filename": "roles/tempest/setup/vars/main.yml",
         "patchSetId": 33
@@ -134,6 +198,24 @@
         "endLine": 21,
         "endChar": 48
       },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_39795930",
+        "filename": "roles/tempest/setup/vars/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-06T17:57:47Z",
+      "side": 1,
+      "message": "Ask @tosky for that, he told me that juno doesn\u0027t work because at that time (6) we were already using the kilo version of tempest.  I tried and failed, and I did this at his recommendation. This variable is used only to map the tempest branches, if you prefer we can refactor it and rename \"release\" to \"branch\" and rhos_upstream_map to rhos_tempest_branch_map.",
+      "parentUuid": "fabf19d9_7eafb794",
       "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
