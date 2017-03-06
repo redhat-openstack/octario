@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fabf19d9_7eb8d7e5",
+        "filename": "playbooks/tempest.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-06T14:59:15Z",
+      "side": 1,
+      "message": "it\u0027s changing so no need for this comment.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_3ecb7f74",
+        "filename": "playbooks/tempest.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-06T14:59:15Z",
+      "side": 1,
+      "message": "cool",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 125
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_1ec8bb73",
+        "filename": "roles/tempest/run/defaults/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-06T14:59:15Z",
+      "side": 1,
+      "message": "hmm why this pip install command is here? seems not related",
+      "range": {
+        "startLine": 8,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_bea54fb6",
+        "filename": "roles/tempest/run/tasks/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-06T14:59:15Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_9eaa8b84",
+        "filename": "roles/tempest/setup/defaults/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-06T14:59:15Z",
+      "side": 1,
+      "message": "why this is the default? shouldn\u0027t it be latest?\nWhy even using default version? it\u0027s either the user specifies it or it should auto-detect it. It\u0027s also already specified in octario.cfg",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fabf19d9_7eafb794",
+        "filename": "roles/tempest/setup/vars/main.yml",
+        "patchSetId": 33
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-06T14:59:15Z",
+      "side": 1,
+      "message": "what do you mean? I don\u0027t understand why not using juno.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "098bcbd6e1ee02d94e6f3d5699bc63bfe3ae3ca6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
