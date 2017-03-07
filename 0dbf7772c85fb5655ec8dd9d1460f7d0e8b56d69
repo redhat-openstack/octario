@@ -19,6 +19,60 @@
     },
     {
       "key": {
+        "uuid": "d8180a07_b4d4bd8f",
+        "filename": "playbooks/tempest.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888ebacc_00a23378",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be8f0856_531714e9",
+        "filename": "playbooks/tempest.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888ebacc_00a23378",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b645dbbd_c0839b7e",
+        "filename": "playbooks/tempest.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "This is how it works right now! If you run the playbook with \"-e tempest_install_type\u003dgit\" it will run with this value. That\u0027s how variable precedence works in ansible, command line overrides playbook value (and role too). If I remember well there are 8 or 9 layers when it comes to variable resolution in ansible, had them printed and posted for quite some time.",
+      "parentUuid": "888ebacc_00a23378",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f04e6db_98fbf3b9",
         "filename": "roles/tempest/run/defaults/main.yml",
         "patchSetId": 35
@@ -30,6 +84,42 @@
       "writtenOn": "2017-03-07T13:00:13Z",
       "side": 1,
       "message": "What if venv does not exists? Do we need to created one?",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71d474d1_17528407",
+        "filename": "roles/tempest/run/defaults/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "No, we do not create it, we only use it if it exists. This allows people to use tempest with or without a virtual environment, giving them flexibility.",
+      "parentUuid": "0f04e6db_98fbf3b9",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e97fa979_37afb0bc",
+        "filename": "roles/tempest/run/defaults/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "No, we do not create it, we only use it if it exists. This allows people to use tempest with or without a virtual environment, giving them flexibility.",
+      "parentUuid": "0f04e6db_98fbf3b9",
       "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -53,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "d184f2a3_559553d4",
+        "filename": "roles/tempest/setup/defaults/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "If this was an environment variable or a constant I would have agreed. Still, this is a string value which *is* matching the format already used by infrared.",
+      "parentUuid": "dd56024e_f960b517",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9ec149e_47a025bc",
         "filename": "roles/tempest/setup/tasks/git.yml",
         "patchSetId": 35
@@ -64,6 +172,29 @@
       "writtenOn": "2017-03-07T13:00:13Z",
       "side": 1,
       "message": "My understanding is that plugins per component will be specified in component config files?",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf07c21_468b659c",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "There is a strong reason for doing this for git: to avoid installing dependencies via pip instead of RPM. pip will install them ONLY if the RPMS do not match the requirements.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 24
+      },
       "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
@@ -87,6 +218,29 @@
     },
     {
       "key": {
+        "uuid": "319fb17a_311f8cf7",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "I didn\u0027t touch this part of the code as it was inhered from the old template. You see it as change because I move the j2 code here instead of having another indirection (look at the removed j2 file).\n\nmin_compute_nodes is not expanded by jjb, this allows a user to define this environment variable in order to change the job. For example if we add this param to the jenkins job, it will be used here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 40,
+        "endLine": 43,
+        "endChar": 57
+      },
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a74d94_3e04ea6e",
         "filename": "roles/tempest/setup/tasks/main.yml",
         "patchSetId": 35
@@ -104,6 +258,24 @@
     },
     {
       "key": {
+        "uuid": "0739f101_52892b50",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "Also this was inherited. Please note that I am only using packstack to deploy, so no tripleo involvement here.",
+      "parentUuid": "e2a74d94_3e04ea6e",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb068381_e587498b",
         "filename": "roles/tempest/setup/tasks/rpm.yml",
         "patchSetId": 35
@@ -115,6 +287,24 @@
       "writtenOn": "2017-03-07T13:00:13Z",
       "side": 1,
       "message": "please rename this to tempest_dir CWD is well defined in OSes current workding directory which is here different then tempest installation directory or tempest directory where all tempest run files are stored. In this case CWD can be very different to ~/tempest",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85497be9_d0df2afb",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-07T18:33:05Z",
+      "side": 1,
+      "message": "I will use `tempest_run_dir` because tempest_dir is confusing too. It makes people believe that\u0027s the install directory, and it is not.",
+      "parentUuid": "fb068381_e587498b",
       "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
