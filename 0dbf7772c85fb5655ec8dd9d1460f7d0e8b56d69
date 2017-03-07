@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "888ebacc_00a23378",
+        "filename": "playbooks/tempest.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-07T13:00:13Z",
+      "side": 1,
+      "message": "Would be great if this could be overriden by user input - possibly one want to run tempest from git repository on osp11 to test some change.",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f04e6db_98fbf3b9",
+        "filename": "roles/tempest/run/defaults/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-07T13:00:13Z",
+      "side": 1,
+      "message": "What if venv does not exists? Do we need to created one?",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd56024e_f960b517",
+        "filename": "roles/tempest/setup/defaults/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-07T13:00:13Z",
+      "side": 1,
+      "message": "I prefer if this was in capital letters.\n\n\"GIT\" as in languages you are defining statics.",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ec149e_47a025bc",
+        "filename": "roles/tempest/setup/tasks/git.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-07T13:00:13Z",
+      "side": 1,
+      "message": "My understanding is that plugins per component will be specified in component config files?",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc6ba890_7a5b32e7",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-07T13:00:13Z",
+      "side": 1,
+      "message": "Where is this being calculated?",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2a74d94_3e04ea6e",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-07T13:00:13Z",
+      "side": 1,
+      "message": "Is this static list? In current roles we have this nicely calculated based on the tripleO deployment.",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb068381_e587498b",
+        "filename": "roles/tempest/setup/tasks/rpm.yml",
+        "patchSetId": 35
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1007069
+      },
+      "writtenOn": "2017-03-07T13:00:13Z",
+      "side": 1,
+      "message": "please rename this to tempest_dir CWD is well defined in OSes current workding directory which is here different then tempest installation directory or tempest directory where all tempest run files are stored. In this case CWD can be very different to ~/tempest",
+      "revId": "0dbf7772c85fb5655ec8dd9d1460f7d0e8b56d69",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
