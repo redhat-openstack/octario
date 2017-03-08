@@ -84,8 +84,9 @@ functional:
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
         /usr/bin/sed -i '/^import nova/a import testtools' nova/tests/functional/db/test_resource_provider.py;
-        /usr/bin/sed -i '/^    def test_create_duplicate_id_retry(/a\      	  raise testtools.TestCase.skipException(\"Downstream temporary skip due to sqlite3 outdated\")' nova/tests/functional/db/test_resource_provider.py;
+        /usr/bin/sed -i '/^    def test_create_duplicate_id_retry(/a\        raise testtools.TestCase.skipException(\"Downstream temporary skip due to sqlite3 outdated\")' nova/tests/functional/db/test_resource_provider.py;
         tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 
