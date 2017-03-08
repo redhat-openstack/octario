@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82e15b4c_93e6530d",
+        "filename": "roles/tempest/setup/tasks/main.yml",
+        "patchSetId": 36
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-03-08T11:37:36Z",
+      "side": 1,
+      "message": "my concern is known: running this code while having the same in infrared. Seems that the right way is to make an external plugin that is used both by infrared and by octario is the right solution.",
+      "revId": "7c5a76cf6d965e38dc2d7ae3eb207597503e2cab",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
