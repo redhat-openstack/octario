@@ -28,6 +28,7 @@
     - "{{ inventory_dir }}/{{ component.name }}"
     - "{{ inventory_dir }}/../{{ component.name }}"
     - "{{ playbook_dir }}/../{{ component.name }}"
+    - "{{ hostvars['localhost']['test']['dir'] }}"
 
 # This is optional since not every component must have common configuration across all releases
 - name: Load component common configuration
