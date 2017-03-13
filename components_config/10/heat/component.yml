@@ -1,0 +1,160 @@
+# This file is used by the jenkins job
+
+# Dependencies with explicit versions are provided by the copr repository.
+pep8:
+
+    rpm_deps: [
+      python-hacking,
+      pyflakes,
+      python-mccabe,
+      python-pep8,
+      python-flake8,
+    ]
+
+    remove_rpm: []
+
+    run:
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+unittest:
+
+    rpm_deps: [
+    ]
+
+    remove_rpm: [
+    ]
+
+    run:
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+
+# Additional repository required to install testing dependencies
+enable_repos: [
+    rhelosp-10.0-unittest
+]
+#
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+rpm_deps: [
+    git,
+    python-pbr,
+    python-tox,
+    python-setuptools-18.5,
+    python2-virtualenv-14.0.6,
+    #crudini,
+    #gcc,
+    #git,
+    #m2crypto,
+    #MySQL-python,
+    #postgresql-devel,
+    #PyYAML,
+    #python-pip,
+    #python2-devel,
+    #python-anyjson,
+    #python-aodhclient,
+    #python-babel,
+    #python-barbicanclient,
+    #python-ceilometerclient,
+    #python-cinderclient,
+    #python-croniter,
+    #python-crypto,
+    #python-cryptography,
+    #python-d2to1,
+    #python-debtcollector,
+    #python-designateclient,
+    #python-eventlet,
+    #python-glanceclient,
+    #python-greenlet,
+    #python-heatclient,
+    #python-httplib2,
+    #python-iso8601,
+    #python-keystoneauth1,
+    #python-keystoneclient,
+    #python-keystonemiddleware,
+    #python-kombu,
+    #python-lockfile,
+    #python-lxml,
+    #python-migrate,
+    #python-magnumclient,
+    #python-manilaclient,
+    #python-mistralclient,
+    #python-mox3,
+    #python-netaddr,
+    #python-neutronclient,
+    #python-novaclient,
+    #python-openstackclient,
+    #python-oslo-cache,
+    #python-oslo-concurrency,
+    #python-oslo-config,
+    #python-oslo-context,
+    #python-oslo-db,
+    #python-oslo-i18n,
+    #python-oslo-log,
+    #python-oslo-messaging,
+    #python-oslo-middleware,
+    #python-oslo-policy,
+    #python-oslo-reports,
+    #python-oslo-serialization,
+    #python-oslo-service,
+    #python-oslo-utils,
+    #python-oslo-versionedobjects,
+    #python-oslotest,
+    #python-osprofiler,
+    #python-paramiko,
+    #python-paste-deploy,
+    #python-pbr,
+    #python-qpid,
+    #python-requests,
+    #python-retrying,
+    #python-routes,
+    #python-saharaclient,
+    #python-setuptools,
+    #python-six,
+    #python-sqlalchemy,
+    #python-stevedore,
+    #python-swiftclient,
+    #python-testresources,
+    #python-tox,
+    #python-troveclient,
+    #python-webob,
+    #python-yaql,
+    #python-zaqarclient,
+    #pytz,
+    #swig,
+    #systemd-units,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# (N.B.) We truncate *requirements.txt to ensure we're only using installed
+#        non-test packages.
+heat_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa | sort > ../logs/installed-rpms.log;
+      export NOSE_WITH_XUNIT=1;
+      export NOSE_WITH_HTML_OUTPUT=1;
+      export NOSE_HTML_OUT_FILE=../logs/nose_results.html;
+      export NSS_HASH_ALG_SUPPORT=+MD5;
+      export OPENSSL_ENABLE_MD5_VERIFY=1;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+        enable_repos: "{{enable_repos}}"
+      run: "{{heat_run_config.run}}"
