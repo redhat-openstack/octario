@@ -138,7 +138,7 @@ neutron_virt_run_config:
 
     export DEBUG_FALSE=#\ debug\ =\ False;
     export DEBUG_TRUE=debug\ =\ True;
-    sudo sed -i "s/$DEBUG_FALSE/$DEBUG_TRUE/g" /etc/neutron/neutron.conf;
+    [ -f /etc/neutron/neutron.conf ] && sudo sed -i "s/$DEBUG_FALSE/$DEBUG_TRUE/g" /etc/neutron/neutron.conf;
 
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
