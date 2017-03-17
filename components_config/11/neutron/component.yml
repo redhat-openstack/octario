@@ -1,11 +1,13 @@
 ### This file is used by neutron component jobs
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+# python-oslo-db missing tests directory which required for running unit tests.
+# PEP8 required packages are not available at this point
 pep8:
-    rpm_deps: [ python-neutron, pylint, python-neutron-tests, openstack-tempest ]
+    rpm_deps: [ python-neutron, python-neutron-tests, openstack-tempest ]
     remove_rpm: [ ]
     run: >
-      sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
+      sudo pip install pyflakes==0.8.1 flake8==2.5.5 pylint==1.4.5 hacking==0.12.0 pep8==1.5.7 mccabe==0.2.1;
       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
@@ -16,6 +18,9 @@ unittest:
     run: >
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
+      sudo yum remove -y python-oslo-db;
+      sudo pip install oslo.db;
+      sudo yum install -y python-neutron-lib;
       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
