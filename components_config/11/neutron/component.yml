@@ -1,8 +1,9 @@
 ### This file is used by neutron component jobs
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+# python-oslo-db missing tests directory which required for running unit tests.
 pep8:
-    rpm_deps: [ python-neutron, pylint, python-neutron-tests, openstack-tempest ]
+    rpm_deps: [ pyflakes-0.8.1, python-flake8-2.5.5, python-neutron, pylint, python-neutron-tests, openstack-tempest ]
     remove_rpm: [ ]
     run: >
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
@@ -16,6 +17,8 @@ unittest:
     run: >
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
+      sudo yum remove -y python-oslo-db;
+      sudo pip install oslo.db;
       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
@@ -138,6 +141,7 @@ neutron_virt_run_config:
 
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
+    /usr/bin/sed -i "/cgit/d" tox.ini;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
