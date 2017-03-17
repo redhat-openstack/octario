@@ -138,6 +138,7 @@ neutron_virt_run_config:
 
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
+    /usr/bin/sed -i "/cgit/d" tox.ini;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
