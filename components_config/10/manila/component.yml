@@ -13,7 +13,6 @@ unittest:
     run: >
        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
-
 tempest:
    rpm_deps: [
         crudini,

@@ -14,6 +14,24 @@ unittest:
        tox --sitepackages -v -e py27 glance.tests.unit 2>&1 | tee ../logs/testrun.log;
 
 
+# python-glance is installed and then removed to satisfy all runtime
+# dependencies for the glance component.
+
+functional:
+    rpm_deps: [
+      openstack-glance,
+      python-testresources,
+      python-os-testr,
+      python-oslotest,
+    ]
+
+    remove_rpm: [
+      python-glance,
+    ]
+
+    run:
+        tox --sitepackages -v -e py27 glance.tests.functional 2>&1 | tee ../logs/testrun.log;
+
 # Tempest target
 tempest:
    rpm_deps: []
