@@ -19,10 +19,10 @@
   set_fact:
     component_log_paths={{ component_path + '/' + common_log_directories | join(',{{ component_path }}/')}}
 
-- name: Find *.log files in the common log directories
+- name: Find *.log and *.tar.gz files in the common log directories
   find:
     paths: "{{ component_log_paths.split(',') }}"
-    patterns: "*.log"
+    patterns: "*.log,*.tar.gz"
     file_type: file
     recurse: yes
     age: "-1d"
