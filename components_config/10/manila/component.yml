@@ -14,6 +14,25 @@ unittest:
        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
+# python-manila is installed and then removed to satisfy all runtime
+# dependencies for the manila component.
+
+functional:
+    rpm_deps: [
+      openstack-manila,
+      python-testresources,
+      python-os-testr,
+      python-oslotest,
+    ]
+
+    remove_rpm: [
+      python-manila,
+    ]
+
+    run:
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+	
+	
 tempest:
    rpm_deps: [
         crudini,
