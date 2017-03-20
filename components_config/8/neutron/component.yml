@@ -54,7 +54,7 @@ api:
         sudo neutron-sanity-check --nodnsmasq_version $sanity_parameters && tox --sitepackages -v -e api 2>&1 | tee ../logs/testrun.log;
 
 tempest:
-   rpm_deps: [ python-neutron-tests ]
+   rpm_deps: []
    remove_rpm: []
    run: >
      sed -i -E s/,dvr,\?//g /home/stack/tempest/etc/tempest.conf;

@@ -108,7 +108,7 @@ api:
 # Router scheduling skipped due to https://bugzilla.redhat.com/show_bug.cgi?id=1348402
 # Test shelve is not a network test, but picked up by the network tests regex
 tempest:
-   rpm_deps: [ python-neutron-tests ]
+   rpm_deps: []
    remove_rpm: []
    run: >
      if ! grep -q -i dvr /home/stack/deploy_overcloud.sh; then
