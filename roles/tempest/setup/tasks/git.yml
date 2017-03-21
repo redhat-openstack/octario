@@ -1,5 +1,5 @@
 - name: Clone Red Hat Tempest repo
   git:
     repo="https://github.com/redhat-openstack/tempest.git"
-    version="{{ rhos_upstream_map[component.version].release }}"
+    version="{{ tempest.revision | default(omit) }}"
     dest="tempest"
