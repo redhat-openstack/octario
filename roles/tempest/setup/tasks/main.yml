@@ -1,4 +1,6 @@
-- name: Install needed RPMs for running tempest
+# Packages installation
+# ---------------------
+- name: Install required RPMs for running tempest
   become: true
   yum:
     name="{{ item }}"
@@ -8,14 +10,56 @@
     - 'libffi-devel'
     - 'openssl-devel'
     - 'subunit-filters'
+    - 'virtualenv'
 
 - name: Install per-component tempest test dependencies RPMs needed
   become: yes
-  yum: pkg="{{ item }}" state=latest
+  yum:
+      pkg="{{ item }}"
+      state=latest
   with_items: "{{ tempest.rpm_deps | default([]) }}"
   when: tempest | default(false) and tempest.rpm_deps | default(false)
 
+- name: Install pip
+  become: yes
+  command: "easy_install pip"
+
+# GIT or RPM specific steps
 - include: "{{ tempest_install_type }}.yml"
+
+- name: Create virtualenv with basic packages
+  pip:
+      virtualenv: "{{ tempest_venv | default(overcloud_venv) }}"
+      name: "{{ item }}"
+      state: latest
+  with_items:
+      - pip
+      - setuptools
+      - pbr
+      - junitxml
+      - unittest2
+
+- name: Install tempest repo requirements
+  pip:
+      virtualenv: "{{ tempest_venv | default(overcloud_venv) }}"
+      chdir: "/home/stack/tempest"
+      requirements: "{{ item }}"
+  with_items:
+      - requirements.txt
+      - test-requirements.txt
+
+- name: Install Tempest
+  pip:
+      chdir: "/home/stack/tempest"
+      virtualenv: "{{ tempest_venv | default(overcloud_venv) }}"
+      name: "."
+      editable: true
+
+- name: Create heat_stack_owner
+  shell: |
+      source {{ rc_file | default(overcloud_rc_file) }};
+      openstack role create heat_stack_owner
+  ignore_errors: yes
 
 - name: Deploy tempest configuration script
   template:
@@ -23,47 +67,19 @@
     dest='tempest/setup_tempest.sh'
     mode=0755
 
-
-- name: Install pip
-  become: yes
-  command: "easy_install pip"
-
-- name: Install virtualenv
-  become: yes
-  yum:
-    name=python-virtualenv
-    state=present
-
-- name: Install tempest virtualenv
-  shell: python tempest/tools/install_venv.py tempest
-
-- name: Deploy 'venv' script to run tempest related commands inside virtualenv
-  copy:
-    src="venv"
-    dest="tempest/venv"
-    mode=0755
-
-- name: Install needed pip packages for running tempest
-  pip:
-    name="{{ item }}"
-    state=present
-    virtualenv="{{ tempest_venv | default(overcloud_venv) }}"
-  with_items:
-    - 'junitxml'
-    - 'unittest2'
-
 - name: Configure tempest
   shell: >
     source {{ rc_file | default(overcloud_rc_file) }};
-    tempest/venv ./setup_tempest.sh
+    test -e .venv/bin/activate && source .venv/bin/activate;
+    ./setup_tempest.sh
   args:
     creates: "~/tempest/etc/tempest.conf"
-
+    chdir: "/home/stack/tempest"
 
 # If no skipfile is present, tempest will fail to run
 - name: Create empty skip file
   file:
-    path='tempest/skipfile'
+    path='/home/stack/tempest/skipfile'
     state=touch
     mode=0555
 
