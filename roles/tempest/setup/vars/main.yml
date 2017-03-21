@@ -1,8 +1,8 @@
 rhos_upstream_map:
   12:
-    release: pike
+    release: master
   11:
-    release: ocata
+    release: master
   10:
     release: newton
   9:
