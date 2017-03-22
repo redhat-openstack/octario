@@ -1,8 +1,9 @@
-/.tox
-*.pyc
-/octario.egg-info
-/build
-/dist
 .DS_Store
 .idea
+*.pyc
 *.retry
+/.tox
+/build
+/dist
+/octario.egg-info
+/octario.iml
