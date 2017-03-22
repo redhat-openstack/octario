@@ -1,3 +1,7 @@
+# For 6: this was supposed to be 'juno' but only 'kilo' will work because
+# this is what we used at that time. (ask tosky)
+# DO NOT USE JUNO BRANCH for RHOS 6.
+
 rhos_upstream_map:
   12:
     release: master
@@ -18,7 +22,7 @@ rhos_upstream_map:
     release: kilo
     repository: "https://github.com/redhat-openstack/tempest.git"
   6:
-    release: juno
+    release: kilo
     repository: "https://github.com/redhat-openstack/tempest.git"
   5:
     release: icehouse
