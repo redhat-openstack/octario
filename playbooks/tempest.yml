@@ -1,0 +1,59 @@
+#!/usr/bin/env ansible-playbook
+# Run Tempest tests and install it from git or rpm
+# ------------------------------------------------
+- name: Copy stackrc from controller to tester
+  hosts: controller
+  tasks:
+
+    - name: fetch nova.conf
+      become: yes
+      fetch:
+        src: /etc/nova/nova.conf
+        dest: nova.conf
+        flat: yes
+        fail_on_missing: false
+
+- name: Run Octario - Tempest
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: tempest
+    nova_pool_name: "{{ omit }}"
+    nova_sched_filters: ""
+    # for rhos < 7 it will use 'git' and for others 'rpm'
+    # if you want to override thi just specify it as parameter which will override the value detected below
+    tempest_install_type: "{% if component is defined and component.version|default(ansible_env.RHOS_VERSION | default(9))|int < 7 %}git{% else %}rpm{% endif %}"
+  pre_tasks:
+
+    - name: pool_name
+      set_fact:
+        nova_pool_name: "{{ lookup('ini', 'default_floating_pool section=DEFAULT default={{ omit }} file={{ item | quote }}') }}"
+      with_first_found:
+       - files:
+           - nova.conf
+           - /dev/null
+
+    - name: scheduler_default_filters
+      set_fact:
+        nova_sched_filters: >
+          {% if ansible_env.RHOS_VERSION | default(9) | int >= 11 %}
+          {{ lookup('ini', 'enabled_filters section=filter_scheduler default={{ omit }} file={{ item | quote }}') }}
+          {% else %}
+          {{ lookup('ini', 'scheduler_default_filters section=DEFAULT default={{ omit }} file={{ item | quote }}') }}
+          {% endif %}
+      with_first_found:
+       - files:
+           - nova.conf
+           - /dev/null
+
+    - name: Display param values for tempest
+      debug: msg="nova_sched_filters={{nova_sched_filters}} nova_pool_name={{ nova_pool_name }}"
+
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - role: tempest/setup
+      pool_name: "{{ nova_pool_name }}"
+      sched_filters: "{{ nova_sched_filters }}"
+    - { role: tempest/run }
