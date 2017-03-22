@@ -12,6 +12,10 @@ rhos_upstream_map:
   7:
     release: kilo
   6:
-    release: juno
+    # release: juno
+    release: kilo
   5:
     release: icehouse
+
+# Warning: we map rhos 6 to kilo(7) instead of juno(6) because this is the
+# version of tempest that was used at that time.
