@@ -13,7 +13,7 @@
     dest: "{{ item }}"
     regexp: "enabled=1"
     replace: "enabled=0"
-  with_items: "{{ yum_repos.stdout_lines }}"
+  with_items: "{{ yum_repos.stdout_lines | default() }}"
 
 # This will install the repo that holds the test depedencies of the
 # different projects

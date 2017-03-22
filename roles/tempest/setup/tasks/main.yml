@@ -26,7 +26,7 @@
 
 - name: Install pip
   become: yes
-  command: "easy_install pip"
+  easy_install: name='pip>=9.0.1'
 
 - name: Install virtualenv
   become: yes
@@ -36,6 +36,8 @@
 
 - name: Install tempest virtualenv
   shell: python tempest/tools/install_venv.py tempest
+  tags:
+    - skip_ansible_lint
 
 - name: Deploy 'venv' script to run tempest related commands inside virtualenv
   copy:
@@ -73,7 +75,7 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "+{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: tempest.whitelist
+  with_items: "{{ tempest.whitelist }}"
   when: tempest.whitelist is defined
 
 - name: create skip list - Blacklist
@@ -82,5 +84,5 @@
     dest: "{{ tempest_skipfile | default(overcloud_skipfile) }}"
     line: "-{{ item }}"
     regexp: "^[-+]{{ item }}$"
-  with_items: tempest.blacklist
+  with_items: "{{ tempest.blacklist }}"
   when: tempest.blacklist is defined

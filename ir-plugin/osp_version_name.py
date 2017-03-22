@@ -15,11 +15,9 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-
 import json
 import sys
 
-sys.path.append('../octario')
 from octario.lib.component import Component
 
 import logging
@@ -38,6 +36,7 @@ def main(component_path):
             'version': release,
         }
         print(json.dumps(json_out))
+
 
 if __name__ == "__main__":
     """Helper script used by InfraRed-Octario plugin to discover component
