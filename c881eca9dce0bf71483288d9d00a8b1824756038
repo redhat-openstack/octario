@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5edc8bd3_d4dba07d",
+        "filename": "components_config/10/odl-controller/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-22T17:23:54Z",
+      "side": 1,
+      "message": "can be removed.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 80
+      },
+      "revId": "c881eca9dce0bf71483288d9d00a8b1824756038",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35bcc0ec_c3e28d57",
+        "filename": "components_config/10/odl-controller/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-22T17:23:54Z",
+      "side": 1,
+      "message": "probably not needed",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "c881eca9dce0bf71483288d9d00a8b1824756038",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
