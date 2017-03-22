@@ -1,25 +1,28 @@
 rhos_upstream_map:
   12:
     release: master
-    repository: https://github.com/openstack/tempest.git"
+    repository: https://github.com/openstack/tempest.git
   11:
     release: master
-    repository: https://github.com/openstack/tempest.git"
+    repository: https://github.com/openstack/tempest.git
   10:
     release: newton
-    repository: https://github.com/redhat-openstack/tempest.git"
+    repository: https://github.com/redhat-openstack/tempest.git
   9:
     release: mitaka
-    repository: https://github.com/redhat-openstack/tempest.git"
+    repository: https://github.com/redhat-openstack/tempest.git
   8:
     release: liberty
-    repository: https://github.com/redhat-openstack/tempest.git"
+    repository: https://github.com/redhat-openstack/tempest.git
   7:
     release: kilo
-    repository: https://github.com/redhat-openstack/tempest.git"
+    repository: https://github.com/redhat-openstack/tempest.git
   6:
-    release: juno
-    repository: https://github.com/redhat-openstack/tempest.git"
+    # this was supposed to be 'juno' but only 'kilo' will work because
+    # this is what we used at that time. (ask tosky)
+    # DO NOT USE JUNO BRANCH
+    release: kilo
+    repository: https://github.com/redhat-openstack/tempest.git
   5:
     release: icehouse
-    repository: https://github.com/redhat-openstack/tempest.git"
+    repository: https://github.com/redhat-openstack/tempest.git
