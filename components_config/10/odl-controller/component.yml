@@ -1,0 +1,47 @@
+### This file is used by opendaylight component jobs
+
+# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+unittest:
+    rpm_deps: [ maven ]
+    run: >
+      mvn build | tee ../logs/testrun.log;
+
+# FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
+# functional has is own requirements file, which is truncated to use RPMs instead of pip.
+#         sed -i s@OS_FAIL_ON_MISSING_DEPS=1@OS_FAIL_ON_MISSING_DEPS=0@ tox.ini;
+
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  gcc, git,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps used by all tester types
+opendaylight_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+#  TODO(wznoinsk): archive tests logfiles
+#  archive:
+#    - /tmp/dsvm-functional-logs
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: [rhelosp-10.0-unittest]
+      run: "{{ opendaylight_virt_run_config.run }}"
+      archive: "{{ opendaylight_virt_run_config.archive }}"
