@@ -30,6 +30,13 @@
     - "{{ playbook_dir }}/../{{ component.name }}"
     - "{{ hostvars['localhost']['test']['dir'] }}"
 
+- name: Load global vars
+  ignore_errors: yes
+  vars_files:
+      - "{{ playbook_dir }}/../components_config/common/global.yml"
+
+#  TODO(wznoinsk): allow overriding of vars defined in octario with ones from inventory_dir
+
 # This is optional since not every component must have common configuration across all releases
 - name: Load component common configuration
   include_vars: "{{ item }}"
