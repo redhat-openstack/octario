@@ -1,7 +1,8 @@
 #!/bin/bash
-
+set -euox pipefail
 source {{ rc_file | default('/home/stack/stackrc') }}
 
+nova list
 # Get default floating IP pool name
 controller=`nova list | grep controller | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -n1`
 pool_name=`ssh -o "StrictHostKeyChecking no" heat-admin@$controller "sudo grep -oP \"(?<=default_floating_pool=)(.*$)\" /etc/nova/nova.conf" | tail -n1`
@@ -38,11 +39,11 @@ neutron subnet-create \
 
 # Configure Tempest
 # -----------------
-
-tools/config_tempest.py --out etc/tempest.conf --network-id $public_net_id \
-                        --debug --create identity.uri $OS_AUTH_URL \
-                          identity.admin_password $OS_PASSWORD \
-                          object-storage.operator_role swiftoperator \
-                          orchestration.stack_owner_role heat_stack_owner \
-                          compute.min_compute_nodes $min_compute_nodes \
-                          compute-feature-enabled.scheduler_available_filters "$nova_sched_filters"
+{{ tempest_venv_activate }}
+./tools/config_tempest.py --out etc/tempest.conf --network-id ${public_net_id} \
+        --debug --create identity.uri $OS_AUTH_URL \
+          identity.admin_password $OS_PASSWORD \
+          object-storage.operator_role {% if component_version|int < 7 %}SwiftOperator{% else %}swiftoperator{% endif%} \
+          orchestration.stack_owner_role heat_stack_owner \
+          compute.min_compute_nodes ${min_compute_nodes:-0} \
+          compute-feature-enabled.scheduler_available_filters "${nova_sched_filters:-RetryFilter,AvailabilityZoneFilter,RamFilter,ComputeFilter,ComputeCapabilitiesFilter,ImagePropertiesFilter,CoreFilter}"
