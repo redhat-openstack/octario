@@ -1,5 +1,5 @@
 - name: Octario-Infrared discover
-  hosts: localhost
+  hosts: Templocalhost
   gather_facts: yes
   any_errors_fatal: true
   vars:

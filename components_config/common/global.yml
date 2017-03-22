@@ -1,0 +1,8 @@
+archive_global:
+  - ../logs/installed-rpms.log;
+  - ../logs/repolist.log;
+
+run_global: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+    yum repolist | sort > ../logs/repolist.log;
