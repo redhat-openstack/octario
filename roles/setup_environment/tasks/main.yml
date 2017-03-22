@@ -38,7 +38,44 @@
   # to avoid spamming the console
   # remember that enabling ANSIBLE_DEBUG does disable no_log
 
-# This is optional since not every component must have common configuration across all releases
+- name: Load global vars
+  ignore_errors: yes
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ playbook_dir }}/../components_config/common/global.yml"
+
+- name: Creating component config parent and child helper facts
+  set_fact:
+    component_config_parent: "{{ component.name | regex_replace('(.*?)-(.*)', '\\1') }}"
+    component_config_child: "{{ component.name | regex_replace('(.*?)-(.*)', '\\2') }}"
+
+  # these 2 steps are optional since not every component has configuration in parent/child directory structure
+- name: Load component's parent configuration
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component_config_parent }}/component.yml"
+      skip: true
+
+- name: Load component's child configuration
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component_config_parent }}/{{ component_config_child }}/component.yml"
+      skip: true
+
+  # this step is required so task to load component configuration by specific release doesn't not fail when we use parent/child config style
+- name: Clean 'component_config_loaded' file
+  file:
+    path: /tmp/component_config_loaded
+    state: absent
+
+- name: Register component_config loaded from parent/child
+  local_action: copy content="" dest=/tmp/component_config_loaded
+  when: test_config is defined
+
+# This is optional since not every component must have common configuration that applies to all releases
 - name: Load component common configuration
   include_vars: "{{ item }}"
   ignore_errors: yes
@@ -63,6 +100,7 @@
     - "{{ inventory_dir }}/../{{ component.name }}/jenkins-config.yml"
     - "{{ playbook_dir }}/../{{ component.name }}/jenkins-config.yml"
     - "/etc/jenkins-config.yml"
+    - "/tmp/component_config_loaded"
 
 - name: Setup component configuration based on operating system
   set_fact:
@@ -71,3 +109,8 @@
     - "default"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version | int }}"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version }}"
+
+- name: Display all variables/facts known for a host
+  debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 2

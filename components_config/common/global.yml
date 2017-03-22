@@ -1,0 +1,8 @@
+archive_global:
+  - /var/log/installed-rpms.log;
+  - /var/log/repolist.log;
+
+run_global: >
+    set -o errexit pipefail;
+    rpm -qa | sort > /var/log/installed-rpms.log;
+    yum repolist | sort > /var/log/repolist.log;
