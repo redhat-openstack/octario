@@ -1,0 +1,9 @@
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: [ ]
+      run: "{{ opendaylight_virt_run_config.run }}"
+      archive: "{{ archive }}"

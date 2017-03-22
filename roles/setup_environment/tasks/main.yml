@@ -38,19 +38,28 @@
   # to avoid spamming the console
   # remember that enabling ANSIBLE_DEBUG does disable no_log
 
-# This is optional since not every component must have common configuration across all releases
-- name: Load component common configuration
+- name: Load global vars
+  ignore_errors: yes
+  include_vars: "{{ item }}"
+  with_first_found:
+    - files:
+        - "{{ playbook_dir }}/../components_config/common/global.yml"
+
+# This is optional since not every component must have it's own or parent common configuration across all releases
+- name: Load component and parent common configuration
   include_vars: "{{ item }}"
   ignore_errors: yes
   with_first_found:
     - files:
+        - "{{ playbook_dir }}/../components_config/common/{{ component.parent }}.yml"
         - "{{ playbook_dir }}/../components_config/common/{{ component.name }}.yml"
         - "{{ inventory_dir }}/components_config/common/{{ component.name }}.yml"
       skip: true
 
-- name: Load component configuration by specific release
+- name: Load component and parent configuration by specific release
   include_vars: "{{ item }}"
   with_first_found:
+    - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.parent }}/component.yml"
     - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
     - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
     - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
@@ -71,3 +80,8 @@
     - "default"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version | int }}"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version }}"
+
+- name: Display all variables/facts known for a host
+  debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 4
