@@ -1,3 +1,33 @@
+- name: Install needed RPMs for running tempest from git
+  become: true
+  become_method: sudo
+  yum:
+    name="{{ item }}"
+    state=present
+  with_items:
+    - 'gcc'
+    - 'git'
+    - 'libffi-devel'
+    - 'openssl-devel'
+    - 'python-ceilometerclient'
+    - 'python-cinderclient'
+    - 'python-glanceclient'
+    - 'python-heatclient'
+    - 'python-ironicclient'
+    - 'python-junitxml'
+    - 'python-keystoneclient'
+    - 'python-lxml'
+    - 'python-neutronclient'
+    - 'python-novaclient'
+    - 'python-oslo-config'
+    - 'python-saharaclient'
+    - 'python-swiftclient'
+    - 'python-testscenarios'
+    - 'python-testtools'
+    - 'python-unittest2'
+    # config_tempest.py fails on old rhos6 with recent pypi python-novaclient
+
+
 - name: Clone Red Hat Tempest repo
   git:
     repo="{{ rhos_upstream_map[component.version].repository }}"
