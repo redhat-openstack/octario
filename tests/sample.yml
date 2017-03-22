@@ -5,9 +5,11 @@
   gather_facts: no
   vars:
       ansible_connection: local
+      ansible_user: "{{ lookup('env', 'USER') }}"
   tasks:
 
     - name: "This is the sample task name"
       shell: |
          echo -e "aaa\nbbb"
          echo -e "ccc\nddd" >&2
+      changed_when: false
