@@ -3,4 +3,5 @@ host=review.gerrithub.io
 port=29418
 project=redhat-openstack/octario.git
 defaultbranch=master
-
+track=1
+rebase=1
