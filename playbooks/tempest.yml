@@ -1,0 +1,28 @@
+#!/usr/bin/env ansible-playbook
+# Run Tempest tests and install it from git
+# -----------------------------------------
+- name: Copy stackrc from controller to tester
+  hosts: tester
+  tasks:
+    - name: Copy Remote-To-Remote
+      synchronize: src=/home/stack/stackrc dest=stackrc
+      delegate_to: "{{ groups[['controller'][0]] }}"
+      register: result
+      ignore_errors: true
+    - name: Save rc_file
+      set_fact:
+        rc_file: 'stackrc'
+
+- name: Run Octario - Tempest
+  hosts: testers
+  vars:
+    tester:
+      component:
+        tox_target: tempest
+    # for rhos < 7 it will use 'git' and for others 'rpm'
+    tempest_install_type: "{% if component is defined and component.version|default(9)|int < 7 %}git{% else %}rpm{% endif %}"
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: tempest/setup, rc_file: "{{ rc_file }}" }
+    - { role: tempest/run }
