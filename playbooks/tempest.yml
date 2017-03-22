@@ -1,0 +1,48 @@
+#!/usr/bin/env ansible-playbook
+# Run Tempest tests and install it from git or rpm
+# ------------------------------------------------
+- name: Copy stackrc from controller to tester
+  hosts: controller
+  tasks:
+
+    - name: fetch nova.conf
+      become: yes
+      fetch:
+        src: /etc/nova/nova.conf
+        dest: nova.conf
+        flat: yes
+        fail_on_missing: true
+      register: result
+      ignore_errors: true
+
+    - debug: msg=result
+
+- name: Run Octario - Tempest
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: tempest
+    nova_pool_name: ""
+    nova_sched_filters: ""
+    # for rhos < 7 it will use 'git' and for others 'rpm'
+    tempest_install_type: "{% if component is defined and component.version|default(9)|int < 7 %}git{% else %}rpm{% endif %}"
+  pre_tasks:
+
+    - name: pool_name
+      set_fact:
+        nova_pool_name: "{{ lookup('ini', 'default_floating_pool file=nova.conf') }}"
+      when: not result.failed
+
+    - name: scheduler_default_filters
+      set_fact:
+        nova_sched_filters: "{{ lookup('ini', 'scheduler_default_filters file=nova.conf') }}"
+      when: not result.failed
+
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - role: tempest/setup
+      pool_name: "{{ nova_pool_name }}"
+      sched_filters: "{{ nova_sched_filters }}"
+    - { role: tempest/run }
