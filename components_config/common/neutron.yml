@@ -1,7 +1,7 @@
 # Tempest
 # -------
 
-tempest_regex: tempest\.api\.network\|tempest\.scenario\.*network
+tempest_regex: tempest\.api\.network|tempest\.scenario\.*network
 
 # Dist-git
 # --------
