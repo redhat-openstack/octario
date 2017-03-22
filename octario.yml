@@ -8,9 +8,9 @@
 # version 10 is based on 'Newton' release
 
 component:
-  name: neutron
+  name: odl-controller
   config_file_name: jenkins-config.yml
-  version: 9
+  version: 11
 
 # Additional optional variables ( Not under component variable )
 # -----------------------------
