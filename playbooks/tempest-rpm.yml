@@ -1,5 +1,5 @@
 # Run Tempest tests and install it from RPM
-# NOTE: use this playbook for all brnaches starting from rhos7
+# NOTE: use this playbook for all branches starting from rhos7
 # ------------------------------------------------------------
 - name: Run Octario - Tempest
   hosts: tester
