@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63fa3475_14ddcbd1",
+        "filename": "tox.ini",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-03-23T13:15:21Z",
+      "side": 1,
+      "message": "This is the current solution for sharing virtualenvs between different tox targets. Serious speedup and lower disk usage. Works without risks for if the commands invoked are independent (and they are in our case). Also allows further speedup by using \"detox\" (parallel tox)",
+      "revId": "bb63feab63335b810615b2e801f042a856e035da",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
