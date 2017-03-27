@@ -70,6 +70,30 @@
       "revId": "da510392ddad6422faa7bd1bf5bb62a0e89c2192",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8a69f9f_78fdde3d",
+        "filename": "components_config/common/global.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1010634
+      },
+      "writtenOn": "2017-03-27T13:09:22Z",
+      "side": 1,
+      "message": "I\u0027d prefer to stay consistent and either tell (quick start guide, template) to emphasize the need for testrun.log existence or fail on lack of suck file as a way of enforcing, we don\u0027t want to allow testing to be done with some logging forgotten (I mean they have to log somewhere so why not to testrun.log or something more user-friendly)\nanother way is to get rid of these entries and purely rely on regex for *.log and directory (like /logs/)",
+      "parentUuid": "663b5d15_05191258",
+      "range": {
+        "startLine": 4,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 24
+      },
+      "revId": "da510392ddad6422faa7bd1bf5bb62a0e89c2192",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
