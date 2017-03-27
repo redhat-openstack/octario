@@ -22,6 +22,30 @@
       "revId": "da510392ddad6422faa7bd1bf5bb62a0e89c2192",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e686a1ad_9017ba8a",
+        "filename": "components_config/common/global.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1010634
+      },
+      "writtenOn": "2017-03-27T12:49:07Z",
+      "side": 1,
+      "message": "my view on this global list of log files was this: it will have  all standard logfile names so we\u0027re sure they\u0027re always uploaded if testing is creating it, if not there should be no harm/error thorwn either - what do you think?",
+      "parentUuid": "36dbb761_04929b37",
+      "range": {
+        "startLine": 4,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 24
+      },
+      "revId": "da510392ddad6422faa7bd1bf5bb62a0e89c2192",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
