@@ -46,6 +46,30 @@
       "revId": "da510392ddad6422faa7bd1bf5bb62a0e89c2192",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "663b5d15_05191258",
+        "filename": "components_config/common/global.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-03-27T12:51:54Z",
+      "side": 1,
+      "message": "I agree, but I\u0027m not sure if this makes an impression that this file is always created, while it\u0027s really not.\n\nThe other two files are created here in \u0027run_global\u0027, while testrun is specific per component \u0026 release.",
+      "parentUuid": "e686a1ad_9017ba8a",
+      "range": {
+        "startLine": 4,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 24
+      },
+      "revId": "da510392ddad6422faa7bd1bf5bb62a0e89c2192",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
