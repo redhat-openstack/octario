@@ -1,0 +1,2 @@
+db_packages: [ mariadb-server ]
+db_root_password: secretmysql
