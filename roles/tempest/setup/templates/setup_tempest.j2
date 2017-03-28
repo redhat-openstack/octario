@@ -39,7 +39,7 @@ neutron subnet-create \
 # Configure Tempest
 # -----------------
 
-tools/config_tempest.py --out etc/tempest.conf --network-id $public_net_id \
+{{ config_command | default("tools/config_tempest.py") }} --out etc/tempest.conf --network-id $public_net_id \
                         --debug --create identity.uri $OS_AUTH_URL \
                           identity.admin_password $OS_PASSWORD \
                           object-storage.operator_role swiftoperator \
