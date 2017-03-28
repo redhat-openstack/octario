@@ -1,6 +1,8 @@
 - name: Run Octario - Dsvm-Functional tests
   hosts: tester
   vars:
+    db_name: openstack_citest
+    db_username: openstack_citest
     tester:
       component:
         tox_target: dsvm-functional
@@ -8,5 +10,6 @@
     - { role: setup_repos }
     - { role: setup_environment }
     - { role: install_packages }
+    - { role: setup_mariadb }
     - { role: run_tests }
     - { role: collect_logs }
