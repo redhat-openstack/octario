@@ -1,0 +1,138 @@
+# This file is used by the jenkins job
+
+unittest:
+    rpm_deps: [ python-mock, python-mox, python-testrepository, python-yaql ]
+    remove_rpm: []
+    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+pep8:
+    rpm_deps: [ python-flake8, python-hacking ]
+    remove_rpm: []
+    run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+### test dependencies ###
+rpm_deps: [
+    gcc,
+    git,
+    m2crypto,
+    MySQL-python,
+    postgresql-devel,
+    PyYAML,
+    python-pip,
+    python2-devel,
+    python-anyjson,
+    python-argparse,
+    python-babel,
+    python-barbicanclient,
+    python-ceilometerclient,
+    python-cinderclient,
+    python-croniter,
+    python-cryptography,
+    python-d2to1,
+    python-debtcollector,
+    python-designateclient,
+    python-eventlet,
+    python-glanceclient,
+    python-greenlet,
+    python-heatclient,
+    python-httplib2,
+    python-iso8601,
+    python-keystoneclient,
+    python-keystonemiddleware,
+    python-kombu,
+    python-lockfile,
+    python-lxml,
+    python-migrate,
+    python-manilaclient,
+    python-netaddr,
+    python-neutronclient,
+    python-novaclient,
+    python-openstackclient,
+    python-oslo-cache,
+    python-oslo-concurrency,
+    python-oslo-config,
+    python-oslo-context,
+    python-oslo-db,
+    python-oslo-i18n,
+    python-oslo-log,
+    python-oslo-messaging,
+    python-oslo-middleware,
+    python-oslo-policy,
+    python-oslo-reports,
+    python-oslo-serialization,
+    python-oslo-service,
+    python-oslo-utils,
+    python-oslo-versionedobjects,
+    python-oslotest,
+    python-osprofiler,
+    python-paramiko,
+    python-paste-deploy,
+    python-pbr,
+    python-qpid,
+    python-requests,
+    python-retrying,
+    python-routes,
+    python-saharaclient,
+    python-setuptools,
+    python-six,
+    python-sqlalchemy,
+    python-stevedore,
+    python-swiftclient,
+    python-testresources,
+    python-tox,
+    python-troveclient,
+    python-webob,
+    python-zaqarclient,
+    swig,
+    systemd-units,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# N.B. These comments refer to heat_virt_run_config.run. You can't put comments
+# directly in that block because the calling task puts the whole script on 1
+# line. Any comment would therefore comment out the whole of the rest of the
+# script, which results in the tests not actually running, but erroneously
+# reporting success.
+#
+# We truncate *requirements.txt to ensure we're only using rpms and not pip
+# packages.
+#
+# We remove heat's install_command from tox.ini because it force upgrades
+# everything, regardless of --sitepackages.
+
+# Common pre-run steps and files to archive
+heat_virt_run_config:
+    run: >
+        sudo rm -Rf ./*.pyc;
+        sudo rm -Rf .tox || true;
+        sudo pip install -U unittest2;
+        export NOSE_WITH_XUNIT=1;
+        export NOSE_WITH_HTML_OUTPUT=1;
+        export NOSE_HTML_OUT_FILE=../logs/nose_results.html;
+        export NSS_HASH_ALG_SUPPORT=+MD5;
+        export OPENSSL_ENABLE_MD5_VERIFY=1;
+        truncate --size 0 requirements.txt;
+        truncate --size 0 test-requirements.txt;
+        rpm -qa > all-rpms.txt;
+        set -o pipefail;
+        {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+    archive:
+        - ../logs/venv-testrun.log
+        - all-rpms.txt
+
+enable_additional_repos: [ rhelosp-9.0-override ]
+
+### actual test_config: starts here: used by khaleesi ###
+### NOTE: test_config.virt must be defined ###
+test_config:
+    virt:
+        RedHat-7:
+            setup:
+                install: "{{ rpm_deps }}"
+                enable_repos: "{{ enable_additional_repos }}"
+            run: "{{ heat_virt_run_config.run }}"
+            archive: "{{ heat_virt_run_config.archive }}"
