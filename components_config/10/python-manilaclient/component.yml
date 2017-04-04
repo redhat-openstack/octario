@@ -1,5 +1,5 @@
 pep8:
-    rpm_deps: [  pyflakes, python-flake8 ]
+    rpm_deps: [ pyflakes, python-flake8 ]
     remove_rpm: [ python-manilaclient ]
     run: >
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;

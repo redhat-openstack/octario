@@ -7,7 +7,8 @@
       ansible_connection: local
   tasks:
 
-    - name: "This is the sample task name"
-      shell: |
-         echo -e "aaa\nbbb"
-         echo -e "ccc\nddd" >&2
+      - name: "This is the sample task name"
+        shell: |
+           echo -e "aaa\nbbb"
+           echo -e "ccc\nddd" >&2
+        changed_when: false
