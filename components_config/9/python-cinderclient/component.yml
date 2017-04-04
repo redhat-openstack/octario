@@ -1,7 +1,7 @@
 ### This file is used by python-cinderclient component jobs
 
 pep8:
-    rpm_deps: [  pyflakes, python-flake8 ]
+    rpm_deps: [ pyflakes, python-flake8 ]
     remove_rpm: [ python-cinderclient ]
     run: >
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;

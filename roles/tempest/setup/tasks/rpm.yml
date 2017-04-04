@@ -51,4 +51,3 @@
       chdir: "~/tempest"
       creates: "~/tempest/LICENSE"
   when: configure_tempest_dir.rc == 0
-
