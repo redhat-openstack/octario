@@ -1,7 +1,7 @@
 # This file is used by the jenkins job
 
 unittest:
-    rpm_deps: [ python-mock, python-mox, python-testrepository, python-yaql, python-aodhclient,
+    rpm_deps: [ python-mock, python-mox, python-testrepository, python-aodhclient,
                 python2-magnumclient ]
     remove_rpm: []
     run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
@@ -19,6 +19,7 @@ rpm_deps: [
     openssl-devel,
     m2crypto,
     MySQL-python,
+    python-yaql,
     postgresql-devel,
     PyYAML,
     libyaml-devel,
