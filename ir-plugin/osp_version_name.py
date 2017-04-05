@@ -17,6 +17,7 @@
 
 import json
 import sys
+sys.path.append('../octario')
 
 from octario.lib.component import Component
 
