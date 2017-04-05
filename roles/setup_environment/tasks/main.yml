@@ -5,12 +5,15 @@
     - absent
     - directory
 
+# Load octario vars only when they were not passed already,
+# so they are not overriden
 - name: Load octario configuration
   include_vars: "{{ item }}"
   with_first_found:
     - "{{ playbook_dir }}/../octario.yml"
     - "{{ inventory_dir }}/octario.yml"
     - "/etc/octario.yml"
+  when: component is not defined
 
 # To copy the component to remote host
 - name: Install rsync
