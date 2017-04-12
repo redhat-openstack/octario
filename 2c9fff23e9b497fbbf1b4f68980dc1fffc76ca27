@@ -16,6 +16,24 @@
       "revId": "2c9fff23e9b497fbbf1b4f68980dc1fffc76ca27",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0905a8b8_634f0b29",
+        "filename": "requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007844
+      },
+      "writtenOn": "2017-04-12T12:03:32Z",
+      "side": 1,
+      "message": "we should use the same version as main infrared package does to avoid version mismatch. if we direcltly specify a version and infrared has a different version in requirements.txt, octario plugin will reinstall ansible to its version and infrared will fail during the run.",
+      "parentUuid": "424e98ef_c48c0213",
+      "revId": "2c9fff23e9b497fbbf1b4f68980dc1fffc76ca27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
