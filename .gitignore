@@ -1,10 +1,10 @@
-/.tox
+*.log
 *.pyc
-/octario.egg-info
-/build
-/dist
+*.retry
 .DS_Store
 .idea
-*.retry
+/.tox
+/build
+/dist
+/octario.egg-info
 /octario.iml
-*.log
