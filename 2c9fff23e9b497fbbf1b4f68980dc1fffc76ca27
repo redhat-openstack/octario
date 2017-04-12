@@ -34,6 +34,23 @@
       "revId": "2c9fff23e9b497fbbf1b4f68980dc1fffc76ca27",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ba7cf5a_fe7de22f",
+        "filename": "requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-04-12T12:17:32Z",
+      "side": 1,
+      "message": "I doubt octario would really work with ansible 1.9, so I would put \u003e\u003d2.0 or something similar with the oldest version that should work.",
+      "revId": "2c9fff23e9b497fbbf1b4f68980dc1fffc76ca27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
