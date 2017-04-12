@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "424e98ef_c48c0213",
+        "filename": "requirements.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1010634
+      },
+      "writtenOn": "2017-04-12T11:54:09Z",
+      "side": 1,
+      "message": "can we say it\u0027s safe to use \u003c2.0? there were some major changes between 1 and 2 versions of ansible",
+      "revId": "2c9fff23e9b497fbbf1b4f68980dc1fffc76ca27",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
