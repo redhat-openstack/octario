@@ -22,7 +22,6 @@ rpm_deps: [
     MySQL-python,
     postgresql-devel,
     PyYAML,
-    libyaml-devel,
     redhat-rpm-config,
     python-pip,
     python2-devel,
