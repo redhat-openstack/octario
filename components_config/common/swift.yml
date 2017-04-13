@@ -1,6 +1,6 @@
 # Tempest
 # -------
-tempest_regex: tempest\.api\.object_storage|tempest\.scenario\.*object_storage
+tempest_regex: tempest\.api\.object_storage|tempest\.scenario.*object_storage
 
 # Dist-git
 # --------
