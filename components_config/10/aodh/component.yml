@@ -50,6 +50,7 @@ unittest:
         python-wsme,
         python-aodhclient,
         python-gnocchiclient,
+        python-pifpaf,
         python-os-win
     ]
 
@@ -72,6 +73,7 @@ functional:
         python-aodh,
         python-pymongo,
         mysql-server,
+        postgresql-server,
         python-os-testr,
         python-colorama,
         python-wsgi_intercept,
@@ -93,10 +95,12 @@ functional:
         python-tooz,
         python-swiftclient,
         python-glanceclient,
+        python-sqlalchemy-utils,
         python-pecan,
         python-keystonemiddleware,
         python-wsme,
         python-aodhclient,
+        python-pifpaf,
         python-overtest
     ]
 
