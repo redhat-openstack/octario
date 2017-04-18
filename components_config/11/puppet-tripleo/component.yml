@@ -5,6 +5,7 @@
 #
 enable_repos: [
   rhelosp-11.0-unittest,
+  rhelosp-rhel-7.3-server-opt,
 ]
 #
 # The pep8 target
@@ -16,15 +17,17 @@ pep8:
     git,
     gcc,
     gcc-c++,
-    ruby-devel,
+    ruby-devel, # this is only available from -opt channel
     rubygem-bundler,
     zlib-devel,
   ]
   run: >
     bundle install 2>&1 | tee ../logs/testrun.log;
     PATH=~/bin:$PATH;
-    bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
-    bundle exec rake syntax 2>&1 | tee -a ../logs/testrun.log;
+    echo "========" >> ../logs/testrun.log;
+    bundle exec rake lint --trace 2>&1 | tee -a ../logs/testrun.log;
+    echo "========" >> ../logs/testrun.log;
+    bundle exec rake syntax --trace 2>&1 | tee -a ../logs/testrun.log;
 #
 # The project run config.
 #
