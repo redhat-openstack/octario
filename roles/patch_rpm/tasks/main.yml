@@ -33,6 +33,7 @@
     state=present
   with_items:
     - 'pyrpkg'
+    - 'rpm-build'
     - 'createrepo'
     - 'python-pip'
     - 'python-cryptography'
