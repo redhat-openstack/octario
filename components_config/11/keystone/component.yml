@@ -5,7 +5,6 @@ pep8:
     rpm_deps: [
         python-hacking,
         python-flake8,
-        python2-bashate-0.3.2,
         bandit
     ]
 
@@ -62,7 +61,7 @@ tempest:
 
 # Additional repository required to install testing dependencies
 enable_repos: [
-    rhelosp-10.0-unittest
+    rhelosp-11.0-unittest
 ]
 
 
