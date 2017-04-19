@@ -36,6 +36,7 @@
     - 'rpm-build'
     - 'createrepo'
     - 'python-pip'
+    - 'mock'
     - 'python-cryptography'
     - 'python-devel'
     - 'libffi-devel'
