@@ -1,8 +1,8 @@
 # Include all component.yml from the components_config
 recursive-include octario/ansible/components_config component.yml
 
-# Include all common files that are used by component.yml
-recursive-include octario/ansible/components_config/common *.yml
+# Include all common files used by component.yml
+recursive-include octario/ansible/components_config *.yml
 
 # Include all Ansible playbook files
 recursive-include octario/ansible/playbooks *.yml

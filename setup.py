@@ -15,35 +15,22 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from octario.lib.release import __AUTHOR__
-from octario.lib.release import __VERSION__
-from pip import req
-from setuptools import find_packages
-from setuptools import setup
-
+import setuptools
 import os
 import platform
 
-# parse_requirements() returns generator of pip.req.InstallRequirement objects
-install_reqs = req.parse_requirements('requirements.txt', session=False)
+# In python < 2.7.4, a lazy loading of package `pbr` will break
+# setuptools if some other modules registered functions in `atexit`.
+# solution from: http://bugs.python.org/issue15881#msg170215
+try:
+    import multiprocessing  # noqa
+except ImportError:
+    pass
 
-# reqs is a list of requirement from requirements.txt
-reqs = [str(octario.req) for octario in install_reqs]
 
-with open("LICENSE") as file:
-    license = file.read()
-with open("README.md") as file:
-    long_description = file.read()
-
-setup(
-    name='octario',
-    version=__VERSION__,
-    author=__AUTHOR__,
-    author_email='rhos-ci@redhat.com',
-    long_description=long_description,
-    license=license,
-    install_requires=reqs,
-    packages=find_packages(),
+setuptools.setup(
+    pbr=True,
+    setup_requires=['pbr>=1.9', 'setuptools>=17.1'],
     include_package_data=True,
     entry_points={
         'console_scripts': ['octario = octario.lib.cli:main']
