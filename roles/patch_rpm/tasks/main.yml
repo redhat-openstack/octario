@@ -97,6 +97,7 @@
     git fetch patches &&
     git fetch patches --tags &&
     git branch rhos-{{ component.version }}.0-patches patches/gerrit-patch;
+    sed -i "/neutron-ns-metadata-prox/d" openstack-neutron.spec;
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
   tags:
