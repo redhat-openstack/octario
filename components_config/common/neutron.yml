@@ -6,4 +6,4 @@ tempest_regex: tempest\.api\.network|tempest\.scenario.*network
 # Dist-git
 # --------
 component_dist_git_name: 'openstack-neutron'
-component_dist_git_url: 'git://pkgs.devel.redhat.com/rpms/openstack-neutron'
+component_dist_git_url: 'git://git.engineering.redhat.com/users/dalvarez/openstack-neutron.git'
