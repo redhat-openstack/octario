@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7243adcd_f32e6987",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001933
+      },
+      "writtenOn": "2017-04-24T16:31:11Z",
+      "side": 1,
+      "message": "Honestly, I don\u0027t understand what this patch is doing. Could you please explain in a commit message etc?",
+      "revId": "287cf9e3eadb2c7e38383c846760a45497472a0f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1880c09d_eddfd8dc",
+        "filename": "components_config/11/puppet-tripleo/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001933
+      },
+      "writtenOn": "2017-04-24T16:31:11Z",
+      "side": 1,
+      "message": "why do we add this package?",
+      "revId": "287cf9e3eadb2c7e38383c846760a45497472a0f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
