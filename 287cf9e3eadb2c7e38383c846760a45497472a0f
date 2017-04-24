@@ -33,6 +33,24 @@
       "revId": "287cf9e3eadb2c7e38383c846760a45497472a0f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd8e09c2_ba1916a9",
+        "filename": "components_config/11/puppet-tripleo/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-04-24T17:01:37Z",
+      "side": 1,
+      "message": "installed it so we have rake from rpm instead of having to rely on bundler which I was having issues with first time around.  Like I mentioned this was a first attempt hack to see if I understood enough to look at the code/changes as we use/test/work with ruby.",
+      "parentUuid": "1880c09d_eddfd8dc",
+      "revId": "287cf9e3eadb2c7e38383c846760a45497472a0f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
