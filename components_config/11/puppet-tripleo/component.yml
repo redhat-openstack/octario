@@ -21,7 +21,7 @@ pep8:
     zlib-devel,
   ]
   run: >
-    bundle install 2>&1 | tee ../logs/testrun.log;
+    bundle install --full-index 2>&1 | tee ../logs/testrun.log;
     PATH=~/bin:$PATH;
     bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
     bundle exec rake syntax 2>&1 | tee -a ../logs/testrun.log;
