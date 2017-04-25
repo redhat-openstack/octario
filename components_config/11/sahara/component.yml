@@ -42,7 +42,7 @@ rpm_deps: [
   python-saharaclient,
 
   bandit,
-  python-bashate,
+  # python-bashate,
   python-doc8,
   python-pygments,
   python-tempest-lib,
@@ -73,7 +73,10 @@ sahara_virt_run_config:
     sed -i'.bak' -e "/cdh/! { s/default=\[/default=\['cdh', /g;}" sahara/plugins/base.py;
     sed -i'.bak' -e "/vanilla/! { s/default=\[/default=\['vanilla', /g;}" sahara/plugins/base.py;
     sed -i'.bak' -e "/hdp/! { s/default=\[/default=\['hdp', /g;}" sahara/plugins/base.py;
-
+    
+    pip install bashate
+    if yum list -q python2-bashate 2>/dev/null; then echo 'ERROR: Time to remove `pip install bashate` hack from octario.'; exit 1; fi
+    
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
