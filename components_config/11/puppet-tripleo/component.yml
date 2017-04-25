@@ -17,10 +17,10 @@ pep8:
     gcc,
     gcc-c++,
     ruby-devel,
-    rubygem-bundler,
     zlib-devel,
   ]
   run: >
+    gem install bundler --no-rdoc --no-ri --verbose;
     bundle install --full-index 2>&1 | tee ../logs/testrun.log;
     PATH=~/bin:$PATH;
     bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
