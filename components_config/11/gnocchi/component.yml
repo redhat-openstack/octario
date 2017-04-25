@@ -34,7 +34,7 @@ unittest:
         python-subunit,
         python-tooz,
         python-pifpaf,
-        python-doc8,
+        # python-doc8,
         mysql-server
     ]
 
