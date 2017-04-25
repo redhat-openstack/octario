@@ -4,7 +4,7 @@ pep8:
 
     rpm_deps: [
       python-flake8,
-      python2-bashate,
+      # python2-bashate,
       python-hacking-0.10.2
     ]
 

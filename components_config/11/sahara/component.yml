@@ -42,8 +42,8 @@ rpm_deps: [
   python-saharaclient,
 
   bandit,
-  python-bashate,
-  python-doc8,
+  # python-bashate,
+  # python-doc8,
   python-pygments,
   python-tempest-lib,
   python-testrepository,
@@ -73,6 +73,15 @@ sahara_virt_run_config:
     sed -i'.bak' -e "/cdh/! { s/default=\[/default=\['cdh', /g;}" sahara/plugins/base.py;
     sed -i'.bak' -e "/vanilla/! { s/default=\[/default=\['vanilla', /g;}" sahara/plugins/base.py;
     sed -i'.bak' -e "/hdp/! { s/default=\[/default=\['hdp', /g;}" sahara/plugins/base.py;
+
+    sudo easy_install pip;
+    sudo pip install bashate;
+    if yum list -q python-bashate 2>/dev/null; then echo 'ERROR: Time to remove `pip install bashate` hack from octario.'; exit 1; fi;
+
+    sudo pip install doc8;
+    if yum list -q python-doc8 2>/dev/null; then echo 'ERROR: Time to remove `pip install doc8` hack from octario.'; exit 1; fi;
+
+    sudo pip install 'bandit>=0.17.3';  # https://bugzilla.redhat.com/show_bug.cgi?id=1445489 ;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 

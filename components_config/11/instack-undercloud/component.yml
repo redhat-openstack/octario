@@ -23,7 +23,7 @@ pep8:
   remove_rpm: []
   rpm_deps: [
     diskimage-builder,
-    python-bashate,
+    # python-bashate,
     python-flake8,
   ]
   run: >
