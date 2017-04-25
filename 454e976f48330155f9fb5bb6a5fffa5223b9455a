@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "880cf789_8bd0fbc5",
+        "filename": "components_config/10/puppet-tripleo/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-04-25T13:27:11Z",
+      "side": 1,
+      "message": "add \u0027;\u0027",
+      "range": {
+        "startLine": 23,
+        "startChar": 44,
+        "endLine": 23,
+        "endChar": 51
+      },
+      "revId": "454e976f48330155f9fb5bb6a5fffa5223b9455a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
