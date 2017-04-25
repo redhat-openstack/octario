@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3158cb76_96465ced",
+        "filename": "components_config/11/sahara/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-04-25T17:42:55Z",
+      "side": 1,
+      "message": "just a small nit",
+      "revId": "73ec30cf506fcaca18cb7e31c04e2a1b10cb96fa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
