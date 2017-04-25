@@ -90,7 +90,7 @@ rpm_deps: [
   python-fixtures,
   python-subunit,
   python-pep8,
-  python-bashate,
+  # python-bashate,
 
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
@@ -100,11 +100,14 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 
 # Common pre-run steps used by all tester types
 manila_virt_run_config:
-  run: >
-    set -o pipefail;
-    rpm -qa | sort > ../logs/installed-rpms.log;
-    truncate --size 0 requirements.txt;
-    truncate --size 0 test-requirements.txt;
+  run: |
+    set -eo pipefail
+    rpm -qa | sort > ../logs/installed-rpms.log
+    truncate --size 0 requirements.txt
+    truncate --size 0 test-requirements.txt
+
+    pip install bashate
+    if yum list -q python2-bashate 2>/dev/null; then echo 'ERROR: Time to remove `pip install bashate` hack from octario.'; exit 1; fi
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 

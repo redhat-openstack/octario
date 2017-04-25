@@ -34,7 +34,7 @@ unittest:
         python-subunit,
         python-tooz,
         python-pifpaf,
-        python-doc8,
+        # python-doc8,
         mysql-server
     ]
 
@@ -73,12 +73,13 @@ remove_rpm: [
 # Common pre-run steps
 gnocchi_virt_run_config:
 
-    run: >
-        rpm -qa | sort > ../logs/installed-rpms.log;
-        sed -i '/\[testenv\]/a whitelist_externals = doc8\n   oslo-config-generator' tox.ini;
-        sed -i '/deps = \.\[test\]/,/py{27,34}-mysql: \.\[mysql,swift,ceph,file\]/d' tox.ini;
-        truncate --size 0 requirements.txt;
-        truncate --size 0 test-requirements.txt;
+    run: |
+        set -ex
+        rpm -qa | sort > ../logs/installed-rpms.log
+        sed -i '/\[testenv\]/a whitelist_externals = doc8\n   oslo-config-generator' tox.ini
+        sed -i '/deps = \.\[test\]/,/py{27,34}-mysql: \.\[mysql,swift,ceph,file\]/d' tox.ini
+        truncate --size 0 requirements.txt
+        truncate --size 0 test-requirements.txt
         {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
