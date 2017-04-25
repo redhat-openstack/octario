@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b6895be_5616cb37",
+        "filename": "components_config/10/puppet-tripleo/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-04-25T14:44:05Z",
+      "side": 1,
+      "message": "normal component ci leans towards RPM Based testing for all deps as we progress towards stablity",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "f3d94c8f45dda78fcdfbb1a31f37c29abb8bd020",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
