@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4820baa1_64f58888",
+        "filename": "components_config/11/python-saharaclient/component.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-04-26T11:29:16Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right approach.\nIf you add new tester, you need to copy these two lines.\n\nWhy not adding for pep8: \u0027git checkout -- requirements.txt test-requirements.txt\u0027 ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "bc0ff6502b03c3bead65b30caaaf68ac8aae0733",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
