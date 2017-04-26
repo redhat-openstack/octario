@@ -1,14 +1,16 @@
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ python-hacking ]
+    rpm_deps: [ python-hacking, python-pip ]
     remove_rpm: [ python-sahara ]
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock, python-sahara-tests]
     remove_rpm: [ python-sahara, openstack-sahara, openstack-sahara-common ]
-    run:
-        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: |
+        truncate --size 0 requirements.txt
+        truncate --size 0 test-requirements.txt
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
 
 tempest:
     rpm_deps: [
@@ -18,6 +20,9 @@ tempest:
       ]
     remove_rpm: []
     run:
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+
       crudini --set ../tempest/etc/tempest.conf service_available sahara True;
       crudini --set ../tempest/etc/tempest.conf data-processing-feature-enabled plugins "cdh";
 
@@ -42,8 +47,8 @@ rpm_deps: [
   python-saharaclient,
 
   bandit,
-  python-bashate,
-  python-doc8,
+  # python-bashate,
+  # python-doc8,
   python-pygments,
   python-tempest-lib,
   python-testrepository,
@@ -62,9 +67,6 @@ sahara_virt_run_config:
   run: >
     set -o pipefail;
     rpm -qa | sort > ../logs/installed-rpms.log;
-
-    truncate --size 0 requirements.txt;
-    truncate --size 0 test-requirements.txt;
 
     echo "WARN:	Patching source for keeping test coverage while not supporting all plugins from upstream in the release.";
     sed -i'.bak' -e "/^version/d" setup.cfg;
