@@ -3,6 +3,7 @@ description: Octario test runner
 subparsers:
     octario:
         help: Octario test runner
+        description: Octario test runner
         include_groups: ['Ansible options', 'Inventory', 'Common options', 'Answers file']
         groups:
             - title: Octario
