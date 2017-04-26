@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "01bf39a6_39f84d2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-04-26T12:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b75f837_e81f78b3",
+      "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f48728d_e66cd5a2",
         "filename": "components_config/11/python-cinderclient/component.yml",
         "patchSetId": 15
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "681659eb_018ead60",
+        "filename": "components_config/11/python-cinderclient/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-04-26T12:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f48728d_e66cd5a2",
+      "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1784f7f_3d5fad93",
         "filename": "components_config/11/python-manilaclient/component.yml",
         "patchSetId": 15
@@ -47,6 +83,24 @@
       "writtenOn": "2017-04-26T10:48:34Z",
       "side": 1,
       "message": "and this one",
+      "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0cc3b7f2_b236adff",
+        "filename": "components_config/11/python-manilaclient/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-04-26T12:15:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1784f7f_3d5fad93",
       "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
