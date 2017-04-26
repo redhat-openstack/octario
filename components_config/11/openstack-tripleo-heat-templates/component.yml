@@ -13,7 +13,7 @@ pep8:
 
 # Additional repository required to install testing dependencies
 enable_repos: [
-    rhelosp-10.0-unittest
+    rhelosp-11.0-unittest
 ]
 
 
