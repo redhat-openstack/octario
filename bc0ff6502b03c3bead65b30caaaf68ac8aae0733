@@ -22,6 +22,30 @@
       "revId": "bc0ff6502b03c3bead65b30caaaf68ac8aae0733",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac0aed2b_559ff329",
+        "filename": "components_config/11/python-saharaclient/component.yml",
+        "patchSetId": 18
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-04-26T12:15:54Z",
+      "side": 1,
+      "message": "I don\u0027t like the approach of reverting the truncation. \n\nI should  mention that git commands should not be used in mid-build process. Also we could have a sparse checkout and we should not rely on  being able to use git checkout. We should only test the code that was provided by us by jenkins without introducing new assumptions/dependencies.\n\nIf we add another tester we need to take care of adding truncation for it on it own, maybe with J2 it will be easier and we can implement this logic in a single play.\n\nThis job does not have another tester, so talking about what could be needed in the future \u003d increasing the scope. If another tested it added, it will be up to the one adding it to think about the best implementation approach.",
+      "parentUuid": "4820baa1_64f58888",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "bc0ff6502b03c3bead65b30caaaf68ac8aae0733",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
