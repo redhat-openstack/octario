@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b75f837_e81f78b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-04-26T10:48:34Z",
+      "side": 1,
+      "message": "line \u003c 80",
+      "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f48728d_e66cd5a2",
+        "filename": "components_config/11/python-cinderclient/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-04-26T10:48:34Z",
+      "side": 1,
+      "message": "lets remove this line",
+      "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1784f7f_3d5fad93",
+        "filename": "components_config/11/python-manilaclient/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-04-26T10:48:34Z",
+      "side": 1,
+      "message": "and this one",
+      "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a50c5633_f694e1f4",
+        "filename": "components_config/11/sahara/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-04-26T10:48:34Z",
+      "side": 1,
+      "message": "and those",
+      "revId": "10d2f962044fc17aede12346ab5e147907a483d7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
