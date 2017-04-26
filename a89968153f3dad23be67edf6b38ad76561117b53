@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fd08850_ca6e58c0",
+        "filename": "components_config/11/gnocchi/component.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-04-26T07:45:03Z",
+      "side": 1,
+      "message": "why we need this change? It is not related to bashate problem",
+      "revId": "a89968153f3dad23be67edf6b38ad76561117b53",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
