@@ -69,6 +69,7 @@ unittest:
 #
 functional:
 
+
     rpm_deps: [
         gcc,
         python-ceilometer,
