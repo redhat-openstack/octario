@@ -52,6 +52,7 @@ unittest:
         python-overtest,
         python-ceilometerclient,
         python-gnocchiclient,
+        python-pifpaf,
         python-os-win
     ]
 
@@ -73,6 +74,8 @@ functional:
         python-ceilometer,
         python-pymongo,
         mongodb-server,
+        mysql-server,
+        postgresql-server,
         python-os-testr,
         python-colorama,
         python-wsgi_intercept,
@@ -98,6 +101,7 @@ functional:
         python-keystonemiddleware,
         python-wsme,
         python-overtest,
+        python-pifpaf,
         python-ceilometerclient
     ]
 
