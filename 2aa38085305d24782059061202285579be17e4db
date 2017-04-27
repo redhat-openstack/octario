@@ -1,0 +1,7 @@
+Verified+1: rdo-ci-hudson <whayutin+hudson@redhat.com>
+Code-Review+2: Oleksii Baranov <obaranov@redhat.com>
+Submitted-by: Oleksii Baranov <obaranov@redhat.com>
+Submitted-at: Thu, 27 Apr 2017 03:20:54 -0400
+Reviewed-on: https://review.gerrithub.io/358682
+Project: redhat-openstack/octario
+Branch: refs/heads/master
