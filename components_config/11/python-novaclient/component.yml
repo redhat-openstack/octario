@@ -27,7 +27,8 @@ unittest:
       python-tempest-lib,
       python-mock,
       python-requests-mock,
-      python-testscenarios
+      python-testscenarios,
+      python-osprofiler
     ]
 
     remove_rpm: [
