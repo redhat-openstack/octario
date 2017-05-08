@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53487c3d_05d8d183",
+        "filename": "components_config/11/odl-controller/component.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-05-08T14:48:26Z",
+      "side": 1,
+      "message": "missing include?",
+      "revId": "3160e0a0d280d40607cfff3273938b3477f5fb5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17bbc55b_fe71beb2",
+        "filename": "main.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-05-08T14:48:26Z",
+      "side": 1,
+      "message": "what is templocalhost?",
+      "range": {
+        "startLine": 2,
+        "startChar": 9,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "3160e0a0d280d40607cfff3273938b3477f5fb5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0aa2780d_acbc2e6c",
+        "filename": "octario.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-05-08T14:48:26Z",
+      "side": 1,
+      "message": "what parent means? how is it used?\ncan other components adjust and use it too?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "3160e0a0d280d40607cfff3273938b3477f5fb5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06c67270_f616846d",
+        "filename": "roles/setup_environment/tasks/main.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-05-08T14:48:26Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 16
+      },
+      "revId": "3160e0a0d280d40607cfff3273938b3477f5fb5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
