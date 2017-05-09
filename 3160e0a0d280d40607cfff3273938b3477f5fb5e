@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "50732dc1_dfb4bd70",
+        "filename": "octario.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-05-09T12:38:50Z",
+      "side": 1,
+      "message": "my 2 cents: don\u0027t add additional configuration/variables to octario.yml if possible.\n\nLet octario pull parent/common/global configuration based on the structure of component_config tree.\n\nas a user, I see \"parent\" and immediately I have a ton of questions - what is it, how do I use it, what I need to change in order to use it, should I adjust to use it...and so on.",
+      "parentUuid": "67e254c4_1e2fe0e6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "3160e0a0d280d40607cfff3273938b3477f5fb5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06c67270_f616846d",
         "filename": "roles/setup_environment/tasks/main.yml",
         "patchSetId": 10
