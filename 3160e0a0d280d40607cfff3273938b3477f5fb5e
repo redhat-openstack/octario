@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7afcd159_6b7028e4",
+        "filename": "main.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1010634
+      },
+      "writtenOn": "2017-05-09T12:32:09Z",
+      "side": 1,
+      "message": "changed by mistake, Done",
+      "parentUuid": "17bbc55b_fe71beb2",
+      "range": {
+        "startLine": 2,
+        "startChar": 9,
+        "endLine": 2,
+        "endChar": 22
+      },
+      "revId": "3160e0a0d280d40607cfff3273938b3477f5fb5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aa2780d_acbc2e6c",
         "filename": "octario.yml",
         "patchSetId": 10
@@ -53,6 +77,30 @@
       "writtenOn": "2017-05-08T14:48:26Z",
       "side": 1,
       "message": "what parent means? how is it used?\ncan other components adjust and use it too?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "3160e0a0d280d40607cfff3273938b3477f5fb5e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67e254c4_1e2fe0e6",
+        "filename": "octario.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010634
+      },
+      "writtenOn": "2017-05-09T12:32:09Z",
+      "side": 1,
+      "message": "I\u0027m not yet sure the parent way is the best way (I guess I should be sure it is! as I\u0027m a parent after all...)... maybe some other inheritance, i.e.: module/submodule or else\n\nI\u0027d like the rest of the team to weigh in on that as for the moment I see it useful for odl only (and I\u0027ll try to sort my needs with an include instead of parent till we have some more discussion about the later)",
+      "parentUuid": "0aa2780d_acbc2e6c",
       "range": {
         "startLine": 10,
         "startChar": 0,
