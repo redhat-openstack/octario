@@ -7,6 +7,11 @@
 # - 'Pass or Fail' is included in 'collect_logs' role since it should be the last task in the last role, so it can collect logs before Ansible stops running.
 # - Collect logs rc ignored, since the command can fail although results were onvereted.
 
+- name: Display all variables/facts known for a host
+  debug:
+    var: hostvars[inventory_hostname]
+    verbosity: 2
+
 - name: "Set component_path"
   set_fact:
     component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
@@ -46,6 +51,13 @@
     src="{{ item }}"
     dest="{{ destination_log_folder }}"
   with_items: "{{ common_fetch_list }}"
+
+- name: Fetch artifacts directories
+  synchronize:
+    mode: pull
+    src: "{{ item }}"
+    dest: "{{ destination_log_folder }}/artifacts"
+  with_items: "{{ component_config.artifacts_dirs | default([]) }}"
 
 - name: Copy test results to convert them into junit xml format
   shell: |
