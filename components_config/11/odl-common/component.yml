@@ -1,0 +1,52 @@
+### This file is used by opendaylight component jobs
+
+# Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
+functional:
+    rpm_deps: [ java ]
+    remove_rpm: [ ]
+    run: >
+      mvn -B clean install > $HOME/logs/testrun.log 2> >(tee $SSH_TTY);
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps used by all tester types
+opendaylight_virt_run_config:
+  run: >
+    set -o errexit;
+    set -o pipefail;
+    rpm -qa | sort > $HOME/logs/installed-rpms.log;
+    yum repolist | sort > $HOME/logs/repolist.log;
+
+    sudo yum-config-manager --enable rhelosp-rhel-7.3-rhscl;
+    sudo yum install -y rh-maven33-maven;
+
+    export PATH=$PATH:/opt/rh/rh-maven33/root/usr/bin;
+
+    mkdir -p ~/.m2;
+    wget -q -O - https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml > $HOME/.m2/settings.xml;
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive:
+    - "$HOME/.m2/settings.xml"
+    - "$HOME/logs/installed-rpms.log"
+    - "$HOME/logs/repolist.log"
+    - "$HOME/logs/testrun.log"
+    - "**/target/surefire-reports/*"
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: [ ]
+      run: "{{ opendaylight_virt_run_config.run }}"
+      archive: "{{ opendaylight_virt_run_config.archive }}"
