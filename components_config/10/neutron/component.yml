@@ -146,7 +146,7 @@ neutron_virt_run_config:
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
-    - /tmp/dsvm-functional-logs
+    - /home/cloud-user/logs/functional-tests.tar.gz
 
 # NOTE: This is the main section. It must exist.
 test_config:
