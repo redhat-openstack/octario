@@ -196,7 +196,15 @@ class ComponentUtils(object):
 
         try:
             g = git.Git(path)
-            repo_url = g.config("--get", "remote.origin.url")
+            LOG.debug('Found remotes {}'.format(','.join([remote for remote in g.remote().split('\n')])))
+            for remote_name in ('rhos', 'patches', 'origin'):
+                if remote_name in g.remote().split('\n'):
+                    repo_url = g.config("--get", "remote.{}.url".format(remote_name))
+                    LOG.debug('Using Remote {}'.format(remote_name))
+                    break
+            if repo_url is None:
+                raise exceptions.NotValidGitRepoException(path)
+
             repo = git.Repo(path)
             branch = repo.active_branch
             branch_name = branch.name
