@@ -16,7 +16,21 @@ unittest:
       else
         tox --sitepackages -v -epy27 glance.tests.unit 2>&1 | tee ../logs/venv-testrun.log;
       fi
+functional:
+    rpm_deps: [
+      openstack-glance,
+      python-testresources,
+      python-os-testr,
+      python-oslotest,
+      strace
+    ]
 
+    remove_rpm: [
+      python-glance,
+    ]
+
+    run:
+        tox --sitepackages -v -e py27 glance.tests.functional 2>&1 | tee ../logs/testrun.log;
 
 # Tempest target
 tempest:

@@ -11,6 +11,24 @@ pep8:
   run: >
       tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
+# python-swift is installed and then removed to satisfy all runtime
+# dependencies for the swift component.
+
+functional:
+    rpm_deps: [
+      openstack-swift,
+      python-testresources,
+      python-os-testr,
+      python-oslotest,
+    ]
+
+    remove_rpm: [
+      python-swift,
+    ]
+
+    run:
+        tox --sitepackages -v -e func 2>&1 | tee ../logs/testrun.log;
+
 tempest:
    rpm_deps: [ python-swift-tests ]
    remove_rpm: []
