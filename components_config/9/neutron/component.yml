@@ -42,6 +42,7 @@ dsvm-functional:
         mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
         mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
+        tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /tmp/dsvm-functional-logs;
 
 dsvm-fullstack: 
     rpm_deps: []
@@ -100,7 +101,7 @@ neutron_virt_run_config:
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
-    - /tmp/dsvm-functional-logs
+    - /home/cloud-user/logs/functional-tests.tar.gz
 
 # NOTE: This is the main section. It must exist.
 test_config:
