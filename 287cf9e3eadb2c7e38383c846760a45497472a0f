@@ -68,6 +68,24 @@
       "revId": "287cf9e3eadb2c7e38383c846760a45497472a0f",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbef1568_eff9eb4c",
+        "filename": "components_config/11/puppet-tripleo/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006223
+      },
+      "writtenOn": "2017-05-18T16:26:19Z",
+      "side": 1,
+      "message": "We can\u0027t use rubygem-rake because we don\u0027t have all the gems packaged.  We have to use bundler to fetch all the things.  The tests aren\u0027t something that we ship so we don\u0027t package all the bits to execute them",
+      "parentUuid": "bd8e09c2_ba1916a9",
+      "revId": "287cf9e3eadb2c7e38383c846760a45497472a0f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
