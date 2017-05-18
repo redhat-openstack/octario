@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "c11e9865_94f5ac4d",
+        "filename": "components_config/11/puppet-tripleo/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-05-18T15:56:07Z",
+      "side": 1,
+      "message": "This is the piece needed so that you can cleanly install ruby-devel",
+      "revId": "287cf9e3eadb2c7e38383c846760a45497472a0f",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1880c09d_eddfd8dc",
         "filename": "components_config/11/puppet-tripleo/component.yml",
         "patchSetId": 1
