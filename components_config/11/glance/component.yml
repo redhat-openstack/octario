@@ -2,7 +2,7 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ bandit ]
+    rpm_deps: [ bandit, pyflakes, python-flake8, python-hacking ]
     remove_rpm: [ openstack-glance ]
     run: >
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
@@ -23,6 +23,7 @@ functional:
       python-testresources,
       python-os-testr,
       python-oslotest,
+      strace
     ]
 
     remove_rpm: [
