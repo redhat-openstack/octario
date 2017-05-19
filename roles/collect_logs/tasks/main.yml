@@ -47,6 +47,13 @@
     dest="{{ destination_log_folder }}"
   with_items: "{{ common_fetch_list }}"
 
+- name: Fetch artifacts directories
+  synchronize:
+    mode: pull
+    src: "build_artifacts/"
+    dest: "{{ destination_log_folder }}/" + inventory_hostname + "/build_artifacts"
+  ignore_errors: true
+
 - name: Copy test results to convert them into junit xml format
   shell: |
     find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
