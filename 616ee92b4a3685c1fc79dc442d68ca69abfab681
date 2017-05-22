@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "014ad878_3448187a",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-05-22T11:09:21Z",
+      "side": 1,
+      "message": "ignore_errors is almost always a sign of bad design in ansible and should be avoided. Also makes much harder to debug playbooks and hides errors for long time. Please find some logic that avoids use if it.",
+      "revId": "616ee92b4a3685c1fc79dc442d68ca69abfab681",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
