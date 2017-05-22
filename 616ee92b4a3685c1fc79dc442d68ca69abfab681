@@ -16,6 +16,24 @@
       "revId": "616ee92b4a3685c1fc79dc442d68ca69abfab681",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebebb2f6_1314e534",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1010634
+      },
+      "writtenOn": "2017-05-22T11:43:34Z",
+      "side": 1,
+      "message": "I do agree ignoreing errors on the essential parts is bad but this case:\n1. it\u0027s not essential part (it\u0027s collecting logs not tests run)\n2. it\u0027s not mandatory for every build (creating empty \u0027build_artifacts\u0027 directory for the sake of not having \u0027ignore_errors\u0027 feels like an overkill)\n3. if these artifacts becomes essential to the build (and should fail the job build when there\u0027s something wrong) this logic (not just to check whether the directory exists but to check other more specific information in these reports/artifacts) should be implemented in a separate step , not here, similar to tempest run in run_tests playbook, followed by \u0027checking of tempest tests actually run\u0027 in collect-logs discussed in a different topic",
+      "parentUuid": "014ad878_3448187a",
+      "revId": "616ee92b4a3685c1fc79dc442d68ca69abfab681",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
