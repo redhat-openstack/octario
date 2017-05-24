@@ -34,6 +34,24 @@
       "revId": "616ee92b4a3685c1fc79dc442d68ca69abfab681",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88959341_78068b90",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001189
+      },
+      "writtenOn": "2017-05-24T12:01:56Z",
+      "side": 1,
+      "message": "ignore errors in here is almost must,\nit\u0027s not acceptable to fail collecting rest of logs, when one part of log collection breaks\n\nit needs to collect as much as possible, even if half of the system is dead, at least salvage whatever is possible",
+      "parentUuid": "014ad878_3448187a",
+      "revId": "616ee92b4a3685c1fc79dc442d68ca69abfab681",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
