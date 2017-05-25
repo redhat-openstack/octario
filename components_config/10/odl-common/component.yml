@@ -6,7 +6,7 @@ functional:
     remove_rpm: [ ]
     run: >
       set +o errexit;
-      mvn -B clean install > $HOME/logs/testrun.log 2> >(tee $SSH_TTY);
+      mvn -B clean install > ../logs/testrun.log 2> >(tee $SSH_TTY);
       run_rc=$?;
       set -o errexit;
 
@@ -21,28 +21,41 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 # Common pre-run steps used by all tester types
 opendaylight_virt_run_config:
   run: >
-    rpm -qa | sort > $HOME/logs/installed-rpms.log;
-    yum repolist | sort > $HOME/logs/repolist.log;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+    yum repolist | sort > ../logs/repolist.log;
+    touch dummy.log;
 
     sudo yum-config-manager --enable rhelosp-rhel-7.3-rhscl;
     sudo yum install -y rh-maven33-maven;
-
     export PATH=$PATH:/opt/rh/rh-maven33/root/usr/bin;
 
-    mkdir -p ~/.m2;
-    wget -q -O - https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml > $HOME/.m2/settings.xml;
+    mkdir -p ../.m2;
+    curl https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml \
+    | sed 's#<url>https://nexus.opendaylight.*#<url>http://download.eng.bos.redhat.com/brewroot/repos/rhos-{{ component.version }}.0-odl-rhel-7-build/latest/maven/</url>#g'> ../.m2/settings.xml;
+
+    export MAVEN_HOME=$(mvn --version | awk '$0 ~ /Maven home:/ {print $3}');
+    pushd $MAVEN_HOME/lib/ext;
+    export MAVEN_EXT_URLS="http://central.maven.org/maven2/org/commonjava/maven/ext/pom-manipulation-ext/2.9/pom-manipulation-ext-2.9-javadoc.jar
+    http://central.maven.org/maven2/org/commonjava/maven/ext/pom-manipulation-ext/2.9/pom-manipulation-ext-2.9-sources.jar
+    http://central.maven.org/maven2/org/commonjava/maven/ext/pom-manipulation-ext/2.9/pom-manipulation-ext-2.9.jar
+    http://central.maven.org/maven2/org/commonjava/maven/ext/pom-manipulation-ext/2.9/pom-manipulation-ext-2.9.pom";
+    sudo wget $MAVEN_EXT_URLS;
+    popd;
+    unset MAVEN_EXT_URLS;
+
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
-    mkdir -p $HOME/logs/surefire-reports;
-    find . -name surefire-reports | xargs -I{} cp -pr --parents {} $HOME/logs/surefire-reports/;
-    find $HOME/logs/surefire-reports/ -type f | xargs -I{} tar zcvf {}.tar.gz {};
+    set +o errexit;
+    tar zcvf ../logs/settings.xml.tar.gz ../.m2/settings.xml;
+    mkdir -p ../logs/surefire-reports;
+    find . -name surefire-reports | xargs -I{} cp -pr --parents {} ../logs/surefire-reports/;
+    find ../logs/surefire-reports/ -type f | xargs -I{} tar zcvf {}.tar.gz {};
 
     exit $run_rc;
 
   archive:
-    - '$HOME/.m2/settings.xml'
-    - '$HOME/logs/installed-rpms.log'
-    - '$HOME/logs/repolist.log'
+    - 'dummy.log'
+
 
 # NOTE: This is the main section. It must exist.
 test_config:
