@@ -52,6 +52,24 @@
       "revId": "616ee92b4a3685c1fc79dc442d68ca69abfab681",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c86ea0d_a5f72104",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-05-25T19:27:36Z",
+      "side": 1,
+      "message": "Ignore errors can easily be avoided by detecting (stat) if the folder exists and running this task only when this folder exist. We already have plenty of examples of using stat module and when condition, currently 8 in octario itself.\n\nLet me explain why I consider ignore_errors toxic: ansible displays the errors with red, when you investigate a playbook this distracts you.\n\nSo, whenever is possible, ignore_erros should be avoided. This is one of those places where it can be avoided, easily.",
+      "parentUuid": "88959341_78068b90",
+      "revId": "616ee92b4a3685c1fc79dc442d68ca69abfab681",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
