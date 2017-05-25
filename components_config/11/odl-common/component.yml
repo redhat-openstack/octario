@@ -30,7 +30,7 @@ opendaylight_virt_run_config:
     export PATH=$PATH:/opt/rh/rh-maven33/root/usr/bin;
 
     mkdir -p ~/.m2;
-    wget -q -O - https://raw.githubusercontent.com/opendaylight/odlparent/master/settings.xml > $HOME/.m2/settings.xml;
+    wget -q -O - http://pkgs.devel.redhat.com/cgit/rpms/opendaylight/plain/scripts/config/settings.xml.mead?h=private-dfarrell-chain-rhos-12.0-odl-rhel-7 > $HOME/.m2/settings.xml;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
     mkdir -p $HOME/logs/surefire-reports;
