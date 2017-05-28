@@ -1,7 +1,7 @@
 ### This file is used by python-glanceclient component jobs
 
 pep8:
-    rpm_deps: [ bandit ]
+    rpm_deps: [ postgresql-devel, libffi-devel, python-devel, openssl-devel ]
     remove_rpm: [ python-glanceclient ]
     run: >
        git checkout -- test-requirements.txt  requirements.txt;

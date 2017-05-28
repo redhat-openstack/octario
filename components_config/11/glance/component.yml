@@ -2,7 +2,7 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ bandit ]
+    rpm_deps: [ postgresql-devel, libffi-devel, python-devel, openssl-devel ]
     remove_rpm: [ openstack-glance ]
     run: >
        git checkout -- test-requirements.txt  requirements.txt;
