@@ -23,6 +23,7 @@ functional:
       python-testresources,
       python-os-testr,
       python-oslotest,
+      strace
     ]
 
     remove_rpm: [
