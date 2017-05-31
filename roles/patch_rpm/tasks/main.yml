@@ -111,6 +111,10 @@
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
   changed_when: true
+  register: result
+  # all RH specs should have this line inside: "# patches_ignore=DROP-IN-RPM"
+  # which allows us to add (CI related) patches that do not end up in final RPM.
+  failed_when: "result.rc != 0 or 'No valid patch filtering regex found in the spec file.' in result.stderr"
   tags:
     - skip_ansible_lint
 
