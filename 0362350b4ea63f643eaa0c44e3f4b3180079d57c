@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87c91d69_fed69d98",
+        "filename": "components_config/5/glance/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-06-01T09:31:58Z",
+      "side": 1,
+      "message": "functions tests are run for rhos9-\u003e",
+      "revId": "0362350b4ea63f643eaa0c44e3f4b3180079d57c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd53c092_c89bf366",
+        "filename": "components_config/6/glance/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-06-01T09:31:58Z",
+      "side": 1,
+      "message": "functions tests are run for rhos9-\u003e",
+      "revId": "0362350b4ea63f643eaa0c44e3f4b3180079d57c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cd20f4b_2d697414",
+        "filename": "components_config/7/glance/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-06-01T09:31:58Z",
+      "side": 1,
+      "message": "functions tests are run for rhos9-\u003e",
+      "revId": "0362350b4ea63f643eaa0c44e3f4b3180079d57c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6019af55_1a66b5b8",
+        "filename": "components_config/8/glance/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-06-01T09:31:58Z",
+      "side": 1,
+      "message": "functions tests are run for rhos9-\u003e",
+      "revId": "0362350b4ea63f643eaa0c44e3f4b3180079d57c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
