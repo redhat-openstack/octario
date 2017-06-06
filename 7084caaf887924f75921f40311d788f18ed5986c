@@ -1,0 +1,7 @@
+Verified+1: rdo-ci-hudson <whayutin+hudson@redhat.com>
+Code-Review+2: David Sariel <dsariel@redhat.com>
+Submitted-by: David Sariel <dsariel@redhat.com>
+Submitted-at: Tue, 06 Jun 2017 10:53:31 -0400
+Reviewed-on: https://review.gerrithub.io/364269
+Project: redhat-openstack/octario
+Branch: refs/heads/master
