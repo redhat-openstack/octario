@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e364946a_09a59084",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-06-06T17:13:10Z",
+      "side": 1,
+      "message": "ick ick ick\n\nIf we want this, let\u0027s get it tagged into -testdeps tag not via a random url we install from please.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 140
+      },
+      "revId": "a9c5c83a825627b6f250fa6709b836570dce56b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae4f35b2_5fc012b1",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-06-06T17:13:10Z",
+      "side": 1,
+      "message": "why are we having to do symlinks?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "a9c5c83a825627b6f250fa6709b836570dce56b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89d87e68_e5d7b57d",
+        "filename": "components_config/8/swift/component.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-06-06T17:13:10Z",
+      "side": 1,
+      "message": "same here, let\u0027s get these into -testdeps tag and not random url yum install from internal url please",
+      "range": {
+        "startLine": 5,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "a9c5c83a825627b6f250fa6709b836570dce56b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c68b65bb_01c1c50a",
+        "filename": "components_config/9/swift/component.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-06-06T17:13:10Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 73
+      },
+      "revId": "a9c5c83a825627b6f250fa6709b836570dce56b1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
