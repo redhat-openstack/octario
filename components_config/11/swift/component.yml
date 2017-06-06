@@ -32,7 +32,8 @@ functional:
 tempest:
    rpm_deps: [ python-swift-tests ]
    remove_rpm: []
-   run: ""
+   run: |
+     truncate --size 0 test-requirements.txt;
    blacklist: []
 
 # Note: The order of packages is important
@@ -94,7 +95,6 @@ virt_run_config:
     export NSS_HASH_ALG_SUPPORT=+MD5;
     export OPENSSL_ENABLE_MD5_VERIFY=1;
     truncate --size 0 requirements.txt;
-    truncate --size 0 test-requirements.txt;
     rpm -qa > ../logs/installed-rpms.log;
     export NOSE_WITH_XUNIT=1;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
