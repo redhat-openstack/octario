@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b3a07d2_1cfd85a2",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-06-06T18:10:32Z",
+      "side": 1,
+      "message": "We need those comments?",
+      "revId": "7625621a7a110983bbc3f88feb6b2e2bde5eb9fb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
