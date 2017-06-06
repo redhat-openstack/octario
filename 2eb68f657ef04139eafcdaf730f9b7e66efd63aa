@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35ef34a7_a26e1f06",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-06-06T14:51:17Z",
+      "side": 1,
+      "message": "plz remove -e. We need this script to run to the completion. Otherwise, no test_nosetests.xml will not be generated. This is a common behavious for all the components.\n\nAnd what is the diff bw run: |  and run: \u003e ?",
+      "revId": "2eb68f657ef04139eafcdaf730f9b7e66efd63aa",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
