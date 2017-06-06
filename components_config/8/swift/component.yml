@@ -36,6 +36,11 @@ tempest:
    run: ""
    blacklist: []
 
+# Additional repository required to install testing dependencies
+enable_repos: [
+  rhelosp-8.0-unittest
+]
+
 # Note: The order of packages is important
 rpm_deps_common: [
   git,
@@ -91,7 +96,7 @@ virt_run_config:
     export OPENSSL_ENABLE_MD5_VERIFY=1;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
-    rpm -qa > ../logs/installed-rpms.log;
+    rpm -qa | sort > ../logs/installed-rpms.log;
     export NOSE_WITH_XUNIT=1;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
@@ -106,5 +111,6 @@ test_config:
       setup:
         install: "{{rpm_deps_7}}"
         remove: "{{rpm_remove}}"
+        enable_repos: "{{enable_repos}}"
       run: "{{virt_run_config.run}}"
       archive: "{{virt_run_config.archive}}"
