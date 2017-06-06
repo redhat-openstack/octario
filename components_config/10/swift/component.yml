@@ -4,7 +4,7 @@ unittest:
   run: >
       sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
       sudo ln -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
-      tox --sitepackages -v -epy27 -- --xunit-file=test_nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
+      tox --sitepackages -v -epy27 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 pep8:
   rpm_deps: [ pyflakes, python-pep8, python-flake8, python-hacking ]
@@ -100,7 +100,7 @@ virt_run_config:
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
-    - test_nosetests.xml
+    - nosetests.xml
 
 ### actual test_config: starts here: used by khaleesi ###
 ### NOTE: test_config.virt must be defined ###
