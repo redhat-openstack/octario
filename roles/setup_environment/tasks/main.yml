@@ -34,7 +34,7 @@
       - "{{ playbook_dir }}/../{{ component.name }}"
       - "{{ hostvars['localhost']['test']['dir'] }}"
       skip: true
-  no_log: true
+  no_log: false
   # to avoid spamming the console
   # remember that enabling ANSIBLE_DEBUG does disable no_log
 
