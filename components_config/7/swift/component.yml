@@ -1,13 +1,25 @@
-# This hack is required to use free (non patent guarded) version of  erasurecodes
+# This hack is required to pin to free (non patent guarded) # version of  erasurecodes
 unittest:
-  rpm_deps: [python-netifaces]
-  run: >
-      sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
-      sudo ln -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
-      tox --sitepackages -v -epy27 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
+  rpm_deps: [
+      liberasurecode,
+      python-netifaces,
+      python-pyeclib,
+    ]
+  run: |
+      set -exo pipefail
+      # sudo yum -y install \
+      #   http://download.eng.bos.redhat.com/brewroot/packages/python-pyeclib/1.1.0/1.el7ost/x86_64/python-pyeclib-1.1.0-1.el7ost.x86_64.rpm \
+      #   http://download-node-02.eng.bos.redhat.com/brewroot/packages/liberasurecode/1.1.0/1.el7ost/x86_64/liberasurecode-1.1.0-1.el7ost.x86_64.rpm
+      # sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so
+      # sudo ln -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so
+      tox --sitepackages -v -epy27 -- --xunit-file=test_nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 pep8:
-  rpm_deps: [python-pep8-1.4.5, pyflakes-0.7.3, python-flake8-2.0]
+  rpm_deps: [
+      pyflakes-0.7.3,
+      python-flake8-2.0,
+      python-pep8-1.4.5,
+    ]
   run: >
       tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
@@ -34,6 +46,11 @@ tempest:
    remove_rpm: []
    run: ""
    blacklist: []
+
+# Additional repository required to install testing dependencies
+enable_repos: [
+   rhelosp-7.0-unittest
+]
 
 # Note: The order of packages is important
 rpm_deps_common: [
@@ -83,15 +100,15 @@ rpm_remove: [
 # NSS_HASH_ALG_SUPPORT and OPENSSL_ENABLE_MD5_VERIFY are required by erasurecodes
 # NOSE_WITH_XUNIT set to provide test results in the standard XUnit XML format
 virt_run_config:
-  run: >
-    set -o pipefail;
-    sudo rm -Rf .tox;
-    export NSS_HASH_ALG_SUPPORT=+MD5;
-    export OPENSSL_ENABLE_MD5_VERIFY=1;
-    truncate --size 0 requirements.txt;
-    truncate --size 0 test-requirements.txt;
-    rpm -qa > ../logs/installed-rpms.log;
-    export NOSE_WITH_XUNIT=1;
+  run: |
+    set -exo pipefail
+    sudo rm -Rf .tox
+    export NSS_HASH_ALG_SUPPORT=+MD5
+    export OPENSSL_ENABLE_MD5_VERIFY=1
+    truncate --size 0 requirements.txt
+    truncate --size 0 test-requirements.txt
+    rpm -qa | sort > ../logs/installed-rpms.log
+    export NOSE_WITH_XUNIT=1
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
@@ -105,5 +122,6 @@ test_config:
       setup:
         install: "{{rpm_deps_7}}"
         remove: "{{rpm_remove}}"
+        enable_repos: "{{enable_repos}}"
       run: "{{virt_run_config.run}}"
       archive: "{{virt_run_config.archive}}"
