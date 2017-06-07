@@ -4,13 +4,18 @@
 # 'ignore_errors' is true because test results evaultion isn't done here, but in
 # 'collect_logs' role, in the last task.
 # new line stripped from run command because Ansible unable to parser it that way.
-- name: Running tests
-  shell: >
-    export PATH=$PATH:/usr/sbin;
-    {{ component_config.run.replace('\n', '') }}
-  args:
-    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
-    executable: "{{ default_shell }}"
-  register: test_run
-  changed_when: false
-  ignore_errors: true
+
+- block:
+  - name: Running tests
+    shell: |
+      export PATH=$PATH:/usr/sbin
+      {{ component_config.run.replace('\n', '') }}
+    args:
+      chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+      executable: "{{ default_shell }}"
+    register: test_run
+    changed_when: true
+  rescue:
+  # we collect_logs in case of failure
+  - include_role:
+      name: collect_logs
