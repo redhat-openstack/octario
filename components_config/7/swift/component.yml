@@ -1,3 +1,5 @@
+convert_fetch_logs: no
+
 # This hack is required to use free (non patent guarded) version of  erasurecodes
 unittest:
   rpm_deps: [python-netifaces]
