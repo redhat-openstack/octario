@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840135e3_7c1ef7ce",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-06-07T14:57:59Z",
+      "side": 1,
+      "message": "should be able to drop this as rhelosp-7.0-unittest has python-pyeclib and liberasurecode noted above",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "d3590bcae20ee3deff989ffce0b1bce739071214",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed7e12c7_0c6d1f95",
+        "filename": "components_config/7/swift/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2017-06-07T14:57:59Z",
+      "side": 1,
+      "message": "this got mangled in the rebase",
+      "range": {
+        "startLine": 15,
+        "startChar": 51,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "d3590bcae20ee3deff989ffce0b1bce739071214",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
