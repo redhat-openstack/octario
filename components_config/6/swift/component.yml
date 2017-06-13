@@ -6,6 +6,13 @@ unittest:
 pep8:
   rpm_deps: [ pyflakes-0.7.3, python-pep8-1.4.5, python-flake8-2.0]
   run: tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+tempest:
+   rpm_deps: [ ]
+   remove_rpm: []
+   run: ""
+   blacklist: []
+
 # Additional repository required to install testing dependencies
 enable_repos: [
    rhelosp-6.0-unittest
