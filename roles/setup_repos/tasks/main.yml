@@ -33,5 +33,5 @@
   vars:
     component_version: "{{ component.version | default(rhos_default_version) }}"
   become: yes
-  shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }}"
+  shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }} {{ component_version }}-director"
   changed_when: true
