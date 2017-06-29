@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "165ee4b4_a4fba7ac",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011648
+      },
+      "writtenOn": "2017-06-29T13:24:02Z",
+      "side": 1,
+      "message": "I recognise this is not an ideal workaround. For 9 and earlier, Director/TripleO dependencies lived in a separate repository, without this they can\u0027t be installed. It doesn\u0027t seem to cause issues with 10 and later, even though the repo doesn\u0027t actually exist.\n\nmigi suggested using a shell script like in https://github.com/redhat-openstack/octario/blob/master/components_config/12/swift/component.yml#L96 but that happens after the rpms get installed so it is too late.",
+      "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
