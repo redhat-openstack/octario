@@ -50,6 +50,7 @@ unittest:
         sudo pip install -U --no-deps networkx==1.2;
         sudo pip install -U --no-deps ddt==1.0.1;
         sudo pip install -U --no-deps osprofiler==1.4.0;
+        sudo pip install -U --no-deps automaton==1.4.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
