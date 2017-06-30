@@ -43,7 +43,11 @@ unittest:
     ]
 
     run:
-        sudo pip install -U --no-deps os-xenapi==0.1.1;
+        sudo pip install -U --no-deps os-xenapi==0.2.0;
+        sudo pip install -U --no-deps pypowervm==1.1.4;
+        sudo pip install -U --no-deps pyasn1-modules==0.0.9;
+        sudo pip install -U --no-deps taskflow==2.2.0;
+        sudo pip install -U --no-deps networkx==1.2;
         sudo pip install -U --no-deps ddt==1.0.1;
         sudo pip install -U --no-deps osprofiler==1.4.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
@@ -108,7 +112,7 @@ rpm_deps: [
     git,
     python-tox-2.3.1,
     python-pluggy-0.3.1,
-    python-virtualenv-14.0.6,
+    python2-virtualenv-14.0.6,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
