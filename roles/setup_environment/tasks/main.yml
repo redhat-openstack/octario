@@ -27,16 +27,11 @@
     src="{{ item }}"
     dest="{{ ansible_env.HOME }}"
   with_first_found:
-    - files:
-      - "{{ component.path | default(omit) }}"
-      - "{{ inventory_dir }}/{{ component.name }}"
-      - "{{ inventory_dir }}/../{{ component.name }}"
-      - "{{ playbook_dir }}/../{{ component.name }}"
-      - "{{ hostvars['localhost']['test']['dir'] }}"
-      skip: true
-  no_log: true
-  # to avoid spamming the console
-  # remember that enabling ANSIBLE_DEBUG does disable no_log
+    - "{{ component.path | default(omit) }}"
+    - "{{ inventory_dir }}/{{ component.name }}"
+    - "{{ inventory_dir }}/../{{ component.name }}"
+    - "{{ playbook_dir }}/../{{ component.name }}"
+    - "{{ hostvars['localhost']['test']['dir'] }}"
 
 # This is optional since not every component must have common configuration across all releases
 - name: Load component common configuration
@@ -66,7 +61,7 @@
 
 - name: Setup component configuration based on operating system
   set_fact:
-    component_config="{{ ((test_config|default({})).virt|default({}))[item] | default(omit) }}"
+    component_config="{{ test_config.virt[item] | default(omit) }}"
   with_items:
     - "default"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version | int }}"
