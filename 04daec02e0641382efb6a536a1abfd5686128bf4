@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "91d4da4c_e43ed765",
+        "filename": "components_config/9/python-tripleoclient/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-07-03T08:10:48Z",
+      "side": 1,
+      "message": "Can you switch to | instead of \u003e and remove the \";\". Using pipe-block-type is much safer (no bugs where we miss to add the line  separator). We already had multiple bugs where we missed to see the missing \";\" during reviews, so is much better to avoid this kind of bug.",
+      "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "165ee4b4_a4fba7ac",
         "filename": "roles/setup_repos/tasks/main.yml",
         "patchSetId": 1
