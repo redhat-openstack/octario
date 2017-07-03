@@ -51,6 +51,24 @@
       "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83a3638a_6b4faa6a",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011648
+      },
+      "writtenOn": "2017-07-03T08:11:20Z",
+      "side": 1,
+      "message": "I thought there weren\u0027t any director repo in 10-12 either but it looks like my testing wasn\u0027t sufficient indeed... The playbook fails with \"I have no such repo file: rhos-release-6-director.repo\" for the case you mention.\n\nI\u0027m not sure how to handle this. Would you have suggestions to offer? I\u0027m wondering if I could squeeze an if statement here and only enabled the -director repo for 8 and 9, but I\u0027m not sure if that\u0027s possible. Any pointer would be greatly appreciated!",
+      "parentUuid": "cd9ee76c_f32d911a",
+      "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
