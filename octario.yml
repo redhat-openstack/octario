@@ -1,8 +1,15 @@
 # Octario configuration file
 # ===========================
 
-# This assumes component 'neutron' is in octario root.
-# If not, please add 'path' variable to specify it.
+# Octario will attempt to detect component source folder location by picking
+# first found location from this list:
+#
+# * `component.path`
+# * `$WORKSPACE/component.name` (if environment variable is defined)
+# * `inventory_dir/component.name `
+# * `inventory_dir/../component.name`
+# * `playbook_dir/../component.name`
+# * `hostvars['localhost']['test']['dir']`
 
 # component can be any of openstack components: nova, cinder, keystone, etc.
 # version 10 is based on 'Newton' release
