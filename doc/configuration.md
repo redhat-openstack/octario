@@ -30,6 +30,19 @@ root directory, component's root directory and /etc.
 
 Detailed example for `component.yml` can be found in samples directory.
 
+### Component code location
+
+Octario will attempt to detect component source folder location by picking
+first found location from this list:
+
+* `component.path`
+* `$WORKSPACE/component.name` (if environment variable is defined)
+* `inventory_dir/component.name `
+* `inventory_dir/../component.name`
+* `playbook_dir/../component.name`
+* `hostvars['localhost']['test']['dir']`
+
+
 ### ansible.cfg
 
 This part of Ansible project and isn't an octario configuration file.
