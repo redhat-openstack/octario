@@ -61,7 +61,7 @@
 
 - name: Setup component configuration based on operating system
   set_fact:
-    component_config="{{ ((test_config|default({})).virt|default({}))[item] | default(omit) }}"
+    component_config="{{ test_config.virt[item] | default(omit) }}"
   with_items:
     - "default"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version | int }}"
