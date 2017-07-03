@@ -69,6 +69,24 @@
       "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b21e16a_ec3b1358",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-07-03T08:22:18Z",
+      "side": 1,
+      "message": "Ansible when clause can be used to add the {{ component_version }}-director\" conditionally \n\nAnother possibility is to define variable conditionally \n\nvars: \n   component_version_director: \"{{ component_version}}- director {{ if component_version \u003e 6 else \u0027\u0027 }}\".\n\nshell: \"{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }} {{ component_version-director }}\"",
+      "parentUuid": "83a3638a_6b4faa6a",
+      "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
