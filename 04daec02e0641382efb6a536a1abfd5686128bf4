@@ -16,6 +16,24 @@
       "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd9ee76c_f32d911a",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2017-07-03T08:01:34Z",
+      "side": 1,
+      "message": "Will it work for every release? even such without director repos like OSP 6?",
+      "parentUuid": "165ee4b4_a4fba7ac",
+      "revId": "04daec02e0641382efb6a536a1abfd5686128bf4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
