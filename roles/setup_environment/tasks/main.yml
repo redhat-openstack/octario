@@ -27,16 +27,12 @@
     src="{{ item }}"
     dest="{{ ansible_env.HOME }}"
   with_first_found:
-    - files:
-      - "{{ component.path | default(omit) }}"
-      - "{{ inventory_dir }}/{{ component.name }}"
-      - "{{ inventory_dir }}/../{{ component.name }}"
-      - "{{ playbook_dir }}/../{{ component.name }}"
-      - "{{ hostvars['localhost']['test']['dir'] }}"
-      skip: true
+    - "{{ component.path | default(omit) }}"
+    - "{{ inventory_dir }}/{{ component.name }}"
+    - "{{ inventory_dir }}/../{{ component.name }}"
+    - "{{ playbook_dir }}/../{{ component.name }}"
+    - "{{ hostvars['localhost']['test']['dir'] }}"
   no_log: true
-  # to avoid spamming the console
-  # remember that enabling ANSIBLE_DEBUG does disable no_log
 
 # This is optional since not every component must have common configuration across all releases
 - name: Load component common configuration
