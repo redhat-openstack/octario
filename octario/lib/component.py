@@ -98,6 +98,12 @@ class ComponentUtils(object):
         Returns:
             str: RHOS release version or None if it wasn't discovered
         """
+        
+        # this allows us to bypass detection algorithm which can fail in
+        # few cases, like cherry picked changes.
+        if 'RHOS_VERSION' in os.environ:
+            return os.environ['RHOS_VERSION']
+        
         if self.repo_type is RepoType.GIT:
             if not self.branch:
                 repo_url, self.branch = \
@@ -246,7 +252,12 @@ class ComponentUtils(object):
         Returns:
             str: RHOS release version
         """
-        rhos_release = re.findall('[0-9][0-9]?\.[0-9]', branch_name)
+
+        # bypass for CR branches.
+        if 'RHOS_VERSION' in os.environ:
+            rhos_release = os.environ['RHOS_VERSION']
+        else:
+            rhos_release = re.findall('[0-9][0-9]?\.[0-9]', branch_name)
 
         # Unexpected parsing of branch name
         if len(rhos_release) != 1:
