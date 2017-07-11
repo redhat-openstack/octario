@@ -28,6 +28,7 @@
     dest="{{ ansible_env.HOME }}"
   with_first_found:
     - "{{ component.path | default(omit) }}"
+    - "{% if lookup('env','WORKSPACE') %}{{ lookup('env','WORKSPACE') }}/{{ component.name }}{% else %}{{ omit }}{% endif %}"
     - "{{ inventory_dir }}/{{ component.name }}"
     - "{{ inventory_dir }}/../{{ component.name }}"
     - "{{ playbook_dir }}/../{{ component.name }}"
