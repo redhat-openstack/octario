@@ -75,14 +75,6 @@ as pep8, unittest and functional.
 
 <div align="center"><img src="./doc/octario_workflow.png" alt="Octario work-flow"></div><hr />
 
-### Patch RPMs
-
-The following drawing describes specifically how RPM patching done with Octario.
-
-To inclue patch_rpm role, run playbooks/<tester>-with-patching.yml
-
-<div align="center"><img src="./doc/patch_rpm.png" alt="Octario patch rpm work-flow"></div><hr />
-
 ## More Docs
 
 See the [/doc](https://github.com/redhat-openstack/octario/tree/master/doc) directory of this repo.
