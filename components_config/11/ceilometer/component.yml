@@ -8,7 +8,7 @@ pep8:
 
     rpm_deps: [
       python-flake8,
-      python-hacking-0.10.2
+      python-hacking
     ]
 
     remove_rpm: []
@@ -49,7 +49,6 @@ unittest:
         python-pecan,
         python-keystonemiddleware,
         python-wsme,
-        python-overtest,
         python-ceilometerclient,
         python-gnocchiclient,
         python-pifpaf,
@@ -100,7 +99,6 @@ functional:
         python-pecan,
         python-keystonemiddleware,
         python-wsme,
-        python-overtest,
         python-pifpaf,
         python-ceilometerclient
     ]
@@ -120,9 +118,9 @@ rpm_deps: [
     git,
     python-pbr,
     python-pep8,
-    python-pluggy-0.3.1,
-    python-tox-2.3.1,
-    python-virtualenv-1.11.6,
+    python-pluggy,
+    python-tox,
+    python-virtualenv,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
