@@ -28,7 +28,6 @@ unittest:
         python2-pbr,
         python-os-testr,
         python-testrepository,
-        python2-requests-aws,
         python-mox,
         python-testscenarios,
         python-beautifulsoup4,
@@ -64,8 +63,6 @@ unittest:
 
 # (migi) python-aodh is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
-# (sileht): overtest is bugged and not maintain anymore (pifpaf is the replacement)
-# the sed ..mysqld... is a workaround of the overtest bug (it doesn't find mysqld location itself)
 #
 functional:
 
@@ -101,7 +98,6 @@ functional:
         python-wsme,
         python-aodhclient,
         python-pifpaf,
-        python-overtest
     ]
 
     remove_rpm: [
@@ -110,8 +106,6 @@ functional:
 
     run:
         export PBR_VERSION="12.0.0";
-        sudo sed -i 's/ mysqld/ \/usr\/libexec\/mysqld/g' /usr/share/overtest/lib/mysql;
-        sed -i '/\[testenv\:py27-mysql\]/a whitelist_externals = overtest' tox.ini;
         tox --sitepackages -v -e py27-mysql 2>&1 | tee ../logs/testrun.log;
 
 
