@@ -5,8 +5,9 @@
 # 'collect_logs' role, in the last task.
 # new line stripped from run command because Ansible unable to parser it that way.
 - name: Running tests
-  shell: >
-    export PATH=$PATH:/usr/sbin;
+  shell: |
+    export PATH=$PATH:/usr/sbin
+    set -eou pipefail
     {{ component_config.run.replace('\n', '') }}
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
