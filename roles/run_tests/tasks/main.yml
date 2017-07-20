@@ -7,6 +7,7 @@
 - name: Running tests
   shell: >
     export PATH=$PATH:/usr/sbin;
+    set -eou pipefail
     {{ component_config.run.replace('\n', '') }}
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
