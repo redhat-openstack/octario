@@ -29,7 +29,6 @@ unittest:
         python2-pbr,
         python-os-testr,
         python-testrepository,
-        python2-requests-aws,
         python-mox,
         python-testscenarios,
         python-beautifulsoup4,
