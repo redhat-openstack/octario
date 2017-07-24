@@ -116,7 +116,7 @@ rpm_deps: [
     git,
     python-tox-2.3.1,
     python-pluggy-0.3.1,
-    python-virtualenv-12.0.7,
+    python-virtualenv-14.0.6,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
