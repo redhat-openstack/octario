@@ -136,10 +136,6 @@ neutron_virt_run_config:
     set -o pipefail;
     rpm -qa | sort > ../logs/installed-rpms.log;
 
-    export DEBUG_FALSE=#\ debug\ =\ False;
-    export DEBUG_TRUE=debug\ =\ True;
-    sudo sed -i "s/$DEBUG_FALSE/$DEBUG_TRUE/g" /etc/neutron/neutron.conf;
-
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
 
