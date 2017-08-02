@@ -116,7 +116,11 @@
 
 # Now that the repo is patched, generate RPMs from it
 - name: Build new RPM from patched dist-git repo
-  shell: "rdopkg mockbuild"
+  shell: |
+      set -exo pipefail
+      # Workaround for: Could not execute mockbuild: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:579)
+      export PYTHONHTTPSVERIFY=0
+      rdopkg mockbuild
   ignore_errors: true
   args:
     chdir: "{{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}"
