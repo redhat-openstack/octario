@@ -97,8 +97,10 @@ test_config:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
       run: "{{ neutron_virt_run_config.run }}"
+      archive: "{{ neutron_virt_run_config.archive }}"
     default:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
       run: "{{ neutron_virt_run_config.run }}"
+      archive: "{{ neutron_virt_run_config.archive }}"
