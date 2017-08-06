@@ -34,6 +34,18 @@
     dest="{{ destination_log_folder }}"
   with_items: "{{ log_files_common.files | default([]) }}"
 
+- name: Run pre-collect commands (component specific)
+  shell: |
+      export PATH=$PATH:/usr/sbin
+      set -euo pipefail
+      {{ component_config.archive_run }}
+  args:
+      chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+      executable: "{{ default_shell }}"
+  changed_when: false
+  when: component_config.archive_run is defined
+  ignore_errors: true
+
 - name: Fetch files that mentioned in component configuration's archive section
   fetch:
     src="{{ component_path }}/{{ item }}"
