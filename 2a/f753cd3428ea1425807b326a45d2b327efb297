@@ -1,0 +1,7 @@
+Verified+1: rhosqeauto <yfried+rhosqeauto@redhat.com>
+Code-Review+2: David Sariel <dsariel@redhat.com>
+Submitted-by: Arie Bregman <abregman@redhat.com>
+Submitted-at: Sun, 06 Aug 2017 11:49:27 -0400
+Reviewed-on: https://review.gerrithub.io/372949
+Project: redhat-openstack/octario
+Branch: refs/heads/master
