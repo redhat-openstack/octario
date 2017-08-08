@@ -32,6 +32,7 @@ functional:
 
     run:
         tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+
 # Tempest target
 tempest:
    rpm_deps: []
@@ -59,6 +60,7 @@ rpm_deps: [
   python-testscenarios,
   python-barbicanclient,
   python-os-win,
+  python-crypto,
 
   python-testtools,
   python-babel,
