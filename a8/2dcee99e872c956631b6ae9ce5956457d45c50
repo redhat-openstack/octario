@@ -1,0 +1,8 @@
+Code-Review+1: Alex Schultz <aschultz@next-development.com>
+Verified+1: rhosqeauto <yfried+rhosqeauto@redhat.com>
+Code-Review+2: Jon Schlueter <jschluet@redhat.com>
+Submitted-by: Jon Schlueter <jschluet@redhat.com>
+Submitted-at: Thu, 10 Aug 2017 14:36:30 -0400
+Reviewed-on: https://review.gerrithub.io/373810
+Project: redhat-openstack/octario
+Branch: refs/heads/master
