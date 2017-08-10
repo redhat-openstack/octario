@@ -128,7 +128,7 @@ nova_virt_run_config:
 
   run: >
       set -o pipefail;
-      rpm -qa | sort > ../logs/installed-rpms.log;
+      rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
