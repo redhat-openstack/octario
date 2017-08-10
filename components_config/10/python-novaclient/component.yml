@@ -75,7 +75,7 @@ nova_virt_run_config:
       echo "TBD: pip is a work around for rhbz#1397099";
       sudo pip install -U --no-deps requests==2.11.1;
       set -o pipefail;
-      rpm -qa | sort > ../logs/installed-rpms.log;
+      rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
       /usr/bin/sed -i.bak "s/^install_command\s*=.*$/#&/" tox.ini;
