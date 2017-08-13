@@ -21,7 +21,7 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 # Common pre-run steps used by all tester types
 opendaylight_virt_run_config:
   run: >
-    sort -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > $HOME/logs/installed-rpms.log;
+    rpm -qa | sort > $HOME/logs/installed-rpms.log;
     yum repolist | sort > $HOME/logs/repolist.log;
 
     sudo yum-config-manager --enable rhelosp-rhel-7.3-rhscl;
