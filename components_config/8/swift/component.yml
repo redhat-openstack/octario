@@ -96,7 +96,7 @@ virt_run_config:
     export OPENSSL_ENABLE_MD5_VERIFY=1;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
-    rpm -qa | sort > ../logs/installed-rpms.log;
+    rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
     export NOSE_WITH_XUNIT=1;
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 

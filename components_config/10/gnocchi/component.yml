@@ -74,7 +74,7 @@ remove_rpm: [
 gnocchi_virt_run_config:
 
     run: >
-        rpm -qa | sort > ../logs/installed-rpms.log;
+        rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
         sed -i '/\[testenv\]/a whitelist_externals = doc8\n   oslo-config-generator' tox.ini;
         sed -i '/deps = \.\[test\]/,/py{27,34}-mysql: \.\[mysql,swift,ceph,file\]/d' tox.ini;
         truncate --size 0 requirements.txt;
