@@ -16,6 +16,24 @@
       "revId": "97f17b00bae421142fdcfb53f12ef7ae5b1a74b2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "939f7932_7e57db5f",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1011648
+      },
+      "writtenOn": "2017-08-18T10:23:56Z",
+      "side": 1,
+      "message": "I ran a couple of tests with 8/9/10 and it seems to work fine, I believe it\u0027s reusing the variable defined on the previous line. The underline version of the variable is also used on the same line within the \"ternary\" statement already.",
+      "parentUuid": "a03e5d9b_3277aa83",
+      "revId": "97f17b00bae421142fdcfb53f12ef7ae5b1a74b2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
