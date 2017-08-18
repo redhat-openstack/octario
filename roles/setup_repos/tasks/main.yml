@@ -32,7 +32,7 @@
 - name: Execute rhos-release to install rhos repos
   vars:
     component_version: "{{ component.version | default(rhos_default_version) }}"
-    component_version_director: "{{ (component.version in [7, 8, 9]) | ternary(component_version + '-director', '') }}"
+    component_version_director: "{{ (component_version|int in [7, 8, 9]) | ternary(component_version + '-director', '') }}"
   become: yes
   shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }} {{ component_version_director }}"
   changed_when: true
