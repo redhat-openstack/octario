@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a03e5d9b_3277aa83",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-08-18T09:58:38Z",
+      "side": 1,
+      "message": "Are you sure that ansible maps the use of _ into dictionary lookup? I see you converted the dot into a an underline and I need to be sure that this would not break the code.",
+      "revId": "97f17b00bae421142fdcfb53f12ef7ae5b1a74b2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
