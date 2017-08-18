@@ -16,6 +16,7 @@ dsvm-functional:
                 python-oslotest, bridge-utils, nmap-ncat, ebtables,
                 openstack-selinux, psmisc, mysql-server ]
     remove_rpm: []
+    archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /tmp/dsvm-functional-logs;
     run: >
         sudo setenforce 0;
         sudo modprobe bridge;
@@ -91,8 +92,11 @@ neutron_virt_run_config:
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
+  archive_run: |
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['archive_run'] }}
+
   archive:
-    - /tmp/dsvm-functional-logs
+    - ../logs/functional-tests.tar.gz
 
 # NOTE: This is the main section. It must exist.
 test_config:
@@ -103,9 +107,11 @@ test_config:
         remove: "{{ remove_rpm }}"
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"
     default:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"

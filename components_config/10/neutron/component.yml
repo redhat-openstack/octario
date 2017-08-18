@@ -26,6 +26,7 @@ dsvm-functional:
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, nfs-utils ]
     remove_rpm: []
+    archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo setenforce 0;
         sudo modprobe bridge;
@@ -138,8 +139,11 @@ neutron_virt_run_config:
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
+  archive_run: |
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['archive_run'] }}
+
   archive:
-    - /tmp/dsvm-functional-logs
+    - ../logs/functional-tests.tar.gz
 
 # NOTE: This is the main section. It must exist.
 test_config:
@@ -151,6 +155,7 @@ test_config:
         enable_repos: [rhelosp-10.0-unittest]
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"
     default:
       setup:
         install: "{{ rpm_deps }}"
@@ -158,3 +163,4 @@ test_config:
         enable_repos: [rhelosp-10.0-unittest]
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"
