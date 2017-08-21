@@ -56,5 +56,6 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: [ rhelosp-12.0-unittest ]
+        # python2-osc-lib-tests is only available in the rhelosp-12.0-brew repository currently
+        enable_repos: [ rhelosp-12.0-unittest, rhelosp-12.0-brew ]
       run: "{{ tripleoclient_virt_run_config.run }}"
