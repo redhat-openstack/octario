@@ -7,6 +7,7 @@
 pep8:
     rpm_deps: [ python-neutron, python-neutron-tests, openstack-tempest ]
     remove_rpm: [ ]
+    archive_run: ''
     run: >
       git checkout -- test-requirements.txt requirements.txt;
       tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
@@ -16,6 +17,7 @@ unittest:
                 python-oslotest, python-testresources, python-pep8, python-designateclient,
                 python-flake8, openstack-neutron-openvswitch, python-oslo-db, python-oslo-db-tests ]
     remove_rpm: [ python-neutron ]
+    archive_run: ''
     run: >
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
@@ -29,6 +31,7 @@ dsvm-functional:
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, nfs-utils ]
     remove_rpm: []
+    archive_run: ''
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo setenforce 0;
@@ -62,6 +65,7 @@ dsvm-fullstack:
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, rabbitmq-server ]
     remove_rpm: []
+    archive_run: ''
     run: >
         CHAIN_NAME="openstack-INPUT";
         sudo iptables -n --list $CHAIN_NAME 1> /dev/null 2>&1 || CHAIN_NAME="INPUT";
@@ -96,6 +100,7 @@ dsvm-fullstack:
 api:
     rpm_deps: []
     remove_rpm: []
+    archive_run: ''
     run: >
         sudo sed -i "/^extension/s/$/,qos/" /etc/neutron/plugin.ini;
         sudo sed -i "/^service_plugins/s/$/,qos/" /etc/neutron/neutron.conf;
@@ -109,6 +114,7 @@ api:
 tempest:
    rpm_deps: []
    remove_rpm: []
+   archive_run: ''
    run: >
      if ! grep -q -i dvr /home/stack/deploy_overcloud.sh; then
          sed -i -E s/,dvr,\?//g /home/stack/tempest/etc/tempest.conf;

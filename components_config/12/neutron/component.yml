@@ -1,6 +1,7 @@
 pep8:
     rpm_deps: [ python-neutron, python-neutron-tests, openstack-tempest ]
     remove_rpm: [ ]
+    archive_run: ''
     run: >
       git checkout -- test-requirements.txt requirements.txt;
       tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
@@ -10,6 +11,7 @@ unittest:
                 python-oslotest, python-testresources, python-pep8, python-designateclient,
                 python-flake8, openstack-neutron-openvswitch, python-oslo-db, python-oslo-db-tests ]
     remove_rpm: [ python-neutron ]
+    archive_run: ''
     run: >
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
@@ -55,6 +57,7 @@ dsvm-fullstack:
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, rabbitmq-server ]
     remove_rpm: []
+    archive_run: ''
     run: >
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182321-python-waitress/python-waitress-0.8.9-4.el7.centos.noarch.rpm;
         sudo yum install -y https://copr-be.cloud.fedoraproject.org/results/abregman/el7-rhos9-test-deps/epel-7-x86_64/00182329-python-beautifulsoup4/python-beautifulsoup4-4.3.2-1.el7.centos.noarch.rpm;
@@ -92,6 +95,7 @@ dsvm-fullstack:
 api:
     rpm_deps: []
     remove_rpm: []
+    archive_run: ''
     run: >
         sudo sed -i "/^extension/s/$/,qos/" /etc/neutron/plugin.ini;
         sudo sed -i "/^service_plugins/s/$/,qos/" /etc/neutron/neutron.conf;
@@ -104,6 +108,7 @@ api:
 # Test shelve is not a network test, but picked up by the network tests regex
 tempest:
    rpm_deps: []
+   archive_run: ''
    remove_rpm: []
    run: >
      if ! grep -q -i dvr /home/stack/deploy_overcloud.sh; then

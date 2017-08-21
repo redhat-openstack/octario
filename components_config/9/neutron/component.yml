@@ -1,12 +1,14 @@
 pep8:
     rpm_deps: [ python-neutron, python-hacking, pylint ]
     remove_rpm: [ python-neutron ]
+    archive_run: ''
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: [ python-neutron, python-cliff, python-requests-mock, python-webtest, python-mock,
                 python-oslotest, python-testresources, python-pep8, python-designateclient ]
     remove_rpm: [ python-neutron ]
+    archive_run: ''
     run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
@@ -43,6 +45,7 @@ dsvm-functional:
 dsvm-fullstack: 
     rpm_deps: []
     remove_rpm: []
+    archive_run: ''
     run: tox --sitepackages -v -e dsvm-fullstack 2>&1 | tee ../logs/testrun.log
 
 # Current installer doesn't configure qos, so we configure it here.
@@ -50,6 +53,7 @@ dsvm-fullstack:
 api:
     rpm_deps: []
     remove_rpm: []
+    archive_run: ''
     run: >
         sudo sed -i "/^extension/s/$/,qos/" /etc/neutron/plugin.ini;
         sudo sed -i "/^service_plugins/s/$/,qos/" /etc/neutron/neutron.conf;
@@ -63,6 +67,7 @@ api:
 tempest:
    rpm_deps: []
    remove_rpm: []
+   archive_run: ''
    run: >
      sed -i -E s/,dvr,\?//g /home/stack/tempest/etc/tempest.conf;
    blacklist: [tempest.scenario.test_network_basic_ops.TestNetworkBasicOps.test_router_rescheduling,
