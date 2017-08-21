@@ -11,8 +11,10 @@ unittest:
                 python-osc-lib-tests,
                 python-openstackclient,
                 python-requests-mock ]
-    remove_rpm: [ python-neutronclient ]
-    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    remove_rpm: []
+    run: >
+        sudo rpm -e python-neutronclient --nodeps;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 functional:
     rpm_deps: [ python-oslotest,
