@@ -31,7 +31,6 @@ dsvm-functional:
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, nfs-utils ]
     remove_rpm: []
-    archive_run: ''
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo setenforce 0;
@@ -57,7 +56,7 @@ dsvm-functional:
         mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
         mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
-        
+
 
 dsvm-fullstack:
     rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-testresources,
