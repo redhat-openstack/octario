@@ -31,7 +31,6 @@ dsvm-functional:
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, nfs-utils ]
     remove_rpm: []
-    archive_run: ''
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo setenforce 0;
