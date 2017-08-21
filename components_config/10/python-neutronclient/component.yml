@@ -8,6 +8,8 @@ unittest:
                 python-cliff-tablib,
                 python-mox3,
                 python-oslotest,
+                python-osc-lib-tests,
+                python-openstackclient,
                 python-requests-mock ]
     remove_rpm: [ python-neutronclient ]
     run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
