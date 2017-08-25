@@ -1,0 +1,8 @@
+Verified+1: rhosqeauto <yfried+rhosqeauto@redhat.com>
+Code-Review+1: Assaf Muller <assafmuller@gmail.com>
+Code-Review+2: Waldemar Znoinski <wznoinsk@redhat.com>
+Submitted-by: Waldemar Znoinski <wznoinsk@redhat.com>
+Submitted-at: Fri, 25 Aug 2017 15:44:16 -0400
+Reviewed-on: https://review.gerrithub.io/375823
+Project: redhat-openstack/octario
+Branch: refs/heads/master
