@@ -5,7 +5,7 @@
 #
 enable_repos: [
   rhelosp-10.0-unittest,
-  rhelosp-rhel-7.3-server-opt,
+  rhelosp-rhel-7.4-server-opt,
 ]
 #
 # The pep8 target
