@@ -38,7 +38,7 @@ remove_rpm: [
 rpm_deps: [
   git,
   python-pbr,
-  python-tox-2.3.1,
+  python-tox,
   python-pluggy-0.3.1,
   python2-virtualenv-14.0.6,
   python-setuptools-18.5,
