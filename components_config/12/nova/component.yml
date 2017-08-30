@@ -49,6 +49,7 @@ unittest:
     ]
 
     run:
+        sudo pip install -U --no-deps wsgi_intercept==1.4.1;
         sudo pip install -U --no-deps os-xenapi==0.2.0;
         sudo pip install -U --no-deps pypowervm==1.1.4;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
@@ -67,7 +68,8 @@ functional:
       python-testresources,
       python-os-testr,
       python-oslotest,
-      python-gabbi
+      python-gabbi,
+      python-pip
     ]
 
     remove_rpm: [
@@ -87,6 +89,7 @@ functional:
     ]
 
     run:
+        sudo pip install -U --no-deps wsgi_intercept==1.4.1;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
