@@ -27,6 +27,7 @@ unittest:
 
     rpm_deps: [
       python-nova,
+      python-wsgi_intercept,
       python-websockify,
       python-ironicclient,
       python-testresources,
@@ -35,6 +36,11 @@ unittest:
       python-requests-mock,
       python-pep8,
       genisoimage,
+      python-automaton,
+      python-osprofiler,
+      python2-pyasn1-modules,
+      python-taskflow,
+      python-ddt,
       python-pip
     ]
 
@@ -45,12 +51,6 @@ unittest:
     run:
         sudo pip install -U --no-deps os-xenapi==0.2.0;
         sudo pip install -U --no-deps pypowervm==1.1.4;
-        sudo pip install -U --no-deps pyasn1-modules==0.0.9;
-        sudo pip install -U --no-deps taskflow==2.2.0;
-        sudo pip install -U --no-deps networkx==1.2;
-        sudo pip install -U --no-deps ddt==1.0.1;
-        sudo pip install -U --no-deps osprofiler==1.4.0;
-        sudo pip install -U --no-deps automaton==1.4.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
