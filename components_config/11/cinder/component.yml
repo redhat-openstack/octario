@@ -2,9 +2,10 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ pyflakes, python-flake8, python-hacking ]
+    rpm_deps: [ pyflakes, python-flake8, python-hacking, python-eventlet ]
     remove_rpm: [ python-cinder ]
     run: >
+       export UPPER_CONSTRAINTS_FILE=/dev/null
        tox -e pylint |  tee ../logs/venv-pylint.log || true;
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
@@ -30,8 +31,9 @@ functional:
       python-cinder,
     ]
 
-    run:
-        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+    run: |
+        export UPPER_CONSTRAINTS_FILE=/dev/null
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log
 
 # Tempest target
 tempest:
@@ -86,11 +88,12 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 
 # Common pre-run steps used by all tester types
 cinder_virt_run_config:
-  run: >
-    set -o pipefail;
-    rpm -qa | sort > ../logs/installed-rpms.log;
-    truncate --size 0 requirements.txt;
-    truncate --size 0 test-requirements.txt;
+  run: |
+    set -o pipefail
+    export UPPER_CONSTRAINTS_FILE=/dev/null
+    rpm -qa | sort > ../logs/installed-rpms.log
+    truncate --size 0 requirements.txt
+    truncate --size 0 test-requirements.txt
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
