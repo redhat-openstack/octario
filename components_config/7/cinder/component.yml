@@ -1,5 +1,4 @@
 ### This file is used by cinder component jobs
-### The jobs can be found on rhos Jenkins: https://rhos-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/component-tests
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:

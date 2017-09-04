@@ -1,5 +1,4 @@
 ### This file is used by cinder component jobs
-### The jobs can be found on rhos Jenkins: https://rhos-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/component-tests
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
@@ -31,6 +30,7 @@ functional:
 
     run:
         tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+
 # Tempest target
 tempest:
    rpm_deps: []
@@ -57,6 +57,7 @@ rpm_deps: [
   python-testresources,
   python-testscenarios,
   python-barbicanclient,
+  python-crypto,
 
   python-testtools,
   python-babel,
