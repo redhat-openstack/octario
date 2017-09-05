@@ -22,7 +22,7 @@ pep8:
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
 #
-# python-pip is installed temporary to satisfy os-xenapi, ddt and osprofiler
+# BZ: 1488500 requires urllib3 1.22 and no backports.ssl-match-hostname
 unittest:
 
     rpm_deps: [
@@ -52,6 +52,8 @@ unittest:
         sudo pip install -U --no-deps wsgi_intercept==1.4.1;
         sudo pip install -U --no-deps os-xenapi==0.2.0;
         sudo pip install -U --no-deps pypowervm==1.1.4;
+        sudo pip install -U --no-deps urllib3==1.22;
+        sudo pip uninstall -y backports.ssl-match-hostname;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
