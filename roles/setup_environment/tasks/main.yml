@@ -24,8 +24,14 @@
 
 - name: Copy component to remote host
   synchronize:
-    src="{{ item }}"
-    dest="{{ ansible_env.HOME }}"
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}"
+    # keep rsync quiet as we don't want console noise
+    rsync_opts:
+      - "--quiet"
+      - "--exclude=.tox"
+      - "--force"
+      - "--delete"
   with_first_found:
     - "{{ component.path | default(omit) }}"
     - "{% if lookup('env','WORKSPACE') %}{{ lookup('env','WORKSPACE') }}/{{ component.name }}{% else %}{{ omit }}{% endif %}"
