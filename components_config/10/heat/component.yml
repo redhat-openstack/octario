@@ -73,7 +73,6 @@ rpm_deps: [
     python-paramiko,
     python-paste-deploy,
     python-pbr,
-    python-qpid,
     python-requests,
     python-retrying,
     python-routes,
