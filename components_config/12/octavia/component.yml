@@ -1,7 +1,9 @@
 pep8:
-    rpm_deps: [ python-pep8-1.5.6, python-flake8-2.1.0 ]
+    rpm_deps: []
     remove_rpm: []
-    run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+    run: >
+        git checkout -- test-requirements.txt requirements.txt;
+        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: [ python-cliff,
@@ -25,7 +27,7 @@ unittest:
                 python-glanceclient,
                 python-futures,
                 python-sqlalchemy,
-                python-pep8-1.5.6,
+                python-pep8,
                 python-taskflow,
                 python-oslo-messaging,
                 python-barbicanclient,
