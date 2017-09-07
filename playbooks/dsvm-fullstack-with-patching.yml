@@ -4,32 +4,10 @@
     tester:
       component:
         tox_target: dsvm-fullstack
-
-    tasks:
-      - block:
-
-        - name: "role: setup_repos"
-          include_role:
-            name: setup_repos
-
-        - name: "role: setup_environment"
-          include_role:
-            name: setup_environment
-
-        - name: "role: patch_rpm"
-          include_role:
-            name: patch_rpm
-
-        - name: "role: install_packages"
-          include_role:
-            name: install_packages
-
-        - name: "role: run_tests"
-          include_role:
-            name: run_tests
-
-        always:
-
-          - name: "role: collect_logs"
-            include_role:
-              name: collect_logs
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: patch_rpm }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }

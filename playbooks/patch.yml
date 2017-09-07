@@ -5,18 +5,7 @@
     tester:
       component:
         tox_target: tempest
-
-  tasks:
-    - block:
-
-      - name: "role: setup_repos"
-        include_role:
-          name: setup_repos
-
-      - name: "role: setup_environment"
-        include_role:
-          name: setup_environment
-
-      - name: "role: patch_rpm"
-        include_role:
-          name: patch_rpm
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: patch_rpm }

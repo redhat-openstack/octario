@@ -4,28 +4,9 @@
     tester:
       component:
         tox_target: pep8
-
-  tasks:
-    - block:
-
-      - name: "role: setup_repos"
-        include_role:
-          name: setup_repos
-
-      - name: "role: setup_environment"
-        include_role:
-          name: setup_environment
-
-      - name: "role: install_packages"
-        include_role:
-          name: install_packages
-
-      - name: "role: run_tests"
-        include_role:
-          name: run_tests
-
-      always:
-
-        - name: "role: collect_logs"
-          include_role:
-            name: collect_logs
+  roles:
+    - { role: setup_repos }
+    - { role: setup_environment }
+    - { role: install_packages }
+    - { role: run_tests }
+    - { role: collect_logs }
