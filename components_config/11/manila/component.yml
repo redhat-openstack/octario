@@ -4,6 +4,7 @@ pep8:
     rpm_deps: [ pyflakes, python-flake8 ]
     remove_rpm: [ python-manila ]
     run: >
+       git checkout -- test-requirements.txt requirements.txt;
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
