@@ -6,6 +6,7 @@ pep8:
     remove_rpm: [ python-cinder, python-os-win ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
     run: >
+       git checkout -- test-requirements.txt requirements.txt;
        tox -e pylint |  tee ../logs/venv-pylint.log || true;
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 

@@ -9,6 +9,7 @@ unittest:
 pep8:
   rpm_deps: [ bandit, pyflakes, python-pep8, python-flake8, python-hacking ]
   run: >
+      git checkout -- test-requirements.txt requirements.txt;
       tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 # python-swift is installed and then removed to satisfy all runtime
