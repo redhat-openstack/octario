@@ -45,6 +45,7 @@ rpm_deps: [
 
   bandit,
   python-bashate,
+  python-dulwich,
   python-pygments,
   python-tempest-lib,
   python-testrepository,
