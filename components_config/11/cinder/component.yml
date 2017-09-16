@@ -23,9 +23,10 @@ unittest:
 functional:
     rpm_deps: [
       openstack-cinder,
-      python-testresources,
+      python-os-brick,
       python-os-testr,
       python-oslotest,
+      python-testresources,
     ]
 
     remove_rpm: [
