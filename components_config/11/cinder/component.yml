@@ -31,7 +31,6 @@ functional:
 
     remove_rpm: [
       python-cinder,
-      python-os-win,
     ]
 
     run:
