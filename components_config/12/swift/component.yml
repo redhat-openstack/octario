@@ -1,9 +1,9 @@
-# 'ln -s hack' is required to use the free (non patent guarded) version of  erasurecodes
+# 'ln -f -s hack' is required to use the free (non patent guarded) version of  erasurecodes
 unittest:
   rpm_deps: []
   run: >
-      sudo ln -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
-      sudo ln -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
+      sudo ln -f -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
+      sudo ln -f -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
       tox --sitepackages -v -epy27 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 pep8:
