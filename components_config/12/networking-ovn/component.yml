@@ -73,4 +73,4 @@ test_config:
         enable_repos: [rhelosp-11.0-unittest]
       run: "{{ networking_ovn_virt_run_config.run }}"
       archive: "{{ networking_ovn_virt_run_config.archive }}"
-      archive_run: "{{ networking_virt_run_config.archive_run }}"
+      archive_run: "{{ networking_ovn_virt_run_config.archive_run }}"
