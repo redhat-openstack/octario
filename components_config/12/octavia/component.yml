@@ -13,6 +13,7 @@ unittest:
                 python-webtest,
                 python-os-testr,
                 python-neutronclient,
+                python-keystonemiddleware,
                 python-oslo-utils,
                 python-flask,
                 python-wsme,
