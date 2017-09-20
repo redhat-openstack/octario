@@ -50,10 +50,23 @@
     - name: Display param values for tempest
       debug: msg="nova_sched_filters={{nova_sched_filters}} nova_pool_name={{ nova_pool_name }}"
 
-  roles:
-    - { role: setup_repos }
-    - { role: setup_environment }
-    - role: tempest/setup
-      pool_name: "{{ nova_pool_name }}"
-      sched_filters: "{{ nova_sched_filters }}"
-    - { role: tempest/run }
+    - block:
+
+      - name: "role: setup_repos"
+        include_role:
+          name: setup_repos
+
+      - name: "role: setup_environment"
+        include_role:
+          name: setup_environment
+
+      - name: "role: tempest/setup"
+        include_role:
+          name: tempest/setup
+        vars:
+          pool_name: "{{ nova_pool_name }}"
+          sched_filters: "{{ nova_sched_filters }}"
+
+      - name: "role: tempest/run"
+        include_role:
+          name: tempest/run
