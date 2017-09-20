@@ -16,7 +16,8 @@ pep8:
     remove_rpm: []
 
     run:
-        export PBR_VERSION="12.0.0";
+        export PBR_VERSION="1.8.1";
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
@@ -50,7 +51,8 @@ unittest:
     ]
 
     run:
-        export PBR_VERSION="12.0.0";
+        export PBR_VERSION="1.8.1";
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
@@ -80,7 +82,8 @@ functional:
     ]
 
     run:
-        export PBR_VERSION="12.0.0";
+        export PBR_VERSION="1.8.1";
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 
