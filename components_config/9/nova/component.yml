@@ -89,13 +89,17 @@ functional:
 # Blacklisted tests:
 #     test_list_servers_detailed_filter_by_invalid_status - rhbz#1391196
 #     test_delete_attached_volume - rhbz#1391195
+#     test_create_root_certificate - rhbz#1494941
+#     test_get_root_certificate - rhbz#1494941
 tempest:
    rpm_deps: []
    remove_rpm: []
    run: ""
    blacklist: [
        tempest.api.compute.admin.test_servers.ServersAdminTestJSON.test_list_servers_detailed_filter_by_invalid_status,
-       tempest.api.compute.volumes.test_attach_volume_negative.AttachVolumeNegativeTest.test_delete_attached_volume
+       tempest.api.compute.volumes.test_attach_volume_negative.AttachVolumeNegativeTest.test_delete_attached_volume,
+       tempest.api.compute.certificates.test_certificates.CertificatesV2TestJSON.test_create_root_certificate,
+       tempest.api.compute.certificates.test_certificates.CertificatesV2TestJSON.test_get_root_certificate
    ]
 
 
