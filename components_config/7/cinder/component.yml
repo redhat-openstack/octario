@@ -46,6 +46,7 @@ rpm_deps: [
   openstack-cinder,
   python-tox,
   gcc,
+  python2-crypto,
   python-devel,
   python-pip,
   python-pbr,
