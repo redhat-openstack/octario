@@ -34,7 +34,6 @@ rpm_deps: [
     python-cinderclient,
     python-croniter,
     python-cryptography,
-    python-d2to1,
     python-debtcollector,
     python-designateclient,
     python-eventlet,
