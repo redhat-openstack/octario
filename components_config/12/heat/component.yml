@@ -34,6 +34,7 @@ rpm_deps: [
     python-cinderclient,
     python-croniter,
     python-cryptography,
+    python-crypto,
     python-debtcollector,
     python-designateclient,
     python-eventlet,
@@ -128,7 +129,7 @@ heat_virt_run_config:
         - ../logs/venv-testrun.log
         - all-rpms.txt
 
-enable_additional_repos: [ rhelosp-9.0-override ]
+enable_additional_repos: [ rhelosp-12.0-override ]
 
 ### actual test_config: starts here: used by khaleesi ###
 ### NOTE: test_config.virt must be defined ###
