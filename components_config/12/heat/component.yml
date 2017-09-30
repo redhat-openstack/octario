@@ -1,15 +1,20 @@
 # This file is used by the jenkins job
 
+# Remove python-zunclient pip installation once an RPM is available
 unittest:
     rpm_deps: [ python-mock, python-mox, python-testrepository, python-aodhclient,
                 python2-magnumclient ]
     remove_rpm: []
-    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: >
+        sudo pip install python-zunclient;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 pep8:
     rpm_deps: [ python-flake8, python-hacking ]
     remove_rpm: []
-    run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+    run: >
+        sudo pip install -U bandit;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 ### test dependencies ###
 rpm_deps: [
