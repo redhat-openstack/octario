@@ -2,10 +2,12 @@
 pep8:
     rpm_deps: [ python-hacking ]
     remove_rpm: [ python-sahara ]
-    run:
+    run: |
         cat setup.cfg
-        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
-        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`
+        flake8 -v --config=tox.ini | tee ../logs/testrun.log
+        find sahara -type f -regex '.*\.pot?' -print0|xargs -0 -n 1 msgfmt --check-format -o /dev/null | tee -a  ../logs/testrun.log
+        find sahara -iname '*.sh' -print0 | xargs -0 bashate | tee -a  ../logs/testrun.log
 
 unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
