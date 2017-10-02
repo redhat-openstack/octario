@@ -54,6 +54,12 @@ unittest:
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
 #
+# gabbi==1.31.0 is required to allow following 4 tests passing:
+#   nova.tests.functional.api.openstack.placement.test_placement_api:
+#                allocation-bad-class_add_inventory_to_an_rp.test_request
+#                allocation-bad-class_allocate_some_of_it_two.test_request
+#                allocation-bad-class_allocate_some_of_it_custom.test_request
+#                allocation-bad-class_allocate_some_of_it_standard.test_request
 functional:
 
     rpm_deps: [
@@ -62,7 +68,8 @@ functional:
       python-testresources,
       python-os-testr,
       python-oslotest,
-      python-gabbi
+      python-gabbi,
+      python-pip
     ]
 
     remove_rpm: [
@@ -82,6 +89,7 @@ functional:
     ]
 
     run:
+        sudo pip install -U --no-deps gabbi==1.31.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
