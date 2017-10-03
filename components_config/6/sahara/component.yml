@@ -2,17 +2,18 @@
 pep8:
     rpm_deps: [ python-hacking ]
     remove_rpm: [ python-sahara ]
-    run:
+    run: |
         cat setup.cfg
-        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
-        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`
+        flake8 -v --config=tox.ini 2>&1 | tee ../logs/testrun.log
+        find sahara -type f -regex '.*\.pot?' -print0|xargs -0 -n 1 msgfmt --check-format -o /dev/null 2>&1 | tee ../logs/testrun.log
 
 unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
     remove_rpm: [ python-sahara, openstack-sahara, openstack-sahara-common ]
-    run:
-        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
-        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: |
+        export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
 
 tempest:
     rpm_deps: [ crudini ]
