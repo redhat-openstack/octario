@@ -5,16 +5,16 @@ pep8:
     rpm_deps: [ pyflakes, python-flake8, python-hacking ]
     remove_rpm: [ python-cinder, python-os-win ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
-    run: >
-       git checkout -- test-requirements.txt requirements.txt;
-       tox -e pylint |  tee ../logs/venv-pylint.log || true;
-       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+    run: |
+       git checkout -- test-requirements.txt requirements.txt
+       tox -e pylint |  tee ../logs/venv-pylint.log || true
+       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log
 
 unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest ]
     remove_rpm: [ python-cinder ]
-    run: >
-       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: |
+       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
 
 
 # python-cinder is installed and then removed to satisfy all runtime
@@ -33,8 +33,8 @@ functional:
       python-cinder,
     ]
 
-    run:
-        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+    run: |
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log
 
 # Tempest target
 tempest:
@@ -92,11 +92,11 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 
 # Common pre-run steps used by all tester types
 cinder_virt_run_config:
-  run: >
-    set -o pipefail;
-    rpm -qa | sort > ../logs/installed-rpms.log;
-    truncate --size 0 requirements.txt;
-    truncate --size 0 test-requirements.txt;
+  run: |
+    set -o pipefail
+    rpm -qa | sort > ../logs/installed-rpms.log
+    truncate --size 0 requirements.txt
+    truncate --size 0 test-requirements.txt
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
