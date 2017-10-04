@@ -14,7 +14,7 @@ unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest ]
     remove_rpm: [ python-cinder ]
     run: |
-       ostestr -v 2>&1 | tee ../logs/testrun.log
+       ostestr 2>&1 | tee ../logs/testrun.log
 
 
 # python-cinder is installed and then removed to satisfy all runtime
@@ -34,7 +34,7 @@ functional:
 
     run: |
         export OS_TEST_PATH=./cinder/tests/functional
-        ostestr -v 2>&1 | tee ../logs/testrun.log
+        ostestr 2>&1 | tee ../logs/testrun.log
 
 # Tempest target
 tempest:
