@@ -2,11 +2,11 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ pyflakes, pylint-0.26.0, python-flake8, python-hacking ]
+    rpm_deps: [ pyflakes, pylint, python-flake8, python-hacking ]
     remove_rpm: [ python-cinder ]
     run: |
         set -euxo pipefail
-        bash tools/lintstack.sh | tee ../logs/venv-pylint.log
+        bash tools/lintstack.sh 2>&1 | tee ../logs/venv-pylint.log || echo "WARN: pylint failures ignored on EOL branches."
         flake8 -v --config=tox.ini . 2>&1 | tee ../logs/testrun.log
         find cinder -type f -regex '.*\.pot?' -print0 | xargs -0 -n 1 msgfmt --check-format -o /dev/null | tee -a ../logs/testrun.log
 
