@@ -13,7 +13,7 @@ unittest:
     remove_rpm: [ python-cinder ]
     run: |
         sudo pip install --no-deps -e .
-        ostestr 2>&1 | tee ../logs/testrun.log
+        python setup.py test --no-parallel --slowest --testr-args="--subunit {posargs}" 2>&1 | subunit-trace -f 2>&1 | tee ../logs/testrun.log
 
 
 # python-cinder is installed and then removed to satisfy all runtime
