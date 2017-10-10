@@ -8,10 +8,11 @@ pep8:
 
 
 unittest:
-    rpm_deps: [ ]
+    rpm_deps: [ python-glanceclient ]
     remove_rpm: [ python-glanceclient ]
-    run: >
-       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: |
+        pip install --user --no-deps -e .
+        python setup.py testr 2>&1 | tee ../logs/testrun.log
 
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
