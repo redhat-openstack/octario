@@ -2,7 +2,7 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ pyflakes, python-flake8, python-hacking ]
+    rpm_deps: [ pyflakes, pylint, python-flake8, python-hacking ]
     remove_rpm: [ python-cinder, python-os-win ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
     run: |
@@ -15,7 +15,7 @@ unittest:
     rpm_deps: [ python-cliff, python-requests-mock, python-webtest ]
     remove_rpm: [ python-cinder ]
     run: |
-        sudo pip install --no-deps -e .
+        pip install --user --no-deps -e .
         ostestr 2>&1 | tee ../logs/testrun.log
 
 
@@ -36,7 +36,7 @@ functional:
     ]
 
     run: |
-        sudo pip install --no-deps -e .
+        pip install --user --no-deps -e .
         export OS_TEST_PATH=./cinder/tests/functional
         ostestr 2>&1 | tee ../logs/testrun.log
 
