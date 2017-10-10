@@ -12,7 +12,7 @@ unittest:
     remove_rpm: [ python-cinder ]
     run: |
         pip install --user --no-deps -e .
-        python setup.py testr --slowest --testr-args='--concurrency 1 {posargs}' 2>&1 | tee ../logs/testrun.log
+        python setup.py testr --slowest --testr-args='--concurrency 1' 2>&1 | tee ../logs/testrun.log
 
 
 # Tempest target
@@ -31,6 +31,7 @@ rpm_deps: [
   openstack-cinder,
   python-tox,
   gcc,
+  python2-crypto,
   python-devel,
   python-pip,
   python-pbr,
