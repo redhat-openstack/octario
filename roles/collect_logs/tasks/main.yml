@@ -61,7 +61,8 @@
 
 - name: Copy test results to convert them into junit xml format
   shell: |
-    find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
+    find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' 2&>/dev/null \
+    || true \
     | while read name; do cat "$name"; done \
     > '{{ component_path }}/results.subunit'
   ignore_errors: true
