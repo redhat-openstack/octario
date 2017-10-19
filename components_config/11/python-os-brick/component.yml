@@ -46,6 +46,9 @@ rpm_deps: [
   python-castellan,
   python-cryptography,
 
+  python-retrying,
+  python-oslo-service,
+
   python-oslotest,
   python-testrepository,
   python-testscenarios,
