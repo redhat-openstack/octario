@@ -2,7 +2,7 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ pyflakes, pylint, python-flake8, python-hacking ]
+    rpm_deps: [ pyflakes, python-flake8, python-hacking ]
     remove_rpm: [ python-cinder, python-os-win ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
     run: |
