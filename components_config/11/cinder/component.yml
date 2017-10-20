@@ -8,7 +8,6 @@ pep8:
     run: |
         set -euxo pipefail
         git checkout -- test-requirements.txt requirements.txt
-        tox -e pylint |  tee ../logs/venv-pylint.log || true
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log
 
 unittest:
