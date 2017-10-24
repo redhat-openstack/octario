@@ -1,4 +1,9 @@
 ---
+- name: Remove compose repo
+  become: yes
+  shell: rm -f /etc/yum.repos.d/compose.repo; yum -y update
+
+
 # This task will register all repos on the system to disable each one of them
 # with the second task.
 - name: Register all the repsitories
@@ -36,3 +41,9 @@
   become: yes
   shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }} {{ component_version_director }}"
   changed_when: true
+
+- name: Remove compose repository (and clean up left-over metadata)
+  yum_repository:
+    name: compose
+    state: absent
+  notify: yum-clean-metadata
