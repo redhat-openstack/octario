@@ -1,4 +1,14 @@
 ---
+- name: Fix broken link for rhel-7.3 repo
+  become: yes
+  become_method: sudo
+  replace:
+    dest: /etc/yum.repos.d/compose.repo
+    regexp: "RHEL-7.3-20161019.0"
+    replace: "EXTRAS-7.3-RHEL-7-20170623.6"
+  when: ansible_distribution == 'Red Hat Enterprise Linux' and ansible_distribution_version == "7.3"
+
+
 # This task will register all repos on the system to disable each one of them
 # with the second task.
 - name: Register all the repsitories
