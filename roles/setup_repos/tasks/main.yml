@@ -36,3 +36,9 @@
   become: yes
   shell: "{{ rhos_release_bin }} -x; {{ rhos_release_bin }} {{ component_version }} {{ component_version_director }}"
   changed_when: true
+
+- name: Remove compose repository (and clean up left-over metadata)
+  yum_repository:
+    name: compose
+    state: absent
+  notify: yum-clean-metadata
