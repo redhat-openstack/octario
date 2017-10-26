@@ -16,7 +16,7 @@ unittest:
     remove_rpm: [ python-cinder ]
     run: |
         pip install --user --no-deps -e .
-        ostestr 2>&1 | tee ../logs/testrun.log
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
 
 
 # python-cinder is installed and then removed to satisfy all runtime
@@ -36,9 +36,7 @@ functional:
     ]
 
     run: |
-        pip install --user --no-deps -e .
-        export OS_TEST_PATH=./cinder/tests/functional
-        ostestr 2>&1 | tee ../logs/testrun.log
+       tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log
 
 # Tempest target
 tempest:
