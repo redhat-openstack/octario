@@ -51,6 +51,7 @@ tempest:
 rpm_deps: [
   gcc,
   git,
+  python-ddt,
   python-tox,
   python-pip,
   python-pbr,

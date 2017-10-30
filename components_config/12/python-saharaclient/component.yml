@@ -24,6 +24,7 @@ rpm_deps: [
   python-httplib2,
   python-pip,
   python-pbr,
+  python-os-testr,
   python-requests-mock,
 
   python-testtools,
