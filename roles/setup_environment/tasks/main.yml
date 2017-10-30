@@ -40,6 +40,16 @@
     - "{{ playbook_dir }}/../{{ component.name }}"
     - "{{ hostvars['localhost']['test']['dir'] }}"
 
+# Load default values per rhos release, if any
+- name: Load rhos version specific defauls
+  include_vars: "{{ item }}"
+  ignore_errors: yes
+  with_first_found:
+    - files:
+        - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/defaults.yml"
+        - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/defaults.yml"
+      skip: true
+
 # This is optional since not every component must have common configuration across all releases
 - name: Load component common configuration
   include_vars: "{{ item }}"

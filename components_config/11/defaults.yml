@@ -1,0 +1,5 @@
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: [rhelosp-11.0-unittest]
