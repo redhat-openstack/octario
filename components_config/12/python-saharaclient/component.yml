@@ -25,6 +25,7 @@ rpm_deps: [
   python-pip,
   python-pbr,
   python-os-testr,
+  python-osc-lib-tests,
   python-requests-mock,
 
   python-testtools,
