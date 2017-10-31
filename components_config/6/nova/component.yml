@@ -57,6 +57,7 @@ unittest:
         sed -i "s/^install_command\s*=.*$//" tox.ini;
         sed -i '/\[testenv\]/a whitelist_externals =\n  find\n  bash' tox.ini;
         export PBR_VERSION=`awk '/version = / {print $3; exit}' setup.cfg`;
+        export PYTHONHTTPSVERIFY=0;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
