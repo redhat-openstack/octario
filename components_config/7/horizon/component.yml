@@ -47,7 +47,6 @@ unittest:
 
 # Additional repository required to install testing dependencies
 enable_repos: [
-    rhelosp-7.0-unittest,
     rhelosp-7.0-testdeps
 ]
 
