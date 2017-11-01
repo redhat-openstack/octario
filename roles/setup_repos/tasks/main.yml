@@ -46,9 +46,15 @@
   vars:
     component_version: "{{ component.version | default(rhos_default_version) }}"
   become: yes
+  # -brew enablement is a workaround to get mandatory packages which were
+  # not released yet (python-osc-lib-tests)
+  # TODO: find a programatic way to detect prerelease version of rhos
   shell: |
     yum-config-manager \
       --enable rhelosp-{{ component_version }}.0-unittest \
       --enable rhelosp-{{ component_version }}.0-test-deps \
+      {% if component_version|int >= 12 %}
+      --enable rhelosp-{{ component_version }}.0-brew \
+      {% endif %}
       >> /var/log/yum.log
   changed_when: true

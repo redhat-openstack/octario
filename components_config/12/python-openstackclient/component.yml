@@ -74,6 +74,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        # python2-osc-lib-tests is only available in the rhelosp-12.0-brew repository currently
         enable_repos: []
       run: "{{ openstackclient_virt_run_config.run }}"
