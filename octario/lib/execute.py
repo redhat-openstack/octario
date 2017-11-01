@@ -38,9 +38,10 @@ class AnsibleExecutor(object):
                                      'local_hosts' if file not found.
     """
 
-    def __init__(self, tester, component, inventory_file):
+    def __init__(self, tester, component, inventory_file, path):
         self.tester = tester
         self.component = component
+        self.path = os.path.abspath(path)
         inventory_file_path = self.__get_inventory_file(inventory_file)
         self.cli_args = self.__get_ansible_playbook_args(inventory_file_path)
 
@@ -168,11 +169,15 @@ class AnsibleExecutor(object):
         if LOG.getEffectiveLevel() >= logging.INFO:
             verbose_level = "-v"
 
-        extra_vars = {}
-        extra_vars['component'] = dict(
-            name=self.component.get_name(),
-            version=self.component.get_rhos_release()
-        )
+        extra_vars = {
+          'component': {
+            'name': self.component.get_name(),
+            'version': self.component.get_rhos_release(),
+            },
+          'test': {
+            'dir': self.path
+            }
+          }
 
         cli_args = ['execute', self.tester.get_playbook_path(), verbose_level,
                     '--inventory', inventory_file, '--extra-vars', extra_vars]
