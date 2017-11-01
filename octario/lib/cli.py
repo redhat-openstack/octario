@@ -90,7 +90,8 @@ class OctarioShell(object):
 
         ansible_playbook = execute.AnsibleExecutor(tester,
                                                    component,
-                                                   parser_args.inventory_file)
+                                                   parser_args.inventory_file,
+                                                   path=parser_args.dir)
 
         ansible_playbook.run()
 
