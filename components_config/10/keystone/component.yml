@@ -61,9 +61,7 @@ tempest:
      fi
 
 # Additional repository required to install testing dependencies
-enable_repos: [
-    rhelosp-10.0-unittest
-]
+enable_repos: []
 
 
 # Common rpm deps needed for all tester types (pep8 / unittest)

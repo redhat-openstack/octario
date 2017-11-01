@@ -4,7 +4,6 @@
 # Repos to enable for compontent test
 #
 enable_repos: [
-  rhelosp-11.0-unittest,
   rhelosp-rhel-7.4-server-opt,
 ]
 #
