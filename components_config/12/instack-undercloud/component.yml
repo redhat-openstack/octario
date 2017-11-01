@@ -3,9 +3,7 @@
 #
 # Repos to enable for compontent test
 #
-enable_repos: [
-  rhelosp-12.0-unittest,
-]
+enable_repos: []
 #
 # The project run config. In the run action we truncate *requirements.txt to
 # ensure we're only using installed non-test packages.
