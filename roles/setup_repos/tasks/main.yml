@@ -1,7 +1,7 @@
 ---
 # This task will register all repos on the system to disable each one of them
 # with the second task.
-- name: Register all the repsitories
+- name: Register all the repositories
   shell: find /etc/yum.repos.d -name "*.repo"
   register: yum_repos
   changed_when: False

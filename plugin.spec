@@ -14,6 +14,6 @@ subparsers:
                       help: "Octario tester to be ran."
                       required: yes
                   dir:
-                      type: Value
+                      type: VarDir
                       help: "Path to component directory"
                       required: yes

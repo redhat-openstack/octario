@@ -34,6 +34,7 @@
       - "--delete"
   with_first_found:
     - "{{ component.path | default(omit) }}"
+    - "{{ test.dir  | default(omit) }}"
     - "{% if lookup('env','WORKSPACE') %}{{ lookup('env','WORKSPACE') }}/{{ component.name }}{% else %}{{ omit }}{% endif %}"
     - "{{ inventory_dir }}/{{ component.name }}"
     - "{{ inventory_dir }}/../{{ component.name }}"
