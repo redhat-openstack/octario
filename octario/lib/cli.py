@@ -48,8 +48,13 @@ class OctarioShell(object):
                             action='store_true',
                             help='increase output verbosity')
 
+        if 'ANSIBLE_INVENTORY' in os.environ:
+            default_inventory = os.environ['ANSIBLE_INVENTORY']
+        else:
+            default_inventory = os.path.join(os.getcwd(), 'hosts')
+
         parser.add_argument('-i', '--inventory-file',
-                            default=os.path.join(os.getcwd(), 'hosts'),
+                            default=default_inventory,
                             help='specify inventory host path'
                                  ' (default=./hosts)')
 
