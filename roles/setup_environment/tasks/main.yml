@@ -10,10 +10,12 @@
 - name: Load octario configuration
   include_vars: "{{ item }}"
   with_first_found:
-    - "{{ playbook_dir }}/../octario.yml"
-    - "{{ inventory_dir }}/octario.yml"
-    - "/etc/octario.yml"
-  when: component is not defined
+    - files:
+      - "{{ playbook_dir }}/../octario.yml"
+      - "{{ inventory_dir }}/octario.yml"
+      - "/etc/octario.yml"
+      skip: true
+  when: component is not defined or component.name is not defined
 
 # To copy the component to remote host
 - name: Install rsync
