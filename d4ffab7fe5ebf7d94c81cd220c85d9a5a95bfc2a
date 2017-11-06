@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb93d78_7b40d6ee",
+        "filename": "roles/setup_environment/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1010634
+      },
+      "writtenOn": "2017-11-06T20:32:26Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "d4ffab7fe5ebf7d94c81cd220c85d9a5a95bfc2a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
