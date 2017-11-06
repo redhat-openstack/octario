@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b828699_ad620360",
+        "filename": "components_config/7/cinder/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2017-11-06T20:58:20Z",
+      "side": 1,
+      "message": "We need tempest lib for unit tests?",
+      "revId": "884f4102a1a9393f59e9edefa2e39d06d906c1b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
