@@ -16,7 +16,7 @@ unittest:
 dsvm-functional:
     rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-webtest, python-oslotest,
                 python-testresources, bridge-utils, ebtables, nmap-ncat, openstack-selinux,
-                mysql-server ]
+                mysql-server, python-os-testr ]
     remove_rpm: []
     run: >
         sudo modprobe bridge;
