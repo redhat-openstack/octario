@@ -16,6 +16,24 @@
       "revId": "884f4102a1a9393f59e9edefa2e39d06d906c1b5",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbb9cbc4_624570c7",
+        "filename": "components_config/7/cinder/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2017-11-07T08:24:44Z",
+      "side": 1,
+      "message": "Maybe you didn\u0027t read the docs that subunit-trace is included in this rpm. Check with \"yum provides\".",
+      "parentUuid": "8b828699_ad620360",
+      "revId": "884f4102a1a9393f59e9edefa2e39d06d906c1b5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
