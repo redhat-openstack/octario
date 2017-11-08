@@ -1,0 +1,8 @@
+Verified+1: rhosqeauto <obaranov+rhosqeauto@redhat.com>
+Code-Review+2: Arie Bregman <abregman@redhat.com>
+Code-Review+2: Waldemar Znoinski <wznoinsk@redhat.com>
+Submitted-by: Sorin Sbarnea <sorin.sbarnea@gmail.com>
+Submitted-at: Wed, 08 Nov 2017 06:21:39 -0500
+Reviewed-on: https://review.gerrithub.io/385868
+Project: redhat-openstack/octario
+Branch: refs/heads/master
