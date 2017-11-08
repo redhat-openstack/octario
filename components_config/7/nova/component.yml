@@ -45,6 +45,7 @@ unittest:
       python-barbicanclient,
       python-testscenarios-0.4,
       python-oslotest,
+      python-os-testr,
       python-testresources,
       python-requests-mock
     ]
@@ -76,6 +77,7 @@ functional:
       python-tempest-lib,
       python-testscenarios-0.4,
       python-oslotest,
+      python-os-testr,
       python-testresources
     ]
 
