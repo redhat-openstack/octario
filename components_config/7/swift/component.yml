@@ -1,5 +1,8 @@
 # This hack is required to pin to free (non patent guarded) # version of  erasurecodes
 unittest:
+  blacklist: [ ^test.unit.obj.test_diskfile.TestDiskFile.*
+               ^test.unit.obj.test_diskfile.TestECDiskFile.*
+               ^test.unit.obj.test_server.TestZeroCopy.* ]
   rpm_deps: [
       liberasurecode,
       python-netifaces,

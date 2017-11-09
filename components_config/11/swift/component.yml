@@ -1,5 +1,8 @@
 # 'ln -f -s hack' is required to use the free (non patent guarded) version of  erasurecodes
 unittest:
+  blacklist: [ ^test.unit.obj.test_diskfile.TestDiskFile.*
+               ^test.unit.obj.test_diskfile.TestECDiskFile.*
+               ^test.unit.obj.test_server.TestZeroCopy.* ]
   rpm_deps: []
   run: >
       sudo ln -f -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;

@@ -1,5 +1,8 @@
 # This hack is required to pin to free (non patent guarded) # version of  erasurecodes
 unittest:
+  blacklist: [ ^test.unit.obj.test_diskfile.TestDiskFile.*
+               ^test.unit.obj.test_diskfile.TestECDiskFile.*
+               ^test.unit.obj.test_server.TestZeroCopy.* ]
   rpm_deps: [python-netifaces]
   run: >
       sudo yum -y install  http://download.eng.bos.redhat.com/brewroot/packages/python-pyeclib/1.1.0/1.el7ost/x86_64/python-pyeclib-1.1.0-1.el7ost.x86_64.rpm;
