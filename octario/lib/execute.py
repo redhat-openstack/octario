@@ -38,10 +38,12 @@ class AnsibleExecutor(object):
                                      'local_hosts' if file not found.
     """
 
-    def __init__(self, tester, component, inventory_file, path):
+    def __init__(self, tester, component, inventory_file, path,
+                 dest_dir=None):
         self.tester = tester
         self.component = component
         self.path = os.path.abspath(path)
+        self.dest_dir = dest_dir
         inventory_file_path = self.__get_inventory_file(inventory_file)
         self.cli_args = self.__get_ansible_playbook_args(inventory_file_path)
 
@@ -175,7 +177,8 @@ class AnsibleExecutor(object):
                 'version': self.component.get_rhos_release(),
             },
             'test': {
-                'dir': self.path
+                'dir': self.path,
+                'dest_dir': self.dest_dir,
             }
         }
 
