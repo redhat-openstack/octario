@@ -9,3 +9,5 @@
 /octario.iml
 hosts
 *.log
+.sh
+.envrc

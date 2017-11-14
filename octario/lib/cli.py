@@ -68,6 +68,12 @@ class OctarioShell(object):
                             default=os.getcwd(),
                             help='path to component directory')
 
+        parser.add_argument('--dest-dir',
+                            nargs='?',
+                            default=os.getcwd(),
+                            help='Path to use for collected files. Defaults'
+                                 ' to CWD')
+
         return parser
 
     def parse_args(self, argv):
@@ -93,11 +99,13 @@ class OctarioShell(object):
 
         tester = Tester(parser_args.tester)
         component = Component(parser_args.dir)
+        dest_dir = parser_args.dest_dir
 
         ansible_playbook = execute.AnsibleExecutor(tester,
                                                    component,
                                                    parser_args.inventory_file,
-                                                   path=parser_args.dir)
+                                                   path=parser_args.dir,
+                                                   dest_dir=dest_dir)
 
         ansible_playbook.run()
 

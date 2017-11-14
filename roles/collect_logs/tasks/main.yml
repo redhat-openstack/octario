@@ -13,7 +13,8 @@
 
 - name: "Set destination log directory path"
   set_fact:
-    destination_log_folder: "{{ lookup('env', 'PWD') }}"
+    destination_log_folder: "{{ test.dest.dir }}"
+  when: test is defined and test.dest is defined and test.dest.dir is defined
 
 - name: "Prepend component_path to common log directories"
   set_fact:
