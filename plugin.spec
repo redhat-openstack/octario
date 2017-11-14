@@ -17,3 +17,8 @@ subparsers:
                       type: VarDir
                       help: "Path to component directory"
                       required: yes
+                  dest-dir:
+                      type: VarDir
+                      help: "Path to use for collected files. Defaults to CWD."
+                      required: no
+                      default: ''
