@@ -79,6 +79,10 @@ unset ANSIBLE_INVENTORY
 # infrared can currently only function if is called from its own install dir
 IR_DIR=$(python -c 'import os, infrared; print(os.path.abspath(os.path.join(os.path.dirname(infrared.__file__),"..")))')
 PWD_ORIG=`pwd`
+
+# assure output directory exists even if script was run outside tox
+mkdir -p ${DIR}/.tox/log/
+
 function finish {
   rv=$?
 
@@ -136,6 +140,11 @@ pushd $IR_DIR >>/dev/null
 
   infrared workspace node-list
 
-  infrared octario --t=${COMPONENT_TESTER} --dir=${COMPONENT_PATH}
+  infrared octario --t=${COMPONENT_TESTER} --dir=${COMPONENT_PATH} --dest-dir=${DIR}/.tox/log/
 
 popd
+
+test -z "$(git status --porcelain)" || {
+  &>2 echo "ERROR: Return error code because repository is dirty.";
+  exit 1;
+}
