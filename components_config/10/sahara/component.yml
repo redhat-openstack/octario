@@ -39,6 +39,7 @@ rpm_deps: [
   python-oslotest,
   python-psycopg2,
   python-saharaclient,
+  python-osc-lib-tests,
 
   bandit,
   python-bashate,
