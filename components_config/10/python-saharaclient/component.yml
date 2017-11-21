@@ -11,6 +11,7 @@ unittest:
       python-os-testr,
       python-requests-mock,
       python-webtest,
+      python-osc-lib-tests,
     ]
     remove_rpm: [ ]
     run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
