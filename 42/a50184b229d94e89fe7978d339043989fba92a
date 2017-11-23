@@ -1,0 +1,8 @@
+Verified+1: Sorin Sbarnea <sorin.sbarnea@gmail.com>
+Verified+1: rhosqeauto <obaranov+rhosqeauto@redhat.com>
+Code-Review+2: David Sariel <dsariel@redhat.com>
+Submitted-by: David Sariel <dsariel@redhat.com>
+Submitted-at: Thu, 23 Nov 2017 05:51:47 -0500
+Reviewed-on: https://review.gerrithub.io/388768
+Project: redhat-openstack/octario
+Branch: refs/heads/master
