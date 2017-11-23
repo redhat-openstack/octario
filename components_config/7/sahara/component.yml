@@ -38,6 +38,7 @@ rpm_deps: [
   python-hacking,
   python-fixtures,
   python-mock,
+  python-os-testr,
   python-oslo-sphinx,
   python-oslotest,
   python-psycopg2,
