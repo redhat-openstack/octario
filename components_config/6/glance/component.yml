@@ -74,6 +74,7 @@ rpm_deps: [
   python-oslo-db,
   python-oslo-i18n,
   python-oslo-messaging,
+  python-oslo-serialization,
   python-retrying,
   python-osprofiler,
   python-glance-store,
