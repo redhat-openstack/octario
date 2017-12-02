@@ -5,6 +5,9 @@ pep8:
     archive_run: ''
     run: >
         git checkout -- test-requirements.txt requirements.txt;
+        /usr/bin/sed -i "/install_command/d" tox.ini;
+        /usr/bin/sed -i "/eol/d" tox.ini;
+        sudo pip install six===1.10.0;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
