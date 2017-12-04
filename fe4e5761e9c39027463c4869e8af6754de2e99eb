@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbd789e4_48558b0e",
+        "filename": "components_config/8/neutron/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003190
+      },
+      "writtenOn": "2017-12-04T20:01:23Z",
+      "side": 1,
+      "message": "at least you should document it here to explain why you do it",
+      "revId": "fe4e5761e9c39027463c4869e8af6754de2e99eb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
