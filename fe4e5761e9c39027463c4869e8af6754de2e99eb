@@ -16,6 +16,64 @@
       "revId": "fe4e5761e9c39027463c4869e8af6754de2e99eb",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "122987a9_ebd6f93c",
+        "filename": "components_config/8/neutron/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003190
+      },
+      "writtenOn": "2017-12-04T21:41:13Z",
+      "side": 1,
+      "message": "OK, let\u0027s just document why we do that, and I agree with landing it to unblock CI. We can assess merit behind the other competing solution independently.",
+      "parentUuid": "dbd789e4_48558b0e",
+      "revId": "fe4e5761e9c39027463c4869e8af6754de2e99eb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "774bcde0_76026fc3",
+        "filename": "components_config/8/neutron/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003190
+      },
+      "writtenOn": "2017-12-04T21:41:13Z",
+      "side": 1,
+      "message": "I suggest you make it a bit more explicit. Using \u0027liberty-eol\u0027 instead or even a whole URL that you kill may be more clear to readers. But if you are able to capture the intent in a comment, that should be enough.",
+      "range": {
+        "startLine": 9,
+        "startChar": 26,
+        "endLine": 9,
+        "endChar": 29
+      },
+      "revId": "fe4e5761e9c39027463c4869e8af6754de2e99eb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3793287d_58268cb9",
+        "filename": "components_config/8/neutron/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003190
+      },
+      "writtenOn": "2017-12-04T21:41:13Z",
+      "side": 1,
+      "message": "why do we need to install six? isn\u0027t it shipped in osp repos? it\u0027s a runtime dependency, so it must be consumed from there. (note that pylint may behave differently depending on library version since it runs some runtime validations and not just parse code).",
+      "revId": "fe4e5761e9c39027463c4869e8af6754de2e99eb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
