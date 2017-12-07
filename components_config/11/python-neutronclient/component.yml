@@ -7,6 +7,7 @@ unittest:
     rpm_deps: [ python-neutronclient,
                 python-cliff-tablib,
                 python-mox3,
+                python-osc-lib-tests,
                 python-oslotest,
                 python-requests-mock ]
     remove_rpm: [ python-neutronclient ]
