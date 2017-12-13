@@ -63,14 +63,14 @@
   shell: |
     find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
     | while read name; do cat "$name"; done \
-    > '{{ component_path }}/results.subunit'
+    > '{{ component_path }}/results_{{ tester_type }}.subunit'
   ignore_errors: true
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
 
 - name: Convert test results into Junit XML
   shell: >
-    cat results.subunit | subunit-1to2 > results.subunit2;
-    cat results.subunit2 | subunit2junitxml > tests_results.xml
+    cat results_{{ tester_type }}.subunit | subunit-1to2 > results_{{ tester_type }}.subunit2;
+    cat results_{{ tester_type }}.subunit2 | subunit2junitxml > tests_{{ tester_type }}_results.xml
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
   ignore_errors: true
