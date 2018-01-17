@@ -118,6 +118,11 @@
   tags:
     - skip_ansible_lint
 
+- name: Save patching logs
+  become: yes
+  shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.log /var/log/patching_logs"
+  changed_when: true
+
 # Some build errors are lagitimate and should not fail the run
 # Like '.gitreview: does not exist in index'
 - name: Check for legitimate build errors
@@ -151,11 +156,6 @@
     path=/var/log/patching_logs
     state=directory
     mode=0777
-
-- name: Save patching logs
-  become: yes
-  shell: "cp {{ ansible_env.HOME }}/dist-git/{{ component_dist_git_name }}/results*/*/*/*.log /var/log/patching_logs"
-  changed_when: true
 
 - name: Create repository for patched RPMs
   shell: "createrepo /patched_rpms;"
