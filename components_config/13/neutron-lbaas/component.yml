@@ -6,11 +6,16 @@ pep8:
 unittest:
     rpm_deps: [ python-cliff,
                 python-cryptography,
+                openssl-devel,
+                libffi-devel,
                 python-funcsigs,
                 python-requests-mock,
                 python-webtest ]
     remove_rpm: [ python-neutron-lbaas ]
-    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: >
+        sudo pip install cffi==1.7;
+        sudo pip install cryptography==1.9;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
