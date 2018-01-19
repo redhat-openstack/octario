@@ -1,0 +1,8 @@
+Verified+1: Jon Schlueter <jschluet@redhat.com>
+Verified+1: rhosqeauto <obaranov+rhosqeauto@redhat.com>
+Code-Review+2: Jon Schlueter <jschluet@redhat.com>
+Submitted-by: Jon Schlueter <jschluet@redhat.com>
+Submitted-at: Thu, 18 Jan 2018 20:26:01 -0500
+Reviewed-on: https://review.gerrithub.io/395408
+Project: redhat-openstack/octario
+Branch: refs/heads/master
