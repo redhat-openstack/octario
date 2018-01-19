@@ -13,8 +13,9 @@ unittest:
                 python-webtest ]
     remove_rpm: [ python-neutron-lbaas ]
     run: >
+        sudo pip install --upgrade setuptools;
         sudo pip install cffi==1.7;
-        sudo pip install cryptography==1.9;
+        sudo pip install pyOpenSSL==17.5.0;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
