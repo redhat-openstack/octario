@@ -22,6 +22,30 @@
       "revId": "7b18cfdef7422cd27f673ef1ba228db77a48eeb9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd926f56_1a5f3b76",
+        "filename": "components_config/12/horizon/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1005170
+      },
+      "writtenOn": "2018-01-19T18:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ec7c98_b4a28cd9",
+      "range": {
+        "startLine": 97,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 21
+      },
+      "revId": "7b18cfdef7422cd27f673ef1ba228db77a48eeb9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
