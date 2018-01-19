@@ -1,9 +1,9 @@
 pep8:
-    rpm_deps: [ python-flake8 ]
+    rpm_deps: []
     remove_rpm: []
     run: >
-        sudo pip install pep8==1.7.0;
-        tox --sitepackages -e pep8 2>&1 | tee ../logs/testrun.log;
+        git checkout -- test-requirements.txt requirements.txt;
+        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: [ python-cliff,
@@ -25,6 +25,7 @@ unittest:
                 python-oslo-reports,
                 python-oslo-policy,
                 python-pyroute2,
+                python-keystonemiddleware,
                 python-novaclient,
                 python-glanceclient,
                 python-futures,
