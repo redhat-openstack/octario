@@ -18,6 +18,7 @@ enable_repos: []
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
 rpm_deps: [
     git,
+    openstack-tripleo-common,
     python-tox,
     python-pluggy,
     python2-virtualenv,
