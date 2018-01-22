@@ -110,7 +110,6 @@ python_tempestconf_run_config:
       truncate --size 0 test-requirements.txt;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
-
 # NOTE: This is the main section. It must exist.
 # RedHat-7 is common for all across different RHEL 7 minor releases such as
 # RHEL 7.2, RHEL 7.3. You can be more specific here and define sections for
@@ -124,4 +123,3 @@ test_config:
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
       run: "{{python_tempestconf_run_config.run}}"
-      archive: "{{python_tempestconf_run_config.archive}}"
