@@ -3,7 +3,7 @@
 # pep8 tox target
 pep8:
 
-    rpm_deps: []
+    rpm_deps: [openstack-tripleo-common]
 
     remove_rpm: []
 
