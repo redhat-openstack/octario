@@ -27,12 +27,14 @@
     recurse: yes
     age: "-1d"
   register: log_files_common
+  no_log: true
 
 - name: Fetch log files from the common log directories
   fetch:
     src="{{ item.path }}"
     dest="{{ destination_log_folder }}"
   with_items: "{{ log_files_common.files | default([]) }}"
+  no_log: true
 
 - name: Run pre-collect commands (component specific)
   shell: |
@@ -58,6 +60,7 @@
     src="{{ item }}"
     dest="{{ destination_log_folder }}"
   with_items: "{{ common_fetch_list }}"
+  no_log: true
 
 - name: Copy test results to convert them into junit xml format
   shell: |
@@ -83,6 +86,7 @@
     flat=yes
   ignore_errors: true
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
+  no_log: true
 
 - name: Pass or Fail execution based on test results
   fail: msg="The test run failed"
