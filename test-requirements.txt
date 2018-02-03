@@ -1,5 +1,5 @@
 pip>=9.0.1 # keep it first to avoid some bugs
-ansible-lint>=3.4.20
+ansible-lint>=3.4.12
 hacking>=0.13.0
-yamllint>=1.10.0
+yamllint>=1.8.1
 -e git+https://review.gerrithub.io/redhat-openstack/infrared#egg=infrared
