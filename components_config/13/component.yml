@@ -28,14 +28,14 @@ unittest:
         python-os-testr,
         python-cryptography,
         python-mock,
-        python-freezegun-0.3.8,
+        python-freezegun,
         python-testresources,
         python-testscenarios,
         python-oslotest,
         python-pep8,
-        python-beautifulsoup4-4.3.2,
-        python-waitress-0.8.9,
-        python-webtest-2.0.19
+        python-beautifulsoup4,
+        python-waitress,
+        python-webtest
     ]
 
     remove_rpm: [
@@ -68,10 +68,10 @@ enable_repos: []
 #
 rpm_deps: [
     git,
-    python-tox-2.3.1,
-    python-pluggy-0.3.1,
-    python2-virtualenv-14.0.6,
-    python-setuptools-18.5,
+    python-tox,
+    python-pluggy,
+    python2-virtualenv,
+    python-setuptools,
     python-tempest-lib,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
