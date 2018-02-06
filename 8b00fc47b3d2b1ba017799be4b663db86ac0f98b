@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd43f56e_1eff8a3e",
+        "filename": "components_config/12/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001189
+      },
+      "writtenOn": "2018-02-06T22:36:02Z",
+      "side": 1,
+      "message": "is it expected to have exactly these same versions (and below) available for all releases (11/12/13)?",
+      "revId": "8b00fc47b3d2b1ba017799be4b663db86ac0f98b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15b130d3_2ebcc7e8",
+        "filename": "components_config/12/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001189
+      },
+      "writtenOn": "2018-02-06T22:36:02Z",
+      "side": 1,
+      "message": "also, same versions for all releases? (though these may come from fedora/rhel repositories and so same)",
+      "revId": "8b00fc47b3d2b1ba017799be4b663db86ac0f98b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
