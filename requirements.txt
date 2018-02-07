@@ -1,4 +1,5 @@
 ansible>=2.4.3.0
+shade>=1.25.0  # required for runtests and not installed by ansible 
 jinja2>=2.7
 colorlog>=2.6.1
 gitpython>=2.0.8

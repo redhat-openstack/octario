@@ -9,6 +9,7 @@
         script: "ir-plugin/osp_version_name.py {{ tester_directory }}"
         run_once: true
         register: release_name
+        chnaged_when: false
 
       - name: "Convert discovered component details into variables"
         set_fact:
