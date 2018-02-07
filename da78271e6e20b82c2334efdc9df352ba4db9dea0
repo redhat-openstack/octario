@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d31374c_08611023",
+        "filename": "roles/run_tests/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2018-02-07T17:50:38Z",
+      "side": 1,
+      "message": "please put it in commit message. no reason adding here a wiki page. Version control solves the issue of knowing why a change was done by using the commit message.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "da78271e6e20b82c2334efdc9df352ba4db9dea0",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
