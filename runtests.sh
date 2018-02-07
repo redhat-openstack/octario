@@ -86,7 +86,11 @@ function finish {
   if [ "${DISABLE_CLEANUP:-false}" != "true" ]; then
       set -e
       pushd $IR_DIR >>/dev/null
-      infrared openstack ${IR_CLOUD:-} --image='fake_image' --prefix=$PREFIX --cleanup=yes > ${DIR}/cleanup.log
+      infrared openstack ${IR_CLOUD:-} --image='fake_image' --prefix=$PREFIX --cleanup=yes > ${DIR}/cleanup.log || {
+        >&2 cat ${DIR}/cleanup.log
+        echo -e "WARN: Cleanup failure."
+        rv=99
+      }
       infrared workspace delete ${PREFIX}
   fi
 
@@ -101,7 +105,7 @@ pushd $IR_DIR >>/dev/null
   echo -e "INFO: Using prefix ${HIGHLIGHT}${PREFIX}${NORMAL} and running from ${HIGHLIGHT}${IR_DIR}${NORMAL} ..."
 
   # we create unique workspace to avoid reusing existing one
-  infrared workspace checkout -c ${PREFIX}
+  infrared workspace checkout ${PREFIX} || true
   infrared workspace node-list
 
   # avoid provisioning in case octario is deeply broken
