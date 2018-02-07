@@ -8,10 +8,14 @@
   shell: |
     export PATH=$PATH:/usr/sbin
     set -euo pipefail
-    {{ component_config.run }}
+    (
+      {{ component_config.run }}
+      false
+    ) 2>&1 | tee test_run.log | tail -n200
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
     executable: "{{ default_shell }}"
   register: test_run
   changed_when: false
-  ignore_errors: true
+  failed_when: false # we fail later, after collection
+  no_log: true # we display the output later, after collection

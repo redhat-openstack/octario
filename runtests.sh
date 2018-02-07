@@ -101,7 +101,7 @@ pushd $IR_DIR >>/dev/null
   echo -e "INFO: Using prefix ${HIGHLIGHT}${PREFIX}${NORMAL} and running from ${HIGHLIGHT}${IR_DIR}${NORMAL} ..."
 
   # we create unique workspace to avoid reusing existing one
-  infrared workspace checkout -c ${PREFIX}
+  infrared workspace checkout ${PREFIX} || true
   infrared workspace node-list
 
   # avoid provisioning in case octario is deeply broken
