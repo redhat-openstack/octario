@@ -8,10 +8,23 @@
   shell: |
     export PATH=$PATH:/usr/sbin
     set -euo pipefail
-    {{ component_config.run }}
+    (
+      # REMOVE "&& false" before merge, used only to test behaviour on failure
+      # { { component_config.run } } 
+      seq 10 && false
+    ) 2>&1 | tee {{ ansible_env.HOME }}/logs/testrun-{{ tester.component.tox_target }}.log | tail -n100
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
     executable: "{{ default_shell }}"
   register: test_run
   changed_when: false
-  ignore_errors: true
+  failed_when: false # we fail later, after collection
+  no_log: true # we display the output later, after collection
+
+- name: Create failure placeholder file
+  # can be used by CI to identify which log files contain failures
+  copy:
+    content: ""
+    dest: "{{ ansible_env.HOME }}/logs/.failed-testrun-{{ tester.component.tox_target }}.log"
+    force: no
+  when: test_run.rc != 0
