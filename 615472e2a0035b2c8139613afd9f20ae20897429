@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45198097_efdde641",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-02-13T18:58:10Z",
+      "side": 1,
+      "message": "Arie, note the following:\nA) Infrared already using BUILD_URL in at least two other places, for similar purposes (do a grep)\nB) BUILD_URL is *not* Jenkins specific, this explains why it has no JENKINS in its name.\nC) manual use is not affected, when not defined it just prints local file path, which is perfect for manual testing but useless for CI usage (as the relative link is not clickable)",
+      "revId": "615472e2a0035b2c8139613afd9f20ae20897429",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
