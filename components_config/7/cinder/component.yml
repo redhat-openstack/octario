@@ -6,6 +6,7 @@ pep8:
     remove_rpm: [ python-cinder ]
     run: |
         set -euxo pipefail
+        sudo pip install pip>=9.0.1
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log
 
 unittest:
