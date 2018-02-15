@@ -1,1 +1,13 @@
 default_shell: '/bin/bash'
+untox_python_src: "{{ lookup('file', 'untox') }}"
+untox: |
+    $(python <<EOF
+    {{ untox_python_src }}
+    EOF
+    )
+    for FILE in requirements.txt test-requirements.txt
+    do
+      if [ -f FILE]; then
+        truncate --size 0 requirements.txt
+      fi
+    done
