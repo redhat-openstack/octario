@@ -112,7 +112,7 @@ heat_virt_run_config:
     run: >
         sudo rm -Rf ./*.pyc;
         sudo rm -Rf .tox || true;
-        sudo pip install -U unittest2 'python-senlinclient<1.7.0' python-monascaclient;
+        sudo pip install -U unittest2 'python-senlinclient<1.6.0' python-monascaclient;
         export NOSE_WITH_XUNIT=1;
         export NOSE_WITH_HTML_OUTPUT=1;
         export NOSE_HTML_OUT_FILE=../logs/nose_results.html;
