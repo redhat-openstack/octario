@@ -68,6 +68,12 @@
     - "{{ playbook_dir }}/../{{ component.name }}/jenkins-config.yml"
     - "/etc/jenkins-config.yml"
 
+- name: deploy untox script
+  copy:
+    src: untox
+    dest:  "{{ ansible_env.HOME }}/untox"
+    mode: 0700
+
 - name: Setup component configuration based on operating system
   set_fact:
     component_config="{{ test_config.virt[item] | default(omit) }}"
