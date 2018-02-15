@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+#
+# Wipes any packet installation code from tox.ini in order to be able
+# to run tox commands using system packages.
+#
+import os
+import re
+
+f = open('tox.ini', 'r+')
+data = f.read()
+
+# consolidate contiuation line breaks
+data = re.sub(
+            r'^(.*)\\\n\s*([^\r\n]+)\n',
+            r'\1\2\n',
+            data,
+            flags=re.MULTILINE)
+
+# remove install_commands
+data = re.sub(r'\s*install_command.*', '', data)
+
+# remove pip install commands (including multiline)
+data = re.sub(r'(?m)^\s*pip (.*)?install.*\n?', '', data)
+
+# remove deps, single and multiline ones
+data = re.sub(
+            r'^\s*deps.*\n(([^\S\n]+[^\n]+\n)+)?',
+            r'',
+            data,
+            flags=re.MULTILINE)
+
+# replace any existing sitepackages value as True
+data = re.sub(r'\s*sitepackages.*', '\nsitepackages = True', data)
+
+# adds sitepackages=True to [testenv*] section(s) it it does not already exists
+pattern = re.compile(r'^\[testenv[^\]\r\n]+](?:\r?\n(?:[^[\r\n].*)?)*',
+                     flags=re.MULTILINE)
+for s in re.findall(pattern, data):
+    if 'sitepackages' not in s:
+        data = data.replace(s, s + 'sitepackages = True\n')
+
+f.seek(0)
+f.write(data)
+f.truncate()
+
+# truncates requirement files just in case they are used in a different way
+for reqs in ['requirements.txt', 'test-requirements.txt']:
+    if os.path.isfile(reqs):
+        open(reqs, "w").truncate(0)
+
+# logs changes made as a diff file
+os.system("git diff | tee untox-diff.log")
