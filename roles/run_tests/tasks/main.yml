@@ -4,6 +4,7 @@
 # 'ignore_errors' is true because test results evaultion isn't done here, but in
 # 'collect_logs' role, in the last task.
 # new line stripped from run command because Ansible unable to parser it that way.
+
 - name: Running tests
   shell: |
     export PATH=$PATH:/usr/sbin
