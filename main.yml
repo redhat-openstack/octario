@@ -1,14 +1,23 @@
 - name: Octario-Infrared discover
   hosts: localhost
+  connection: local
   gather_facts: yes
   any_errors_fatal: true
   vars:
       tester_directory: "{{ test.dir }}"
+  environment:
+      # osp_version_name.py needs octario python module installed and
+      # is using default python from PATH. By preserving the PATH
+      # used when calling Ansible we assure that the command will not fail
+      # regardless if is called from inside a virtualenv (like tox) or not.
+      PATH: "{{ ansible_env.PATH }}"
+      VIRTUAL_ENV: "{{ ansible_env.VIRTUAL_ENV }}"
   tasks:
       - name: "Discover release version"
         script: "ir-plugin/osp_version_name.py {{ tester_directory }}"
         run_once: true
         register: release_name
+        changed_when: false
 
       - name: "Convert discovered component details into variables"
         set_fact:
