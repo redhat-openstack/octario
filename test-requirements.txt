@@ -3,3 +3,4 @@ ansible-lint>=3.4.20
 hacking>=0.13.0
 yamllint>=1.10.0
 -e git+https://review.gerrithub.io/redhat-openstack/infrared#egg=infrared
+shade>=1.25.0  # required for functional testing and not installed by ansible
