@@ -49,7 +49,6 @@ rpm_deps: [
   python-mock,
   python-mox,
   python-oslotest,
-  python-tempest-lib,
   python-oslo-sphinx,
   python-fixtures,
   python-subunit,
