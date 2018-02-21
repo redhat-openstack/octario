@@ -63,7 +63,7 @@ fi
 # code to determine a meaningful prefix for both CLI and CI use cases
 HIGHLIGHT='\033[01;32m'
 NORMAL='\033[0m'
-PREFIX=$USER-octario-`echo -n '${BUILD_TAG:-$USER}' | md5sum | cut -c1-4`-
+PREFIX=$USER-octario-`echo -n "${BUILD_TAG:-$PPID}" | md5sum | cut -c1-4`-
 # making prefix safe for being used as part of hostname
 # prefix is also stable between executions outside CI, allowing reuse of
 # already provisioned machines (when DISABLE_CLEANUP=true)
