@@ -1,6 +1,6 @@
 unittest:
     rpm_deps: [ python-mock, python-mox, python-testrepository, python-aodhclient,
-                python2-magnumclient ]
+                python2-magnumclient, python-stestr ]
     remove_rpm: []
     run: >
         sudo pip install python-zunclient;
