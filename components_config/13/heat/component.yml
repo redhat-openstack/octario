@@ -55,6 +55,7 @@ rpm_deps: [
     python-netaddr,
     python-neutronclient,
     python-novaclient,
+    python-octaviaclient,
     python-openstackclient,
     python-oslo-cache,
     python-oslo-concurrency,
