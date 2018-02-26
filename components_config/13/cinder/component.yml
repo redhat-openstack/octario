@@ -82,6 +82,7 @@ rpm_deps: [
   python-fixtures,
   python-subunit,
   python-pep8,
+  python2-stestr,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
