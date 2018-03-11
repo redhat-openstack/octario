@@ -1,5 +1,5 @@
 pep8:
-    rpm_deps: [ python-neutron, python-neutron-tests, openstack-tempest ]
+    rpm_deps: [ python-neutron, openstack-tempest ]
     remove_rpm: [ ]
     archive_run: ''
     run: >
@@ -11,9 +11,14 @@ unittest:
                 python-cliff,
                 python-requests-mock,
                 python-webtest,
+                python-os-testr,
+                python-eventlet,
+                python-oslo-utils,
+                python-pyroute2,
                 python-mock,
                 python-oslotest,
                 python-testresources, 
+                python-testscenarios,
                 python-pep8,
                 python-designateclient,
                 python-flake8,
