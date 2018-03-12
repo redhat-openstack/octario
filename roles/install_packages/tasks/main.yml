@@ -28,8 +28,6 @@
 
 - name: Print summary of all the repositories enabled on the host
   shell: "{{ yum_bin }} repolist all"
-  args:
-    warn: no
   changed_when: false
   tags:
     - skip_ansible_lint
