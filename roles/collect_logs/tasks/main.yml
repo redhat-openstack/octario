@@ -15,34 +15,26 @@
   set_fact:
     destination_log_folder: "{{ lookup('env', 'PWD') }}"
 
-- name: "Define list of collection paths"
+- name: "Prepend component_path to common log directories"
   set_fact:
-    collect_paths: >
-          {{ (component_path + '/' +
-             (common_log_directories |
-             join(',' + component_path + '/'))).split(',')
-          }} +
-          ["~/logs/"]
+    component_log_paths="{{ component_path }}/{{ common_log_directories | join(',' + component_path + '/')}}"
 
 - name: Find *.log and *.tar.gz files in the common log directories
   find:
-    paths: "{{ collect_paths }}"
+    paths: "{{ component_log_paths.split(',') }}"
     patterns: "*.log,*.tar.gz"
     file_type: file
     recurse: yes
     age: "-1d"
-    hidden: yes
   register: log_files_common
+  no_log: true
 
 - name: Fetch log files from the common log directories
   fetch:
     src="{{ item.path }}"
     dest="{{ destination_log_folder }}"
   with_items: "{{ log_files_common.files | default([]) }}"
-  loop_control:
-    label: "{{ item.path }}"
-  register: collected_files
-  no_log: yes
+  no_log: true
 
 - name: Run pre-collect commands (component specific)
   shell: |
@@ -97,10 +89,5 @@
   no_log: true
 
 - name: Pass or Fail execution based on test results
-  fail:
-    msg: |
-      The test run failed! Tailed output:
-      {{ test_run.stdout }}
-
-      FATAL: Full output at {{ ansible_env.HOME }}/logs/testrun-{{ tester.component.tox_target }}.log
+  fail: msg="The test run failed"
   when: test_run.rc != 0
