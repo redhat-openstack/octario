@@ -91,6 +91,7 @@ rpm_deps: [
   python-subunit,
   python-pep8,
   python-bashate,
+  python-os-testr,
 
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
