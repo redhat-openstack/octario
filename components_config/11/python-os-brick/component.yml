@@ -4,6 +4,7 @@
 pep8:
     rpm_deps: [ python-pep8, pyflakes, python-flake8, python-hacking ]
     remove_rpm: []
+    git checkout -- test-requirements.txt requirements.txt;
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
