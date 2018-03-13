@@ -58,7 +58,7 @@ dsvm-functional:
         sudo sed -i '/\[mysqld\]/a max_connections=1024' /etc/my.cnf;
         sudo sed -i '/\[mysqld\]/a query_cache_type=OFF' /etc/my.cnf;
         sudo sed -i '/\[mysqld\]/a query_cache_size=0' /etc/my.cnf;
-        sudo systemctl restart mysqld;
+        sudo systemctl restart mariadb;
         mysql -u root --password=secretmysql -e "CREATE USER 'openstack_citest' IDENTIFIED BY 'openstack_citest';";
         mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest'@'localhost';";
         mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
@@ -98,7 +98,7 @@ dsvm-fullstack:
         sudo sed -i '/\[mysqld\]/a max_connections=1024' /etc/my.cnf;
         sudo sed -i '/\[mysqld\]/a query_cache_type=OFF' /etc/my.cnf;
         sudo sed -i '/\[mysqld\]/a query_cache_size=0' /etc/my.cnf;
-        sudo systemctl restart mysqld;
+        sudo systemctl restart mariadb;
         mysql -u root --password=secretmysql -e "CREATE USER 'openstack_citest' IDENTIFIED BY 'openstack_citest';";
         mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest'@'localhost';";
         mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
