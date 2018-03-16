@@ -17,3 +17,7 @@ subparsers:
                       type: VarDir
                       help: "Path to component directory"
                       required: yes
+                  pre-commands:
+                      type: Value
+                      help: "Pre-collecting commands to execute"
+                      required: no

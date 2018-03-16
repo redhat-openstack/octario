@@ -55,6 +55,7 @@ class OctarioShell(object):
 
         parser.add_argument('-i', '--inventory-file',
                             default=default_inventory,
+                            dest='inventory',
                             help='specify inventory host path'
                                  ' (default=./hosts or ANSIBLE_INVENTORY when'
                                  ' defined)')
@@ -62,6 +63,11 @@ class OctarioShell(object):
         parser.add_argument('-t', '--tester',
                             help='Tester to be ran. Supported testers: '
                             '{}'.format(TesterType.get_supported_testers()))
+
+        parser.add_argument('-c', '--collect-logs',
+                            action='store_true', dest='logs',
+                            help='should Octario collect logs instead of'
+                                 ' running tests')
 
         parser.add_argument('dir',
                             nargs='?',
@@ -84,7 +90,7 @@ class OctarioShell(object):
 
         LOG.debug('Chosen component directory: %s' % args.dir)
         LOG.debug('Chosen tester: %s' % args.tester)
-        LOG.debug('Chosen inventory: %s' % args.inventory_file)
+        LOG.debug('Chosen inventory: %s' % args.inventory)
 
         return args
 
@@ -94,10 +100,16 @@ class OctarioShell(object):
         tester = Tester(parser_args.tester)
         component = Component(parser_args.dir)
 
-        ansible_playbook = execute.AnsibleExecutor(tester,
-                                                   component,
-                                                   parser_args.inventory_file,
-                                                   path=parser_args.dir)
+        if not parser_args.logs:
+            ansible_playbook = execute.AnsibleExecutor(tester, component,
+                                                       parser_args.inventory,
+                                                       path=parser_args.dir)
+        else:
+            ansible_playbook = execute.AnsibleExecutor('collect-logs',
+                                                       tester,
+                                                       component,
+                                                       parser_args.inventory,
+                                                       path=parser_args.dir)
 
         ansible_playbook.run()
 

@@ -1,93 +1,66 @@
 ---
-# This file handles converting and collecting logs
-
 # Notes:
 # - PEP8 is ignored because it's not producing subunit streams
-# - Test results converted into Junit XML since this is a common format published by most of the CI systems (e.g Jenkins).
-# - 'Pass or Fail' is included in 'collect_logs' role since it should be the last task in the last role, so it can collect logs before Ansible stops running.
-# - Collect logs rc ignored, since the command can fail although results were onvereted.
-
-- name: "Set component_path"
-  set_fact:
-    component_path: "{{ ansible_env.HOME }}/{{ component.name }}"
+# - Test results converted into Junit XML since this is a common format published by most of the CI systems (e.g. Jenkins).
 
 - name: "Set destination log directory path"
   set_fact:
-    destination_log_folder: "{{ lookup('env', 'PWD') }}"
-
-- name: "Prepend component_path to common log directories"
-  set_fact:
-    component_log_paths="{{ component_path }}/{{ common_log_directories | join(',' + component_path + '/')}}"
+      destination_log_folder: "{{ lookup('env', 'PWD') }}"
 
 - name: Find *.log and *.tar.gz files in the common log directories
   find:
-    paths: "{{ component_log_paths.split(',') }}"
-    patterns: "*.log,*.tar.gz"
-    file_type: file
-    recurse: yes
-    age: "-1d"
-  register: log_files_common
-  no_log: true
+      paths: "{{ ansible_env.HOME }}"
+      patterns: "*.log,*.tar.gz"
+      file_type: file
+      recurse: yes
+      age: "-1d"
+  register: found_log_files
 
 - name: Fetch log files from the common log directories
   fetch:
-    src="{{ item.path }}"
-    dest="{{ destination_log_folder }}"
-  with_items: "{{ log_files_common.files | default([]) }}"
-  no_log: true
+      src: "{{ item.path }}"
+      dest: "{{ destination_log_folder }}"
+  with_items: "{{ found_log_files.files | default([]) }}"
 
-- name: Run pre-collect commands (component specific)
+- name: Run pre-collect commands
   shell: |
       export PATH=$PATH:/usr/sbin
       set -euo pipefail
-      {{ component_config.archive_run }}
+      {{ test.pre.commands }}
   args:
-      chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+      chdir: "{{ ansible_env.HOME }}"
       executable: "{{ default_shell }}"
   changed_when: false
-  when: component_config.archive_run is defined
+  when: test.pre.commands is defined
   ignore_errors: true
-
-- name: Fetch files that mentioned in component configuration's archive section
-  fetch:
-    src="{{ component_path }}/{{ item }}"
-    dest="{{ destination_log_folder }}"
-  with_items: "{{ component_config.archive | default([]) }}"
 
 - name: Fetch common files
   become: yes
   fetch:
-    src="{{ item }}"
-    dest="{{ destination_log_folder }}"
+      src: "{{ item }}"
+      dest: "{{ destination_log_folder }}"
   with_items: "{{ common_fetch_list }}"
-  no_log: true
 
 - name: Copy test results to convert them into junit xml format
   shell: |
-    find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
-    | while read name; do cat "$name"; done \
-    > '{{ component_path }}/results.subunit'
+      find '{{ ansible_env.HOME }}/*/.testrepository/' -regex '.*/[0-9]+' \
+      | while read name; do cat "$name"; done \
+      > 'results.subunit'
   ignore_errors: true
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
 
 - name: Convert test results into Junit XML
   shell: >
-    cat results.subunit | subunit-1to2 > results.subunit2;
-    cat results.subunit2 | subunit2junitxml > tests_results.xml
+      cat results.subunit | subunit-1to2 > results.subunit2;
+      cat results.subunit2 | subunit2junitxml > tests_results.xml
   args:
-    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
+      chdir: "{{ ansible_env.HOME }}"
   ignore_errors: true
-  when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
 
 - name: Fetch converted test results from remote host
   fetch:
-    src="{{ ansible_env.HOME }}/{{ component.name }}/tests_results.xml"
-    dest="{{ destination_log_folder }}/tests_results.xml"
-    flat=yes
+      src: "{{ ansible_env.HOME }}/tests_results.xml"
+      dest: "{{ destination_log_folder }}/tests_results.xml"
+      flatr: yes
   ignore_errors: true
-  when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
   no_log: true
-
-- name: Pass or Fail execution based on test results
-  fail: msg="The test run failed"
-  when: test_run.rc != 0
