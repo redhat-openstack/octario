@@ -9,4 +9,3 @@
     - { role: setup_environment }
     - { role: install_packages }
     - { role: run_tests }
-    - { role: collect_logs }
