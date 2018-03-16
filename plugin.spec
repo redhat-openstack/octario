@@ -17,3 +17,7 @@ subparsers:
                       type: VarDir
                       help: "Path to component directory"
                       required: yes
+                  c:
+                      type: Value
+                      help: "Collect logs instead of running tests"
+                      required: no
