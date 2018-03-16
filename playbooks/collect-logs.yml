@@ -1,0 +1,9 @@
+- name: Octario - Collect Logs
+  hosts: tester
+  vars:
+    tester:
+      component:
+        tox_target: "{{ tester }}"
+  roles:
+    - { role: load_configuration }
+    - { role: collect_logs }
