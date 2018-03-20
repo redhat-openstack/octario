@@ -22,6 +22,7 @@ unittest:
     run: >
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
+      sudo pip install oslo.utils==3.28.2;
       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
