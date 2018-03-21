@@ -48,6 +48,7 @@ unittest:
         sudo pip install -U --no-deps osprofiler==1.4.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        sudo pip install oslo.utils==3.28.2;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
