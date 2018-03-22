@@ -25,8 +25,9 @@
 
 - name: Copy component to remote host
   synchronize:
-    src: "{{ item }}"
-    dest: "{{ ansible_env.HOME }}"
+    src: "{{ item }}/"
+    dest: "{{ ansible_env.HOME }}/{{ component.name }}"
+    use_ssh_args: yes
     # keep rsync quiet as we don't want console noise
     rsync_opts:
       - "--quiet"
