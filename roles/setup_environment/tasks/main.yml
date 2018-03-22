@@ -27,6 +27,7 @@
   synchronize:
     src: "{{ item }}"
     dest: "{{ ansible_env.HOME }}"
+    use_ssh_args: yes
     # keep rsync quiet as we don't want console noise
     rsync_opts:
       - "--quiet"
