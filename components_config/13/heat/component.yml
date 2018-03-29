@@ -87,6 +87,7 @@ rpm_deps: [
     python-stevedore,
     python-swiftclient,
     python-testresources,
+    python-testscenarios,
     python-tox,
     python-troveclient,
     python-webob,
