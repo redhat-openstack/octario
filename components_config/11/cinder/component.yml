@@ -16,6 +16,7 @@ unittest:
     remove_rpm: [ python-cinder ]
     run: |
         pip install --user --no-deps -e .
+        sudo pip install oslo.utils==3.28.2;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log
 
 
