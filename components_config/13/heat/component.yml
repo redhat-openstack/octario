@@ -35,7 +35,7 @@ rpm_deps: [
     python-ceilometerclient,
     python-cinderclient,
     python-croniter,
-    python-cryptography,
+    python2-cryptography,
     python-crypto,
     python-debtcollector,
     python-designateclient,
