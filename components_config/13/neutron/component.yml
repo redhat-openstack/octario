@@ -43,7 +43,6 @@ dsvm-functional:
     remove_rpm: []
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
-        sudo setenforce 0;
         sudo modprobe bridge;
         sudo modprobe br_netfilter;
         sudo chmod -R 777 /etc/neutron;
@@ -83,7 +82,6 @@ dsvm-fullstack:
         sudo iptables -n --list $CHAIN_NAME 1> /dev/null 2>&1 || CHAIN_NAME="INPUT";
         sudo iptables -I $CHAIN_NAME -s 240.0.0.0/8 -p tcp -m tcp -d 240.0.0.0/8 --dport 5672 -j ACCEPT;
         sudo systemctl start rabbitmq-server;
-        sudo setenforce 0;
         sudo modprobe bridge;
         sudo modprobe br_netfilter;
         sudo chmod -R 777 /etc/neutron;
