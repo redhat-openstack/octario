@@ -47,7 +47,7 @@ rpm_deps: [
     git,
     python-tox-2.3.1,
     python-pluggy-0.3.1,
-    python2-virtualenv-14.0.6,
+    python-virtualenv,
     python-setuptools-18.5,
     python-flake8,
     python-pip,

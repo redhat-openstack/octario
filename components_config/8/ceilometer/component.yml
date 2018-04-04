@@ -113,7 +113,7 @@ rpm_deps: [
     python-setuptools-18.5,
     python-pluggy-0.3.1,
     python-pip-7.1.0,
-    python2-virtualenv-14.0.6,
+    python-virtualenv,
     python-tox-2.3.1,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
