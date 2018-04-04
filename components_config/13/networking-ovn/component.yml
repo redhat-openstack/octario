@@ -10,7 +10,6 @@ unittest:
     rpm_deps: [ python-networking-ovn,
                 python-cliff,
                 python-requests-mock,
-                python-neutron-tests,
                 python-webtest,
                 python-mock,
                 python-oslotest,
