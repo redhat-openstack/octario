@@ -70,7 +70,7 @@ rpm_deps: [
     git,
     python-tox,
     python-pluggy,
-    python2-virtualenv,
+    python-virtualenv,
     python-setuptools,
     python-tempest-lib,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
