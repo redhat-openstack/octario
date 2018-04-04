@@ -21,7 +21,7 @@ rpm_deps: [
     openstack-tripleo-common,
     python-tox,
     python-pluggy,
-    python2-virtualenv,
+    python-virtualenv,
     python-setuptools,
     python-jinja2,
     python-yaml,
