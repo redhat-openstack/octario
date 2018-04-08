@@ -42,7 +42,6 @@ dsvm-functional:
         sudo chmod 777 /opt;
         sudo systemctl start openvswitch;
         sed -i s@OS_FAIL_ON_MISSING_DEPS=1@OS_FAIL_ON_MISSING_DEPS=0@ tox.ini;
-        truncate --size 0 networking-ovn/tests/functional/requirements.txt;
         sudo systemctl start mysqld;
         sudo mysqladmin -u root password secretmysql;
         sudo sed -i '/\[mysqld\]/a bind-address=0.0.0.0' /etc/my.cnf;
