@@ -1,0 +1,154 @@
+# This file is used by the jenkins job
+
+# Dependencies with explicit versions are provided by the copr repository.
+
+# (migi) eventlet is required: https://bugs.launchpad.net/nova/+bug/1403270
+#
+pep8:
+
+    rpm_deps: [
+      python-eventlet,
+      python-flake8
+    ]
+
+    remove_rpm: []
+
+    run:
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+# (migi) python-nova is installed and then removed to satisfy all runtime
+#        dependencies for the nova component.
+#
+# BZ: 1488500 requires urllib3 1.22 and no backports.ssl-match-hostname
+unittest:
+
+    rpm_deps: [
+      python-nova,
+      python-wsgi_intercept,
+      python-websockify,
+      python-ironicclient,
+      python-cinderclient,
+      python-testresources,
+      python2-testscenarios,
+      python-os-testr,
+      python-oslotest,
+      python-requests-mock,
+      python-pep8,
+      python-gabbi,
+      genisoimage,
+      python-automaton,
+      python-osprofiler,
+      python2-os-xenapi,
+      python2-pyasn1-modules,
+      python-taskflow,
+      python-ddt,
+      python-pip
+    ]
+
+    remove_rpm: [
+      python-nova
+    ]
+
+    run:
+        sudo pip install -U --no-deps wsgi_intercept==1.4.1;
+        sudo pip install -U --no-deps pypowervm==1.1.10;
+        sudo pip install -U --no-deps setuptools==39.0.1;
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+
+# (migi) python-nova is installed and then removed to satisfy all runtime
+#        dependencies for the nova component.
+#
+functional:
+
+    rpm_deps: [
+      openstack-nova,
+      python-ironicclient,
+      python-testresources,
+      python2-testscenarios,
+      python-os-testr,
+      python-oslotest,
+      python-pip
+    ]
+
+    remove_rpm: [
+      python-nova,
+      openstack-nova-api,
+      python-nova,
+      python-gabbi,
+      openstack-nova-cells,
+      openstack-nova-cert,
+      openstack-nova-common,
+      openstack-nova-compute,
+      openstack-nova-conductor,
+      openstack-nova-console,
+      openstack-nova-network,
+      openstack-nova-novncproxy,
+      openstack-nova-placement-api,
+      openstack-nova-scheduler
+    ]
+
+    run:
+        sudo pip install -U --no-deps wsgi_intercept==1.4.1;
+        sudo pip install -U --no-deps gabbi==1.35.0;
+        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
+        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
+        /usr/bin/sed -i '/^import nova/a import testtools' nova/tests/functional/db/test_resource_provider.py;
+        /usr/bin/sed -i '/^    def test_create_duplicate_id_retry(/a\        raise testtools.TestCase.skipException(\"Downstream temporary skip due to sqlite3 outdated\")' nova/tests/functional/db/test_resource_provider.py;
+        /usr/bin/sed -i '/^    def test_create_duplicate_id_retry_failing(/a\        raise testtools.TestCase.skipException(\"Downstream temporary skip due to sqlite3 outdated\")' nova/tests/functional/db/test_resource_provider.py;
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+
+
+# Tempest target
+tempest:
+   rpm_deps: []
+   remove_rpm: []
+   run: ""
+
+
+# Additional repository required to install testing dependencies
+enable_repos: []
+
+
+# Common rpm deps needed for all tester types (pep8 / unittest / functional)
+rpm_deps: [
+    git,
+    python-tox-2.3.2,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+
+# The rpms that shouldn't be installed when running tests
+# python-nova is installed and then removed to satisfy other dependencies
+remove_rpm: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
+]
+
+
+# We truncate *requirements.txt to ensure we're only using installed
+# non-test packages.
+nova_virt_run_config:
+
+  run: >
+      set -o pipefail;
+      rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
+      truncate --size 0 requirements.txt;
+      truncate --size 0 test-requirements.txt;
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-7:
+      setup:
+        enable_repos: "{{enable_repos}}"
+        install: "{{rpm_deps}}"
+        remove: "{{remove_rpm}}"
+      run: "{{nova_virt_run_config.run}}"
