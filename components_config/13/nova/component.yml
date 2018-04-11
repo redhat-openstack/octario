@@ -72,6 +72,10 @@ functional:
       python-testresources,
       python2-testscenarios,
       python-os-testr,
+      python-jsonpath-rw-ext,
+      python-pytest,
+      python-gabbi,
+      python-colorama,
       python-oslotest,
       python-pip
     ]
