@@ -1,0 +1,10 @@
+Code-Review+1: Avishay Mahluf <avishay89@gmail.com>
+Verified+1: rhosqeauto <obaranov+rhosqeauto@redhat.com>
+Code-Review+1: Avi Talmor <atalmor@redhat.com>
+Code-Review+2: Ariel Opincaru <aopincar@redhat.com>
+Code-Review+2: David Sariel <dsariel@redhat.com>
+Submitted-by: Ariel Opincaru <aopincar@redhat.com>
+Submitted-at: Sun, 15 Apr 2018 05:05:55 -0400
+Reviewed-on: https://review.gerrithub.io/407643
+Project: redhat-openstack/octario
+Branch: refs/heads/master
