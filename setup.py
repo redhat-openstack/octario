@@ -17,7 +17,10 @@
 
 from octario.lib.release import __AUTHOR__
 from octario.lib.release import __VERSION__
-from pip import req
+try:
+    from pip._internal.req import parse_requirements
+except ImportError:
+    from pip.req import parse_requirements
 from setuptools import find_packages
 from setuptools import setup
 
@@ -25,7 +28,7 @@ import os
 import platform
 
 # parse_requirements() returns generator of pip.req.InstallRequirement objects
-install_reqs = req.parse_requirements('requirements.txt', session=False)
+install_reqs = parse_requirements('requirements.txt', session=False)
 
 # reqs is a list of requirement from requirements.txt
 reqs = [str(octario.req) for octario in install_reqs]
