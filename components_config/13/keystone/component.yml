@@ -26,7 +26,7 @@ unittest:
     rpm_deps: [
         python-keystone,
         python-os-testr,
-        python-cryptography,
+        python2-cryptography,
         python-mock,
         python-freezegun,
         python-testresources,

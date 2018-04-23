@@ -5,7 +5,7 @@ pep8:
 
 unittest:
     rpm_deps: [ python-cliff,
-                python-cryptography,
+                python2-cryptography,
                 openssl-devel,
                 libffi-devel,
                 python-funcsigs,
