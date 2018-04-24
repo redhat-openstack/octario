@@ -19,7 +19,7 @@ unittest:
                 python-flake8,
                 openstack-neutron-openvswitch,
                 python-oslo-db,
-                python-oslo-db-tests,
+                python-os-testr,
                 python-ddt ]
     remove_rpm: [ python-networking-ovn ]
     archive_run: ''
