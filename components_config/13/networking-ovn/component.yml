@@ -20,7 +20,7 @@ unittest:
                 openstack-neutron-openvswitch,
                 python-os-testr,
                 python-oslo-db,
-                python-oslo-db-tests,
+                python-os-testr,
                 python-ddt ]
     remove_rpm: [ python-networking-ovn ]
     archive_run: ''
