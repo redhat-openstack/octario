@@ -14,7 +14,7 @@ unittest:
                 python-funcsigs,
                 python-requests-mock,
                 python-webtest,
-                python-os-testr,
+                python-stestr,
                 python-neutronclient,
                 python-oslo-utils,
                 python-flask,
@@ -47,7 +47,7 @@ unittest:
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 functional:
-    rpm_deps: [ python-os-testr,
+    rpm_deps: [ python-stestr,
                 python-netifaces,
                 python-oslo-utils,
                 python-oslo-config,
@@ -67,12 +67,15 @@ functional:
                 python-ipaddress,
                 python-oslo-policy,
                 python-neutronclient,
-                python-oslo-log ]
+                python-oslo-log,
+                python-barbicanclient,
+                python-pyasn1,
+                python-pyasn1-modules ]
     remove_rpm: []
     run: tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 functional-py35:
-    rpm_deps: [ python-os-testr,
+    rpm_deps: [ python-stestr,
                 python-netifaces,
                 python-oslo-utils,
                 python-oslo-config,
@@ -92,7 +95,10 @@ functional-py35:
                 python-ipaddress,
                 python-oslo-policy,
                 python-neutronclient,
-                python-oslo-log ]
+                python-oslo-log,
+                python-barbicanclient,
+                python-pyasn1,
+                python-pyasn1-modules ]
     remove_rpm: []
     run: tox --sitepackages -v -e functional-py35 2>&1 | tee ../logs/testrun.log;
 
@@ -107,7 +113,7 @@ rpm_deps: [ gcc,
             python-pip,
             python-pbr,
             python-tox,
-            python-testrepository,
+            python-stestr,
             openssl-devel,
             libffi-devel,
             libjpeg-turbo-devel,

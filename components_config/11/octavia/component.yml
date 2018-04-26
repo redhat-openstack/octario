@@ -54,7 +54,10 @@ functional:
                 python-ipaddress,
                 python-oslo-policy,
                 python-neutronclient,
-                python-oslo-log ]
+                python-oslo-log,
+                python-barbicanclient,
+                python-pyasn1,
+                python-pyasn1-modules ]
     remove_rpm: []
     run: tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
@@ -79,7 +82,10 @@ functional-py35:
                 python-ipaddress,
                 python-oslo-policy,
                 python-neutronclient,
-                python-oslo-log ]
+                python-oslo-log,
+                python-barbicanclient,
+                python-pyasn1,
+                python-pyasn1-modules ]
     remove_rpm: []
     run: tox --sitepackages -v -e functional-py35 2>&1 | tee ../logs/testrun.log;
 
