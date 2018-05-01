@@ -20,6 +20,7 @@ unittest:
                 python-ironicclient,
                 python-mistral-lib,
                 python-mistralclient,
+                python-novaclient,
                 python-oslo-concurrency,
                 python-oslo-log,
                 python-oslotest,
