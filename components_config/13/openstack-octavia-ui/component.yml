@@ -9,7 +9,10 @@ unittest:
     rpm_deps: []
     remove_rpm: []
     run: >
-        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+        sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm;
+        sudo yum install -y npm nodejs;
+        tox --sitepackages -v -e karma 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e eslint 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
