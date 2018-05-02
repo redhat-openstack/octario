@@ -1,0 +1,57 @@
+pep8:
+    rpm_deps: []
+    remove_rpm: []
+    run: >
+        git checkout -- test-requirements.txt requirements.txt;
+        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: []
+    remove_rpm: []
+    run: >
+        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [ gcc,
+            git,
+            python-devel,
+            python-mock,
+            python-pip,
+            python-pbr,
+            python-tox,
+            python-testrepository,
+            python-testresources,
+            python-oslotest,
+            python-testtools,
+            python-coverage,
+            openssl-devel,
+            libffi-devel,
+            libjpeg-turbo-devel,
+            zlib-devel,
+            "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}" ]
+
+# The rpms that shouldn't be installed when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+### test setup, run and cleanup steps
+octavia_ui_virt_run_config:
+    run: >
+        set -o pipefail;
+        sudo rm -Rf .tox;
+        truncate --size 0 requirements.txt;
+        truncate --size 0 test-requirements.txt;
+        rpm -qa > ../logs/installed-rpms.log;
+        {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# This is the main section
+test_config:
+    virt:
+        RedHat-7:
+            setup:
+                install: "{{ rpm_deps }}"
+                remove: "{{ remove_rpm }}"
+            run: "{{ octavia_ui_virt_run_config.run }}"
