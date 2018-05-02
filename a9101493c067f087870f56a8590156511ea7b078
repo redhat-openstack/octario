@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c5aa007_2a7e692a",
+        "filename": "components_config/13/python-octaviaclient/component.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001239
+      },
+      "writtenOn": "2018-05-02T20:48:19Z",
+      "side": 1,
+      "message": "whitespaces \\o/",
+      "range": {
+        "startLine": 34,
+        "startChar": 39,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "a9101493c067f087870f56a8590156511ea7b078",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
