@@ -23,3 +23,7 @@ subparsers:
                   tester-group:
                       type: Value
                       help: Inventory group to use as tester(s)
+                  pre-commands:
+                      type: Value
+                      help: "Pre-collecting commands to execute"
+                      required: no
