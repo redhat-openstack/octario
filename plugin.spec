@@ -17,3 +17,9 @@ subparsers:
                       type: VarDir
                       help: "Path to component directory"
                       required: yes
+                  tester-host:
+                      type: Value
+                      help: Inventory host to use as tester
+                  tester-group:
+                      type: Value
+                      help: Inventory group to use as tester(s)

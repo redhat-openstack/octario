@@ -9,6 +9,18 @@
       PATH: "{{ ansible_env.PATH }}"
       VIRTUAL_ENV: "{{ ansible_env.VIRTUAL_ENV }}"
   tasks:
+      - name: Add tester host to dynamic inventory
+        add_host:
+          name: "{{ test.tester.host }}"
+          group: tester
+        when: "'tester' in test and 'host' in test.tester"
+
+      - name: Add tester group to dynamic inventory
+        add_host:
+          name: "{{ test.tester.group }}"
+          group: tester:children
+        when: "'tester' in test and 'group' in test.tester"
+
       - name: "Discover release version"
         script: "ir-plugin/osp_version_name.py {{ tester_directory }}"
         run_once: true
