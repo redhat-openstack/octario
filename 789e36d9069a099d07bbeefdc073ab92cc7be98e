@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f86c0275_d6b77ea8",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2018-05-10T17:51:41Z",
+      "side": 1,
+      "message": "If logs are missing don\u0027t we want to get a failure?",
+      "revId": "789e36d9069a099d07bbeefdc073ab92cc7be98e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c02342_5dd02d11",
         "filename": "runtests.sh",
         "patchSetId": 2
