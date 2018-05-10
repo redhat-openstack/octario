@@ -4,7 +4,9 @@
 # This script would test octario by provisioning a test
 # machine, running octario on it (pep8) for a one component and
 # deprovisionign it.
-set -euo pipefail
+set -euox pipefail
+# isolating from vars that could affect execution in an undesired way:
+unset IR_TOPOLOGY_NODES
 
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
@@ -14,16 +16,24 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-if [ -z ${DNS+x} ]; then
-  echo "WARN: internal DNS environment value not found, running tests without it may cause failures";
-else
-  IR_DNS=--dns=${DNS}
+if [ -z ${IR_DNS+x} ]; then
+  if [ ! -z ${DNS+x} ]; then
+    IR_DNS=${DNS:-}
+    export IR_DNS
+  fi
+  if [ -z ${IR_DNS+x} ]; then
+    >&2 echo "WARN: IR_DNS/DNS environment vars not defined, running tests without it may cause failures";
+  fi
 fi
 
-if [ -z ${OS_CLOUD+x} ]; then
-  echo "WARN: internal OS_CLOUD environment value not found, running tests without it may cause failures";
-else
-  IR_CLOUD=--cloud=${OS_CLOUD}
+if [ -z ${IR_CLOUD+x} ]; then
+  if [ ! -z ${OS_CLOUD+x} ]; then
+    IR_CLOUD=${OS_CLOUD:-}
+    export IR_CLOUD
+  fi
+  if [ -z ${IR_CLOUD+x} ]; then  
+    >&2 echo "WARN: IR_CLOUD/OS_CLOUD environment vars not defined, running tests without it may cause failures";
+  fi
 fi
 
 if [ -z ${COMPONENT_PATH+x} ]; then
@@ -50,11 +60,11 @@ if [ -z ${COMPONENT_TESTER+x} ]; then
   COMPONENT_TESTER=pep8
 fi
 
-if [ -z ${KEY+x} ]; then
+if [ -z ${IR_KEY_FILE+x} ]; then
   for FILE in ~/.ssh/rhos-jenkins/id_rsa ~/.ssh/id_rsa
   do
       if [ -f $FILE ]; then
-          export KEY=$FILE
+          export IR_KEY_FILE=$FILE
           break
       fi
   done
@@ -63,12 +73,13 @@ fi
 # code to determine a meaningful prefix for both CLI and CI use cases
 HIGHLIGHT='\033[01;32m'
 NORMAL='\033[0m'
-PREFIX=$USER-octario-`echo -n "${BUILD_TAG:-$PPID}" | md5sum | cut -c1-4`-
+IR_PREFIX=$USER-octario-`echo -n "${BUILD_TAG:-$PPID}" | md5sum | cut -c1-4 | sed "s/[^a-z|0-9]\-//g;"`-
 # making prefix safe for being used as part of hostname
 # prefix is also stable between executions outside CI, allowing reuse of
 # already provisioned machines (when DISABLE_CLEANUP=true)
-PREFIX=$(echo $PREFIX | sed "s/[^a-z|0-9]\-//g;")
-export PREFIX
+IR_IMAGE='fake_image'
+export IR_PREFIX
+export IR_IMAGE
 export ANSIBLE_VERBOSITY=0
 export ANSIBLE_HOST_KEY_CHECKING=False
 export ANSIBLE_FORCE_COLOR=1
@@ -86,12 +97,13 @@ function finish {
   if [ "${DISABLE_CLEANUP:-false}" != "true" ]; then
       set -e
       pushd $IR_DIR >>/dev/null
-      infrared openstack ${IR_CLOUD:-} --image='fake_image' --prefix=$PREFIX --cleanup=yes > ${DIR}/cleanup.log || {
+      infrared openstack --cleanup=yes > ${DIR}/cleanup.log || {
         >&2 cat ${DIR}/cleanup.log
         echo -e "WARN: Cleanup failure."
         rv=99
       }
-      infrared workspace delete ${PREFIX}
+      popd
+      infrared workspace delete ${IR_PREFIX}
   fi
 
   # we restore previous working directory regardless the outcome
@@ -102,10 +114,10 @@ trap finish EXIT
 
 pushd $IR_DIR >>/dev/null
 
-  echo -e "INFO: Using prefix ${HIGHLIGHT}${PREFIX}${NORMAL} and running from ${HIGHLIGHT}${IR_DIR}${NORMAL} ..."
+  echo -e "INFO: Using prefix ${HIGHLIGHT}${IR_PREFIX}${NORMAL} and running from ${HIGHLIGHT}${IR_DIR}${NORMAL} ..."
 
   # we create unique workspace to avoid reusing existing one
-  infrared workspace checkout ${PREFIX} || infrared workspace checkout -c ${PREFIX}
+  infrared workspace checkout ${IR_PREFIX} 2>/dev/null || infrared workspace checkout -c ${IR_PREFIX}
   infrared workspace node-list
 
   # assure we use current octario code and not the last release
@@ -123,10 +135,6 @@ pushd $IR_DIR >>/dev/null
   ( infrared openstack --topology-nodes=tester:1 \
       --topology-network=3_nets \
       --image=rhel-7.4-server-x86_64-updated \
-      ${IR_CLOUD:-} \
-      --prefix=$PREFIX \
-      ${IR_DNS:-} \
-      --key-file=${KEY} \
       > ${DIR}/provision.log || {
           rv=$?
           >&2 tail -n200 ${DIR}/provision.log
