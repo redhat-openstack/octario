@@ -59,8 +59,8 @@
   fetch:
     src="{{ item }}"
     dest="{{ destination_log_folder }}"
+    fail_on_missing=no
   with_items: "{{ common_fetch_list }}"
-  no_log: true
 
 - name: Copy test results to convert them into junit xml format
   shell: |
