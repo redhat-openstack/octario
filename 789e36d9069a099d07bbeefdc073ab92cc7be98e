@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69c0140e_38bbf03d",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-11T08:26:16Z",
+      "side": 1,
+      "message": "Nope, because if you check even the last execution the list of files includes files that are only sometimes produced, like patching ones. There are 3 logs that are created only when we test a patch on a component.\n\nLogs are a byproduct of build, not the real result which is usually the result code and the junit files. Even if one logs is missing it will be considered a failure, here is a clear example: https://rhos-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/gate-infrared-octario/190/console\n\nIn fact this line was the primary reason why the gate got broken.\n\nBTW, fail_on_missing default value changed between Ansible versions, now we do control its value.",
+      "parentUuid": "f86c0275_d6b77ea8",
+      "revId": "789e36d9069a099d07bbeefdc073ab92cc7be98e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c02342_5dd02d11",
         "filename": "runtests.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-10T17:49:50Z",
       "side": 1,
       "message": "nit",
+      "revId": "789e36d9069a099d07bbeefdc073ab92cc7be98e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "771b4cc5_d6b37945",
+        "filename": "runtests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-11T08:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2c02342_5dd02d11",
       "revId": "789e36d9069a099d07bbeefdc073ab92cc7be98e",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
