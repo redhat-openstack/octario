@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "064f2afa_7ea8b20d",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-14T15:20:12Z",
+      "side": 1,
+      "message": "Pipe fail is essential as we don\u0027t want to consider failure to find any files a success.",
+      "revId": "c85fa2edbcc6e5d21cd591aa9464152085a2c71e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6d8ba0_cf093106",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-14T15:20:12Z",
+      "side": 1,
+      "message": "Important fix that is affecting at least swift on rhos 13 which is producing the results inside the newer .stestr folder instead of old .testrepository location. Now we look for both locations.",
+      "revId": "c85fa2edbcc6e5d21cd591aa9464152085a2c71e",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}

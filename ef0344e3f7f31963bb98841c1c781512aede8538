@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6301f434_c542edb5",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-14T15:20:12Z",
+      "side": 0,
+      "message": "Previous code would generate empty results.subunit in case of failure to find test results",
+      "revId": "ef0344e3f7f31963bb98841c1c781512aede8538",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4751df0_9360c46b",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-14T15:20:12Z",
+      "side": 0,
+      "message": "Last line would generate a *valid* junit test result with zero tests if there were no tests running, making high likely to mark a build as success because \"0 tests executed is considered a success\".",
+      "revId": "ef0344e3f7f31963bb98841c1c781512aede8538",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6088c49e_8afb9de9",
+        "filename": "roles/collect_logs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-14T15:20:12Z",
+      "side": 0,
+      "message": "We do want to know what happened, anyway the output of this command is likely to be very short as its stdout is redirected to file. Only errors should be visible, but if any they would be important to see.",
+      "revId": "ef0344e3f7f31963bb98841c1c781512aede8538",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
