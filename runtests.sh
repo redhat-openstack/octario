@@ -69,7 +69,6 @@ PREFIX=$USER-octario-`echo -n "${BUILD_TAG:-$PPID}" | md5sum | cut -c1-4`-
 # already provisioned machines (when DISABLE_CLEANUP=true)
 PREFIX=$(echo $PREFIX | sed "s/[^a-z|0-9]\-//g;")
 export PREFIX
-export ANSIBLE_VERBOSITY=0
 export ANSIBLE_HOST_KEY_CHECKING=False
 export ANSIBLE_FORCE_COLOR=1
 
