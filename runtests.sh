@@ -69,6 +69,7 @@ PREFIX=$USER-octario-`echo -n "${BUILD_TAG:-$PPID}" | md5sum | cut -c1-4`-
 # already provisioned machines (when DISABLE_CLEANUP=true)
 PREFIX=$(echo $PREFIX | sed "s/[^a-z|0-9]\-//g;")
 export PREFIX
+export ANSIBLE_VERBOSITY=0
 export ANSIBLE_HOST_KEY_CHECKING=False
 export ANSIBLE_FORCE_COLOR=1
 
@@ -120,12 +121,14 @@ pushd $IR_DIR >>/dev/null
   # provision resources (future: skip running if already provisioned)
   set -x
   ( infrared openstack --topology-nodes=tester:1 \
+      --anti-spoofing false \
       --topology-network=3_nets \
-      --image=rhel-7.4-server-x86_64-updated \
+      --image=rhel-7.5-server-x86_64-latest \
       ${IR_CLOUD:-} \
       --prefix=$PREFIX \
       ${IR_DNS:-} \
       --key-file=${KEY} \
+      -e override.tester.flavor=m1.xlarge \
       > ${DIR}/provision.log || {
           rv=$?
           >&2 tail -n200 ${DIR}/provision.log

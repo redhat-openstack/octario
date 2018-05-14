@@ -48,10 +48,15 @@
   when: component_config.archive_run is defined
   ignore_errors: true
 
-- name: Fetch files that mentioned in component configuration's archive section
+# due to previous ansible fetch module config, the archive parameter is
+# optional, not failing the task if source is missing. This was needed as
+# we have lots of existing jobs that list files that are not always produced
+# by current tester(s).
+- name: Fetch files that mentioned in component configuration archive section
   fetch:
-    src="{{ component_path }}/{{ item }}"
-    dest="{{ destination_log_folder }}"
+    src: "{{ component_path }}/{{ item }}"
+    dest: "{{ destination_log_folder }}"
+    fail_on_missing: no
   with_items: "{{ component_config.archive | default([]) }}"
 
 - name: Fetch common files
@@ -62,21 +67,23 @@
     fail_on_missing=no
   with_items: "{{ common_fetch_list }}"
 
-- name: Copy test results to convert them into junit xml format
+# This task should fail if:
+# - no tests results files are found (find)
+# - subunit conversion(s) fails
+# - subunit2junitxml returns is not 0 or 1 or we have stderr content
+# Remember that subunit2junitxml returns 1 if there were any test failures but
+# we do not want to fail this task in this case.
+- name: Combine test results and convert them into junit xml format
   shell: |
-    find '{{ component_path }}/.testrepository/' -regex '.*/[0-9]+' \
-    | while read name; do cat "$name"; done \
-    > '{{ component_path }}/results.subunit'
-  ignore_errors: true
-  when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
-
-- name: Convert test results into Junit XML
-  shell: >
-    cat results.subunit | subunit-1to2 > results.subunit2;
-    cat results.subunit2 | subunit2junitxml > tests_results.xml
-  args:
-    chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
-  ignore_errors: true
+    set -eo pipefail
+    find '{{ component_path }}' -regextype posix-extended -regex '.*/\.(testrepository|stestr).*/[0-9]+' \
+    | xargs cat \
+    | tee '{{ component_path }}/results.subunit' \
+    | subunit-1to2 \
+    | tee results.subunit2 \
+    | subunit2junitxml -o {{ component_path }}/tests_results.xml
+  register: result
+  failed_when: result.rc not in [0, 1] or result.stderr != ""
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
 
 - name: Fetch converted test results from remote host
@@ -84,9 +91,7 @@
     src="{{ ansible_env.HOME }}/{{ component.name }}/tests_results.xml"
     dest="{{ destination_log_folder }}/tests_results.xml"
     flat=yes
-  ignore_errors: true
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
-  no_log: true
 
 - name: Pass or Fail execution based on test results
   fail: msg="The test run failed"
