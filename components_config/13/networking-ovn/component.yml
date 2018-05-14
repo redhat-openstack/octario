@@ -50,7 +50,7 @@ dsvm-functional:
         git clone https://github.com/openstack/neutron.git;
         git clone https://github.com/openstack-dev/devstack.git;
         cd /home/cloud-user/networking-ovn;
-        /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
+        sudo yum install openvswitch -y;
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cloud-user/.local/bin:/home/cloud-user/bin;
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
