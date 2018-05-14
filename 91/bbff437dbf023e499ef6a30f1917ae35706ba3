@@ -1,0 +1,7 @@
+Code-Review+2: Sorin Sbarnea <ssbarnea@redhat.com>
+Verified+1: rhosqeauto <obaranov+rhosqeauto@redhat.com>
+Submitted-by: Sorin Sbarnea <ssbarnea@redhat.com>
+Submitted-at: Mon, 14 May 2018 16:19:15 +0000
+Reviewed-on: https://review.gerrithub.io/400002
+Project: redhat-openstack/octario
+Branch: refs/heads/master
