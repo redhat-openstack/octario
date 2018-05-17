@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7686661f_1a587380",
+        "filename": "components_config/13/heat/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1008329
+      },
+      "writtenOn": "2018-05-17T13:21:50Z",
+      "side": 1,
+      "message": "This will likely not work because there are 90% chances that newer pip will not be in path.\n\nCall pip using \"python -m pip\" instead to avoid this, or add a block that adds ~/.local/bin to the beginning of PATH, or this will fail to use newer pip.",
+      "revId": "86ddcc0b37059c43f1940efe81219984af533067",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
