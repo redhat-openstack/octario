@@ -117,9 +117,8 @@ heat_virt_run_config:
     run: >
         sudo rm -Rf ./*.pyc;
         sudo rm -Rf .tox || true;
-        sudo pip install --no-deps -U pip;
-        sudo pip install -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/queens
-        -U unittest2 openstacksdk python-senlinclient python-monascaclient;
+        pip install --user -U pip;
+        python -m pip install --user -c https://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/queens -U unittest2 openstacksdk python-senlinclient python-monascaclient;
         export NOSE_WITH_XUNIT=1;
         export NOSE_WITH_HTML_OUTPUT=1;
         export NOSE_HTML_OUT_FILE=../logs/nose_results.html;
