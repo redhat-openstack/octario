@@ -54,8 +54,6 @@ unittest:
 
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
 #
-# (migi) python-virtualenv is also available in copr and it gets
-#        installed from copr as dependency for python-tox.
 rpm_deps: [
     git,
     python-pbr,
@@ -63,7 +61,7 @@ rpm_deps: [
     python-eventlet,
     python-pluggy-0.3.1,
     python-tox-2.3.1,
-    python-virtualenv-1.11.6,
+    python-virtualenv,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
