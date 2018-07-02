@@ -23,3 +23,6 @@ subparsers:
                   tester-group:
                       type: Value
                       help: Inventory group to use as tester(s)
+                  pre-run:
+                      type: Value
+                      help: A shell command to run before running the tests.

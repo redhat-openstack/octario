@@ -8,6 +8,7 @@
   shell: |
     export PATH=$PATH:/usr/sbin
     set -euo pipefail
+    {{ hostvars['localhost']['test']['pre-run'] | default("") }}
     {{ component_config.run }}
   args:
     chdir: "{{ ansible_env.HOME }}/{{ component.name }}"
