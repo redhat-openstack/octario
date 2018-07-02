@@ -133,6 +133,7 @@ pushd $IR_DIR >>/dev/null
 
   infrared workspace node-list
 
+  infrared octario --t=${COMPONENT_TESTER} --dir=${COMPONENT_PATH} --pre-run='echo 123456'
   infrared octario --t=${COMPONENT_TESTER} --dir=${COMPONENT_PATH}
 
 popd
