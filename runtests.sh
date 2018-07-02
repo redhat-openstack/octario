@@ -120,7 +120,7 @@ pushd $IR_DIR >>/dev/null
 
   # provision resources (future: skip running if already provisioned)
   set -x
-  ( infrared openstack --topology-nodes=tester:1 \
+  infrared openstack --topology-nodes=tester:1 \
       --anti-spoofing false \
       --topology-network=3_nets \
       --image=rhel-7.5-server-x86_64-latest \
@@ -129,12 +129,7 @@ pushd $IR_DIR >>/dev/null
       ${IR_DNS:-} \
       --key-file=${KEY} \
       -e override.tester.flavor=m1.xlarge \
-      > ${DIR}/provision.log || {
-          rv=$?
-          >&2 tail -n200 ${DIR}/provision.log
-          exit $rv
-        }
-      ) 2>&1 | tee ${DIR}/provision.log
+      2>&1 | tee ${DIR}/provision.log
 
   infrared workspace node-list
 
