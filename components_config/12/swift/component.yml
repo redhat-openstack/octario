@@ -27,8 +27,53 @@ functional:
       python-swift,
     ]
 
-    run:
-        tox --sitepackages -v -e func 2>&1 | tee ../logs/testrun.log;
+    run: |
+        #!/bin/bash
+        # configure swift to be able to run functional tests, based on:
+        # https://thiagodasilvablog.wordpress.com/2016/11/02/running-functional-test-against-an-openstack-swift-cluster-deployed-with-tripleo/
+
+        source .overcloudrc
+        set -exuo pipefail
+
+        which crudini > /dev/null || sudo yum install -q -y crudini
+
+        openstack project create  --or-show --description "Bob Project" bob
+        openstack user create  --or-show --password bobpwd bob
+
+        openstack role assignment list --project bob --user bob  --names -c Role -f value | grep admin >/dev/null || openstack role add --project bob --user bob admin
+
+        openstack role create user  --or-show
+        openstack user create  --or-show --password jimpwd jim
+
+        openstack role assignment list --project admin --user jim  --names -c Role -f value | grep user >/dev/null || openstack role add --project admin --user jim user
+
+        pushd swift
+        cp test/sample.conf test.conf
+        export SWIFT_TEST_CONFIG_FILE=/home/stack/swift/test.conf
+
+        crudini --set test.conf func_test auth_version 2
+        crudini --set test.conf func_test auth_host ""
+        crudini --set test.conf func_test auth_port 5000
+        crudini --set test.conf func_test auth_ssl no
+        crudini --set test.conf func_test auth_prefix /v2.0/
+
+        crudini --set test.conf func_test account admin
+        crudini --set test.conf func_test username admin
+        crudini --set test.conf func_test password ""
+
+        crudini --set test.conf func_test account2 bob
+        crudini --set test.conf func_test username2 bob
+        crudini --set test.conf func_test password2 bobpwd
+
+        crudini --set test.conf func_test username3 jim
+        crudini --set test.conf func_test password3 jimpwd
+        crudini --set test.conf func_test
+
+        popd
+
+        echo "INFO: done!"
+
+        tox --sitepackages -v -e func 2>&1 | tee ../logs/testrun.log
 
 tempest:
    rpm_deps: [ python-swift-tests ]
