@@ -1,16 +1,16 @@
 # 'ln -f -s hack' is required to use the free (non patent guarded) version of  erasurecodes
 unittest:
   rpm_deps: []
-  run: >
-      sudo ln -f -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
-      sudo ln -f -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
-      tox --sitepackages -v -epy27 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
+  run: |
+      sudo ln -f -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so
+      sudo ln -f -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so
+      tox --sitepackages -v -epy27 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log
 
 pep8:
   rpm_deps: [ bandit, pyflakes, python-pep8, python-flake8, python-hacking ]
-  run: >
-      git checkout -- test-requirements.txt requirements.txt;
-      tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+  run: |
+      git checkout -- test-requirements.txt requirements.txt
+      tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log
 
 # python-swift is installed and then removed to satisfy all runtime
 # dependencies for the swift component.
@@ -27,8 +27,8 @@ functional:
       python-swift,
     ]
 
-    run:
-        tox --sitepackages -v -e func 2>&1 | tee ../logs/testrun.log;
+    run: |
+        tox --sitepackages -v -e func 2>&1 | tee ../logs/testrun.log
 
 tempest:
    rpm_deps: [ python-swift-tests ]
@@ -57,7 +57,7 @@ rpm_deps_common: [
   libffi-devel,
   pyxattr,
   python-pyeclib,
-  python-cryptography,
+  python2-cryptography,
   openstack-swift-account,
   openstack-swift-container,
   openstack-swift-object,
@@ -92,15 +92,15 @@ rpm_remove: [
 # NSS_HASH_ALG_SUPPORT and OPENSSL_ENABLE_MD5_VERIFY are required by erasurecodes
 # NOSE_WITH_XUNIT set to provide test results in the standard XUnit XML format
 virt_run_config:
-  run: >
-    set -o pipefail;
-    sudo rm -Rf .tox;
-    export NSS_HASH_ALG_SUPPORT=+MD5;
-    export OPENSSL_ENABLE_MD5_VERIFY=1;
-    truncate --size 0 requirements.txt;
-    truncate --size 0 test-requirements.txt;
-    rpm -qa | sort > ../logs/installed-rpms.log;
-    export NOSE_WITH_XUNIT=1;
+  run: |
+    set -o pipefail
+    sudo rm -Rf .tox
+    export NSS_HASH_ALG_SUPPORT=+MD5
+    export OPENSSL_ENABLE_MD5_VERIFY=1
+    truncate --size 0 requirements.txt
+    truncate --size 0 test-requirements.txt
+    rpm -qa | sort > ../logs/installed-rpms.log
+    export NOSE_WITH_XUNIT=1
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
   archive:
