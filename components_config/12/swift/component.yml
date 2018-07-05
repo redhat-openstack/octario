@@ -57,7 +57,7 @@ rpm_deps_common: [
   libffi-devel,
   pyxattr,
   python-pyeclib,
-  python-cryptography,
+  python2-cryptography,
   openstack-swift-account,
   openstack-swift-container,
   openstack-swift-object,
