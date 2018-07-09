@@ -73,8 +73,7 @@ rpm_deps_tests_req: [
   python-sphinx,
   python-mock,
   python-swiftclient,
-  python-keystoneclient,
-  python-pluggy-0.3.1
+  python-keystoneclient
 ]
 
 rpm_deps_7: [
