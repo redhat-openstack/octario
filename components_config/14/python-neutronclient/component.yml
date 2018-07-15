@@ -36,6 +36,7 @@ rpm_deps: [ gcc,
             python-testscenarios,
             python-hacking,
             python-virtualenv,
+            python-pluggy,
             "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}" ]
 
 # The rpms that shouldn't be installed when running tests
