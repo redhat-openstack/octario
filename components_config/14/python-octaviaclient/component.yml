@@ -68,6 +68,7 @@ rpm_deps: [ gcc,
             libffi-devel,
             libjpeg-turbo-devel,
             zlib-devel,
+            python-virtualenv,
             "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}" ]
 
 # The rpms that shouldn't be installed when running tests
