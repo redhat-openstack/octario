@@ -44,6 +44,8 @@ rpm_deps_common: [
   git,
   python-tox,
   python-virtualenv,
+  python-py,
+  python2-pluggy,
   gcc,
   python-devel,
   python-pip,
