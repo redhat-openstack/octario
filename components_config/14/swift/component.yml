@@ -43,6 +43,7 @@ enable_repos: []
 rpm_deps_common: [
   git,
   python-tox,
+  python-virtualenv,
   gcc,
   python-devel,
   python-pip,
