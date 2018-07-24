@@ -49,6 +49,7 @@ dsvm-functional:
         cd /home/cloud-user/new;
         git clone https://github.com/openstack/neutron.git;
         git clone https://github.com/openstack-dev/devstack.git;
+        cp -r /home/cloud-user/networking_ovn /home/cloud-user/new/;
         cd /home/cloud-user/networking-ovn;
         /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cloud-user/.local/bin:/home/cloud-user/bin;
