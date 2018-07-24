@@ -25,8 +25,11 @@ unittest:
     remove_rpm: [ python-networking-ovn ]
     archive_run: ''
     run: >
+        sudo yum remove -y python2-neutron-lib;
         sudo pip uninstall neutron ovsdbapp -y;
-        sudo pip install neutron ovsdbapp;
+        sudo pip install neutron-lib>=1.17;
+        sudo pip install neutron>=13.0.0.0b2;
+        sudo pip install ovsdbapp;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 dsvm-functional:
@@ -49,6 +52,7 @@ dsvm-functional:
         cd /home/cloud-user/new;
         git clone https://github.com/openstack/neutron.git;
         git clone https://github.com/openstack-dev/devstack.git;
+        cp -r /home/cloud-user/networking_ovn /home/cloud-user/new/;
         cd /home/cloud-user/networking-ovn;
         /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cloud-user/.local/bin:/home/cloud-user/bin;
