@@ -75,6 +75,7 @@ unittest:
     python-keystoneclient,
     python-mistralclient,
     python-novaclient,
+    python-ironicclient,
   ]
   run: >
     tox --sitepackages -v -e py27 2>&1 |  tee ../logs/testrun.log;
