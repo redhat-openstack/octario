@@ -58,6 +58,7 @@ unittest:
         sudo pip install -U --no-deps pypowervm==1.1.15;
         sudo pip install -U --no-deps wsgi_intercept==1.7.0;
         sudo pip install -U --no-deps setuptools==39.0.1;
+        sudo pip install -U --no-deps zVMCloudConnector==1.2.4;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
