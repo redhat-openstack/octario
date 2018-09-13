@@ -13,7 +13,7 @@ unittest:
                 python-webtest,
                 python-mock,
                 python-oslotest,
-                python-testresources, 
+                python-testresources,
                 python-pep8,
                 python-designateclient,
                 python-flake8,
@@ -50,6 +50,8 @@ dsvm-functional:
         export BASE=/home/cloud-user;
         sudo chmod +x /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         sed -i "s/GATE_STACK_USER=stack/GATE_STACK_USER=cloud-user/" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
+        # NOTE(lucasagomes): Use the host OS kernel's default datapath instead of compiling the OVS modules
+        sed -i "s/compile_ovs True/compile_ovs False/" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         mkdir /home/cloud-user/new;
         cd /home/cloud-user/new;
         git clone https://github.com/openstack/neutron.git;
