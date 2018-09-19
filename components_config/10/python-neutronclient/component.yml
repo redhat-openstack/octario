@@ -5,7 +5,6 @@ pep8:
 
 unittest:
     rpm_deps: [ python-neutronclient,
-                python-cliff-tablib,
                 python-mox3,
                 python-oslotest,
                 python-osc-lib-tests,

@@ -5,14 +5,12 @@ pep8:
 
 unittest:
     rpm_deps: [ python-neutronclient,
-                python-cliff-tablib,
                 python-mox3,
                 openssl-devel,
                 python-osc-lib-tests,
                 python-oslotest,
                 python-requests-mock ]
-    remove_rpm: [ python-neutronclient,
-                  python-cliff-tablib ]
+    remove_rpm: [ python-neutronclient ]
     run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 functional:
