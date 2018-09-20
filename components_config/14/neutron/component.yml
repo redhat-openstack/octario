@@ -17,6 +17,7 @@ unittest:
                 python-pyroute2,
                 python-mock,
                 python-oslotest,
+                python2-neutron-lib-tests,
                 python-testresources, 
                 python-testscenarios,
                 python-pep8,
@@ -27,6 +28,7 @@ unittest:
     remove_rpm: [ python-neutron ]
     archive_run: ''
     run: >
+      sudo pip install -U "hacking";
       sudo pip install oslo.db==4.38;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
@@ -38,7 +40,7 @@ dsvm-functional:
     rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-testresources,
                 python-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
-                psmisc, nfs-utils, selinux-policy, python-os-testr ]
+                psmisc, nfs-utils, selinux-policy, python-os-testr, python2-neutron-lib-tests ]
     remove_rpm: []
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
@@ -70,7 +72,7 @@ dsvm-fullstack:
     rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-testresources,
                 python-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
-                psmisc, rabbitmq-server, selinux-policy, python-os-testr ]
+                psmisc, rabbitmq-server, selinux-policy, python-os-testr, python2-neutron-lib-tests ]
     remove_rpm: []
     archive_run: ''
     run: >
