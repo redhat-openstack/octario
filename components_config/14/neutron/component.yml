@@ -27,6 +27,8 @@ unittest:
     remove_rpm: [ python-neutron ]
     archive_run: ''
     run: >
+      sudo yum remove -y python2-neutron-lib;
+      sudo pip install "neutron-lib>=1.17";
       sudo pip install oslo.db==4.38;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/libsqlite3-0-3.8.3-2.1.x86_64.rpm https://bitbucket.org/abregman/bregman-rpms/downloads/sqlite3-3.8.3-2.1.x86_64.rpm;
       sudo yum install -y https://bitbucket.org/abregman/bregman-rpms/downloads/python2-hacking-0.11.0-1.el7.noarch.rpm;
