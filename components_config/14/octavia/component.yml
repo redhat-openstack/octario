@@ -4,6 +4,7 @@ pep8:
     run: >
         git checkout -- test-requirements.txt requirements.txt;
         sudo pip install pyflakes==1.0.0;
+        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
@@ -112,6 +113,7 @@ rpm_deps: [ gcc,
             python-mock,
             python-pip,
             python-pbr,
+            python-distro,
             python-tox,
             python-stestr,
             openssl-devel,
