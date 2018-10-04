@@ -42,6 +42,7 @@ unittest:
       python2-pyasn1-modules,
       python-taskflow,
       python-ddt,
+      python-stestr,
       python-pip
     ]
 
@@ -71,6 +72,7 @@ functional:
       python-os-testr,
       python-oslotest,
       python-gabbi,
+      python-stestr,
       python-pip
     ]
 
