@@ -11,16 +11,14 @@ pep8:
       python-eventlet,
       python-flake8,
       python-pep8,
-      python2-oslo-service
+      python2-oslo-service,
+      python-pip
     ]
 
     remove_rpm: []
 
-    pip_override: [
-      flake8==2.5.5
-    ]
-
     run:
+        sudo pip install -U --no-deps flake8==2.5.5;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
@@ -48,21 +46,19 @@ unittest:
       python2-os-xenapi,
       python2-pyasn1-modules,
       python-taskflow,
-      python-ddt
+      python-ddt,
+      python-pip
     ]
 
     remove_rpm: [
       python-nova
     ]
 
-    pip_override: [
-      wsgi_intercept==1.7.0,
-      pypowervm==1.1.15,
-      setuptools==39.0.1,
-      zVMCloudConnector==1.2.4
-    ]
-
     run:
+        sudo pip install -U --no-deps pypowervm==1.1.15;
+        sudo pip install -U --no-deps wsgi_intercept==1.7.0;
+        sudo pip install -U --no-deps setuptools==39.0.1;
+        sudo pip install -U --no-deps zVMCloudConnector==1.2.4;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
@@ -82,7 +78,8 @@ functional:
       python-pytest,
       python-gabbi,
       python-colorama,
-      python-oslotest
+      python-oslotest,
+      python-pip
     ]
 
     remove_rpm: [
@@ -102,12 +99,9 @@ functional:
       openstack-nova-scheduler
     ]
 
-    pip_override: [
-      wsgi_intercept==1.7.0,
-      gabbi==1.35.0
-    ]
-
     run:
+        sudo pip install -U --no-deps wsgi_intercept==1.7.0;
+        sudo pip install -U --no-deps gabbi==1.35.0;
         PROV_FILE="./nova/tests/functional/api/openstack/placement/db/test_resource_provider.py";
         echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
         /usr/bin/sed -i '/^import nova/a import testtools' $PROV_FILE;
@@ -120,7 +114,6 @@ functional:
 tempest:
    rpm_deps: []
    remove_rpm: []
-   pip_override: []
    run: ""
 
 
@@ -147,9 +140,6 @@ remove_rpm: [
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
 ]
 
-pip_override: [
-    "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip_override'] }}"
-]
 
 # We truncate *requirements.txt to ensure we're only using installed
 # non-test packages.
@@ -178,5 +168,4 @@ test_config:
         enable_repos: "{{enable_repos}}"
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
-        pip_override: "{{pip_override}}"
       run: "{{nova_virt_run_config.run}}"
