@@ -12,6 +12,7 @@ pep8:
     ]
 
     remove_rpm: []
+    pip_override: []
 
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
@@ -22,7 +23,6 @@ pep8:
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
 #
-# python-pip is installed temporary to satisfy os-xenapi, ddt and osprofiler
 unittest:
 
     rpm_deps: [
@@ -34,21 +34,23 @@ unittest:
       python-oslotest,
       python-requests-mock,
       python-pep8,
-      genisoimage,
-      python-pip
+      genisoimage
     ]
 
     remove_rpm: [
       python-nova
     ]
 
+    pip_override: [
+      os-xenapi==0.1.1,
+      ddt==1.0.1,
+      osprofiler==1.4.0,
+      oslo.utils==3.28.2
+    ]
+
     run:
-        sudo pip install -U --no-deps os-xenapi==0.1.1;
-        sudo pip install -U --no-deps ddt==1.0.1;
-        sudo pip install -U --no-deps osprofiler==1.4.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        sudo pip install oslo.utils==3.28.2;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
@@ -69,8 +71,7 @@ functional:
       python-testresources,
       python-os-testr,
       python-oslotest,
-      python-gabbi,
-      python-pip
+      python-gabbi
     ]
 
     remove_rpm: [
@@ -89,8 +90,11 @@ functional:
       openstack-nova-scheduler
     ]
 
+    pip_override: [
+      gabbi==1.31.0
+    ]
+
     run:
-        sudo pip install -U --no-deps gabbi==1.31.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
@@ -103,6 +107,7 @@ functional:
 tempest:
    rpm_deps: []
    remove_rpm: []
+   pip_override: []
    run: ""
 
 
@@ -126,6 +131,9 @@ remove_rpm: [
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
 ]
 
+pip_override: [
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip_override'] }}"
+]
 
 # We truncate *requirements.txt to ensure we're only using installed
 # non-test packages.
@@ -147,4 +155,5 @@ test_config:
         enable_repos: "{{enable_repos}}"
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
+        pip_override: "{{pip_override}}"
       run: "{{nova_virt_run_config.run}}"
