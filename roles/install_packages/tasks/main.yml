@@ -45,6 +45,19 @@
   with_items: "{{ component_config.setup.remove | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.remove | default(false)
 
+- name: Install pip for override
+  become: yes
+  become_method: sudo
+  yum: name="{{ pip_package }}" state=present
+  when: component_config.setup | default(false) and component_config.setup.pip_override | default(false)
+
+- name: Override packages using pip
+  become: yes
+  become_method: sudo
+  pip: name="{{ item }}" extra_args="-U --no-deps"
+  with_items: "{{ component_config.setup.pip_override | default([]) }}"
+  when: component_config.setup | default(false) and component_config.setup.pip_override | default(false)
+
 - name: Install packages needed for converting and collecting the logs
   become: yes
   become_method: sudo
