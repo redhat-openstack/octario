@@ -12,6 +12,7 @@ pep8:
     ]
 
     remove_rpm: []
+    pip_override: []
 
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
@@ -40,10 +41,13 @@ unittest:
       python-nova
     ]
 
+    pip_override: [
+      oslo.utils==3.28.2
+    ]
+
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        sudo pip install oslo.utils==3.28.2;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
@@ -77,6 +81,8 @@ functional:
       openstack-nova-scheduler
     ]
 
+   pip_override: []
+
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
@@ -87,6 +93,7 @@ functional:
 tempest:
    rpm_deps: []
    remove_rpm: []
+   pip_override: []
    run: ""
 
 
@@ -96,14 +103,12 @@ enable_repos: []
 
 # Common rpm deps needed for all tester types (pep8 / unittest / functional)
 #
-# python-pip is installed temporary to satisfy gabbi installation
 rpm_deps: [
     git,
     python-tox-2.3.1,
     python-pluggy-0.3.1,
     python-virtualenv,
     python-setuptools-18.5,
-    python-pip,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -114,6 +119,10 @@ remove_rpm: [
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
 ]
 
+pip_override: [
+    gabbi==1.24.0,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip_override'] }}"
+]
 
 # (N.B.) We truncate *requirements.txt to ensure we're only using installed
 #        non-test packages.
@@ -122,7 +131,6 @@ remove_rpm: [
 nova_virt_run_config:
 
   run: >
-      sudo pip install -U --no-deps gabbi==1.24.0;
       set -o pipefail;
       rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
@@ -138,4 +146,5 @@ test_config:
         enable_repos: "{{enable_repos}}"
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
+        pip_override: "{{pip_override}}"
       run: "{{nova_virt_run_config.run}}"
