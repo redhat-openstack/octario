@@ -1,5 +1,0 @@
-#!/usr/bin/env ansible-playbook
-# Run Tempest tests and install it from git
-# NOTE: use this playbook for rhos >=7 branches
-# -----------------------------------------
-- include: tempest.yml tempest_install_type='rpm'
