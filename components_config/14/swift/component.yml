@@ -64,7 +64,8 @@ rpm_deps_common: [
   openstack-swift-account,
   openstack-swift-container,
   openstack-swift-object,
-  openstack-swift-proxy
+  openstack-swift-proxy,
+  python-requests-mock
 ]
 
 # Note: we need python-nose-1.3.7 to be installed because test_PUT_send_exception_with_unicode_path
