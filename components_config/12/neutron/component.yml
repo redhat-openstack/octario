@@ -33,7 +33,7 @@ unittest:
 # functional has is own requirements file, which is truncated to use RPMs instead of pip.
 dsvm-functional:
     rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python-testresources,
-                python-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
+                python-oslotest, bridge-utils, nmap-ncat, ebtables,
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, nfs-utils ]
     remove_rpm: []
@@ -167,6 +167,7 @@ test_config:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
         enable_repos: []
+        disable_repos: ['rhelosp-12.0-brew']
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
       archive_run: "{{ neutron_virt_run_config.archive_run }}"
@@ -175,6 +176,7 @@ test_config:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
         enable_repos: []
+        disable_repos: ['rhelosp-12.0-brew']
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
       archive_run: "{{ neutron_virt_run_config.archive_run }}"
