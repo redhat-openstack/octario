@@ -28,7 +28,7 @@
   become: yes
   shell: |
     {{ rhos_release_bin }} -x
-    {{ rhos_release_bin }} {{ component_version }} {{ component_version_director }}
+    sudo rhos-release 14 -d -p 2018-10-17.2
   args:
     warn: no
   changed_when: true
