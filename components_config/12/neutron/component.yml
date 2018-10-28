@@ -166,7 +166,7 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: []
+        enable_repos: ["el7-rhos-test-deps"]
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
       archive_run: "{{ neutron_virt_run_config.archive_run }}"
@@ -174,7 +174,7 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: []
+        enable_repos: ["el7-rhos-test-deps"]
       run: "{{ neutron_virt_run_config.run }}"
       archive: "{{ neutron_virt_run_config.archive }}"
       archive_run: "{{ neutron_virt_run_config.archive_run }}"
