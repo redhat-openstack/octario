@@ -4,7 +4,7 @@
 # Repos to enable for compontent test
 #
 enable_repos: [
-  rhelosp-rhel-7.4-server-opt,
+  rhelosp-rhel-7.6-server-opt,
 ]
 #
 # The pep8 target
