@@ -15,9 +15,7 @@ pep8:
     pip_override: []
 
     run:
-        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
-        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+        tox -c tox_osp.ini --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
 # (migi) python-nova is installed and then removed to satisfy all runtime
@@ -46,9 +44,7 @@ unittest:
     ]
 
     run:
-        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
-        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+        tox -c tox_osp.ini --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
 # (migi) python-nova is installed and then removed to satisfy all runtime
@@ -84,17 +80,15 @@ functional:
     pip_override: []
 
     run:
-        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
-        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+        tox -c tox_osp.ini --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 
 # Tempest target
 tempest:
-   rpm_deps: []
-   remove_rpm: []
-   pip_override: []
-   run: ""
+    rpm_deps: []
+    remove_rpm: []
+    pip_override: []
+    run: ""
 
 
 # Additional repository required to install testing dependencies
@@ -133,9 +127,12 @@ nova_virt_run_config:
   run: >
       set -o pipefail;
       rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
-      truncate --size 0 requirements.txt;
-      truncate --size 0 test-requirements.txt;
+      cp tox.ini tox_osp.ini;
+      /usr/bin/sed -i 's/^install_command/#&/' tox_osp.ini;
+      /usr/bin/sed -i 's/^deps/#&/' tox_osp.ini;
+      /usr/bin/sed -i 's/^usedevelop = True/usedevelop = False/' tox_osp.ini;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+      rm tox_osp.ini;
 
 
 # NOTE: This is the main section. It must exist.
