@@ -1,0 +1,8 @@
+Verified+1: rhosqeauto <obaranov+rhosqeauto@redhat.com>
+Code-Review+1: Queria Sa-Tas <psedlak@redhat.com>
+Code-Review+2: Michal Pryc <mpryc@redhat.com>
+Submitted-by: Michal Pryc <mpryc@redhat.com>
+Submitted-at: Thu, 08 Nov 2018 16:01:23 +0000
+Reviewed-on: https://review.gerrithub.io/432453
+Project: redhat-openstack/octario
+Branch: refs/heads/master
