@@ -16,6 +16,7 @@ unittest:
         sudo pip install --upgrade setuptools;
         sudo pip install cffi==1.7;
         sudo pip install pyOpenSSL==17.5.0;
+        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
