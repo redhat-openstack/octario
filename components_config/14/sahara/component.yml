@@ -4,6 +4,7 @@ pep8:
     remove_rpm: [ python-sahara ]
     run: |
         git checkout -- test-requirements.txt requirements.txt;
+        /usr/bin/sed -i 's/^basepython = python3$/basepython = python2.7/' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
@@ -82,7 +83,6 @@ sahara_virt_run_config:
     sed -i'.bak' -e "/cdh/! { s/default=\[/default=\['cdh', /g;}" sahara/plugins/base.py;
     sed -i'.bak' -e "/vanilla/! { s/default=\[/default=\['vanilla', /g;}" sahara/plugins/base.py;
     sed -i'.bak' -e "/hdp/! { s/default=\[/default=\['hdp', /g;}" sahara/plugins/base.py;
-    sed -i 's/python3/python2/g' tox.ini;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
