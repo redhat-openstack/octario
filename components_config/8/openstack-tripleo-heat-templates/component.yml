@@ -3,7 +3,7 @@
 #
 # Repos to enable for compontent test
 #
-enable_repos: []
+enable_repos: [rhelosp-rhel-7.6-server-opt]
 #
 # The project run config.
 #
