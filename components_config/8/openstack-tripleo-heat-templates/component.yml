@@ -30,7 +30,7 @@ pep8:
   ]
   run: >
     tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
-    export PUPPET_GEM_VERSION='~> 3.6.2'
+    export PUPPET_GEM_VERSION='~> 3.6.2';
     bundle install 2>&1 | tee ../logs/testrun.log;
     PATH=~/bin:$PATH;
     bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
