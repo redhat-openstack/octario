@@ -14,6 +14,7 @@ rpm_deps: [
   python-tox,
   python-virtualenv,
   python2-pluggy,
+  python2-py,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
