@@ -22,7 +22,7 @@ pep8:
   run: >
     mkdir .bundled_gems;
     export GEM_HOME=`pwd`/.bundled_gems;
-    gem install bundler --no-rdoc --no-ri --verbose;
+    gem install bundler --version 1.17.3 --no-rdoc --no-ri --verbose;
     $GEM_HOME/bin/bundle install --without system_tests 2>&1 | tee ../logs/testrun.log;
     $GEM_HOME/bin/bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
     $GEM_HOME/bin/bundle exec rake syntax 2>&1 | tee -a ../logs/testrun.log;
