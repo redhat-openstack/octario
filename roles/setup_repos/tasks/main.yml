@@ -18,13 +18,18 @@
 # rhos-release used for installing the rhos repos.
 - name: Install rhos-release
   become: yes
+  retries: 3
+  delay: 10
   package:
     name="http://rhos-release.virt.bos.redhat.com/repos/rhos-release/rhos-release-latest.noarch.rpm"
+  register: task_result
+  until: task_result is success
 
 - name: Execute rhos-release to install rhos repos
   vars:
     component_version: "{{ component.version | default(rhos_default_version) }}"
-    component_version_director: "{{ (component_version|int in [7, 8, 9]) | ternary(component_version + '-director', '') }}"
+    component_version_director: "{{ (component_version|int in [7, 8, 9]) |
+    ternary(component_version + '-director', '') }}"
   become: yes
   shell: |
     {{ rhos_release_bin }} -x
@@ -36,8 +41,12 @@
     - skip_ansible_lint
 
 - name: enable yum-config-manager
+  retries: 3
+  delay: 10
   package:
     name: yum-utils
+  register: task_result
+  until: task_result is success
 
 # -test-deps are the COPR test deps.
 # avoid use of yum_repository module because we would lose the ability

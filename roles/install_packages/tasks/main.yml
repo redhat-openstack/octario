@@ -34,32 +34,52 @@
 
 - name: Install test dependencies RPMs needed to run the tests
   become: yes
+  retries: 3
+  delay: 10
   yum: pkg="{{ item }}" state=latest
   with_items: "{{ component_config.setup.install | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.install | default(false)
+  register: task_result
+  until: task_result is success
 
 - name: Remove unwanted rpms
   become: yes
+  retries: 3
+  delay: 10
   become_method: sudo
   yum: pkg="{{ item }}" state=absent
   with_items: "{{ component_config.setup.remove | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.remove | default(false)
+  register: task_result
+  until: task_result is success
 
 - name: Install pip for override
   become: yes
+  retries: 3
+  delay: 10
   become_method: sudo
   yum: name="{{ pip_package }}" state=present
   when: component_config.setup | default(false) and component_config.setup.pip_override | default(false)
+  register: task_result
+  until: task_result is success
 
 - name: Override packages using pip
   become: yes
+  retries: 3
+  delay: 10
   become_method: sudo
   pip: name="{{ item }}" extra_args="-U --no-deps"
   with_items: "{{ component_config.setup.pip_override | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.pip_override | default(false)
+  register: task_result
+  until: task_result is success
 
 - name: Install packages needed for converting and collecting the logs
   become: yes
+  retries: 3
+  delay: 10
   become_method: sudo
   yum: name="{{ logs_packages }}" state=present
   when: "convert_fetch_logs | default(false)"
+  register: task_result
+  until: task_result is success

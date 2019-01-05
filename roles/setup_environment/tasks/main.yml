@@ -19,9 +19,13 @@
 # To copy the component to remote host
 - name: Install rsync
   become: yes
+  retries: 3
+  delay: 10
   yum:
     name='rsync'
     state=present
+  register: task_result
+  until: task_result is success
 
 - name: Copy component to remote host
   synchronize:
@@ -37,7 +41,8 @@
   with_first_found:
     - "{{ component.path | default(omit) }}"
     - "{{ test.dir  | default(omit) }}"
-    - "{% if lookup('env','WORKSPACE') %}{{ lookup('env','WORKSPACE') }}/{{ component.name }}{% else %}{{ omit }}{% endif %}"
+    - "{% if lookup('env','WORKSPACE') %}{{ lookup('env','WORKSPACE') }}/{{ component.name }}
+      {% else %}{{ omit }}{% endif %}"
     - "{{ inventory_dir }}/{{ component.name }}"
     - "{{ inventory_dir }}/../{{ component.name }}"
     - "{{ playbook_dir }}/../{{ component.name }}"
@@ -56,9 +61,12 @@
 - name: Load component configuration by specific release
   include_vars: "{{ item }}"
   with_first_found:
-    - "{{ playbook_dir }}/../components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
-    - "{{ inventory_dir }}/components_config/{{ component.version | default(rhos_default_version) }}/{{ component.name }}/component.yml"
-    - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name | default(config_file_name) }}"
+    - "{{ playbook_dir }}/../components_config/{{ component.version |
+      default(rhos_default_version) }}/{{ component.name }}/component.yml"
+    - "{{ inventory_dir }}/components_config/{{ component.version |
+      default(rhos_default_version) }}/{{ component.name }}/component.yml"
+    - "{{ component.path | default(inventory_dir + '/' + component.name) }}/{{ component.config_file_name |
+      default(config_file_name) }}"
     - "{{ playbook_dir }}/../component.yml"
     - "{{ inventory_dir }}/component.yml"
     - "/etc/component.yml"

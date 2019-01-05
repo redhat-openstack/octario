@@ -18,12 +18,15 @@
 
 - name: Fix python-cryptography conflict with python2-cryptography
   set_fact:
-      python_cryptography_pkg: "{{ (component.version >= '13') | ternary('python2-cryptography', 'python-cryptography') }}"
+      python_cryptography_pkg: "{{ (component.version >= '13') |
+      ternary('python2-cryptography', 'python-cryptography') }}"
 
 # Although pyrpkg pulled by rhpkg, we install it directly because at the moment, an older
 # version of pyrpkg is pulled (1.40) while we need a newer version (1.43)
 - name: Install packages required for patching
   become: yes
+  retries: 3
+  deley: 10
   yum:
     name="{{ item }}"
     state=present
@@ -41,11 +44,17 @@
     - 'rhpkg'
     - 'git'
     - 'gcc'
+  register: task_result
+  until: task_result is success
 
 - name: Install rdopkg
   become: yes
+  retries: 3
+  delay: 10
   pip:
     name=rdopkg
+  register: task_result
+  until: task_result is success
 
 # TODO(abregman): Switch to yum_repository when Ansible 2.2 is released
 # EPEL is removed, since it is used only for installing rdopkg
@@ -88,7 +97,7 @@
 
 - name: Prepare dist-git repo for patching
   shell: >
-    git remote add -f patches {{ ansible_env.HOME}}/{{ component.name }} &&
+    git remote add -f patches {{ ansible_env.HOME }}/{{ component.name }} &&
     git fetch patches &&
     git fetch patches --tags &&
     git branch rhos-{{ component.version }}.0-patches patches/gerrit-patch;

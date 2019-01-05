@@ -3,8 +3,10 @@
 
 # Notes:
 # - PEP8 is ignored because it's not producing subunit streams
-# - Test results converted into Junit XML since this is a common format published by most of the CI systems (e.g Jenkins).
-# - 'Pass or Fail' is included in 'collect_logs' role since it should be the last task in the last role, so it can collect logs before Ansible stops running.
+# - Test results converted into Junit XML since this is a
+#   common format published by most of the CI systems (e.g Jenkins).
+# - 'Pass or Fail' is included in 'collect_logs' role since it should
+#   be the last task in the last role, so it can collect logs before Ansible stops running.
 # - Collect logs rc ignored, since the command can fail although results were onvereted.
 
 - name: "Set component_path"
@@ -17,7 +19,7 @@
 
 - name: "Prepend component_path to common log directories"
   set_fact:
-    component_log_paths="{{ component_path }}/{{ common_log_directories | join(',' + component_path + '/')}}"
+    component_log_paths="{{ component_path }}/{{ common_log_directories | join(',' + component_path + '/') }}"
 
 - name: Find *.log and *.tar.gz files in the common log directories
   find:
@@ -83,7 +85,7 @@
     | tee results.subunit2 \
     | subunit2junitxml -o {{ component_path }}/tests_results.xml
   register: result
-  failed_when: result.rc not in [0, 1] or result.stderr != ""
+  failed_when: result.rc not in [0, 1] or result.stderr | length > 0
   when: tester.component.tox_target != "pep8" and convert_fetch_logs | default(false)
 
 - name: Fetch converted test results from remote host
