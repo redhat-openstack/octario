@@ -34,6 +34,7 @@ pep8:
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        /usr/bin/sed -i 's/^\s\s*-/#&/' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
@@ -55,6 +56,7 @@ unittest:
     run:
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+        /usr/bin/sed -i 's/^\s\s*-/#&/' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
