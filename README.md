@@ -10,19 +10,27 @@ It supports the following testers or test frameworks:
 * unit
 * functional
 * fullstack
-* API (In-Tree)
-* Tempest
-* Robot
 
-### Requirements
 
-1. ansible installed on the system ( ansible >= 2 ).
-2. Component source code. Can be downloaded using `git clone git://git.openstack.org/openstack/<component_name>.git`.
+There are two ways to use Octario. By cloning and installing Octario or by using the InfraRed framework.
+We'll cover both.
 
 Note: `octario` is not provisioning the node on which it will run the tests. It's assumed
       that the tester node is provided by the user by specifying it in the hosts file.
 
-## Run Octario
+## Installation - without InfraRed
+
+git clone https://github.com/redhat-openstack/octario && cd octario
+virtualenv ~/octario_venv && source ~/octario_venv/bin/activate
+pip install .
+
+## Installation - with InfraRed
+
+git clone https://github.com/redhat-openstack/infrared && cd infrared
+virtualenv ~/ir_venv && source ~/ir_venv/bin/activate
+pip install .
+
+## Usage - without InfraRed
 
 First, create an inventory file that will include the IP address or the hostname of your tester node.
 
@@ -41,13 +49,25 @@ component:
   version: 9
 ```
 
-Run octario!. Choose one of testers and run the following command in octario root directory
+Run octario! :)
+Choose one of testers and run the following command in octario root directory
 
 ```
 ansible-playbook -vvv -i hosts playbooks/pep8.yml --extra-vars @octario.yml
 ```
 
-pep8.yml can be replaced with [unittest, functional, api, scenario].yml
+pep8.yml can be replaced with [unittest, functional, fullstack].yml
+
+## Usage - with InfraRed
+
+```
+infrared octario --t <tester_name> --dir <component_path>
+
+For example:
+
+infrared octario --t pep8 --dir $WORKSPACE/neutron
+```
+
 
 ### Custom tester
 
