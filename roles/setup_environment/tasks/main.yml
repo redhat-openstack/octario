@@ -84,3 +84,20 @@
     - "default"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version | int }}"
     - "{{ ansible_os_family }}-{{ ansible_distribution_version }}"
+
+- name: Deploy Global Scripts
+  copy:
+      src: "{{ item }}"
+      dest: /tmp/
+      mode: 0755
+  with_fileglob:
+      - ../files/*
+
+- name: Deploy Component Specific Scripts
+  copy:
+      src: "{{ item }}"
+      dest: /tmp/
+      mode: 0755
+  with_fileglob:
+    - "{{ playbook_dir }}/../components_config/{{ component.version |
+      default(rhos_default_version) }}/{{ component.name }}/scripts/*"

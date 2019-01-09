@@ -32,7 +32,7 @@ pep8:
     remove_rpm: []
 
     run:
-        python ./comment_deps.py tox.ini;
+        python /tmp/comment_deps.py tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
