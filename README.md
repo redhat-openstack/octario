@@ -105,4 +105,4 @@ To inclue patch_rpm role, run playbooks/<tester>-with-patching.yml
 
 ## More Docs
 
-See the [/doc](https://github.com/redhat-openstack/octario/tree/master/doc) directory of this repo.
+See the [/docs](https://github.com/redhat-openstack/octario/tree/master/docs) directory of this repo.
