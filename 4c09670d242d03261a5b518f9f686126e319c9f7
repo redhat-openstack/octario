@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97fe6e59_d688ccf4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "specific",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e32fcc4a_72509dc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "Scripts will... ... on the remote hosts",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef47e841_8e6e1bdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "Maybe split the two points:\n* Added documentation for this feature\n* Renamed the documentation directory (doc-\u003edocs)\n\n(but why rename the doc directory?)",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f28cdc87_a1fd6656",
+        "filename": "docs/add_scripts.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "intended to be used",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38c54698_d02b7258",
+        "filename": "docs/add_scripts.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "it in the octario/...",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0c86546_17579556",
+        "filename": "docs/add_scripts.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "on the remote host",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84fc5e8c_8fd924c5",
+        "filename": "roles/setup_environment/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "other task names do not seem to use the First Letter Camel Case Convention, but they capitalize just the first letter",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "172ae205_a2392dd9",
+        "filename": "roles/setup_environment/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-17T14:57:39Z",
+      "side": 1,
+      "message": "see above",
+      "revId": "4c09670d242d03261a5b518f9f686126e319c9f7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
