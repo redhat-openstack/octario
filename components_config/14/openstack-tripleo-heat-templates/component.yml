@@ -3,15 +3,13 @@
 # pep8 tox target
 pep8:
 
-    rpm_deps: [
-        openstack-tripleo-common,
-        python-flake8
-    ]
+    rpm_deps: [ openstack-tripleo-common ]
 
     remove_rpm: []
 
     run:
-        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+      git checkout -- test-requirements.txt requirements.txt;
+      tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
 # Additional repository required to install testing dependencies
