@@ -3,15 +3,14 @@
 # pep8 tox target
 pep8:
 
-    rpm_deps: [
-        openstack-tripleo-common,
-        python-flake8
-    ]
+    rpm_deps: [ openstack-tripleo-common ]
 
     remove_rpm: []
 
     run:
-        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+      git checkout -- test-requirements.txt requirements.txt;
+      sudo pip install py>=1.4.17;
+      tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
 # Additional repository required to install testing dependencies
@@ -25,6 +24,7 @@ rpm_deps: [
     python-tox,
     python-pluggy,
     python-virtualenv,
+    python-pip,
     python-setuptools,
     python-jinja2,
     python-yaml,
