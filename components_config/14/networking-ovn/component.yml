@@ -4,6 +4,8 @@ pep8:
     archive_run: ''
     run: >
       git checkout -- test-requirements.txt requirements.txt;
+      echo "[tester]\nlocalhost ansible_connection=local" > hosts;
+      find ./playbooks -name '*.yml' | /usr/bin/xargs -n1  ansible-playbook -i hosts --syntax-check --list-tasks -v;
       tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
