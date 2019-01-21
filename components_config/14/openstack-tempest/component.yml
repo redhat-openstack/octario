@@ -27,12 +27,14 @@ pep8:
 
     rpm_deps: [
             python-hacking,
+            python-flake8,
     ]
 
     remove_rpm: []
 
     run:
         python /tmp/comment_deps.py tox.ini;
+        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
@@ -52,9 +54,8 @@ unittest:
     ]
 
     run:
-        /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
-        /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-        /usr/bin/sed -i 's/^\s\s*-/#&/' tox.ini;
+        python /tmp/comment_deps.py tox.ini;
+        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 
@@ -78,9 +79,19 @@ enable_repos: [
 #
 rpm_deps: [
     git,
+    gcc,
+    python-devel,
+    python-virtualenv,
     python-tox,
     python-setuptools,
     python-pbr,
+    python-pip,
+    python-subunit,
+    python-oslo-log,
+    python-testtools,
+    python-mock,
+    python-fixtures,
+    python-oslo-sphinx,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
