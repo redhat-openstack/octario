@@ -28,6 +28,11 @@ pep8:
     rpm_deps: [
             python-hacking,
             python-flake8,
+            python-jsonschema,
+            python-testscenarios,
+            python-paramiko,
+            python-cliff,
+            python-os-testr,
     ]
 
     remove_rpm: []

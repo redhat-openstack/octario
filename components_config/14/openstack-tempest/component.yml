@@ -28,6 +28,9 @@ pep8:
     rpm_deps: [
             python-hacking,
             python-flake8,
+            python-jsonschema,
+            python-paramiko,
+            python-cliff,
     ]
 
     remove_rpm: []
@@ -41,7 +44,6 @@ pep8:
 unittest:
 
     rpm_deps: [
-            python-stestr,
             python-requests,
             python-tempest,
             python2-os-client-config,
@@ -84,6 +86,7 @@ rpm_deps: [
     python-pep8,
     python-pluggy,
     python-py,
+    python-stestr,
     python-virtualenv,
     python-tox,
     python-setuptools,
