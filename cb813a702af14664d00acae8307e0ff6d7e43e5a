@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5a0c274_9688628f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-22T10:16:26Z",
+      "side": 1,
+      "message": "you can expand \"deps\" -\u003e \"dependencies\" here, it\u0027s not the first line where space is limited :)",
+      "revId": "cb813a702af14664d00acae8307e0ff6d7e43e5a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f334a44_8a675a22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-22T10:16:26Z",
+      "side": 1,
+      "message": "I would mention also the python3 -\u003e python2 handling",
+      "revId": "cb813a702af14664d00acae8307e0ff6d7e43e5a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c6aa1_f6c64ddd",
+        "filename": "components_config/14/openstack-tempest/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001398
+      },
+      "writtenOn": "2019-01-22T10:16:26Z",
+      "side": 1,
+      "message": "is oslo-sphinx needed if the documentation is not built?",
+      "revId": "cb813a702af14664d00acae8307e0ff6d7e43e5a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
