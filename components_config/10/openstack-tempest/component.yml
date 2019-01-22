@@ -41,7 +41,6 @@ pep8:
 unittest:
 
     rpm_deps: [
-            python-stestr,
             python-requests,
             python-tempest,
             python2-os-client-config,
