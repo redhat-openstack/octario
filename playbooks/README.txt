@@ -6,7 +6,7 @@ octario/playbooks includes the playbooks needed to setup the remote node and run
 
 Choose testr and run the following command:
 
-ansible-playbook -i <hosts_file> [pep8, unittest, functional, api].yml --extra-vars @octario.yml
+ansible-playbook -i <hosts_file> [pep8, unittest, functional].yml --extra-vars @octario.yml
 
 === Notes ===
 
