@@ -29,6 +29,7 @@ pip install .
 git clone https://github.com/redhat-openstack/infrared && cd infrared
 virtualenv ~/ir_venv && source ~/ir_venv/bin/activate
 pip install .
+infrared plugin add octario
 
 ## Usage - without InfraRed
 
@@ -97,11 +98,17 @@ as pep8, unittest and functional.
 
 ### Patch RPMs
 
-The following drawing describes specifically how RPM patching done with Octario.
+Patching of RPMs is deprecated in Octario.
 
-To inclue patch_rpm role, run playbooks/<tester>-with-patching.yml
+Please use Octario as InfraRed plugin to achieve patching.
 
-<div align="center"><img src="./doc/patch_rpm.png" alt="Octario patch rpm work-flow"></div><hr />
+Using InfraRed and its' patch-components plugin instead, example:
+
+ $ infrared plugin add patch-components
+ $ infrared plugin add octario
+
+ $ infrared patch-components --component-name neutron --component-path /patch/to/neutron/source/code --component-version 14
+ $ infrared octario --t dsvm-functional --dir /patch/to/neutron/source/code
 
 ## More Docs
 
