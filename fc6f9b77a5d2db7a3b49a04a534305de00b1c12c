@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "538942ed_1a1e288e",
+        "filename": "playbooks/README.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2019-01-24T21:15:13Z",
+      "side": 1,
+      "message": "I would remove also api but nit...",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "fc6f9b77a5d2db7a3b49a04a534305de00b1c12c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
