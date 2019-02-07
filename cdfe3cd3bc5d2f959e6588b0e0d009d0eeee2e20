@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faaa5dad_4a1c4db4",
+        "filename": "components_config/13/networking-ovn/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2019-02-07T15:26:18Z",
+      "side": 1,
+      "message": "can you please also remove this line? seems like ovs already installed:\n\n\"Requirement already satisfied (use --upgrade to upgrade): ovs in /usr/lib64/python2.7/site-packages\nCleaning up...\n\"\n\nhttps://rhos-qe-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-13-dsvm-functional-rhos/227/console",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "cdfe3cd3bc5d2f959e6588b0e0d009d0eeee2e20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
