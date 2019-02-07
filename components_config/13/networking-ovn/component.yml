@@ -43,6 +43,8 @@ dsvm-functional:
         sudo pip install ovs;
         export BASE=/home/cloud-user;
         sudo chmod +x /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
+        # NOTE(lucasagomes): "_install_databases False" disables installing/configuring Postgres which is not needed for our tests
+        sed -i "s/_install_databases$/_install_databases False/g" /home/cloud-user/networking-ovn/tools/configure_for_func_testing.sh;
         sed -i "s/GATE_STACK_USER=stack/GATE_STACK_USER=cloud-user/" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         sed -i "/compile_ovs/d" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         mkdir /home/cloud-user/new;
