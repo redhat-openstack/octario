@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d0c710d_84d6eb00",
+        "filename": "components_config/13/networking-ovn/component.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2019-02-07T16:28:21Z",
+      "side": 1,
+      "message": "we have to either remove this line (since \"run: \u003e\" simply joins lines by spaces and everything after this comment is ignored) or replace \"run: \u003e\" with \"run: |\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 130
+      },
+      "revId": "47d7b576a54e9f42595b95ae2a1226230c821c81",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
