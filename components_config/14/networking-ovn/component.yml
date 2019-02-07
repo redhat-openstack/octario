@@ -38,18 +38,18 @@ dsvm-functional:
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, nfs-utils, selinux-policy, python-os-testr, python-neutron-tests,
                 python2-ovsdbapp-tests, python2-neutron-lib-tests, openvswitch-ovn-common,
-                openvswitch-ovn-central, openvswitch-ovn-host ]
+                openvswitch-ovn-central, openvswitch-ovn-host, openvswitch-ovn-vtep ]
     remove_rpm: []
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo mkdir /opt/stack;
         sudo chmod -R 777 /opt/stack;
-        sudo pip install ovs;
         sudo yum update -y kernel;
         export BASE=/home/cloud-user;
         sudo chmod +x /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         sed -i "s/GATE_STACK_USER=stack/GATE_STACK_USER=cloud-user/" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         sed -i "/compile_ovs/d" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
+        sed -i "/configure_.*for_func_testing/d" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         mkdir /home/cloud-user/new;
         cd /home/cloud-user/new;
         git clone https://github.com/openstack/neutron.git;
@@ -59,6 +59,7 @@ dsvm-functional:
         sed -i "s/\`uname -r\`/3.10.0-957.el7.x86_64/g" /home/cloud-user/new/neutron/devstack/lib/ovs;
         /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh dsvm-functional /home/cloud-user/new/devstack0
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cloud-user/.local/bin:/home/cloud-user/bin;
+        sudo ln -s /usr/share/openvswitch /usr/local/share/openvswitch
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
