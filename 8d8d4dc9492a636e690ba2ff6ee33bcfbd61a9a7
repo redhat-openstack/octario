@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e143082_43c3110a",
+        "filename": "components_config/13/networking-ovn/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2019-02-07T18:13:18Z",
+      "side": 1,
+      "message": "hmm there is no such file in OSP 13. Only these:\n\ncoding-checks.sh  generate_config_file_samples.sh  ostestr_compat_shim.sh  tox_install.sh",
+      "range": {
+        "startLine": 45,
+        "startChar": 66,
+        "endLine": 45,
+        "endChar": 134
+      },
+      "revId": "8d8d4dc9492a636e690ba2ff6ee33bcfbd61a9a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
