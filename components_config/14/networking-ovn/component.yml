@@ -44,12 +44,12 @@ dsvm-functional:
     run: >
         sudo mkdir /opt/stack;
         sudo chmod -R 777 /opt/stack;
-        sudo pip install ovs;
         sudo yum update -y kernel;
         export BASE=/home/cloud-user;
         sudo chmod +x /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         sed -i "s/GATE_STACK_USER=stack/GATE_STACK_USER=cloud-user/" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         sed -i "/compile_ovs/d" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
+        sed -i "/configure_.*for_func_testing/d" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         mkdir /home/cloud-user/new;
         cd /home/cloud-user/new;
         git clone https://github.com/openstack/neutron.git;
