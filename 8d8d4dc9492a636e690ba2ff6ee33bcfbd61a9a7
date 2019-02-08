@@ -22,6 +22,30 @@
       "revId": "8d8d4dc9492a636e690ba2ff6ee33bcfbd61a9a7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f684f4b4_2d53d46b",
+        "filename": "components_config/13/networking-ovn/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003791
+      },
+      "writtenOn": "2019-02-08T10:13:20Z",
+      "side": 1,
+      "message": "Oh... I\u0027m wondering whether we need to run that script in the downstream gate at all to be honest. All it does is to configure, not only for OSP-13.\n\nLemme try removing it to see if that would work",
+      "parentUuid": "9e143082_43c3110a",
+      "range": {
+        "startLine": 45,
+        "startChar": 66,
+        "endLine": 45,
+        "endChar": 134
+      },
+      "revId": "8d8d4dc9492a636e690ba2ff6ee33bcfbd61a9a7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
