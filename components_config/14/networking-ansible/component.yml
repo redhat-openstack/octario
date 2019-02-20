@@ -12,7 +12,8 @@ unittest:
                 python-requests-mock,
                 python-webtest,
                 python-os-testr,
-                python-mock ]
+                python-mock,
+                python-neutron-tests ]
     remove_rpm: [ python2-networking-ansible ]
     archive_run: ''
     run: >
