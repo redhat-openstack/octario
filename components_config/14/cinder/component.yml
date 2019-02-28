@@ -5,8 +5,8 @@ pep8:
     rpm_deps: [ pyflakes, python-flake8, python-hacking ]
     remove_rpm: [ python-cinder, python-os-win ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
-    run: |
-        set -euxo pipefail
+    run: >
+        which python3 || sudo ln -s `which python` /usr/bin/python3
         git checkout -- test-requirements.txt requirements.txt
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log
 
