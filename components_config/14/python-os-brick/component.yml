@@ -5,8 +5,9 @@ pep8:
     rpm_deps: [ python-pep8, pyflakes, python-flake8, python-hacking ]
     remove_rpm: []
     run: >
-       git checkout -- test-requirements.txt requirements.txt;
-       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+        which python3 || sudo ln -s `which python` /usr/bin/python3;
+        git checkout -- test-requirements.txt requirements.txt;
+        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: []

@@ -4,8 +4,9 @@ pep8:
     rpm_deps: [ bandit ]
     remove_rpm: [ openstack-glance ]
     run: >
-       git checkout -- test-requirements.txt  requirements.txt;
-       tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
+        which python3 || sudo ln -s `which python` /usr/bin/python3;
+        git checkout -- test-requirements.txt requirements.txt;
+        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
 unittest:
