@@ -3,6 +3,7 @@ pep8:
     remove_rpm: [ ]
     archive_run: ''
     run: >
+      blabla
       git checkout -- test-requirements.txt requirements.txt;
       tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
