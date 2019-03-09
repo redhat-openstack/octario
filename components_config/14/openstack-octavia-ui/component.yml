@@ -3,6 +3,7 @@ pep8:
     remove_rpm: []
     run: >
         git checkout -- test-requirements.txt requirements.txt;
+        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
@@ -11,6 +12,7 @@ unittest:
     run: >
         sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm;
         sudo yum install -y npm nodejs;
+        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox --sitepackages -v -e karma 2>&1 | tee ../logs/testrun.log;
         tox --sitepackages -v -e eslint 2>&1 | tee ../logs/testrun.log;
 
