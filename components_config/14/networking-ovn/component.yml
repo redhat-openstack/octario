@@ -21,15 +21,14 @@ unittest:
                 python-os-testr,
                 python-oslo-db,
                 python-os-testr,
-                python-ddt ]
+                python-ddt,
+                python-neutron,
+                python-neutron-tests,
+                python-neutron-lib,
+                python-neutron-lib-tests ]
     remove_rpm: [ python-networking-ovn ]
     archive_run: ''
     run: >
-        sudo yum remove -y python2-neutron-lib;
-        sudo pip uninstall ovsdbapp -y;
-        sudo pip install "neutron>=13.0.0.0b2";
-        sudo pip install "neutron-lib>=1.17";
-        sudo pip install ovsdbapp;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 dsvm-functional:
