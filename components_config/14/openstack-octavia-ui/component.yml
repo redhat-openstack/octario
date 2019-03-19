@@ -13,6 +13,7 @@ unittest:
         sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm;
         sudo yum install -y npm nodejs fontconfig;
         /usr/bin/sed -i 's/python3/python2/g' tox.ini;
+        /usr/bin/sed -i "s/..\/.tox\/py27/\/usr/g" octavia_dashboard/karma.conf.js;
         tox --sitepackages -v -e karma 2>&1 | tee ../logs/testrun.log;
         tox --sitepackages -v -e eslint 2>&1 | tee ../logs/testrun.log;
 
