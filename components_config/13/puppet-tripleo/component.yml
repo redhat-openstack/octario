@@ -22,6 +22,7 @@ pep8:
   run: >
     mkdir .bundled_gems;
     export GEM_HOME=`pwd`/.bundled_gems;
+    export PUPPET_GEM_VERSION='~> 4.8.0';
     gem install bundler --version 1.17.3 --no-rdoc --no-ri --verbose;
     $GEM_HOME/bin/bundle install --without system_tests 2>&1 | tee ../logs/testrun.log;
     $GEM_HOME/bin/bundle exec rake lint 2>&1 | tee -a ../logs/testrun.log;
