@@ -41,6 +41,7 @@
     - skip_ansible_lint
 
 - name: enable yum-config-manager
+  become: yes
   retries: 3
   delay: 10
   package:
