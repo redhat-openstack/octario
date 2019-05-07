@@ -41,6 +41,7 @@
     - skip_ansible_lint
 
 - name: enable yum-config-manager
+  become: yes
   retries: 3
   delay: 10
   package:
@@ -57,7 +58,7 @@
   become: yes
   shell: |
     yum-config-manager \
-      --enable rhelosp-{{ component_version }}.0-unittest \
-      --enable rhelosp-{{ component_version }}.0-test-deps \
+      --enablerepo rhelosp-{{ component_version }}.0-unittest \
+      --enablerepo rhelosp-{{ component_version }}.0-test-deps \
       >> /var/log/yum.log
   changed_when: true
