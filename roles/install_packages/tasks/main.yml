@@ -109,6 +109,21 @@
   register: task_result
   until: task_result is success
 
+- name: Check if RPM override file exists
+  command: "cat {{ ansible_env.HOME }}/{{ component.name }}/override-requirements.txt"
+  register: override_stat
+  failed_when: override_stat.rc not in [0, 1]
+
+- name: Install override packages
+  become: yes
+  vars:
+      override_reqs: "{{ ansible_env.HOME }}/{{ component.name }}/override-requirements.txt"
+  yum:
+    state: present
+    name: "{{ item }}"
+  with_items: "{{ override_stat.stdout_lines }}"
+  when: override_stat.rc == 0
+
 - name: Install packages needed for converting and collecting the logs
   become: yes
   retries: 3
