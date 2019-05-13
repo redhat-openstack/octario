@@ -74,6 +74,16 @@
   register: task_result
   until: task_result is success
 
+- name: Override packages using requirements file
+  become: yes
+  pip:
+      file: "{{ item }}"
+  with_first_found:
+      - files:  
+          - "{{ ansible_env.HOME }}/{{ component.name }}/override-requirements.txt"
+          - "{{ ansible_env.HOME }}/override-requirements.txt"
+      skip: true
+
 - name: Install packages needed for converting and collecting the logs
   become: yes
   retries: 3
