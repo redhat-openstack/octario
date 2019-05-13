@@ -109,6 +109,38 @@
   register: task_result
   until: task_result is success
 
+- name: Check if override requirements file is provided
+  set_fact:
+    override_reqs: "{{ item }}"
+  with_first_found:
+      - files:
+          - "{{ ansible_env.HOME }}/{{ component.name }}/override-requirements.txt"
+          - "{{ ansible_env.HOME }}/override-requirements.txt"
+        skip: true
+
+- name: Print override_reqs
+  debug:
+      msg: "{{ override_reqs|default('not set') }}"
+
+- name: Print home
+  debug:
+      msg: "{{ ansible_env.HOME }}"
+
+- name: Print component name
+  debug:
+      msg: "{{ component.name }}"
+      
+- name: Print file
+  debug:
+      msg: "{{ ansible_env.HOME }}/{{ component.name }}/override-requirements.txt"
+
+- name: Install override packages
+  yum:
+    state: present
+    name: "{{ item }}"
+  with_items: "{{ lookup('file', override_reqs).splitlines() }}"
+  when: override_reqs is defined
+
 - name: Install packages needed for converting and collecting the logs
   become: yes
   retries: 3
