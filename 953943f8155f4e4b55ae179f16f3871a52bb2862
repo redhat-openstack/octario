@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1171dff_67816e66",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2019-05-13T09:27:01Z",
+      "side": 1,
+      "message": "What if we want to use rpm? I think that will be mostly our case.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 5
+      },
+      "revId": "953943f8155f4e4b55ae179f16f3871a52bb2862",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb8c20d7_3db3ce1e",
+        "filename": "roles/install_packages/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2019-05-13T09:27:01Z",
+      "side": 1,
+      "message": "Perhaps something like:\n\n yum:\n   name: \"{{ item }}\"\n   state: latest\n with_items: \"{{ lookup(\u0027file\u0027, \u0027override-requirements.txt\u0027).splitlines() }}\"\n\nThen the content of override-requirements.txt can be something like:\n\n https://cbs.centos.org/kojifiles/packages/openvswitch/2.11.0/4.el7/x86_64/openvswitch-2.11.0-4.el7.x86_64.rpm\n https://cbs.centos.org/kojifiles/packages/openvswitch/2.11.0/4.el7/x86_64/openvswitch-ovn-central-2.11.0-4.el7.x86_64.rpm\n https://cbs.centos.org/kojifiles/packages/openvswitch/2.11.0/4.el7/x86_64/openvswitch-ovn-common-2.11.0-4.el7.x86_64.rpm\n\nand it will install openvswitch and OVN from given packages.",
+      "revId": "953943f8155f4e4b55ae179f16f3871a52bb2862",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
