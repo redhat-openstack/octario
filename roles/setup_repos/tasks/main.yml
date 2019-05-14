@@ -43,6 +43,7 @@
 - name: enable yum-config-manager
   retries: 3
   delay: 10
+  become: yes
   package:
     name: yum-utils
   register: task_result
