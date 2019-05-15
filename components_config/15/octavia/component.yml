@@ -3,77 +3,79 @@ pep8:
     remove_rpm: []
     run: >
         git checkout -- test-requirements.txt requirements.txt;
-        sudo pip install pyflakes==1.0.0;
-        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: [ openssl-devel,
                 libffi-devel,
-                python-cliff,
+                python3-cliff,
                 python2-cryptography,
-                python-funcsigs,
-                python-requests-mock,
-                python-webtest,
-                python-stestr,
-                python-neutronclient,
-                python-oslo-utils,
-                python-flask,
-                python-wsme,
-                python-pecan,
-                python-cotyledon,
-                python-oslo-db,
-                python-oslo-log,
-                python-pyasn1-modules,
-                python-gunicorn,
-                python-oslo-reports,
-                python-oslo-policy,
-                python-pyroute2,
-                python-keystonemiddleware,
-                python-novaclient,
-                python-glanceclient,
-                python-futures,
-                python-sqlalchemy,
-                python-pep8,
-                python-taskflow,
-                python-oslo-messaging,
-                python-barbicanclient,
-                python-oslotest ]
+                python3-funcsigs,
+                python3-glanceclient,
+                python3-oslo-messaging,
+                python3-neutronclient,
+                python3-requests-mock,
+                python3-webtest,
+                python3-stestr,
+                python3-neutronclient,
+                python3-oslo-utils,
+                python3-flask,
+                python3-wsme,
+                python3-pecan,
+                python3-cotyledon,
+                python3-oslo-db,
+                python3-oslo-log,
+                python3-distro,
+                python3-castellan,
+                python3-pyasn1-modules,
+                python3-oslo-upgradecheck,
+                python3-gunicorn,
+                python3-oslo-reports,
+                python3-oslo-policy,
+                python3-pyroute2,
+                python3-keystonemiddleware,
+                python3-novaclient,
+                python3-futures,
+                python3-sqlalchemy,
+                python3-pep8,
+                python3-taskflow,
+                python3-barbicanclient,
+                python3-oslotest ]
     remove_rpm: []
     run: >
-        sudo pip install --upgrade setuptools;
-        sudo pip install cffi==1.7;
-        sudo pip install pyOpenSSL==17.5.0;
-        sudo pip install Jinja2==2.10;
-        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+        sudo pip3 install --upgrade setuptools requests-mock;
+        tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 functional:
-    rpm_deps: [ python-stestr,
-                python-netifaces,
-                python-oslo-utils,
-                python-oslo-config,
-                python-pecan,
-                python-oslo-messaging,
-                python-testresources,
-                python-keystonemiddleware,
-                python-pyroute2,
-                python-wsme,
-                python-flask,
-                python-oslotest,
-                python-glanceclient,
-                python-novaclient,
-                python-oslo-db,
-                python-keystoneauth1,
-                python-sqlalchemy,
-                python-ipaddress,
-                python-oslo-policy,
-                python-neutronclient,
-                python-oslo-log,
-                python-barbicanclient,
-                python-pyasn1,
-                python-pyasn1-modules ]
+    rpm_deps: [ python3-stestr,
+                python3-netifaces,
+                python3-oslo-utils,
+                python3-oslo-config,
+                python3-pecan,
+                python3-oslo-messaging,
+                python3-testresources,
+                python3-keystonemiddleware,
+                python3-pyroute2,
+                python3-wsme,
+                python3-flask,
+                python3-distro,
+                python3-oslotest,
+                python3-glanceclient,
+                python3-novaclient,
+                python3-oslo-db,
+                python3-keystoneauth1,
+                python3-sqlalchemy,
+                python3-ipaddress,
+                python3-oslo-policy,
+                python3-neutronclient,
+                python3-oslo-log,
+                python3-barbicanclient,
+                python3-pyasn1,
+                python3-pyasn1-modules ]
     remove_rpm: []
-    run: tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+    run: >
+        sudo pip3 install testresources;
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 functional-py35:
     rpm_deps: [ python-stestr,
@@ -101,7 +103,7 @@ functional-py35:
                 python-pyasn1,
                 python-pyasn1-modules ]
     remove_rpm: []
-    run: tox --sitepackages -v -e functional-py35 2>&1 | tee ../logs/testrun.log;
+    run: tox --sitepackages -v -e functional-py36 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
@@ -110,16 +112,21 @@ functional-py35:
 rpm_deps: [ gcc,
             git,
             python-devel,
-            python-mock,
+            python3-mock,
             python-pip,
             python-pbr,
             python-distro,
             python-tox,
-            python-stestr,
+            python3-oslo-config,
+            python3-stestr,
             openssl-devel,
             libffi-devel,
             libjpeg-turbo-devel,
             zlib-devel,
+            redhat-rpm-config,
+            python2-devel,
+            python3-devel,
+            python3-octavia-lib,
             python-virtualenv,
             python-pluggy,
             python-py,
@@ -136,6 +143,8 @@ octavia_virt_run_config:
         truncate --size 0 requirements.txt;
         truncate --size 0 test-requirements.txt;
         rpm -qa > ../logs/installed-rpms.log;
+        sudo pip3 install tox;
+        sed -i "s/stestr/stestr-3/g" tox.ini;
         {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
