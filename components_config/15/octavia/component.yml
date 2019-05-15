@@ -3,8 +3,6 @@ pep8:
     remove_rpm: []
     run: >
         git checkout -- test-requirements.txt requirements.txt;
-        sudo pip install pyflakes==1.0.0;
-        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
@@ -15,7 +13,7 @@ unittest:
                 python-funcsigs,
                 python-requests-mock,
                 python-webtest,
-                python-stestr,
+                python3-stestr,
                 python-neutronclient,
                 python-oslo-utils,
                 python-flask,
@@ -41,17 +39,14 @@ unittest:
                 python-oslotest ]
     remove_rpm: []
     run: >
-        sudo pip install --upgrade setuptools;
-        sudo pip install cffi==1.7;
-        sudo pip install pyOpenSSL==17.5.0;
-        sudo pip install Jinja2==2.10;
-        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+        sudo pip3 install --upgrade setuptools;
+        tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 functional:
     rpm_deps: [ python-stestr,
                 python-netifaces,
                 python-oslo-utils,
-                python-oslo-config,
+                python3-oslo-config,
                 python-pecan,
                 python-oslo-messaging,
                 python-testresources,
@@ -101,7 +96,7 @@ functional-py35:
                 python-pyasn1,
                 python-pyasn1-modules ]
     remove_rpm: []
-    run: tox --sitepackages -v -e functional-py35 2>&1 | tee ../logs/testrun.log;
+    run: tox --sitepackages -v -e functional-py36 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
@@ -110,16 +105,19 @@ functional-py35:
 rpm_deps: [ gcc,
             git,
             python-devel,
-            python-mock,
+            python3-mock,
             python-pip,
             python-pbr,
             python-distro,
             python-tox,
-            python-stestr,
+            python3-stestr,
             openssl-devel,
             libffi-devel,
             libjpeg-turbo-devel,
             zlib-devel,
+            redhat-rpm-config,
+            python2-devel,
+            python3-devel,
             python-virtualenv,
             python-pluggy,
             python-py,
@@ -136,6 +134,8 @@ octavia_virt_run_config:
         truncate --size 0 requirements.txt;
         truncate --size 0 test-requirements.txt;
         rpm -qa > ../logs/installed-rpms.log;
+        sudo pip3 install tox;
+        sed -i "s/stestr/stestr-3/g" tox.ini;
         {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
