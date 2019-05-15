@@ -55,13 +55,15 @@
 - name: enable test repositories
   become: yes
   shell: |
-    yum-config-manager \
     {% if component.version|int > 14 %}
+      dnf config-manager --set-enabled \
       --enablerepo rhelosp-{{ component.version }}.0-unittest \
       --enablerepo rhelosp-{{ component.version }}.0-test-deps \
+      >> /var/log/dnf.log
     {% else %}
+      yum-config-manager \
       --enable rhelosp-{{ component.version }}.0-unittest \
       --enable rhelosp-{{ component.version }}.0-test-deps \
-    {% endif %}
       >> /var/log/yum.log
+    {% endif %}
   changed_when: true
