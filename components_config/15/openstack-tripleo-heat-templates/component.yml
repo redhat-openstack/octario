@@ -53,7 +53,7 @@ openstack_tripleo_heat_templates_run_config:
 # NOTE: This is the main section. It must exist.
 test_config:
   virt:
-    RedHat-7:
+    RedHat-8:
       setup:
         enable_repos: "{{enable_repos}}"
         install: "{{rpm_deps}}"

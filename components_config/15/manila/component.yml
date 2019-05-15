@@ -117,7 +117,7 @@ manila_virt_run_config:
 # NOTE: This is the main section. It must exist.
 test_config:
   virt:
-    RedHat-7:
+    RedHat-8:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"

@@ -51,7 +51,7 @@ rpm_deps: [
 #
 test_config:
   virt:
-    RedHat-7:
+    RedHat-8:
       run: "{{puppet_tripleo_run_config.run}}"
       setup:
         enable_repos: "{{enable_repos}}"
