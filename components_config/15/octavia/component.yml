@@ -3,8 +3,6 @@ pep8:
     remove_rpm: []
     run: >
         git checkout -- test-requirements.txt requirements.txt;
-        sudo pip install pyflakes==1.0.0;
-        /usr/bin/sed -i 's/python3/python2/g' tox.ini;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
@@ -41,10 +39,10 @@ unittest:
                 python-oslotest ]
     remove_rpm: []
     run: >
-        sudo pip install --upgrade setuptools;
-        sudo pip install cffi==1.7;
-        sudo pip install pyOpenSSL==17.5.0;
-        sudo pip install Jinja2==2.10;
+        sudo pip3 install --upgrade setuptools;
+        sudo pip3 install cffi==1.7;
+        sudo pip3 install pyOpenSSL==17.5.0;
+        sudo pip3 install Jinja2==2.10;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 functional:
@@ -115,11 +113,14 @@ rpm_deps: [ gcc,
             python-pbr,
             python-distro,
             python-tox,
-            python-stestr,
+            python3-stestr,
             openssl-devel,
             libffi-devel,
             libjpeg-turbo-devel,
             zlib-devel,
+            redhat-rpm-config,
+            python2-devel,
+            python3-devel,
             python-virtualenv,
             python-pluggy,
             python-py,
@@ -136,6 +137,7 @@ octavia_virt_run_config:
         truncate --size 0 requirements.txt;
         truncate --size 0 test-requirements.txt;
         rpm -qa > ../logs/installed-rpms.log;
+        sudo pip3 install tox;
         {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
