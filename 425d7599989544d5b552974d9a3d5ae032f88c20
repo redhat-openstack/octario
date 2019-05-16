@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c59c3573_94292cbb",
+        "filename": "components_config/15/octavia/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1013396
+      },
+      "writtenOn": "2019-05-16T13:06:55Z",
+      "side": 1,
+      "message": "I see a mix of Python 2 and Python 3 dependencies. All should be Python 3, no?",
+      "revId": "425d7599989544d5b552974d9a3d5ae032f88c20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10021b5b_50848f51",
+        "filename": "components_config/15/octavia/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1013396
+      },
+      "writtenOn": "2019-05-16T13:06:55Z",
+      "side": 1,
+      "message": "Are all other python-* packages here listed Python 3? Have we checked they all exist on RHEL 8 by the same name?",
+      "revId": "425d7599989544d5b552974d9a3d5ae032f88c20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83499a5_60883772",
+        "filename": "components_config/15/octavia/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1013396
+      },
+      "writtenOn": "2019-05-16T13:06:55Z",
+      "side": 1,
+      "message": "Do we have Python 3.5 available and test against it? We probably want to rename the environment name (L73) to functional-py36 instead.",
+      "revId": "425d7599989544d5b552974d9a3d5ae032f88c20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1b2a7d_b815463f",
+        "filename": "components_config/15/octavia/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1013396
+      },
+      "writtenOn": "2019-05-16T13:06:55Z",
+      "side": 1,
+      "message": "Same question as before (mix of Python versions).",
+      "revId": "425d7599989544d5b552974d9a3d5ae032f88c20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae301b61_085fc143",
+        "filename": "components_config/15/octavia/component.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1013396
+      },
+      "writtenOn": "2019-05-16T13:06:55Z",
+      "side": 1,
+      "message": "Why the replacement?",
+      "revId": "425d7599989544d5b552974d9a3d5ae032f88c20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
