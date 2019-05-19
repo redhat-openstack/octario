@@ -18,7 +18,12 @@
 #      https://github.com/ansible/ansible-modules-extras/issues/2384
 - name: Enable any additional repos to be used
   become: yes
-  shell: yum-config-manager --enable {{ item }}
+  shell: |
+    {% if component.version|int > 14 %}
+      dnf config-manager --set-enabled --enablerepo {{ item }}
+    {% else %}
+      yum-config-manager --enable {{ item }}
+    {% endif %}
   args:
     warn: no
   with_items: "{{ component_config.setup.enable_repos | default([]) }}"
