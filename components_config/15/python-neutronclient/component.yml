@@ -1,21 +1,21 @@
 pep8:
-    rpm_deps: [ python-neutronclient ]
-    remove_rpm: [ python-neutronclient ]
+    rpm_deps: [ python3-neutronclient ]
+    remove_rpm: [ python3-neutronclient ]
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
-    rpm_deps: [ python-neutronclient,
-                python-mox3,
+    rpm_deps: [ python3-neutronclient,
+                python3-mox3,
                 openssl-devel,
                 python2-osc-lib-tests,
-                python-oslotest,
-                python-requests-mock ]
-    remove_rpm: [ python-neutronclient ]
-    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+                python3-oslotest,
+                python3-requests-mock ]
+    remove_rpm: [ python3-neutronclient ]
+    run: tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 functional:
-    rpm_deps: [ python-oslotest,
-                python-testresources,
+    rpm_deps: [ python3-oslotest,
+                python3-testresources,
                 openstack-neutron-vpnaas ]
     remove_rpm: []
     run: tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
@@ -26,16 +26,16 @@ functional:
 # Common rpm deps needed for all tester types
 rpm_deps: [ gcc,
             git,
-            python-devel,
-            python-tox,
-            python-testrepository,
-            python-mock,
-            python-pip,
-            python-testscenarios,
-            python-hacking,
-            python-virtualenv,
-            python-pluggy,
-            python-py,
+            python3-devel,
+            python3-tox,
+            python3-testrepository,
+            python3-mock,
+            python3-pip,
+            python3-testscenarios,
+            python3-hacking,
+            python3-virtualenv,
+            python3-pluggy,
+            python3-py,
             "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}" ]
 
 # The rpms that shouldn't be installed when running tests
