@@ -55,6 +55,7 @@
 - name: enable test repositories
   become: yes
   shell: |
+    set -euo pipefail
     {% if component.version|int > 14 %}
       dnf config-manager --set-enabled \
       --enablerepo rhelosp-{{ component.version }}.0-unittest \
