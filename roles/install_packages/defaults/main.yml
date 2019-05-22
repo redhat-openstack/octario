@@ -1,3 +1,5 @@
 logs_packages: [ subunit-filters, python-junitxml ]
 pip_package: [ python-pip ]
+pip3_package: [ python3-pip ]
+pip3_executable: '/usr/bin/pip-3.6'
 yum_bin: '/usr/bin/yum'

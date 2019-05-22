@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright 2016 Red Hat, Inc.
+# Copyright 2016,2019 Red Hat, Inc.
 # All Rights Reserved.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -22,7 +22,10 @@ import git
 import os
 import re
 
-from urlparse import urlparse
+try:
+  from urlparse import urlparse
+except:
+  from urllib.parse import urlparse as urlparse
 
 LOG = logger.LOG
 
