@@ -69,6 +69,16 @@
   register: task_result
   until: task_result is success
 
+- name: Install pip3 for override
+  become: yes
+  retries: 3
+  delay: 10
+  become_method: sudo
+  yum: name="{{ pip3_package }}" state=present
+  when: component_config.setup | default(false) and component_config.setup.pip3_override | default(false)
+  register: task_result
+  until: task_result is success
+
 - name: Override packages using pip
   become: yes
   retries: 3
@@ -77,6 +87,17 @@
   pip: name="{{ item }}" extra_args="-U --no-deps"
   with_items: "{{ component_config.setup.pip_override | default([]) }}"
   when: component_config.setup | default(false) and component_config.setup.pip_override | default(false)
+  register: task_result
+  until: task_result is success
+
+- name: Override packages using pip3
+  become: yes
+  retries: 3
+  delay: 10
+  become_method: sudo
+  pip: name="{{ item }}" extra_args="-U --no-deps" executable="{{ pip3_executable }}"
+  with_items: "{{ component_config.setup.pip3_override | default([]) }}"
+  when: component_config.setup | default(false) and component_config.setup.pip3_override | default(false)
   register: task_result
   until: task_result is success
 
