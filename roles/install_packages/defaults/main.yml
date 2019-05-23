@@ -1,5 +1,7 @@
 logs_packages: [ subunit-filters, python-junitxml ]
+logs_packages_python3: [ subunit-filters, python3-junitxml ]
 pip_package: [ python-pip ]
 pip3_package: [ python3-pip ]
 pip3_executable: '/usr/bin/pip-3.6'
 yum_bin: '/usr/bin/yum'
+dnf_bin: '/usr/bin/dnf'

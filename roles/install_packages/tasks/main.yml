@@ -38,6 +38,14 @@
   tags:
     - skip_ansible_lint
 
+- name: Enable correct Virt modules for RHEL-8
+  become: yes
+  shell: |
+    set -euo pipefail
+    {{ dnf_bin }} -y module disable virt:rhel
+    {{ dnf_bin }} -y module enable virt:8.0.0
+  when: test_config.virt['RedHat-8'] | default(false)
+
 - name: Install test dependencies RPMs needed to run the tests
   become: yes
   retries: 3
@@ -107,6 +115,16 @@
   delay: 10
   become_method: sudo
   yum: name="{{ logs_packages }}" state=present
-  when: "convert_fetch_logs | default(false)"
+  when: "convert_fetch_logs and test_config.virt['RedHat-7'] | default(false)"
+  register: task_result
+  until: task_result is success
+
+- name: Install packages needed for converting and collecting the logs - python3
+  become: yes
+  retries: 3
+  delay: 10
+  become_method: sudo
+  yum: name="{{ logs_packages_python3 }}" state=present
+  when: "convert_fetch_logs and test_config.virt['RedHat-8'] | default(false)"
   register: task_result
   until: task_result is success
