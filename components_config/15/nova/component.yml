@@ -1,23 +1,17 @@
 # This file is used by the jenkins job
 
 # Dependencies with explicit versions are provided by the copr repository.
-
-# (migi) eventlet is required: https://bugs.launchpad.net/nova/+bug/1403270
-# (migi) python2-oslo-service is required by flake8
-# (migi) flake8 is downgraded as pep8 tests for nova requires that version
 pep8:
 
-    rpm_deps: [
-      python-eventlet,
-      python-flake8,
-      python-pep8,
-      python2-oslo-service
-    ]
+    rpm_deps: []
 
     remove_rpm: []
 
-    pip_override: [
-      flake8==2.5.5
+    pip3_override: [
+      mccabe==0.2.1,
+      pep8==1.5.7,
+      flake8==2.5.5,
+      pyflakes==0.8.1
     ]
 
     run:
@@ -30,42 +24,41 @@ pep8:
 unittest:
 
     rpm_deps: [
-      python-nova,
-      python-wsgi_intercept,
-      python-websockify,
-      python-ironicclient,
-      python-cinderclient,
-      python-testresources,
-      python2-testscenarios,
-      python-os-testr,
-      python-oslotest,
-      python-requests-mock,
-      python-pep8,
-      python-gabbi,
+      python3-nova,
+      python3-wsgi_intercept,
+      python3-websockify,
+      python3-ironicclient,
+      python3-cinderclient,
+      python3-testscenarios,
+      python3-os-testr,
+      python3-oslotest,
+      python3-gabbi,
       genisoimage,
-      python-automaton,
-      python-osprofiler,
-      python2-os-xenapi,
-      python2-pyasn1-modules,
-      python-taskflow,
-      python-ddt
+      python3-automaton,
+      python3-osprofiler,
+      python3-os-xenapi,
+      python3-pyasn1-modules,
+      python3-taskflow,
+      python3-ddt
     ]
 
     remove_rpm: [
-      python-nova
+      python3-nova
     ]
 
-    pip_override: [
-      wsgi_intercept==1.7.0,
+    pip3_override: [
+      pep8==1.5.7,
       pypowervm==1.1.15,
-      setuptools==39.0.1,
-      zVMCloudConnector==1.2.4
+      testresources==2.0.1,
+      requests-mock==1.5.2,
+      zVMCloudConnector==1.3.0
     ]
 
     run:
-        tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
-
+# (migi) OSP15 requires placement repository to be present for the functional tests to run
+#
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
 # (migi) wsgi_intercept >= 1.7.0 is required for:
@@ -74,53 +67,52 @@ functional:
 
     rpm_deps: [
       openstack-nova,
-      python-ironicclient,
-      python-testresources,
-      python2-testscenarios,
-      python-os-testr,
-      python-jsonpath-rw-ext,
-      python-pytest,
-      python-gabbi,
-      python-colorama,
-      python-oslotest
+      python3-ironicclient,
+      python3-testscenarios,
+      python3-os-testr,
+      python3-jsonpath-rw-ext,
+      python3-pytest,
+      python3-gabbi,
+      python3-colorama,
+      python3-oslotest,
+      python3-placement
     ]
 
     remove_rpm: [
-      python-nova,
+      python3-nova,
+      python3-gabbi,
       openstack-nova-api,
-      python-nova,
-      python-gabbi,
       openstack-nova-cells,
-      openstack-nova-cert,
       openstack-nova-common,
       openstack-nova-compute,
       openstack-nova-conductor,
       openstack-nova-console,
-      openstack-nova-network,
+      openstack-nova-migration,
       openstack-nova-novncproxy,
       openstack-nova-placement-api,
-      openstack-nova-scheduler
+      openstack-nova-scheduler,
+      openstack-nova-serialproxy,
+      openstack-nova-spicehtml5proxy
     ]
 
-    pip_override: [
-      wsgi_intercept==1.7.0,
-      gabbi==1.35.0
+    pip3_override: [
+      testresources==2.0.1,
+      wsgi_intercept==1.7.0
     ]
 
     run:
-        PROV_FILE="./nova/tests/functional/api/openstack/placement/db/test_resource_provider.py";
-        echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
-        /usr/bin/sed -i '/^import nova/a import testtools' $PROV_FILE;
-        /usr/bin/sed -i '/^    def test_create_duplicate_id_retry(/a\        raise testtools.TestCase.skipException(\"Downstream temporary skip due to sqlite3 outdated\")' "$PROV_FILE";
-        /usr/bin/sed -i '/^    def test_create_duplicate_id_retry_failing(/a\        raise testtools.TestCase.skipException(\"Downstream temporary skip due to sqlite3 outdated\")' "$PROV_FILE";
-        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+        git clone https://github.com/openstack/placement.git;
+        pushd placement;
+        sudo pip-3.6 install -U --no-deps .;
+        popd;
+        tox --sitepackages -v -e functional-py36 2>&1 | tee ../logs/testrun.log;
 
 
 # Tempest target
 tempest:
    rpm_deps: []
    remove_rpm: []
-   pip_override: []
+   pip3_override: []
    run: ""
 
 
@@ -132,11 +124,9 @@ enable_repos: []
 # python2-pluggy and python2-py are required by python-tox
 rpm_deps: [
     git,
-    python-tox,
-    python-virtualenv,
-    python-hacking,
-    python2-pluggy,
-    python2-py,
+    python3-pluggy,
+    python3-py,
+    python3-virtualenv,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -147,8 +137,11 @@ remove_rpm: [
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}"
 ]
 
-pip_override: [
-    "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip_override'] }}"
+pip3_override: [
+    tox,
+    filelock,
+    toml,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip3_override'] }}"
 ]
 
 # We truncate *requirements.txt to ensure we're only using installed
@@ -162,11 +155,11 @@ nova_virt_run_config:
       truncate --size 0 test-requirements.txt;
       /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
       /usr/bin/sed -i 's/^deps/#&/' tox.ini;
+      /usr/bin/sed -i 's/stestr/stestr-3/g' tox.ini;
       /usr/bin/sed -i 's/^  -r{toxinidir}\/test-requirements.txt/#&/' tox.ini;
       /usr/bin/sed -i 's/^  -c{toxinidir}\/lower-constraints.txt/#&/' tox.ini;
       /usr/bin/sed -i 's/^  -r{toxinidir}\/doc\/requirements.txt/#&/' tox.ini;
       /usr/bin/sed -i 's/^  -r{toxinidir}\/requirements.txt/#&/' tox.ini;
-      /usr/bin/sed -i 's/^basepython = python3$/basepython = python2.7/' tox.ini;
       {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
 
@@ -178,5 +171,5 @@ test_config:
         enable_repos: "{{enable_repos}}"
         install: "{{rpm_deps}}"
         remove: "{{remove_rpm}}"
-        pip_override: "{{pip_override}}"
+        pip3_override: "{{pip3_override}}"
       run: "{{nova_virt_run_config.run}}"
