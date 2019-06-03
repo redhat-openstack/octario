@@ -1,5 +1,5 @@
 pep8:
-    rpm_deps: [ python3-neutronclient, python-flake8 ]
+    rpm_deps: [ python3-neutronclient, python3-flake8 ]
     remove_rpm: [ python3-neutronclient ]
     run: tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
