@@ -127,6 +127,7 @@ pushd $IR_DIR >>/dev/null
       ${IR_CLOUD:-} \
       --prefix=$PREFIX \
       ${IR_DNS:-} \
+      ${NETWORK_PROVIDER:-} \
       --key-file=${KEY} \
       -e override.tester.flavor=m1.xlarge \
       2>&1 | tee ${DIR}/provision.log
