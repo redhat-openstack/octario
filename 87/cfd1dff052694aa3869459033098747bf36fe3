@@ -1,0 +1,8 @@
+Code-Review+1: Jakub Libosvar <libosvar@redhat.com>
+Code-Review+2: David Sariel <dsariel@redhat.com>
+Verified+1: Arie Bregman <abregman@redhat.com>
+Submitted-by: David Sariel <dsariel@redhat.com>
+Submitted-at: Mon, 03 Jun 2019 08:18:00 +0000
+Reviewed-on: https://review.gerrithub.io/c/redhat-openstack/octario/+/454268
+Project: redhat-openstack/octario
+Branch: refs/heads/master
