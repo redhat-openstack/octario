@@ -47,6 +47,7 @@ dsvm-functional:
         sudo modprobe bridge;
         sudo modprobe br_netfilter;
         sudo chmod -R 777 /etc/neutron;
+        sudo chmod a+r /usr/share/neutron/neutron-dist.conf;
         sudo chmod 777 /opt;
         sudo systemctl start openvswitch;
         sed -i s@OS_FAIL_ON_MISSING_DEPS=1@OS_FAIL_ON_MISSING_DEPS=0@ tox.ini;
