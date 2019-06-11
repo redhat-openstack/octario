@@ -59,7 +59,7 @@ dsvm-functional:
         /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh dsvm-functional /home/cloud-user/new/devstack0
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cloud-user/.local/bin:/home/cloud-user/bin;
         sudo ln -s /usr/share/openvswitch /usr/local/share/openvswitch;
-        tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e dsvm-functional-py27 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
