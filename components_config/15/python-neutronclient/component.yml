@@ -9,8 +9,9 @@ unittest:
     rpm_deps: [ python3-neutronclient,
                 python3-mox3,
                 openssl-devel,
-                python2-osc-lib-tests,
+                python3-osc-lib-tests,
                 python3-oslotest,
+                python3-osprofiler,
                 python3-requests-mock ]
     remove_rpm: [ python3-neutronclient ]
     run: tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
@@ -63,5 +64,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: []
+        enable_repos: [ rhelosp-15.0-trunk-brew ]
       run: "{{ neutronclient_virt_run_config.run }}"
