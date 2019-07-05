@@ -53,7 +53,7 @@ dsvm-functional:
         sed -i s@OS_FAIL_ON_MISSING_DEPS=1@OS_FAIL_ON_MISSING_DEPS=0@ tox.ini;
         truncate --size 0 neutron/tests/functional/requirements.txt;
         cd /home/cloud-user;
-        git clone https://opendev.org/openstack-dev/devstack.git;
+        git clone https://opendev.org/openstack-dev/devstack.git --branch stable/stein;
         sed -i 's/RedHatEnterpriseServer/RedHatEnterprise/g' /home/cloud-user/devstack/functions-common;
         cd /home/cloud-user/neutron;
         sed -i 's/python-/python3-/g' tools/configure_for_func_testing.sh;
