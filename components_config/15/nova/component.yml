@@ -141,6 +141,10 @@ pip3_override: [
     tox,
     filelock,
     toml,
+    importlib_metadata,
+    zipp,
+    packaging,
+    pyparsing,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip3_override'] }}"
 ]
 
