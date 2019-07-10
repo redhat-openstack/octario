@@ -97,7 +97,8 @@ functional:
 
     pip3_override: [
       testresources==2.0.1,
-      wsgi_intercept==1.7.0
+      wsgi_intercept==1.7.0,
+      SQLAlchemy==1.2.8
     ]
 
     run:
