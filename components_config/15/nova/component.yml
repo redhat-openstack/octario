@@ -97,7 +97,7 @@ functional:
 
     pip3_override: [
       testresources==2.0.1,
-      wsgi_intercept==1.7.0,
+      wsgi_intercept==1.8.0,
       SQLAlchemy==1.2.8
     ]
 
@@ -162,7 +162,7 @@ nova_virt_run_config:
       truncate --size 0 test-requirements.txt;
       /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
       /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-      /usr/bin/sed -i 's/stestr/stestr-3/g' tox.ini;
+      /usr/bin/sed -i 's/stestr/stestr-3 -p/g' tox.ini;
       /usr/bin/sed -i 's/^  -r{toxinidir}\/test-requirements.txt/#&/' tox.ini;
       /usr/bin/sed -i 's/^  -c{toxinidir}\/lower-constraints.txt/#&/' tox.ini;
       /usr/bin/sed -i 's/^  -r{toxinidir}\/doc\/requirements.txt/#&/' tox.ini;
