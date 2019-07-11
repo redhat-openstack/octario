@@ -97,7 +97,7 @@ functional:
 
     pip3_override: [
       testresources==2.0.1,
-      wsgi_intercept==1.7.0,
+      wsgi_intercept==1.8.0,
       SQLAlchemy==1.2.8
     ]
 
@@ -108,7 +108,7 @@ functional:
         popd;
         export LC_ALL=en_US.utf-8;
         export export LANGUAGE=en_US;
-        tox --sitepackages -v -e functional-py36 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e functional-py36 -- --black-regex=test_instance_action 2>&1 | tee ../logs/testrun.log;
 
 
 # Tempest target
@@ -162,7 +162,7 @@ nova_virt_run_config:
       truncate --size 0 test-requirements.txt;
       /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
       /usr/bin/sed -i 's/^deps/#&/' tox.ini;
-      /usr/bin/sed -i 's/stestr/stestr-3/g' tox.ini;
+      /usr/bin/sed -i 's/stestr/stestr-3 -p/g' tox.ini;
       /usr/bin/sed -i 's/^  -r{toxinidir}\/test-requirements.txt/#&/' tox.ini;
       /usr/bin/sed -i 's/^  -c{toxinidir}\/lower-constraints.txt/#&/' tox.ini;
       /usr/bin/sed -i 's/^  -r{toxinidir}\/doc\/requirements.txt/#&/' tox.ini;
