@@ -106,6 +106,8 @@ functional:
         pushd placement;
         sudo pip-3.6 install -U --no-deps .;
         popd;
+        export LC_ALL=en_US.utf-8;
+        export export LANGUAGE=en_US;
         tox --sitepackages -v -e functional-py36 2>&1 | tee ../logs/testrun.log;
 
 
