@@ -12,7 +12,7 @@ pep8:
 
     run:
         python3 /tmp/comment_deps.py tox.ini;
-        sudo pip3 install autopep8
+        sudo pip3 install autopep8;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
@@ -32,7 +32,7 @@ unittest:
 
     run:
         python3 /tmp/comment_deps.py tox.ini;
-        sudo ln -s /usr/bin/stestr-3 /usr/local/bin/stestr
+        sudo ln -s /usr/bin/stestr-3 /usr/local/bin/stestr;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 
