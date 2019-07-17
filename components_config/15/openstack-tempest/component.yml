@@ -24,6 +24,7 @@ unittest:
             python3-os-client-config,
             python3-mock,
             python3-oslotest,
+            python3-pycodestyle,
     ]
 
     remove_rpm: [
