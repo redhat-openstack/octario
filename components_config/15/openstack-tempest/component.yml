@@ -34,7 +34,6 @@ unittest:
     run:
         python3 /tmp/comment_deps.py tox.ini;
         sudo ln -s /usr/bin/stestr-3 /usr/local/bin/stestr;
-        sudo pip3 install pycodestyle;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 
