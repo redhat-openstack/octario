@@ -108,7 +108,7 @@ functional:
         popd;
         export LC_ALL=en_US.utf-8;
         export export LANGUAGE=en_US;
-        tox --sitepackages -v -e functional-py36 -- --black-regex=test_instance_action 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e functional-py36 -- --suppress-attachments 2>&1 | tee ../logs/testrun.log;
 
 
 # Tempest target
