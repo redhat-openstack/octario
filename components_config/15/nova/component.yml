@@ -74,8 +74,7 @@ functional:
       python3-pytest,
       python3-gabbi,
       python3-colorama,
-      python3-oslotest,
-      python3-placement
+      python3-oslotest
     ]
 
     remove_rpm: [
