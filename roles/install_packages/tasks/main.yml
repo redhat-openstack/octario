@@ -32,6 +32,14 @@
   tags:
     - skip_ansible_lint
 
+# (migi) Needed to work-around python-devel dep issue.
+- name: RHEL7 - Enable rhelosp-rhel-pending repo
+  become: yes
+  shell: |
+    set -euo pipefail
+    yum-config-manager --enable rhelosp-rhel-pending
+  when: test_config.virt['RedHat-7'] | default(false)
+
 - name: Print summary of all the repositories enabled on the host
   shell: "{{ yum_bin }} repolist all"
   changed_when: false
