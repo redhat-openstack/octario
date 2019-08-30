@@ -19,7 +19,7 @@
 - name: Enable any additional repos to be used
   become: yes
   shell: |
-    set -euo pipefailhttps://www.wp.pl/
+    set -euo pipefail
     {% if component.version|int > 14 %}
       dnf config-manager --set-enabled {{ item }}
     {% else %}
@@ -45,14 +45,6 @@
     {{ dnf_bin }} -y module disable virt:rhel
     {{ dnf_bin }} -y module enable virt:8.0.0
   when: test_config.virt['RedHat-8'] | default(false)
-
-# (migi) Needed to work-around python-devel dep issue.
-- name: RHEL7 - Enable rhelosp-rhel-pending repo
-  become: yes
-  shell: |
-    set -euo pipefail
-    yum-config-manager --enable rhelosp-rhel-pending
-  when: test_config.virt['RedHat-7'] | default(false)
 
 - name: Install test dependencies RPMs needed to run the tests
   become: yes
