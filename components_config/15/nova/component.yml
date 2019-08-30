@@ -146,6 +146,7 @@ pip3_override: [
     toml,
     importlib_metadata,
     zipp,
+    more-itertools,
     packaging,
     pyparsing,
     "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip3_override'] }}"
