@@ -4,7 +4,7 @@ pep8:
     rpm_deps: [ bandit ]
     remove_rpm: [ openstack-glance ]
     run: >
-        which python3 || sudo ln -s `which python` /usr/bin/python3;
+        sudo ln -s /usr/bin/python3 /usr/bin/python;
         git checkout -- test-requirements.txt requirements.txt;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
@@ -12,8 +12,9 @@ pep8:
 unittest:
     rpm_deps: [ ]
     remove_rpm: [ openstack-glance ]
-    run: >
-       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: |
+        sudo pip3 install -U testresources;
+        tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
@@ -23,50 +24,50 @@ unittest:
 rpm_deps: [
   git,
   openstack-glance,
-  python-tox,
-  python-virtualenv,
-  python-py,
-  python2-pluggy,
+  python3-tox,
+  python3-virtualenv,
+  python3-py,
+  python3-pluggy,
   gcc,
-  python-devel,
-  python-pip,
-  python-pbr,
-  python-sphinx,
-  python-requests,
-  python-psutil,
+  python3-devel,
+  python3-pip,
+  python3-pbr,
+  python3-sphinx,
+  python3-requests,
+  python3-psutil,
   pysendfile,
-  python-qpid,
+  python3-qpid,
   pyxattr,
   mysql-devel,
   postgresql-devel,
   libffi-devel,
   openssl-devel,
-  python-boto,
-  python-oslo-vmware,
-  python-httplib2,
-  python-swiftclient,
-  python-pymongo,
-  python-pymongo-gridfs,
-  python-cinderclient,
+  python3-boto,
+  python3-oslo-vmware,
+  python3-httplib2,
+  python3-swiftclient,
+  python3-pymongo,
+  python3-pymongo-gridfs,
+  python3-cinderclient,
   libxslt-devel,
   libxml2-devel,
 
 
-  python-testtools,
-  python-coverage,
-  python-psycopg2,
+  python3-testtools,
+  python3-coverage,
+  python3-psycopg2,
   MySQL-python,
-  python-testrepository,
-  python-mock,
-  python-mox,
-  python-mox3,
-  python-oslo-sphinx,
-  python-fixtures,
-  python-nose,
-  python-oslotest,
-  python-requests-mock,
-  python-os-testr,
-
+  python3-testrepository,
+  python3-mock,
+  python3-mox,
+  python3-mox3,
+  python3-oslo-sphinx,
+  python3-fixtures,
+  python3-nose,
+  python3-oslotest,
+  python3-requests-mock,
+  python3-os-testr,
+  python3-pycodestyle,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -80,6 +81,7 @@ glance_store_virt_run_config:
     rpm -qa | sort > ../logs/installed-rpms.log;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
+    sudo pip3 install tox;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
