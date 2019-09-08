@@ -1,50 +1,53 @@
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ python-pep8, python-flake8, python-hacking ]
+    rpm_deps: [ python3-pep8, python3-flake8, python3-hacking ]
     remove_rpm: [ ]
     run: >
-        /usr/bin/sed -i 's/^basepython = python3$/basepython = python2.7/' tox.ini;
+        sudo ln -s /usr/bin/python3 /usr/bin/python;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
-    rpm_deps: [ python-cliff, python-requests-mock, python-webtest, python-mock ]
+    rpm_deps: [ python3-cliff, python3-requests-mock, python3-webtest, python3-mock ]
     remove_rpm: [ ]
-    run: tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    run: |
+        sudo pip3 install -U testresources;
+        tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
 
 # Common rpm deps needed for all tester types
 rpm_deps: [
-  python-openstackclient,
-  python-nose,
-  python-tox,
-  python-virtualenv,
-  python-py,
-  python2-pluggy,
+  python3-openstackclient,
+  python3-nose,
+  python3-tox,
+  python3-virtualenv,
+  python3-py,
+  python3-pluggy,
   gcc,
   git,
-  python-devel,
-  python-babel,
-  python-httplib2,
-  python-pip,
-  python-pbr,
-  python-os-testr,
-  python-requests-mock,
+  python3-devel,
+  python3-babel,
+  python3-httplib2,
+  python3-pip,
+  python3-pbr,
+  python3-os-testr,
+  python3-requests-mock,
 
-  python-testtools,
-  python-sphinx,
-  python-coverage,
-  python-psycopg2,
+  python3-testtools,
+  python3-sphinx,
+  python3-coverage,
+  python3-psycopg2,
   MySQL-python,
-  python-testrepository,
-  python-mock,
-  python-mox,
-  python-mox3,
-  python-oslo-log,
-  python-fixtures,
-  python-subunit,
-  python-oslo-sphinx,
+  python3-testrepository,
+  python3-mock,
+  python3-mox,
+  python3-mox3,
+  python3-oslo-log,
+  python3-fixtures,
+  python3-subunit,
+  python3-oslo-sphinx,
+  python3-pycodestyle,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
   ]
 
@@ -59,6 +62,7 @@ saharaclient_virt_run_config:
 
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
+    sudo pip3 install tox;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
@@ -70,5 +74,5 @@ test_config:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
         # python2-osc-lib-tests is only available in the rhelosp-12.0-brew repository currently
-        enable_repos: [ rhelosp-12.0-brew ]
+        enable_repos: [ 'rhelosp-15.0-trunk-brew' ]
       run: "{{ saharaclient_virt_run_config.run }}"
