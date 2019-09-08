@@ -2,18 +2,22 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ python-pep8, pyflakes, python-flake8, python-hacking ]
+    rpm_deps: [ python3-pep8, pyflakes, python3-flake8, python3-hacking ]
     remove_rpm: []
+    archive_run: ''
     run: >
-        which python3 || sudo ln -s `which python` /usr/bin/python3;
+        sudo ln -s /usr/bin/python3 /usr/bin/python;
         git checkout -- test-requirements.txt requirements.txt;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: []
     remove_rpm: []
-    run: >
-       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
+    archive_run: ''
+    run: |
+        sudo pip3 install -U testresources;
+        tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
+
 
 
 # Tempest target
@@ -29,29 +33,30 @@ tempest:
 # Common rpm deps needed for all tester types
 rpm_deps: [
   git,
-  python-tox,
-  python-virtualenv,
-  python-py,
-  python2-pluggy,
+  python3-tox,
+  python3-virtualenv,
+  python3-py,
+  python3-pluggy,
   gcc,
-  python-devel,
-  python-pip,
-  python-pbr,
-  python-ddt,
-  python-os-win,
-  python-oslo-privsep,
-  python-oslo-vmware,
-  python-castellan,
-  python2-cryptography,
+  python3-devel,
+  python3-pip,
+  python3-pbr,
+  python3-ddt,
+  python3-os-win,
+  python3-oslo-privsep,
+  python3-oslo-vmware,
+  python3-castellan,
+  python3-cryptography,
 
-  python-retrying,
-  python-oslo-service,
+  python3-retrying,
+  python3-oslo-service,
 
-  python-oslotest,
-  python-testrepository,
-  python-testscenarios,
-  python-testtools,
-  python-os-testr,
+  python3-oslotest,
+  python3-testrepository,
+  python3-testscenarios,
+  python3-testtools,
+  python3-os-testr,
+  python3-pycodestyle,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -68,6 +73,11 @@ virt_run_config:
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
+  archive_run: |
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['archive_run'] }}
+
+  archive:
+    - ../logs/functional-tests.tar.gz
 
 # NOTE: This is the main section. It must exist.
 test_config:
