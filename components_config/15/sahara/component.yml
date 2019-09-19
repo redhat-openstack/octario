@@ -94,5 +94,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: []
+        enable_repos: [ 'rhelosp-15.0-trunk-brew' ] 
       run: "{{ sahara_virt_run_config.run }}"
