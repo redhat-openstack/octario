@@ -72,6 +72,9 @@ rpm_deps_common: [
   openstack-swift-container,
   openstack-swift-object,
   openstack-swift-proxy,
+  python3-lxml,
+  python3-more-itertools,
+  python3-urllib3,
   python3-requests-mock
 ]
 
