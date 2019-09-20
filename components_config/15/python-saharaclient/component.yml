@@ -1,6 +1,6 @@
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ python3-pep8, python3-flake8, python3-hacking ]
+    rpm_deps: [ python3-flake8, python3-hacking ]
     remove_rpm: [ ]
     run: >
         sudo ln -s /usr/bin/python3 /usr/bin/python;
@@ -49,6 +49,8 @@ rpm_deps: [
   python3-stestr,
   python3-oslo-sphinx,
   python3-pycodestyle,
+  python3-pep8,
+  python3-osc-lib-tests,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
   ]
 
@@ -75,6 +77,6 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        # python2-osc-lib-tests is only available in the rhelosp-15.0-trunk-brew repository currently
+        # python3-osc-lib-tests is only available in the rhelosp-15.0-trunk-brew repository currently
         enable_repos: [ 'rhelosp-15.0-trunk-brew' ]
       run: "{{ saharaclient_virt_run_config.run }}"
