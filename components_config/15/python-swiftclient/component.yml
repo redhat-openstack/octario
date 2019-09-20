@@ -43,7 +43,7 @@ rpm_deps: [
   python3-sphinx,
   python3-testrepository,
   python3-testtools,
-
+  python3-stestr,
   python3-pycodestyle,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
@@ -58,7 +58,8 @@ swiftclient_virt_run_config:
     rpm -qa | sort > ../logs/installed-rpms.log;
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
-    sudo pip3 install tox;
+    sudo pip3 install tox
+    sed -i "s/stestr/stestr-3/g" tox.ini
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
