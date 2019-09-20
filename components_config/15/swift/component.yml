@@ -11,7 +11,7 @@ pep8:
 unittest:
   rpm_deps: []
   run: >
-      sudo ln -s /usr/bin/nosetests-3.6 /usr/bin/nosetests
+      sudo ln -s /usr/bin/nosetests-3.6 /usr/bin/nosetests;
       sudo ln -f -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
       sudo ln -f -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
       sudo pip3 install -U testresources;
