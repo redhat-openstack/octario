@@ -56,6 +56,7 @@ dsvm-functional:
         git clone https://opendev.org/openstack-dev/devstack.git --branch stable/stein;
         sed -i 's/RedHatEnterpriseServer/RedHatEnterprise/g' /home/cloud-user/devstack/functions-common;
         cd /home/cloud-user/neutron;
+        sudo cp -r neutron/privileged /usr/lib/python*/site-packages/neutron/;
         sed -i 's/python-/python3-/g' tools/configure_for_func_testing.sh;
         tools/configure_for_func_testing.sh /home/cloud-user/devstack;
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
