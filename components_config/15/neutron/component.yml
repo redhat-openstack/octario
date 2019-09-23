@@ -40,7 +40,7 @@ dsvm-functional:
                 python3-ryu, python3-novaclient, python3-keystonemiddleware,
                 psmisc, nfs-utils, selinux-policy, python3-os-testr, python3-neutron-lib-tests,
                 mariadb-server, iproute-tc]
-    remove_rpm: []
+    remove_rpm: [ python3-neutron ]
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo pip3 install -U testresources;
