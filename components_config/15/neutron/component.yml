@@ -58,7 +58,7 @@ dsvm-functional:
         cd /home/cloud-user/neutron;
         sed -i 's/python-/python3-/g' tools/configure_for_func_testing.sh;
         tools/configure_for_func_testing.sh /home/cloud-user/devstack;
-        tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
+        tox -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
 
 dsvm-fullstack:
