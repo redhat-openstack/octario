@@ -44,6 +44,7 @@ dsvm-functional:
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo pip3 install -U testresources;
+        sudo rm -r /usr/lib/python*/site-packages/neutron/privileged
         sudo modprobe bridge;
         sudo modprobe br_netfilter;
         sudo chmod -R 777 /etc/neutron;
