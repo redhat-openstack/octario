@@ -1,0 +1,82 @@
+### This file is used by python-glanceclient component jobs
+
+pep8:
+    rpm_deps: [ postgresql-devel, libffi-devel, python3-devel, openssl-devel ]
+    remove_rpm: [ python3-glanceclient ]
+    run: >
+        sudo ln -s /usr/bin/python3 /usr/bin/python;
+        git checkout -- test-requirements.txt requirements.txt;
+        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+
+unittest:
+    rpm_deps: [ ]
+    remove_rpm: [ python3-glanceclient ]
+    run: |
+        sudo pip3 install -U testresources;
+        tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
+
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  python3-glanceclient,
+  python3-keystoneclient,
+  python3-nose,
+  python3-tox,
+  python3-virtualenv,
+  python3-py,
+  python3-pluggy,
+  gcc,
+  git,
+  python3-devel,
+  python3-babel,
+  python3-httplib2,
+  python3-pip,
+  python3-pbr,
+  python3-requests-mock,
+
+  python3-testtools,
+  python3-coverage,
+  python3-psycopg2,
+  MySQL-python,
+  python3-testrepository,
+  python3-testscenarios,
+  python3-mock,
+  python3-mox,
+  python3-mox3,
+
+  python3-stestr,
+  python3-fixtures,
+  python3-subunit,
+  python3-oslo-sphinx,
+  python3-pycodestyle,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps used by all tester types
+glanceclient_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+    sudo pip3 install tox;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-8:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: [ 'rhelosp-16.0-trunk-brew' ]
+      run: "{{ glanceclient_virt_run_config.run }}"
