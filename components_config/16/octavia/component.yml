@@ -1,5 +1,5 @@
 pep8:
-    rpm_deps: []
+    rpm_deps: [python3-flake8]
     remove_rpm: []
     run: >
         git checkout -- test-requirements.txt requirements.txt;
@@ -19,6 +19,7 @@ unittest:
                 python3-stestr,
                 python3-neutronclient,
                 python3-oslo-utils,
+                python3-cinderclient,
                 python3-flask,
                 python3-wsme,
                 python3-pecan,
