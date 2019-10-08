@@ -58,8 +58,8 @@
     set -euo pipefail
     {% if component.version|int > 14 %}
       dnf config-manager --set-enabled \
-      --enablerepo rhelosp-{{ component.version }}.0-unittest \
-      --enablerepo rhelosp-{{ component.version }}.0-test-deps \
+      rhelosp-{{ component.version }}.0-unittest \
+      rhelosp-{{ component.version }}.0-test-deps \
       >> /var/log/dnf.log
     {% else %}
       yum-config-manager \
