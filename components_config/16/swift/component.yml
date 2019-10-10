@@ -65,6 +65,7 @@ rpm_deps_common: [
   python3-six,
   libffi-devel,
   pyxattr,
+  python3-fixtures,
   python3-pyxattr,
   python3-pyeclib,
   python3-cryptography,
