@@ -32,8 +32,10 @@ functional:
       python3-glance,
     ]
 
-    run:
-        tox --sitepackages -v -e py36 glance.tests.functional 2>&1 | tee ../logs/testrun.log;
+    # temporary hack until functional-py36 is added
+    run: >
+        sed -i 's/basepython = python3.7/basepython = python3.6/g' tox.ini;
+        tox --sitepackages -v -e functional-py37 2>&1 | tee ../logs/testrun.log;
 
 # Tempest target
 tempest:
