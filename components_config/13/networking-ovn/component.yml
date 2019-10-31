@@ -72,6 +72,8 @@ networking_ovn_virt_run_config:
   run: >
     set -o pipefail;
     rpm -qa | sort > ../logs/installed-rpms.log;
+    sudo setenforce permissive;
+    sudo setenforce 0;
 
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
