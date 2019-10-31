@@ -29,7 +29,7 @@ unittest:
 
 dsvm-functional:
     rpm_deps: [ python-testresources,
-                python-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
+                python-oslotest, bridge-utils, nmap-ncat, ebtables,
                 mysql-server, python-ryu, python-novaclient, python-keystonemiddleware,
                 psmisc, nfs-utils, selinux-policy, python-os-testr, python-neutron-tests,
                 python2-ovsdbapp-tests, openvswitch-ovn-common, openvswitch-ovn-central,
@@ -60,7 +60,7 @@ dsvm-functional:
 # Common rpm deps needed for all tester types
 rpm_deps: [
   gcc, gcc-c++, git, python-devel, python-tox, python-testrepository, python-pip,
-  python-testscenarios, libffi-devel, openssl-devel,
+  python-testscenarios, libffi-devel, openssl-devel, openstack-selinux,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -75,6 +75,8 @@ networking_ovn_virt_run_config:
 
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
+
+    sudo semodule -DB;
 
     {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
 
