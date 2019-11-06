@@ -32,7 +32,7 @@ functional:
     ]
 
     run:
-        tox --sitepackages -v -e py27 glance.tests.functional 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 # Tempest target
 tempest:
