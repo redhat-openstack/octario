@@ -56,6 +56,7 @@ functional:
                 python3-oslo-messaging,
                 python3-testresources,
                 python3-keystonemiddleware,
+                python3-cinderclient,
                 python3-pyroute2,
                 python3-wsme,
                 python3-flask,
