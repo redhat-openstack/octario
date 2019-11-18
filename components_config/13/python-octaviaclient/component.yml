@@ -91,5 +91,5 @@ test_config:
             setup:
                 install: "{{ rpm_deps }}"
                 remove: "{{ remove_rpm }}"
-                enable_repos: ['rhelosp-13.0-brew']
+                enable_repos: ['rhos-13.0-rhel-7']
             run: "{{ octaviaclient_virt_run_config.run }}"

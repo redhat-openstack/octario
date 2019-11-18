@@ -41,7 +41,7 @@ unittest:
 # This is for all testers
 #
 enable_repos: [
-    'rhelosp-15.0-trunk-brew',
+    'rhos-15.0-rhel-8-trunk',
     'rhelosp-15.0-unittest'
 ]
 

@@ -123,5 +123,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: [ 'rhelosp-15.0-trunk-brew' ]
+        enable_repos: [ 'rhos-15.0-rhel-8-trunk' ]
       run: "{{ manila_virt_run_config.run }}"
