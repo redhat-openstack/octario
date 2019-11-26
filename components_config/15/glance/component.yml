@@ -23,7 +23,7 @@ functional:
     rpm_deps: [
       openstack-glance,
       python3-testresources,
-      python3-os-testr,
+      python3-stestr,
       python3-oslotest,
       strace
     ]

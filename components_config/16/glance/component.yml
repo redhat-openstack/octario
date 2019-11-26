@@ -23,7 +23,7 @@ functional:
     rpm_deps: [
       openstack-glance,
       python3-testresources,
-      python3-os-testr,
+      python3-stestr,
       python3-oslotest,
       strace
     ]
@@ -33,7 +33,7 @@ functional:
     ]
 
     run:
-        tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e functional-py36 2>&1 | tee ../logs/testrun.log;
 
 # Tempest target
 tempest:
