@@ -24,6 +24,7 @@ unittest:
 functional:
     rpm_deps: [
       openstack-swift,
+      python3-boto3,
       python3-testresources,
       python3-os-testr,
       python3-oslotest,
@@ -34,7 +35,7 @@ functional:
     ]
 
     run:
-        tox --sitepackages -v -e func-s3api 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e func-s3api-py3 2>&1 | tee ../logs/testrun.log;
 
 tempest:
    rpm_deps: [ python3-swift-tests ]

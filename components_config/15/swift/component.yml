@@ -11,11 +11,9 @@ pep8:
 unittest:
   rpm_deps: []
   run: >
-      sudo ln -s /usr/bin/nosetests-3.6 /usr/bin/nosetests;
       sudo ln -f -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
       sudo ln -f -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
-      sudo pip3 install -U testresources;
-      tox --sitepackages -v -e py36 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
+      tox --sitepackages -v -e py27 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 
 # python-swift is installed and then removed to satisfy all runtime
@@ -24,13 +22,14 @@ unittest:
 functional:
     rpm_deps: [
       openstack-swift,
-      python3-testresources,
-      python3-os-testr,
-      python3-oslotest,
+      python-boto3,
+      python-testresources,
+      python-os-testr,
+      python-oslotest,
     ]
 
     remove_rpm: [
-      python3-swift,
+      python-swift,
     ]
 
     run:
@@ -48,48 +47,43 @@ enable_repos: ['rhelosp-15.0-trunk-brew']
 # Note: The order of packages is important
 rpm_deps_common: [
   git,
-  python3-tox,
-  python3-virtualenv,
-  python3-py,
-  python3-pluggy,
+  python-tox,
+  python-virtualenv,
+  python-py,
+  python2-pluggy,
   gcc,
-  python3-devel,
-  python3-pip,
-  python3-pbr,
-  python3-dns,
-  python3-eventlet,
-  python3-greenlet,
-  python3-netifaces,
-  python3-paste-deploy,
-  python3-simplejson,
-  python3-six,
+  python-devel,
+  python-pip,
+  python-pbr,
+  python-dns,
+  python-eventlet,
+  python-greenlet,
+  python-netifaces,
+  python-paste-deploy,
+  python-simplejson,
+  python-six,
   libffi-devel,
   pyxattr,
-  python3-pyxattr,
-  python3-pyeclib,
-  python3-cryptography,
+  python2-pyeclib,
+  python2-cryptography,
   openstack-swift-account,
   openstack-swift-container,
   openstack-swift-object,
   openstack-swift-proxy,
-  python3-lxml,
-  python3-more-itertools,
-  python3-urllib3,
-  python3-requests-mock
+  pythonrequests-mock
 ]
 
 # Note: we need python-nose-1.3.7 to be installed because test_PUT_send_exception_with_unicode_path
 # fails on issue described at https://github.com/nose-devs/nose/issues/680
 rpm_deps_tests_req: [
-  python3-coverage,
-  python3-nose-1.3.7,
-  python3-oslo-sphinx,
-  python3-sphinx,
-  python3-mock,
-  python3-swiftclient,
-  python3-keystoneclient,
-  python3-boto,
-  python3-pycodestyle
+  python-coverage,
+  python-nose-1.3.7,
+  python-oslo-sphinx,
+  python-sphinx,
+  python-mock,
+  python-swiftclient,
+  python-keystoneclient,
+  python-boto,
 ]
 
 rpm_deps_7: [
