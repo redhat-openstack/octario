@@ -43,7 +43,7 @@ dsvm-functional:
                 psmisc, nfs-utils, selinux-policy, python3-os-testr, python3-neutron-tests,
                 python3-ovsdbapp-tests, python3-neutron-lib-tests, openvswitch-ovn-common,
                 openvswitch-ovn-central, openvswitch-ovn-host, openvswitch-ovn-vtep,
-                python3-octavia-lib ]
+                python3-octavia-lib, python3-tooz ]
     remove_rpm: []
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
@@ -68,6 +68,7 @@ dsvm-functional:
         /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh dsvm-functional /home/cloud-user/new/devstack0
         export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/cloud-user/.local/bin:/home/cloud-user/bin;
         sudo ln -s /usr/share/openvswitch /usr/local/share/openvswitch;
+        export OVN_SRCDIR=/usr/share/ovn;
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
