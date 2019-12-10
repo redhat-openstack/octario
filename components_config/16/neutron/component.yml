@@ -58,6 +58,7 @@ dsvm-functional:
         cd /home/cloud-user/neutron;
         for pydir in /usr/lib/python*/site-packages/neutron/; do sudo cp -r neutron/privileged "${pydir}"; done;
         sed -i 's/python-/python3-/g' tools/configure_for_func_testing.sh;
+        export OVN_SRCDIR=/usr/share/ovn;
         tools/configure_for_func_testing.sh /home/cloud-user/devstack;
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
