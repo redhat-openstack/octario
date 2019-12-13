@@ -39,7 +39,8 @@ unittest:
       python3-os-xenapi,
       python3-pyasn1-modules,
       python3-taskflow,
-      python3-ddt
+      python3-ddt,
+      python3-pycodestyle
     ]
 
     remove_rpm: [
@@ -57,7 +58,7 @@ unittest:
     run:
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
-# (migi) OSP15 requires placement repository to be present for the functional tests to run
+# (migi) OSP16 requires placement repository to be present for the functional tests to run
 #
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
@@ -75,7 +76,8 @@ functional:
       python3-gabbi,
       python3-colorama,
       python3-oslotest,
-      python3-sqlalchemy
+      python3-sqlalchemy,
+      python3-ddt
     ]
 
     remove_rpm: [
