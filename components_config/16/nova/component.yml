@@ -2,7 +2,9 @@
 
 pep8:
 
-    rpm_deps: []
+    rpm_deps: [
+      python3-pbr
+    ]
 
     remove_rpm: []
 
