@@ -100,7 +100,8 @@ functional:
 
     pip3_override: [
       testresources==2.0.1,
-      wsgi_intercept==1.8.0
+      wsgi_intercept==1.8.0,
+      PasteDeploy==2.0.1
     ]
 
     run:
