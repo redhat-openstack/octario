@@ -29,7 +29,7 @@ unittest:
     remove_rpm: [ python-neutron ]
     archive_run: ''
     run: >
-      sudo pip install -U "hacking";
+      sudo pip install -U hacking==1.1.0;
       tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
 
 # FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
