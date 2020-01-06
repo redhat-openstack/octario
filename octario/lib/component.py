@@ -260,7 +260,7 @@ class ComponentUtils(object):
         if 'RHOS_VERSION' in os.environ:
             rhos_release = os.environ['RHOS_VERSION']
         else:
-            rhos_release = re.findall('[0-9][0-9]?\.[0-9]', branch_name)
+            rhos_release = re.findall(r'[0-9][0-9]?\.[0-9]', branch_name)
 
         # Unexpected parsing of branch name
         if len(rhos_release) != 1:
