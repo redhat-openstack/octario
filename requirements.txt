@@ -1,4 +1,4 @@
-ansible>=2.4.3.0
-jinja2>=2.7
-colorlog>=2.6.1
+ansible>=2.8.8,<2.9.0
+jinja2>=2.10.3
+colorlog>=4.1.0
 gitpython>=2.0.8
