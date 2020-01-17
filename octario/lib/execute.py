@@ -66,7 +66,11 @@ class AnsibleExecutor(object):
         # Import must happen after setting ANSIBLE_CONFIG, otherwise
         # environment variable will not be used.
         from ansible.cli.playbook import PlaybookCLI
-        ansible_cli = PlaybookCLI(self.cli_args)
+        from ansible import context
+        # reset the CLI arguments
+        context.GlobalCLIArgs._Singleton__instance = None
+        # setup the Playbook object
+        ansible_cli = PlaybookCLI(args=self.cli_args)
         ansible_cli.parse()
         results = ansible_cli.run()
 
