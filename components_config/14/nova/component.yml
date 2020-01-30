@@ -82,7 +82,8 @@ functional:
       python-pytest,
       python-gabbi,
       python-colorama,
-      python-oslotest
+      python-oslotest,
+      python-ddt
     ]
 
     remove_rpm: [
