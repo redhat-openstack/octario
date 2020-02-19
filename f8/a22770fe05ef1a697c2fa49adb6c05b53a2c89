@@ -1,0 +1,8 @@
+Code-Review+1: Carlos Gonçalves <cgoncalves@redhat.com>
+Code-Review+2: Arie Bregman <abregman@redhat.com>
+Verified+1: Arie Bregman <abregman@redhat.com>
+Submitted-by: Arie Bregman <abregman@redhat.com>
+Submitted-at: Wed, 19 Feb 2020 01:30:51 +0000
+Reviewed-on: https://review.gerrithub.io/c/redhat-openstack/octario/+/485144
+Project: redhat-openstack/octario
+Branch: refs/heads/master
