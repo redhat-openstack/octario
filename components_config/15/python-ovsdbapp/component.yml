@@ -38,7 +38,8 @@ functional:
     remove_rpm: [ ]
     archive_run: ''
     run: >
-      sed -i "/OVS_SRCDIR/d" tox.ini;
+      sed -i "s/OVS_SRCDIR.*/OVS_SRCDIR\=\/usr\/share\/openvswitch/g" tox.ini;
+      sed -i "s/OVN_SRCDIR.*/OVN_SRCDIR\=\/usr\/share\/ovn/g" tox.ini;
       tox -v -e functional 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
