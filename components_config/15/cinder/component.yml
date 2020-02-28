@@ -75,6 +75,8 @@ rpm_deps: [
   python3-testscenarios,
   python3-os-win,
   python3-crypto,
+  python3-sqlalchemy,
+  python3-sqlalchemy-utils,
 
   python3-testtools,
   python3-babel,
