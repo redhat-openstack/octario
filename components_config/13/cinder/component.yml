@@ -68,6 +68,8 @@ rpm_deps: [
   python-testscenarios,
   python-os-win,
   python-crypto,
+  python-sqlalchemy,
+  python-sqlalchemy-utils,
 
   python-testtools,
   python-babel,
