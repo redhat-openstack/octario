@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "665b4375_d1614276",
+        "filename": "components_config/16/openstack-tempest/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2020-03-24T20:20:08Z",
+      "side": 1,
+      "message": "is it specified in test-requirements.txt? if yes, then just remove the \"sitepackages\" part in line 24",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 5
+      },
+      "revId": "fe8845d0febfd44529f52b7cfb0c078ffdc16561",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
