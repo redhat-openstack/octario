@@ -266,7 +266,11 @@ class ComponentUtils(object):
         if len(rhos_release) != 1:
             raise exceptions.InvalidRhosRelease(branch_name)
 
-        rhos_release = rhos_release[0].split(".")[0]
+        major_version, minor_version = rhos_release[0].split(".")[:2]
+        if minor_version == '0':
+            rhos_release = major_version
+        else:
+            rhos_release = '%s.%s' % (major_version, minor_version)
 
         LOG.info('RHOS release: %s' % rhos_release)
 
