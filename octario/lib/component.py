@@ -14,7 +14,6 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
-
 from octario.lib import exceptions
 from octario.lib import logger
 
@@ -266,7 +265,11 @@ class ComponentUtils(object):
         if len(rhos_release) != 1:
             raise exceptions.InvalidRhosRelease(branch_name)
 
-        rhos_release = rhos_release[0].split(".")[0]
+        major_version, minor_version = rhos_release[0].split(".")[:2]
+        if minor_version == '0':
+            rhos_release = major_version
+        else:
+            rhos_release = '%s.%s' % (major_version, minor_version)
 
         LOG.info('RHOS release: %s' % rhos_release)
 
