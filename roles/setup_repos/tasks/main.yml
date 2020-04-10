@@ -52,19 +52,23 @@
 # -test-deps are the COPR test deps.
 # avoid use of yum_repository module because we would lose the ability
 # to use rhos-release logic, like repo locations. We want to avoid maintenance.
+- name: compute the test repositories prefix
+  set_fact:
+     test_repo_prefix: "rhelosp-{{ component.version }}{{ (not '.' in component.version)|ternary('.0','') }}"
+
 - name: enable test repositories
   become: yes
   shell: |
     set -euo pipefail
     {% if component.version|int > 14 %}
       dnf config-manager --set-enabled \
-      rhelosp-{{ component.version }}.0-unittest \
-      rhelosp-{{ component.version }}.0-test-deps \
+      {{ test_repo_prefix }}-unittest \
+      {{ test_repo_prefix }}-test-deps \
       >> /var/log/dnf.log
     {% else %}
       yum-config-manager \
-      --enable rhelosp-{{ component.version }}.0-unittest \
-      --enable rhelosp-{{ component.version }}.0-test-deps \
+      --enable {{ test_repo_prefix }}-unittest \
+      --enable {{ test_repo_prefix }}-test-deps \
       >> /var/log/yum.log
     {% endif %}
   changed_when: true
