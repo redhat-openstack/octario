@@ -63,7 +63,6 @@
     {% if component.version|int > 14 %}
       dnf config-manager --set-enabled \
       {{ test_repo_prefix }}-unittest \
-      {{ test_repo_prefix }}-test-deps \
       >> /var/log/dnf.log
     {% else %}
       yum-config-manager \
