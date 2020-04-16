@@ -99,6 +99,7 @@ functional:
     ]
 
     pip3_override: [
+      python-subunit==1.4.0,
       testresources==2.0.1,
       wsgi_intercept==1.8.0,
       PasteDeploy==2.0.1

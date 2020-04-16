@@ -101,6 +101,7 @@ functional:
     ]
 
     pip_override: [
+      python-subunit==1.4.0,
       wsgi_intercept==1.4.1,
       gabbi==1.35.0
     ]
