@@ -13,7 +13,7 @@ unittest:
     rpm_deps: [ ]
     remove_rpm: [ python3-glanceclient ]
     run: |
-        sudo pip3 install -U testresources;
+        sudo pip3 install -U testresources requests-mock;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 

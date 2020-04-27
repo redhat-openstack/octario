@@ -14,7 +14,7 @@ unittest:
       sudo ln -s /usr/bin/nosetests-3.6 /usr/bin/nosetests;
       sudo ln -f -s /usr/lib64/liberasurecode_rs_vand.so.1.0.1 /usr/lib64/liberasurecode_rs_vand.so;
       sudo ln -f -s /usr/lib64/libXorcode.so.1.0.1 /usr/lib64/libXorcode.so;
-      sudo pip3 install -U testresources;
+      sudo pip3 install -U testresources requests-mock;
       tox --sitepackages -v -e py36 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 
