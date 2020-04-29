@@ -13,7 +13,6 @@ unittest:
     rpm_deps: [ python3-cliff, python3-requests-mock, python3-webtest ]
     remove_rpm: [ python3-cinderclient ]
     run: |
-        sudo pip3 install -U testresources;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 
