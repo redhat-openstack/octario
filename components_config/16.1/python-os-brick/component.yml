@@ -13,7 +13,6 @@ unittest:
     rpm_deps: []
     remove_rpm: []
     run: |
-        sudo pip3 install -U testresources;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 
