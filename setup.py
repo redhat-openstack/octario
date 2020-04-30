@@ -31,7 +31,7 @@ import platform
 install_reqs = parse_requirements('requirements.txt', session=False)
 
 # reqs is a list of requirement from requirements.txt
-reqs = [str(octario.req) for octario in install_reqs]
+reqs = [str(octario.requirement) for octario in install_reqs]
 
 with open("LICENSE") as file:
     license = file.read()
