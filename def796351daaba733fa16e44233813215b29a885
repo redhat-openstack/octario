@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e18b6d8_1dbd6817",
+        "filename": "requirements.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1016895
+      },
+      "writtenOn": "2020-04-30T12:38:07Z",
+      "side": 1,
+      "message": "Updating to ansible 2.8+ will require some code changes. See https://review.gerrithub.io/c/redhat-openstack/octario/+/481982",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "def796351daaba733fa16e44233813215b29a885",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": true
+    }
+  ]
+}
