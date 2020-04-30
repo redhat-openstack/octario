@@ -22,6 +22,30 @@
       "revId": "08d69776b6af36ce4af90a404a6724d434c53316",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28393ce_156d3433",
+        "filename": "requirements.txt",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2020-04-30T14:27:56Z",
+      "side": 1,
+      "message": "ack. Thanks :-)",
+      "parentUuid": "0c1b0d14_1b5dad32",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 36
+      },
+      "revId": "08d69776b6af36ce4af90a404a6724d434c53316",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
     }
   ]
 }
