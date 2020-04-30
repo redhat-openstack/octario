@@ -27,11 +27,15 @@ from setuptools import setup
 import os
 import platform
 
+
+from pprint import pprint
+
 # parse_requirements() returns generator of pip.req.InstallRequirement objects
 install_reqs = parse_requirements('requirements.txt', session=False)
 
+#str(octario.req)
 # reqs is a list of requirement from requirements.txt
-reqs = [str(octario.req) for octario in install_reqs]
+reqs = [str(octario.requirement) for octario in install_reqs]
 
 with open("LICENSE") as file:
     license = file.read()
