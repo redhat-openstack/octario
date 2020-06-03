@@ -24,6 +24,7 @@ except ImportError:
 from setuptools import find_packages
 from setuptools import setup
 
+import distro
 import os
 import platform
 
@@ -31,7 +32,7 @@ import platform
 install_reqs = parse_requirements('requirements.txt', session=False)
 
 # reqs is a list of requirement from requirements.txt
-reqs = [str(octario.req) for octario in install_reqs]
+reqs = [str(octario.requirement) for octario in install_reqs]
 
 with open("LICENSE") as file:
     license = file.read()
@@ -53,7 +54,9 @@ setup(
     }
 )
 
-if all(platform.linux_distribution(supported_dists="redhat")):
+SELINUX_DISTROS = ["fedora", "rhel", "centos" ]
+
+if distro.linux_distribution(full_distribution_name=False)[0] in SELINUX_DISTROS:
     # For RedHat based systems, get selinux binding
     try:
         import selinux
