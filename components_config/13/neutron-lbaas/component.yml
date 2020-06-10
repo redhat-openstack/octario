@@ -13,7 +13,7 @@ unittest:
                 python-webtest ]
     remove_rpm: [ python-neutron-lbaas ]
     run: >
-        sudo pip install --upgrade setuptools;
+        sudo pip install setuptools==39.0;
         sudo pip install cffi==1.7;
         sudo pip install pyOpenSSL==17.5.0;
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
