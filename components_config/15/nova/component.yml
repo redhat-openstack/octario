@@ -96,9 +96,11 @@ functional:
       openstack-nova-spicehtml5proxy
     ]
 
+    # Subunit 1.4.0 - rhbz#1728646
     pip3_override: [
       testresources==2.0.1,
-      wsgi_intercept==1.8.0
+      wsgi_intercept==1.8.0,
+      python-subunit==1.4.0
     ]
 
     run:
