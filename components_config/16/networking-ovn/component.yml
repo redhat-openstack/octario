@@ -48,7 +48,7 @@ dsvm-functional:
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
-        sudo pip3 install ovsdbapp neutron-lib neutron testresources;
+        sudo pip3 install testresources;
         sudo mkdir /opt/stack;
         sudo chmod -R 777 /opt/stack;
         sudo yum update -y kernel;
