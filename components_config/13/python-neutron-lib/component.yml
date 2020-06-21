@@ -3,6 +3,7 @@ pep8:
     remove_rpm: [ ]
     run: >
       git checkout -- test-requirements.txt requirements.txt;
+      sed -i "/upper-constraints/d" tox.ini;
       tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
