@@ -17,23 +17,17 @@
 
 from octario.lib.release import __AUTHOR__
 from octario.lib.release import __VERSION__
-try:
-    from pip._internal.req import parse_requirements
-except ImportError:
-    from pip.req import parse_requirements
+
+import pkg_resources
 from setuptools import find_packages
 from setuptools import setup
 
 import distro
 import os
-import platform
 
-# parse_requirements() returns generator of pip.req.InstallRequirement objects
-install_reqs = parse_requirements('requirements.txt', session=False)
-
-# reqs is a list of requirement from requirements.txt
-reqs = [str(octario.requirement) for octario in install_reqs]
-
+with open('requirements.txt', 'r') as fh:
+    reqs = [str(requirement)
+            for requirement in pkg_resources.parse_requirements(fh)]
 with open("LICENSE") as file:
     license = file.read()
 with open("README.md") as file:
@@ -54,7 +48,7 @@ setup(
     }
 )
 
-SELINUX_DISTROS = ["fedora", "rhel", "centos" ]
+SELINUX_DISTROS = ["fedora", "rhel", "centos"]
 
 if distro.linux_distribution(full_distribution_name=False)[0] in SELINUX_DISTROS:
     # For RedHat based systems, get selinux binding
