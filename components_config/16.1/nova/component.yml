@@ -17,6 +17,7 @@ pep8:
     ]
 
     run:
+        /usr/bin/sed -i 's/bash\ tools\/check\-cherry\-picks\.sh/#\ &/' tox.ini;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
