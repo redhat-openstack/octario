@@ -165,6 +165,7 @@ nova_virt_run_config:
       rpm -qa --queryformat "%{Vendor}|%{Name}|%{Version}\n" | sort > ../logs/installed-rpms.log;
       truncate --size 0 requirements.txt;
       truncate --size 0 test-requirements.txt;
+      truncate --size 0 tools/check-cherry-picks.sh;
       /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
       /usr/bin/sed -i 's/^deps/#&/' tox.ini;
       /usr/bin/sed -i 's/stestr/stestr-3 -p/g' tox.ini;
