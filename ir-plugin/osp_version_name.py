@@ -30,12 +30,14 @@ LOG.setLevel(logging.ERROR)
 def main(component_path):
     cmpnt = Component(component_path)
     release = cmpnt.get_rhos_release()
+    repo = cmpnt.get_rhos_release_repo()
     name = cmpnt.get_name()
     if release is not None and name is not None:
         json_out = {
             'plugin': 'iroctario',
             'name': name,
             'version': release,
+            'repo': repo,
         }
         print(json.dumps(json_out))
 

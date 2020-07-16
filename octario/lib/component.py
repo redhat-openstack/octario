@@ -47,6 +47,7 @@ class Component(object):
         utils = ComponentUtils(path)
         self.component_name = utils.get_component_name()
         self.rhos_release = utils.get_rhos_release()
+        self.rhos_release_repo = utils.get_rhos_release_repo()
 
     def get_name(self):
         """Return name of the component.
@@ -64,6 +65,14 @@ class Component(object):
         """
         return self.rhos_release
 
+    def get_rhos_release_repo(self):
+        """Return string value of rhos release repository to be enabled
+           based on the component branch name.
+
+        Returns:
+            str: rhos-release repository name
+        """
+        return self.rhos_release_repo
 
 class ComponentUtils(object):
     """Utils for the component object.
@@ -77,6 +86,7 @@ class ComponentUtils(object):
         self.path = path
         self.component_name = None
         self.rhos_release = None
+        self.rhos_release_repo = None
         self.branch = None
         self.repo_type = self.__get_repo_type(self.path)
 
@@ -114,6 +124,25 @@ class ComponentUtils(object):
                 self.rhos_release = \
                     self.__get_rhos_version_from_branch(self.branch)
         return str(self.rhos_release)
+
+    def get_rhos_release_repo(self):
+        """
+        Returns:
+            str: rhos-release repository name or None if it wasn't discovered
+        """
+
+        if self.repo_type is RepoType.GIT:
+            if not self.branch:
+                repo_url, self.branch = \
+                    self.__get_branch_url_from_git(self.path)
+            if not self.rhos_release:
+                self.rhos_release = \
+                    self.__get_rhos_version_from_branch(self.branch)
+            if 'trunk' in self.branch:
+                self.rhos_release_repo = str(self.rhos_release) + '-trunk'
+
+        return str(self.rhos_release_repo)
+
 
     def __get_repo_type(self, path):
         """Gets the repository type of the component.
