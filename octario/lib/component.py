@@ -140,6 +140,8 @@ class ComponentUtils(object):
                     self.__get_rhos_version_from_branch(self.branch)
             if 'trunk' in self.branch:
                 self.rhos_release_repo = str(self.rhos_release) + '-trunk'
+            else:
+                self.rhos_release_repo = str(self.rhos_release)
 
         return str(self.rhos_release_repo)
 
