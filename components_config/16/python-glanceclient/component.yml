@@ -77,5 +77,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: [ 'rhelosp-16.0-trunk-brew', 'rhos-16.0-rhel-8-testdeps' ]
+        enable_repos: [ 'rhelosp-16.0-trunk-brew', 'rhelosp-16.0-unittest' ]
       run: "{{ glanceclient_virt_run_config.run }}"
