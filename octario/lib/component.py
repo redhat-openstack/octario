@@ -67,12 +67,14 @@ class Component(object):
 
     def get_rhos_release_repo(self):
         """Return string value of rhos release repository to be enabled
-           based on the component branch name.
+
+        based on the component branch name.
 
         Returns:
             str: rhos-release repository name
         """
         return self.rhos_release_repo
+
 
 class ComponentUtils(object):
     """Utils for the component object.
@@ -126,7 +128,8 @@ class ComponentUtils(object):
         return str(self.rhos_release)
 
     def get_rhos_release_repo(self):
-        """
+        """Return string value of rhos release repository
+
         Returns:
             str: rhos-release repository name or None if it wasn't discovered
         """
@@ -144,7 +147,6 @@ class ComponentUtils(object):
                 self.rhos_release_repo = str(self.rhos_release)
 
         return str(self.rhos_release_repo)
-
 
     def __get_repo_type(self, path):
         """Gets the repository type of the component.

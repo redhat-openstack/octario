@@ -1,6 +1,6 @@
 ---
 - name: Remove and create logs dir
-  file: path={{ logs_dir | default(ansible_env.HOME) }}/logs/ state={{ item }}
+  file: path={{ logs_dir | default(ansible_env.HOME) }}/logs/ state={{ item }} mode='0755'
   with_items:
     - absent
     - directory
