@@ -1,10 +1,9 @@
 pep8:
-    rpm_deps: [ python-neutron, openstack-tempest ]
+    rpm_deps: [ python3, python-neutron, openstack-tempest ]
     remove_rpm: [ ]
     archive_run: ''
     run: >
       git checkout -- test-requirements.txt requirements.txt;
-      sed -i "/upper-constraints/d" tox.ini;
       tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
@@ -24,7 +23,6 @@ remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['rem
 neutron_tests_virt_run_config:
   run: >
     set -o pipefail;
-    /usr/bin/sed -i 's/python3/python2/g' tox.ini;
     rpm -qa | sort > ../logs/installed-rpms.log;
 
     truncate --size 0 requirements.txt;
