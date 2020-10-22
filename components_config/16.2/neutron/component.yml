@@ -1,0 +1,151 @@
+pep8:
+    rpm_deps: [ python3-neutron, openstack-tempest ]
+    remove_rpm: [ ]
+    archive_run: ''
+    run: >
+      git checkout -- test-requirements.txt requirements.txt;
+      tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+# python3-testresources package is not available so we will be using it from PyPi in the meantime
+unittest:
+    rpm_deps: [ python3-neutron,
+                python3-cliff,
+                python3-requests-mock,
+                python3-webtest,
+                python3-os-testr,
+                python3-eventlet,
+                python3-oslo-utils,
+                python3-pyroute2,
+                python3-mock,
+                python3-oslotest,
+                python3-neutron-lib-tests,
+                python3-testresources, 
+                python3-testscenarios,
+                python3-pep8,
+                python3-designateclient,
+                python3-flake8,
+                openstack-neutron-openvswitch,
+                python3-ddt ]
+    remove_rpm: [ python3-neutron ]
+    archive_run: ''
+    run: >
+      tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
+
+# FAIL_ON_MISSING_DEPS is disabled because we are not testing postgresql.
+# functional has is own requirements file, which is truncated to use RPMs instead of pip.
+dsvm-functional:
+    rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python3-testresources,
+                python3-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
+                python3-ryu, python3-novaclient, python3-keystonemiddleware,
+                psmisc, nfs-utils, selinux-policy, python3-os-testr, python3-neutron-lib-tests,
+                mariadb-server, iproute-tc]
+    remove_rpm: []
+    archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
+    run: >
+        sudo pip3 install -U testresources;
+        sudo modprobe bridge;
+        sudo modprobe br_netfilter;
+        sudo chmod -R 777 /etc/neutron;
+        sudo chmod a+r /usr/share/neutron/neutron-dist.conf;
+        sudo chmod 777 /opt;
+        sudo systemctl start openvswitch;
+        sed -i s@OS_FAIL_ON_MISSING_DEPS=1@OS_FAIL_ON_MISSING_DEPS=0@ tox.ini;
+        truncate --size 0 neutron/tests/functional/requirements.txt;
+        cd /home/cloud-user;
+        git clone https://opendev.org/openstack-dev/devstack.git --branch stable/train;
+        sed -i 's/RedHatEnterpriseServer/RedHatEnterprise/g' /home/cloud-user/devstack/functions-common;
+        cd /home/cloud-user/neutron;
+        for pydir in /usr/lib/python*/site-packages/neutron/; do sudo cp -r neutron/privileged "${pydir}"; done;
+        sed -i 's/python-/python3-/g' tools/configure_for_func_testing.sh;
+        tools/configure_for_func_testing.sh /home/cloud-user/devstack;
+        tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
+
+
+dsvm-fullstack:
+    rpm_deps: [ openstack-neutron, openstack-neutron-openvswitch, python3-testresources,
+                python3-oslotest, bridge-utils, nmap-ncat, ebtables, openstack-selinux,
+                mysql-server, python3-ryu, python3-novaclient, python3-keystonemiddleware,
+                psmisc, rabbitmq-server, selinux-policy, python3-os-testr, python3-neutron-lib-tests,
+                iproute-tc]
+    remove_rpm: []
+    archive_run: ''
+    run: >
+        CHAIN_NAME="openstack-INPUT";
+        sudo iptables -n --list $CHAIN_NAME 1> /dev/null 2>&1 || CHAIN_NAME="INPUT";
+        sudo iptables -I $CHAIN_NAME -s 240.0.0.0/8 -p tcp -m tcp -d 240.0.0.0/8 --dport 5672 -j ACCEPT;
+        sudo systemctl start rabbitmq-server;
+        sudo modprobe bridge;
+        sudo modprobe br_netfilter;
+        sudo chmod -R 777 /etc/neutron;
+        sudo chmod -R 777 /usr/share/neutron/neutron-dist.conf;
+        sudo systemctl start openvswitch;
+        sudo chmod 777 /opt;
+        truncate --size 0 neutron/tests/functional/requirements.txt;
+        sudo systemctl start mariadb;
+        sudo mysqladmin -u root password secretmysql;
+        sudo sed -i '/\[mysqld\]/a bind-address=0.0.0.0' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a sql_mode=STRICT_ALL_TABLES' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a default-storage-engine=InnoDB' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a max_connections=1024' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_type=OFF' /etc/my.cnf;
+        sudo sed -i '/\[mysqld\]/a query_cache_size=0' /etc/my.cnf;
+        sudo systemctl restart mariadb;
+        mysql -u root --password=secretmysql -e "CREATE USER 'openstack_citest' IDENTIFIED BY 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest'@'localhost';";
+        mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
+        mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
+        mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
+        tox --sitepackages -v -e dsvm-fullstack 2>&1 | tee ../logs/testrun.log
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  gcc, git, python3-devel, python3-tox, python3-testrepository, python3-pip, python3-py,
+  python3-testscenarios, libffi-devel, openssl-devel, python3-virtualenv, python3-pluggy,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps used by all tester types
+neutron_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    sudo pip3 install tox;
+    sed -i "s/stestr/stestr-3/g" tox.ini;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive_run: |
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['archive_run'] }}
+
+  archive:
+    - ../logs/functional-tests.tar.gz
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-8:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: []
+      run: "{{ neutron_virt_run_config.run }}"
+      archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"
+    default:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: []
+      run: "{{ neutron_virt_run_config.run }}"
+      archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"
