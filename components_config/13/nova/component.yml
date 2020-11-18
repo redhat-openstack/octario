@@ -70,6 +70,8 @@ unittest:
 functional:
 
     rpm_deps: [
+      mariadb,
+      mariadb-server,
       openstack-nova,
       python-ironicclient,
       python-testresources,
@@ -105,7 +107,10 @@ functional:
       gabbi==1.35.0
     ]
 
-    run:
+    run: 
+        set -x
+        sudo systemctl start mariadb.service
+        /home/zuul/nova/tools/test-setup.sh
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
