@@ -70,6 +70,8 @@ unittest:
 functional:
 
     rpm_deps: [
+      mariadb,
+      mariadb-server,
       openstack-nova,
       python-ironicclient,
       python-testresources,
@@ -106,6 +108,7 @@ functional:
     ]
 
     run:
+        nova/tools/test-setup.sh
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         tox --sitepackages -v -e functional 2>&1 | tee ../logs/testrun.log;
