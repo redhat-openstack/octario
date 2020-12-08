@@ -109,7 +109,9 @@ functional:
 
     run:
         sudo systemctl start mariadb;
-        ./tools/test-setup.sh;
+        /usr/bin/sed '/\#\ Same\ for\ PostgreSQL/Q' < tools/test-setup.sh > tools/test-setup-mysql.sh;
+        chmod +x ./tools/test-setup-mysql.sh;
+        ./tools/test-setup-mysql.sh;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
         echo "Work around to skip one test that requires non existing on RHEL7.3 sqlite3 database";
