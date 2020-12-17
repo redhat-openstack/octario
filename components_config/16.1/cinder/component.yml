@@ -5,6 +5,16 @@ pep8:
     rpm_deps: [ pyflakes, python3-flake8, python3-hacking ]
     remove_rpm: [ python3-cinder, python3-os-win ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
+
+
+    pip3_override: [
+      hacking==1.1.0,
+      pyflakes==1.2.3,
+      mccabe==0.5.3,
+      pycodestyle==2.0.0,
+      flake8==2.6.2
+    ]
+
     archive_run: ''
     run: >
         sudo ln -s /usr/bin/python3 /usr/bin/python;
@@ -15,6 +25,14 @@ unittest:
     rpm_deps: [ python3-pep8, python3-cliff, python3-requests-mock, python3-webtest ]
     remove_rpm: [ python3-cinder ]
     archive_run: ''
+
+    pip3_override: [
+      pypowervm==1.1.15,
+      testresources==2.0.1,
+      requests-mock==1.5.2,
+      zVMCloudConnector==1.3.0
+    ]
+
     run: |
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
@@ -34,6 +52,13 @@ functional:
     remove_rpm: [
       python3-cinder,
     ]
+
+    pip3_override: [
+      testresources==2.0.1,
+      wsgi_intercept==1.8.0,
+      PasteDeploy==2.0.1
+    ]
+
     archive_run: ''
     run: |
         pip3 install --user --no-deps -e .
@@ -44,6 +69,7 @@ functional:
 tempest:
    rpm_deps: []
    remove_rpm: []
+   pip3_override: []
    run: ""
    blacklist: []
 
@@ -54,7 +80,6 @@ tempest:
 rpm_deps: [
   git,
   openstack-cinder,
-  python3-tox,
   python3-virtualenv,
   python3-py,
   python3-pluggy,
@@ -81,7 +106,6 @@ rpm_deps: [
   python3-keystonemiddleware,
   python3-coverage,
   python3-psycopg2,
-  MySQL-python,
   python3-testrepository,
   python3-mock,
   python3-oslotest,
@@ -97,6 +121,18 @@ rpm_deps: [
 # The rpms that shouldn't be installed on system, when running tests
 remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
 
+# Tox and it's dependencies
+pip3_override: [
+    tox==3.14.2,
+    filelock==3.0.12,
+    importlib-metadata==1.3.0,
+    zipp==0.6.0,
+    more-itertools==8.0.2,
+    toml==0.10.0,
+    packaging==19.2,
+    pyparsing==2.4.5,
+    "{{ hostvars[inventory_hostname][tester.component.tox_target]['pip3_override'] }}"
+]
 # Common pre-run steps used by all tester types
 cinder_virt_run_config:
   run: |
@@ -131,6 +167,7 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
+	pip3_override: "{{ pip3_override }}"
         enable_repos: []
       run: "{{ cinder_virt_run_config.run }}"
       archive: "{{ cinder_virt_run_config.archive }}"
