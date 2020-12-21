@@ -166,7 +166,7 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-	pip3_override: "{{ pip3_override }}"
+        pip3_override: "{{ pip3_override }}"
         enable_repos: []
       run: "{{ cinder_virt_run_config.run }}"
       archive: "{{ cinder_virt_run_config.archive }}"
