@@ -145,7 +145,6 @@ class ComponentUtils(object):
 
         return str(self.rhos_release_repo)
 
-
     def __get_repo_type(self, path):
         """Gets the repository type of the component.
 
@@ -285,7 +284,6 @@ class ComponentUtils(object):
         Returns:
             str: RHOS release version
         """
-
         # bypass for CR branches.
         if 'RHOS_VERSION' in os.environ:
             rhos_release = os.environ['RHOS_VERSION']
