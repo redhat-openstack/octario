@@ -121,9 +121,9 @@ pushd $IR_DIR >>/dev/null
   # provision resources (future: skip running if already provisioned)
   set -x
   infrared openstack --topology-nodes=tester:1 \
+      --image=RHEL-8.2.0-x86_64-latest \
       --anti-spoofing false \
       --topology-network=3_nets \
-      --image=rhel-7.5-server-x86_64-latest \
       ${IR_CLOUD:-} \
       --prefix=$PREFIX \
       ${IR_DNS:-} \
