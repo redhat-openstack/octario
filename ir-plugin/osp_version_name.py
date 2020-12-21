@@ -21,8 +21,6 @@ import sys
 
 from octario.lib.component import Component
 
-sys.path.append('../octario')  # noqa
-
 LOG = logging.getLogger("OctarioLogger")
 LOG.setLevel(logging.ERROR)
 
