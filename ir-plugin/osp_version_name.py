@@ -16,12 +16,12 @@
 #    under the License.
 
 import json
+import logging
 import sys
-sys.path.append('../octario')  # noqa
 
 from octario.lib.component import Component
 
-import logging
+sys.path.append('../octario')  # noqa
 
 LOG = logging.getLogger("OctarioLogger")
 LOG.setLevel(logging.ERROR)
