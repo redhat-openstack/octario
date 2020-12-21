@@ -110,7 +110,6 @@ class ComponentUtils(object):
         Returns:
             str: RHOS release version or None if it wasn't discovered
         """
-
         # this allows us to bypass detection algorithm which can fail in
         # few cases, like cherry picked changes.
         if 'RHOS_VERSION' in os.environ:
@@ -130,7 +129,6 @@ class ComponentUtils(object):
         Returns:
             str: rhos-release repository name or None if it wasn't discovered
         """
-
         if self.repo_type is RepoType.GIT:
             if not self.branch:
                 repo_url, self.branch = \
@@ -144,7 +142,6 @@ class ComponentUtils(object):
                 self.rhos_release_repo = str(self.rhos_release)
 
         return str(self.rhos_release_repo)
-
 
     def __get_repo_type(self, path):
         """Gets the repository type of the component.
@@ -285,7 +282,6 @@ class ComponentUtils(object):
         Returns:
             str: RHOS release version
         """
-
         # bypass for CR branches.
         if 'RHOS_VERSION' in os.environ:
             rhos_release = os.environ['RHOS_VERSION']
