@@ -20,8 +20,9 @@
   become: yes
   retries: 3
   delay: 10
-  package:
+  yum:
     name="http://rhos-release.virt.bos.redhat.com/repos/rhos-release/rhos-release-latest.noarch.rpm"
+    validate_certs: no
   register: task_result
   until: task_result is success
 
