@@ -145,7 +145,6 @@ class ComponentUtils(object):
 
         return str(self.rhos_release_repo)
 
-
     def __get_repo_type(self, path):
         """Gets the repository type of the component.
 
