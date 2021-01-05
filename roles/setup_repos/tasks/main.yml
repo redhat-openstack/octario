@@ -21,7 +21,7 @@
   retries: 3
   delay: 10
   yum:
-    name: "http://rhos-release.virt.bos.redhat.com/repos/rhos-release/rhos-release-latest.noarch.rpm"
+    name: "https://rhos-release.virt.bos.redhat.com/repos/rhos-release/rhos-release-latest.noarch.rpm"
     validate_certs: no
   register: task_result
   until: task_result is success
