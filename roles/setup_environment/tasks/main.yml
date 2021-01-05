@@ -1,12 +1,14 @@
 ---
-- name: Remove and create logs dir
+- name: Remove logs dir
   file:
-    path: "{{ logs_dir | default(ansible_env.HOME) }}/logs/ state={{ item }}"
+    path: "{{ logs_dir | default(ansible_env.HOME) }}/logs/ state=absent"
     mode: 0644
-  with_items:
-    - absent
-    - directory
   ignore_errors: true
+
+- name: Create logs dir
+  file:
+    path: "{{ logs_dir | default(ansible_env.HOME) }}/logs/ state=directory"
+    mode: 0644
 
 # Load octario vars only when they were not passed already,
 # so they are not overriden
