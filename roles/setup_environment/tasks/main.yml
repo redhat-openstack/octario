@@ -9,7 +9,7 @@
   file:
     path: "{{ logs_dir | default(ansible_env.HOME) }}/logs/"
     state: directory
-    mode: 0644
+    mode: 0755
 
 # Load octario vars only when they were not passed already,
 # so they are not overriden
