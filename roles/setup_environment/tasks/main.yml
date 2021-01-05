@@ -6,6 +6,7 @@
   with_items:
     - absent
     - directory
+  ignore_errors: true
 
 # Load octario vars only when they were not passed already,
 # so they are not overriden
