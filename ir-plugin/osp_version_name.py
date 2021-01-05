@@ -19,6 +19,8 @@ import json
 import logging
 import sys
 
+sys.path.append('../octario') 
+
 from octario.lib.component import Component
 
 LOG = logging.getLogger("OctarioLogger")
