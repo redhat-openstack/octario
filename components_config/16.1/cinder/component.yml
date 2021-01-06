@@ -17,6 +17,7 @@ pep8:
     archive_run: ''
     run: >
         sudo ln -s /usr/bin/python3 /usr/bin/python;
+        sudo pip-3 install flake8==2.6.2 pycodestyle==2.0.0 mccabe==0.5.3 pyflakes==1.2.3 hacking==1.1.0
         tox -v -e pep8 --sitepackages 2>&1 | tee ../logs/testrun.log;
 
 unittest:
