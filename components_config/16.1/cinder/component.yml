@@ -18,7 +18,7 @@ pep8:
     run: >
         sudo ln -s /usr/bin/python3 /usr/bin/python;
         sudo pip-3 install flake8==2.6.2 pycodestyle==2.0.0 mccabe==0.5.3 pyflakes==1.2.3 hacking==1.1.0
-        tox -v -e pep8 --sitepackages 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: [ python3-pep8, python3-cliff, python3-requests-mock, python3-webtest ]
