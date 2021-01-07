@@ -3,21 +3,14 @@
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
     rpm_deps: [ pyflakes, python3-flake8, python3-hacking, python3-os-brick ]
-    remove_rpm: []
+    remove_rpm: [ python3-cinder ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
-
-    pip3_override: [
-      hacking==1.1.0,
-      pyflakes==1.2.3,
-      mccabe==0.5.3,
-      pycodestyle==2.0.0,
-      flake8==2.6.2
-    ]
 
     archive_run: ''
     run: >
         sudo ln -s /usr/bin/python3 /usr/bin/python;
-        sudo pip-3 install flake8==2.6.2 pycodestyle==2.0.0 mccabe==0.5.3 pyflakes==1.2.3 hacking==1.1.0 doc8;
+        sudo git checkout test-requirements.txt;
+        sudo pip-3 install -r test-requirements.txt
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
