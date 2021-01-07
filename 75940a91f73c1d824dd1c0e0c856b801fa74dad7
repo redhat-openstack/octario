@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc8f9b22_2b38236d",
+        "filename": "components_config/16.1/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-01-07T14:57:22Z",
+      "side": 1,
+      "message": "But this will install also other packages, we shouldn\u0027t install stuff from pip unless really needed. That\u0027s why the list is manually set here.",
+      "revId": "75940a91f73c1d824dd1c0e0c856b801fa74dad7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
