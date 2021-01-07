@@ -6,6 +6,8 @@ pep8:
     remove_rpm: [ python3-cinder ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
 
+    pip3_override: []
+
     archive_run: ''
     run: >
         sudo ln -s /usr/bin/python3 /usr/bin/python;
