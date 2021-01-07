@@ -16,6 +16,24 @@
       "message": "But this will install also other packages, we shouldn\u0027t install stuff from pip unless really needed. That\u0027s why the list is manually set here.",
       "revId": "75940a91f73c1d824dd1c0e0c856b801fa74dad7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17dae66e_7faf2eb5",
+        "filename": "components_config/16.1/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2021-01-07T15:32:12Z",
+      "side": 1,
+      "message": "we agreed in past that for pep8 gates pip ins ok. But, I\u0027ll try to reduce the list",
+      "parentUuid": "fc8f9b22_2b38236d",
+      "revId": "75940a91f73c1d824dd1c0e0c856b801fa74dad7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
