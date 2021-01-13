@@ -20,7 +20,6 @@ unittest:
 rpm_deps: [
   git,
   openstack-manila,
-  python3-tox,
   python3-virtualenv,
   python3-py,
   python3-pluggy,
