@@ -10,9 +10,9 @@ pep8:
 
     pip3_override: [
       hacking==1.1.0,
-      pyflakes==1.2.3,
       mccabe==0.5.3,
       pycodestyle==2.0.0,
+      pyflakes==1.6.0,
       flake8==2.6.2
     ]
 
