@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92247ffc_a323eb71",
+        "filename": "components_config/16.2/nova/component.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1005261
+      },
+      "writtenOn": "2021-01-15T14:22:28Z",
+      "side": 1,
+      "message": "We are still using 1.2.3 upstream in stable/train, why the move to 1.6.0?\n\nhttps://zuul.opendev.org/t/openstack/build/733ebfe80c1a472a9bf7cc0ff776533d/log/job-output.txt\n\nFWIW this breaks the pep8 job downstream for OSP 16 as we don\u0027t have the following on stable/train:\n\nhttps://review.opendev.org/c/openstack/nova/+/695732",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "cd00cab72b6d20ddbc3710e27712aef1364d4b5c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
