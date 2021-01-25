@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "156976ce_1fba37b9",
+        "filename": "components_config/16.2/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-01-25T17:44:07Z",
+      "side": 1,
+      "message": "Is 2.0.1 the testresource version from the RPM? We already install the RPM (see rpm_deps above)",
+      "revId": "7548f89d40feb70e4ac41b7456295a7f8bd99941",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
