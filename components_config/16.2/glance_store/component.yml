@@ -23,7 +23,6 @@ unittest:
 rpm_deps: [
   git,
   openstack-glance,
-  python3-tox,
   python3-virtualenv,
   python3-py,
   python3-pluggy,
@@ -31,11 +30,9 @@ rpm_deps: [
   python3-devel,
   python3-pip,
   python3-pbr,
-  python3-sphinx,
   python3-requests,
   python3-psutil,
-  pysendfile,
-  python3-qpid,
+  python3-pysendfile,
   pyxattr,
   mysql-devel,
   postgresql-devel,
@@ -55,10 +52,8 @@ rpm_deps: [
   python3-testtools,
   python3-coverage,
   python3-psycopg2,
-  MySQL-python,
   python3-testrepository,
   python3-mock,
-  python3-mox,
   python3-mox3,
   python3-oslo-sphinx,
   python3-fixtures,
@@ -92,5 +87,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: [ 'rhelosp-16.2-trunk-brew', 'rhelosp-16.2-unittest' ]
+        enable_repos: [ 'rhelosp-16.1-trunk-brew', 'rhelosp-16.1-unittest' ]
       run: "{{ glance_store_virt_run_config.run }}"

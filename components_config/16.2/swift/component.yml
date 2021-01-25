@@ -43,12 +43,11 @@ tempest:
    blacklist: []
 
 # Additional repository required to install testing dependencies
-enable_repos: ['rhelosp-16.2-trunk-brew', 'rhelosp-16.2-unittest']
+enable_repos: ['rhelosp-16.1-trunk-brew', 'rhelosp-16.1-unittest']
 
 # Note: The order of packages is important
 rpm_deps_common: [
   git,
-  python3-tox,
   python3-virtualenv,
   python3-py,
   python3-pluggy,
@@ -86,7 +85,6 @@ rpm_deps_tests_req: [
   python3-coverage,
   python3-nose-1.3.7,
   python3-oslo-sphinx,
-  python3-sphinx,
   python3-mock,
   python3-swiftclient,
   python3-keystoneclient,
