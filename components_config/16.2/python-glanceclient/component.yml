@@ -4,7 +4,7 @@ pep8:
     rpm_deps: [ postgresql-devel, libffi-devel, python3-devel, openssl-devel ]
     remove_rpm: [ python3-glanceclient ]
     run: >
-        sudo ln -s /usr/bin/python3 /usr/bin/python;
+        sudo ln -sf /usr/bin/python3 /usr/bin/python;
         git checkout -- test-requirements.txt requirements.txt;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
