@@ -34,7 +34,7 @@ functional:
     ]
 
     run: |
-        pip install --user --no-deps -e .
+        sudo pip install --no-deps -e .
         export OS_TEST_PATH=./cinder/tests/functional
         ostestr 2>&1 | tee ../logs/testrun.log
 
