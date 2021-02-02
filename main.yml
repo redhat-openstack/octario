@@ -7,7 +7,7 @@
       tester_directory: "{{ test.dir }}"
   environment:
       PATH: "{{ ansible_env.PATH }}"
-      VIRTUAL_ENV: "{{ ansible_env.VIRTUAL_ENV }}"
+      VIRTUAL_ENV: "{{ ansible_env.VIRTUAL_ENV | default("") }}"
   tasks:
       - name: Add tester host to dynamic inventory
         add_host:
