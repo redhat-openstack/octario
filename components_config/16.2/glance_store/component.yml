@@ -1,7 +1,7 @@
 ### This file is used by glance_store component jobs
 
 pep8:
-    rpm_deps: [ bandit ]
+    rpm_deps: []
     remove_rpm: [ openstack-glance ]
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
