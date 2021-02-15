@@ -107,6 +107,7 @@ functional:
     run:
         git clone https://github.com/openstack/placement.git;
         pushd placement;
+        git checkout origin/stable/train;
         sudo pip-3.6 install -U --no-deps .;
         popd;
         export LC_ALL=en_US.utf-8;
