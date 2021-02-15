@@ -78,7 +78,8 @@ functional:
       python3-colorama,
       python3-oslotest,
       python3-sqlalchemy,
-      python3-ddt
+      python3-ddt,
+      python3-placement,
     ]
 
     remove_rpm: [
@@ -105,10 +106,6 @@ functional:
     ]
 
     run:
-        git clone https://github.com/openstack/placement.git;
-        pushd placement;
-        sudo pip-3.6 install -U --no-deps .;
-        popd;
         export LC_ALL=en_US.utf-8;
         export export LANGUAGE=en_US;
         tox --sitepackages -v -e functional-py36 -- --black-regex=test_instance_action 2>&1 | tee ../logs/testrun.log;
