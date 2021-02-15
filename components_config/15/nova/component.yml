@@ -57,7 +57,10 @@ unittest:
     run:
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
-# (migi) OSP15 requires placement repository to be present for the functional tests to run
+# NOTE(lyarwood): OSP15 requires placement test fixtures to be installed from
+# stable/stein for the functional tests to run.
+# TODO(lyarwood): Replace this by installing python3-placement-tests once
+# available within the unit test repo.
 #
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
@@ -106,6 +109,7 @@ functional:
     run:
         git clone https://github.com/openstack/placement.git;
         pushd placement;
+        git checkout origin/stable/stein;
         sudo pip-3.6 install -U --no-deps .;
         popd;
         export LC_ALL=en_US.utf-8;
