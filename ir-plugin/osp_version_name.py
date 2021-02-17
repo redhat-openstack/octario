@@ -19,11 +19,10 @@ import json
 import logging
 import sys
 
-sys.path.append('../octario') 
+sys.path.append('../octario')
 
-from octario.lib.component import Component
+from octario.lib.component import Component  # noqa: E402
 
-sys.path.append('../octario')  # noqa
 
 LOG = logging.getLogger("OctarioLogger")
 LOG.setLevel(logging.ERROR)
