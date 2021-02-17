@@ -17,13 +17,15 @@
 
 import json
 import logging
+import os
 import sys
 
-sys.path.append('../octario') 
+currentdir = os.path.dirname(os.path.abspath(__file__))
+octariodir = os.path.join(currentdir, '..')
+sys.path.append(octariodir)
 
-from octario.lib.component import Component
+from octario.lib.component import Component  # noqa: E402
 
-sys.path.append('../octario')  # noqa
 
 LOG = logging.getLogger("OctarioLogger")
 LOG.setLevel(logging.ERROR)
