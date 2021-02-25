@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a7497a5_e7d8ff6f",
+        "filename": "ir-plugin/osp_version_name.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2021-02-25T14:17:43Z",
+      "side": 1,
+      "message": "do we need it twice?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "ab89491e7ae704559370c1eb635033ba781e4892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
