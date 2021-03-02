@@ -40,13 +40,14 @@ dsvm-functional:
     rpm_deps: [ openstack-neutron-openvswitch, python3-testresources,
                 python3-oslotest, nmap-ncat, ebtables, openstack-selinux,
                 mysql-server, python3-novaclient, python3-keystonemiddleware,
-                psmisc, nfs-utils, selinux-policy, python3-os-testr, python3-neutron-tests,
+                psmisc, nfs-utils, selinux-policy, python3-os-testr,
                 python3-ovsdbapp-tests, python3-neutron-lib-tests, openvswitch-ovn-common,
                 openvswitch-ovn-central, openvswitch-ovn-host, openvswitch-ovn-vtep,
                 python3-octavia-lib, python3-tooz ]
     remove_rpm: []
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
+        sudo dnf install -y https://red.ht/latest-neutron-tests-161;
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
         sudo pip3 install ovsdbapp neutron-lib neutron testresources;
         sudo mkdir /opt/stack;
