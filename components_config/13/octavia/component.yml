@@ -3,7 +3,9 @@ pep8:
     remove_rpm: []
     run: >
         git checkout -- test-requirements.txt requirements.txt;
+        sed -i "/bandit/d" tox.ini;
         sudo pip install pyflakes==1.0.0;
+        sudo pip install bandit==1.6.2;
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
