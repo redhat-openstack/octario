@@ -59,16 +59,13 @@ unittest:
     run:
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
-# NOTE(lyarwood): OSP16 requires placement test fixtures to be installed from
-# stable/train for the functional tests to run.
-# TODO(lyarwood): Replace this by installing python3-placement-tests once
-# available within the unit test repo.
-#
 # (migi) python-nova is installed and then removed to satisfy all runtime
 #        dependencies for the nova component.
 # (migi) wsgi_intercept >= 1.7.0 is required for:
 #        nova.tests.functional.regressions.test_bug_1679750.TestLocalDeleteAllocations.test_local_delete_removes_allocations_after_compute_restart
 functional:
+
+    enable_repos: [ rhelosp-16.1-unittest ]
 
     rpm_deps: [
       openstack-nova,
@@ -79,6 +76,8 @@ functional:
       python3-pytest,
       python3-gabbi,
       python3-colorama,
+      python3-osc-placement-tests,
+      python3-osc-placement,
       python3-oslotest,
       python3-sqlalchemy,
       python3-ddt
@@ -95,7 +94,6 @@ functional:
       openstack-nova-console,
       openstack-nova-migration,
       openstack-nova-novncproxy,
-      openstack-nova-placement-api,
       openstack-nova-scheduler,
       openstack-nova-serialproxy,
       openstack-nova-spicehtml5proxy
@@ -108,11 +106,6 @@ functional:
     ]
 
     run:
-        git clone https://github.com/openstack/placement.git;
-        pushd placement;
-        git checkout origin/stable/train;
-        sudo pip-3.6 install -U --no-deps .;
-        popd;
         export LC_ALL=en_US.utf-8;
         export export LANGUAGE=en_US;
         tox --sitepackages -v -e functional-py36 -- --black-regex=test_instance_action 2>&1 | tee ../logs/testrun.log;
