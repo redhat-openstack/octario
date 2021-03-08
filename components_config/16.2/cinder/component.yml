@@ -55,7 +55,6 @@ functional:
 
     archive_run: ''
     run: |
-        sudo pip3 install --no-deps -e .
         export OS_TEST_PATH=./cinder/tests/functional
         tox --sitepackages -v -e functional-py36 | tee ../logs/testrun.log
 
