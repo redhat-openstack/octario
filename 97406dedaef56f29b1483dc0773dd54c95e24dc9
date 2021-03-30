@@ -16,6 +16,24 @@
       "message": "@Bernard was it tested?",
       "revId": "97406dedaef56f29b1483dc0773dd54c95e24dc9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3a36f3_315b022c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1009495
+      },
+      "writtenOn": "2021-03-30T14:15:23Z",
+      "side": 1,
+      "message": "Change itself yes though our jobs fail currently later in https://bugzilla.redhat.com/show_bug.cgi?id\u003d1944134. But at least with that change applied the failures line is empty:\n\"failures\": []",
+      "parentUuid": "bc51ba6e_edab3fb7",
+      "revId": "97406dedaef56f29b1483dc0773dd54c95e24dc9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
