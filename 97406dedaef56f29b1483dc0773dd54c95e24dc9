@@ -51,6 +51,23 @@
       "message": "What do you think then about overriding tox with pip in the meantime?",
       "revId": "97406dedaef56f29b1483dc0773dd54c95e24dc9",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54240f6d_bdc72d84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1009495
+      },
+      "writtenOn": "2021-03-31T08:39:53Z",
+      "side": 1,
+      "message": "Fixed tox in repo now, and test run with this patch is blue 😊",
+      "revId": "97406dedaef56f29b1483dc0773dd54c95e24dc9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
