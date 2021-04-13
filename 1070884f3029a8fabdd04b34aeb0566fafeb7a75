@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b165b9f_5ed81071",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017622
+      },
+      "writtenOn": "2021-04-13T17:57:03Z",
+      "side": 1,
+      "message": "same results: https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/7/\nI think the test failures are legit and we can merge this patch",
+      "revId": "1070884f3029a8fabdd04b34aeb0566fafeb7a75",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
