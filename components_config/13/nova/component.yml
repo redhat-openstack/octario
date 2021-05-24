@@ -8,7 +8,8 @@ pep8:
 
     rpm_deps: [
       python-eventlet,
-      python-flake8
+      python-flake8,
+      python-pbr
     ]
 
     remove_rpm: []
