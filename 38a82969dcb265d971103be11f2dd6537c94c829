@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "655af1c5_9d343699",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013036
+      },
+      "writtenOn": "2021-05-24T11:56:05Z",
+      "side": 1,
+      "message": "This looks correct to me an mimic the addtion of pbr in the osp 16 configuration\n\nthe ci failtures are unrelaged\n\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/gate-infrared-octario/162/artifact/.sh/lint.log\n\n\n021-05-24 11:20:12.030 | flake8 run-test-pre: PYTHONHASHSEED\u003d\u0027623945002\u0027\n2021-05-24 11:20:12.031 | flake8 runtests: commands[0] | flake8\n2021-05-24 11:20:12.514 | ./ir-plugin/osp_version_name.py:22:30: W291 trailing whitespace\n2021-05-24 11:20:12.516 | ./ir-plugin/osp_version_name.py:24:1: E402 module level import not at top of file\n2021-05-24 11:20:12.518 | 1     E402 module level import not at top of file\n2021-05-24 11:20:12.520 | 1     W291 trailing whitespace\n2021-05-24 11:20:12.538 | ERROR: InvocationError for command \u0027/home/rhos-ci/jenkins/workspace/gate-infrared-octario/.tox/venv/bin/flake8\u0027 (exited with code 1)\n\n...\n021-05-24 11:20:26.273 |   yamllint: commands succeeded\n2021-05-24 11:20:26.275 | ERROR:   flake8: commands failed\n2021-05-24 11:20:26.277 |   ansible-lint: commands succeeded\n2021-05-24 11:20:26.279 |   ansible-check: commands succeeded\n2021-05-24 11:20:26.281 |   ansible-syntax-check: commands succeeded",
+      "revId": "38a82969dcb265d971103be11f2dd6537c94c829",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
