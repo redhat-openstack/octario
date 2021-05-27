@@ -42,7 +42,7 @@ dsvm-functional:
                 mysql-server, python3-novaclient, python3-keystonemiddleware, rust, cargo,
                 psmisc, nfs-utils, selinux-policy, python3-os-testr, python3-oslo-rootwrap,
                 python3-ovsdbapp-tests, python3-neutron-lib-tests, openvswitch-ovn-common,
-                openvswitch-ovn-central, openvswitch-ovn-host, openvswitch-ovn-vtep,
+                openvswitch-ovn-central, openvswitch-ovn-vtep,
                 python3-octavia-lib, python3-tooz ]
     remove_rpm: []
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
