@@ -1,0 +1,35 @@
+enable_repos: []
+rpm_deps: []
+remove_rpm: []
+pip3_override: []
+
+pep8:
+  run:
+    tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+  run:
+    tox -v -e py38 2>&1 | tee ../logs/testrun.log;
+
+functional:
+  rpm_deps: []
+  remove_rpm: []
+  pip3_override: []
+  run:
+    tox -v -e functional 2>&1 | tee ../logs/testrun.log;
+
+tempest:
+   rpm_deps: []
+   remove_rpm: []
+   pip3_override: []
+   run: ""
+
+nova_virt_run_config:
+  run: >
+    set -o pipefail;
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+test_config:
+  virt:
+    RedHat-8:
+      run: "{{nova_virt_run_config.run}}"
