@@ -16,7 +16,7 @@
 # TBD: when ansible 2.1 is min version we should be using
 #      https://docs.ansible.com/ansible/yum_repository_module.html
 #      https://github.com/ansible/ansible-modules-extras/issues/2384
-- name: Enable any additional repos to be used
+- name: Enable any additional repos to be used test
   become: yes
   shell: |
     set -euo pipefail
