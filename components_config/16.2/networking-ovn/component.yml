@@ -116,7 +116,7 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: []
+        enable_repos: ['rhelosp-16.2-trunk-brew']
       run: "{{ networking_ovn_virt_run_config.run }}"
       archive: "{{ networking_ovn_virt_run_config.archive }}"
       archive_run: "{{ networking_ovn_virt_run_config.archive_run }}"
@@ -124,7 +124,7 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: []
+        enable_repos: ['rhelosp-16.2-trunk-brew']
       run: "{{ networking_ovn_virt_run_config.run }}"
       archive: "{{ networking_ovn_virt_run_config.archive }}"
       archive_run: "{{ networking_ovn_virt_run_config.archive_run }}"
