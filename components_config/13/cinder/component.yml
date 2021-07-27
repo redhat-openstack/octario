@@ -11,7 +11,12 @@ pep8:
         tox -v -e pep8 2>&1 | tee ../logs/testrun.log
 
 unittest:
-    rpm_deps: [ python-cliff, python-requests-mock, python-webtest ]
+    rpm_deps: [
+      "{{ hostvars[inventory_hostname]['common_deps'] }}", 
+      python-cliff,
+      python-requests-mock,
+      python-webtest
+    ]
     remove_rpm: [ python-cinder ]
     run: |
         tox --sitepackages -v -e py27 2>&1 | tee ../logs/testrun.log;
@@ -22,6 +27,7 @@ unittest:
 
 functional:
     rpm_deps: [
+     "{{ hostvars[inventory_hostname]['common_deps'] }}",
       openstack-cinder,
       python-os-brick,
       python-os-testr,
@@ -49,11 +55,9 @@ tempest:
 # tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
 
 # Common rpm deps needed for all tester types
-rpm_deps: [
-  git,
+common_deps: [
   openstack-cinder,
   python-tox,
-  gcc,
   python-devel,
   python-pip,
   python-pbr,
@@ -85,6 +89,11 @@ rpm_deps: [
   python-subunit,
   python-pep8,
   python2-stestr,
+]
+
+rpm_deps: [
+  git,
+  gcc,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
