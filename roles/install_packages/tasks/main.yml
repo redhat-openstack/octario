@@ -21,9 +21,9 @@
   shell: |
     set -euo pipefail
     {% if component.version|int > 14 %}
-      dnf config-manager --set-enabled {{ item }}
+      dnf config-manager --set-enabled {{ item }} || true
     {% else %}
-      yum-config-manager --enable {{ item }}
+      yum-config-manager --enable {{ item }} || true
     {% endif %}
   args:
     warn: no
