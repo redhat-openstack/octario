@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960651e8_25ceb23e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-09-09T21:07:39Z",
+      "side": 1,
+      "message": "What was the reason for this issue? It seems to show for 16.1 as well, but it\u0027s not clear to me why it was needed.",
+      "revId": "aa62f3e33f8ed4d91e7dbd88b26cf5638b1f7f74",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
