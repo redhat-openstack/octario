@@ -75,6 +75,7 @@ dsvm-functional:
         sudo ln -s /usr/share/ovn/ovn-sb.ovsschema /usr/local/share/openvswitch/ovn-sb.ovsschema;
         sudo ln -s /usr/share/ovn/ovn-nb.ovsschema /usr/local/share/openvswitch/ovn-nb.ovsschema;
         export OVN_SRCDIR=/usr/share/ovn;
+        USE_PYTHON3=True;
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
