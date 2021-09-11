@@ -48,6 +48,7 @@ dsvm-functional:
     remove_rpm: []
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
+        export USE_PYTHON3=True;
         sudo sed -i -e "\$asslverify=0" /etc/dnf/dnf.conf;
         sudo dnf install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/python-tox/2.9.1/6.el8+7/noarch/python3-tox-2.9.1-6.el8+7.noarch.rpm;
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
