@@ -18,12 +18,20 @@
 import json
 import logging
 import sys
+import os
 
-sys.path.append('../octario')
+def find_path(direntry):
+    for root, dirs, files in os.walk(os.path.expanduser('~')):
+        files = [f for f in files if not f[0] == '.']
+        dirs[:] = [d for d in dirs if not d[0] == '.']
+        for name in dirs:
+            if name == direntry:
+                return(os.path.abspath(os.path.join(root, name)))
+
+sys.path.append(find_path('octario')
 
 from octario.lib.component import Component # noqa
 
-sys.path.append('../octario')
 
 LOG = logging.getLogger("OctarioLogger")
 LOG.setLevel(logging.ERROR)
