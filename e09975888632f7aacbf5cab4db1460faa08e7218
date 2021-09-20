@@ -16,6 +16,23 @@
       "message": "This export was needed in 16.1 too\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-networking-ovn-16.1-dsvm-functional-rhos/360/",
       "revId": "e09975888632f7aacbf5cab4db1460faa08e7218",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b11dc396_64f97220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017622
+      },
+      "writtenOn": "2021-09-20T07:34:37Z",
+      "side": 1,
+      "message": "Hi Waldemar,\n\nCan you review this patch please since Arie is on PTO/holidays?\n\nArie fixed an issue in OVN functional job at [1]. I have just added an \"export\" that was missing and I checked it fixes the 16.1 job: the job fails with this patch due to legitimate test failures that we need to fix.\n\n[1] https://review.gerrithub.io/c/redhat-openstack/octario/+/523794",
+      "revId": "e09975888632f7aacbf5cab4db1460faa08e7218",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
