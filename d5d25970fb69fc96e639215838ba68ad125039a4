@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3845cff_a94601f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003309
+      },
+      "writtenOn": "2021-09-24T22:01:42Z",
+      "side": 1,
+      "message": "This does fix the functional test failures, but I\u0027m not sure if there\u0027s a smarter way to do this or not (and we\u0027d probably want to do something similar to 16.1)\n\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/285/",
+      "revId": "d5d25970fb69fc96e639215838ba68ad125039a4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
