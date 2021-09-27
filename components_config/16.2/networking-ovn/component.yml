@@ -76,7 +76,6 @@ dsvm-functional:
         sudo ln -s /usr/share/ovn/ovn-sb.ovsschema /usr/local/share/openvswitch/ovn-sb.ovsschema;
         sudo ln -s /usr/share/ovn/ovn-nb.ovsschema /usr/local/share/openvswitch/ovn-nb.ovsschema;
         export OVN_SRCDIR=/usr/share/ovn;
-        # package-installed pip seems to fail on empty master branch
         source .tox/dsvm-functional/bin/activate
         pip3 install git+https://code.engineering.redhat.com/gerrit/neutron@rhos-16.2-trunk-patches#egg=neutron
         deactivate
