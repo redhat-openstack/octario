@@ -37,7 +37,7 @@ unittest:
 
 # Install ovsdbapp from PyPi to get ovsdbapp.tests as the package is currently not available
 dsvm-functional:
-    rpm_deps: [ openstack-neutron-openvswitch, python3-testresources,
+    rpm_deps: [ python3-testresources,
                 python3-oslotest, nmap-ncat, ebtables, openstack-selinux,
                 mysql-server, python3-novaclient, python3-keystonemiddleware, rust, cargo,
                 psmisc, nfs-utils, selinux-policy, python3-os-testr, python3-oslo-rootwrap,
@@ -49,10 +49,13 @@ dsvm-functional:
     archive_run: tar zcvf /home/cloud-user/logs/functional-tests.tar.gz /opt/stack/logs/dsvm-functional-logs;
     run: >
         export USE_PYTHON3=True;
+        sudo pip3 install --upgrade pip;
+        sudo git config --global http.sslVerify "false";
         sudo sed -i -e "\$asslverify=0" /etc/dnf/dnf.conf;
         sudo dnf install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/python-tox/2.9.1/6.el8+7/noarch/python3-tox-2.9.1-6.el8+7.noarch.rpm;
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
         sudo pip3 install ovsdbapp testresources os_xenapi setuptools_rust 'neutron-lib<=1.29.1';
+        sudo pip3 install git+https://code.engineering.redhat.com/gerrit/neutron@rhos-16.2-trunk-patches#egg=neutron;
         truncate --size 0 /home/cloud-user/networking-ovn/networking_ovn/tests/functional/requirements.txt;
         sudo mkdir /opt/stack;
         sudo chmod -R 777 /opt/stack;
@@ -76,10 +79,6 @@ dsvm-functional:
         sudo ln -s /usr/share/ovn/ovn-sb.ovsschema /usr/local/share/openvswitch/ovn-sb.ovsschema;
         sudo ln -s /usr/share/ovn/ovn-nb.ovsschema /usr/local/share/openvswitch/ovn-nb.ovsschema;
         export OVN_SRCDIR=/usr/share/ovn;
-        # package-installed pip seems to fail on empty master branch
-        source .tox/dsvm-functional/bin/activate
-        pip3 install git+https://code.engineering.redhat.com/gerrit/neutron@rhos-16.2-trunk-patches#egg=neutron
-        deactivate
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
 # hostvars[inventory_hostname] is a special ansible variable to get all host's facts
