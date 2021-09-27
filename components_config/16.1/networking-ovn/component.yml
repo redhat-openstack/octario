@@ -51,7 +51,7 @@ dsvm-functional:
         sudo sed -i -e "\$asslverify=0" /etc/dnf/dnf.conf;
         sudo dnf install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/python-tox/2.9.1/6.el8+7/noarch/python3-tox-2.9.1-6.el8+7.noarch.rpm;
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
-        sudo pip3 install ovsdbapp testresources os_xenapi 'neutron<=15.3.2' setuptools_rust 'neutron-lib<=1.29.1';
+        sudo pip3 install ovsdbapp testresources os_xenapi setuptools_rust 'neutron-lib<=1.29.1';
         truncate --size 0 /home/cloud-user/networking-ovn/networking_ovn/tests/functional/requirements.txt;
         sudo mkdir /opt/stack;
         sudo chmod -R 777 /opt/stack;
