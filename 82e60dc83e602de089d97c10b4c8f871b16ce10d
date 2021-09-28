@@ -16,6 +16,23 @@
       "message": "Tests running and passing.\n\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-16.1-dsvm-functional-rhos/387/testReport/\n\nand\n\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/309/testReport/\n\nwith the 16.2 igmp snooping test that was previously failing being the only failure.",
       "revId": "82e60dc83e602de089d97c10b4c8f871b16ce10d",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2099a0_48f88192",
+        "filename": "components_config/16.1/networking-ovn/component.yml",
+        "patchSetId": 14
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003309
+      },
+      "writtenOn": "2021-09-28T00:23:52Z",
+      "side": 1,
+      "message": "This is because pip 9.0.3 has an issue where when it tries to check the revision number of the 16.x-trunk-patches branch, it fails due to git rev-parse HEAD exiting with error.\n\nUltimately, I would have preferred removing the neutron handling from this and just have neutron installed via the requirements.txt in python-networking-ovn being modified to the git checkout, but it looks like octario monkeys with the requirements.txt files, and I gave up trying to mess with it and just upgraded the system pip.",
+      "revId": "82e60dc83e602de089d97c10b4c8f871b16ce10d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
