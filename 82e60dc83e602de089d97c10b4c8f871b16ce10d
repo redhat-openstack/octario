@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acbe1d44_08636ca6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003309
+      },
+      "writtenOn": "2021-09-28T00:18:38Z",
+      "side": 1,
+      "message": "Tests running and passing.\n\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-16.1-dsvm-functional-rhos/387/testReport/\n\nand\n\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/309/testReport/\n\nwith the 16.2 igmp snooping test that was previously failing being the only failure.",
+      "revId": "82e60dc83e602de089d97c10b4c8f871b16ce10d",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
