@@ -63,7 +63,7 @@ dsvm-functional:
         mysql -u root --password=secretmysql -e "GRANT ALL PRIVILEGES ON *.* TO 'openstack_citest';";
         mysql -uroot -psecretmysql -h127.0.0.1 -e "grant all privileges on openstack_citest.* to openstack_citest@localhost identified by 'openstack_citest';";
         mysql -u root --password=secretmysql -e "FLUSH PRIVILEGES;";
-        sudo pip install pluggy==0.3.1;
+        sudo pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org pluggy==0.3.1;
         tox --sitepackages -v -e dsvm-functional 2>&1 | tee ../logs/testrun.log;
 
 
