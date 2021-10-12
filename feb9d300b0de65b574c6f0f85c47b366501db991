@@ -16,6 +16,23 @@
       "message": "Why? We have the package, we should use it.",
       "revId": "feb9d300b0de65b574c6f0f85c47b366501db991",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b87b5a4_fec6503f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-10-12T10:53:05Z",
+      "side": 1,
+      "message": "I\u0027ve proposed a revert.",
+      "revId": "feb9d300b0de65b574c6f0f85c47b366501db991",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
