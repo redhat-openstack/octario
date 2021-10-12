@@ -1,5 +1,5 @@
 pep8:
-    rpm_deps: [ pyflakes, python3-pep8, python3-flake8, python3-hacking ]
+    rpm_deps: [ bandit, pyflakes, python3-pep8, python3-flake8, python3-hacking ]
     remove_rpm: []
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
