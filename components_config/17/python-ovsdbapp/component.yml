@@ -1,0 +1,96 @@
+pep8:
+    rpm_deps: [ ]
+    remove_rpm: [ ]
+    archive_run: ''
+    run: >
+      git checkout -- test-requirements.txt requirements.txt;
+      tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+
+unittest:
+    rpm_deps: [ python3-cliff,
+                python3-requests-mock,
+                python3-os-testr,
+                python3-oslo-utils,
+                python3-openvswitch2.11,
+                python3-pyroute2,
+                python3-mock,
+                python3-oslotest,
+                python3-testresources, 
+                python3-testscenarios,
+                python3-pep8,
+                python3-flake8,
+                python3-ddt ]
+    remove_rpm: [ ]
+    archive_run: ''
+    run: >
+      tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
+
+functional:
+    rpm_deps: [ autoconf,
+                python3-os-testr,
+                python3-netaddr,
+                ovn2.12-vtep,
+                python3-oslotest,
+                ovn2.12-central,
+                ovn2.12-host,
+                automake,
+                python3-openvswitch2.11 ]
+    remove_rpm: [ ]
+    archive_run: ''
+    run: >
+      sed -i "s/OVS_SRCDIR.*/OVS_SRCDIR\=\/usr\/share\/openvswitch/g" tox.ini;
+      sed -i "s/OVN_SRCDIR.*/OVN_SRCDIR\=\/usr\/share\/ovn/g" tox.ini;
+      tox -v -e functional 2>&1 | tee ../logs/testrun.log;
+
+# hostvars[inventory_hostname] is a special ansible variable to get all host's facts
+# tester.component.tox_target can be one of the following: [unittest, pep8, dsvm-functional, api]
+
+# Common rpm deps needed for all tester types
+rpm_deps: [
+  gcc, git, python3-devel, python3-tox, python3-testrepository, python3-pip, python3-py,
+  python3-testscenarios, libffi-devel, openssl-devel, python3-virtualenv, python3-pluggy,
+  "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
+]
+
+# The rpms that shouldn't be installed on system, when running tests
+remove_rpm: [ "{{ hostvars[inventory_hostname][tester.component.tox_target]['remove_rpm'] }}" ]
+
+# Common pre-run steps used by all tester types
+neutron_virt_run_config:
+  run: >
+    set -o pipefail;
+    rpm -qa | sort > ../logs/installed-rpms.log;
+
+    truncate --size 0 requirements.txt;
+    truncate --size 0 test-requirements.txt;
+
+    sed -i "s/stestr/stestr-3/g" tox.ini;
+    sudo pip3 install tox;
+
+    {{ hostvars[inventory_hostname][tester.component.tox_target]['run'] }}
+
+  archive_run: |
+      {{ hostvars[inventory_hostname][tester.component.tox_target]['archive_run'] }}
+
+  archive:
+    - ../logs/functional-tests.tar.gz
+
+# NOTE: This is the main section. It must exist.
+test_config:
+  virt:
+    RedHat-8:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: []
+      run: "{{ neutron_virt_run_config.run }}"
+      archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"
+    default:
+      setup:
+        install: "{{ rpm_deps }}"
+        remove: "{{ remove_rpm }}"
+        enable_repos: []
+      run: "{{ neutron_virt_run_config.run }}"
+      archive: "{{ neutron_virt_run_config.archive }}"
+      archive_run: "{{ neutron_virt_run_config.archive_run }}"
