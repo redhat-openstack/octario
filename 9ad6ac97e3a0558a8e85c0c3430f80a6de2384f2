@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "676bb433_df63401c",
+        "filename": "components_config/17/nova/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1008948
+      },
+      "writtenOn": "2021-11-05T00:32:45Z",
+      "side": 1,
+      "message": "(later) OK, this is why we clone placement.",
+      "revId": "9ad6ac97e3a0558a8e85c0c3430f80a6de2384f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8aa2cca_69e3cc56",
+        "filename": "components_config/17/nova/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1008948
+      },
+      "writtenOn": "2021-11-05T00:32:45Z",
+      "side": 1,
+      "message": "I don\u0027t know the history of this but as of 16.1 we have a openstack-placement repo downstream for placement. I assume this was to pull placement from upstream to run nova against but since we have our own repo, I think we would want to use it instead in the CI.",
+      "revId": "9ad6ac97e3a0558a8e85c0c3430f80a6de2384f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db14047c_efe00a20",
+        "filename": "components_config/17/nova/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1008948
+      },
+      "writtenOn": "2021-11-05T00:32:45Z",
+      "side": 1,
+      "message": "For 17.0 this would be stable/wallaby branch (if there is some reason we should use upstream placement, see above) and for downstream placement it would be rhos-17.0-trunk-patches branch.",
+      "range": {
+        "startLine": 113,
+        "startChar": 28,
+        "endLine": 113,
+        "endChar": 40
+      },
+      "revId": "9ad6ac97e3a0558a8e85c0c3430f80a6de2384f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
