@@ -58,12 +58,12 @@
 # Note: no rhelosp-17.0 => use rhelosp-17 for rhos17
 - name: compute the test repositories prefix
   set_fact:
-     test_repo_prefix: |
-       {% if component.version|int == 17 %}
-         "rhelosp-{{ component.version }}"
-       {% else %}
-         "rhelosp-{{ component.version }}{{ (not '.' in component.version)|ternary('.0','') }}"
-       {% endif %}
+     test_repo_prefix: >-
+       {%- if component.version|int == 17 -%}
+         rhelosp-{{ component.version }}
+       {%- else -%}
+         rhelosp-{{ component.version }}{{ (not '.' in component.version)|ternary('.0','') }}
+       {%- endif -%}
 
 - name: enable test repositories
   become: yes
