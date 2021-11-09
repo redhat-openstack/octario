@@ -33,7 +33,7 @@ rpm_deps: [
   python3-requests,
   python3-psutil,
   python3-pysendfile,
-  pyxattr,
+  python3-pyxattr,
   mysql-devel,
   postgresql-devel,
   libffi-devel,
