@@ -55,9 +55,15 @@
 # -test-deps are the COPR test deps.
 # avoid use of yum_repository module because we would lose the ability
 # to use rhos-release logic, like repo locations. We want to avoid maintenance.
+# Note: no rhelosp-17.0 => use rhelosp-17 for rhos17
 - name: compute the test repositories prefix
   set_fact:
-     test_repo_prefix: "rhelosp-{{ component.version }}{{ (not '.' in component.version)|ternary('.0','') }}"
+     test_repo_prefix: |
+       {% if component.version|int == 17 %}
+         "rhelosp-{{ component.version }}"
+       {% else %}
+         "rhelosp-{{ component.version }}{{ (not '.' in component.version)|ternary('.0','') }}"
+       {% endif %}
 
 - name: enable test repositories
   become: yes
