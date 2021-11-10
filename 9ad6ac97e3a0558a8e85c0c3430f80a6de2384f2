@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10221db_1fa40008",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-11-10T11:27:37Z",
+      "side": 1,
+      "message": "I guess you need to remove the storage-related components which have been handled through https://review.gerrithub.io/c/redhat-openstack/octario/+/521332 ",
+      "revId": "9ad6ac97e3a0558a8e85c0c3430f80a6de2384f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "676bb433_df63401c",
