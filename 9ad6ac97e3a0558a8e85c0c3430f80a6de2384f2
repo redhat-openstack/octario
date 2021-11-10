@@ -18,6 +18,23 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97a1f54_ed78a33e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005261
+      },
+      "writtenOn": "2021-11-10T18:35:09Z",
+      "side": 1,
+      "message": "Can you drop the Nova jobs from this as we\u0027ve gone pure zuul from OSP 17 downstream.",
+      "revId": "9ad6ac97e3a0558a8e85c0c3430f80a6de2384f2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "676bb433_df63401c",
