@@ -16,6 +16,40 @@
       "message": "small comment: I think it\u0027s better to keep links to builds in Gerrit comments rather than the commit message",
       "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af6eb9bd_9c01033b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-11-15T16:25:49Z",
+      "side": 1,
+      "message": "Then let\u0027s amend the commit message before it\u0027s written in the history forever...",
+      "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0615e1_bb54cb51",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-11-15T16:25:49Z",
+      "side": 1,
+      "message": "Well, there should be a 17.0, otherwise we will need to have another \"if\" in case of a future 17.1. \nMaybe we need to ask who handles those repository to revisit this decision.",
+      "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
