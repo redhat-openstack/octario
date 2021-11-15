@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f1cfc9_e0fbf1f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2021-11-15T13:11:19Z",
+      "side": 1,
+      "message": "Indeed requirements.txt talks about boto3 and botocore, but it also includes boto (?), maybe it\u0027s needed too? Or maybe it\u0027s taken in as dependency of something else?",
+      "revId": "bc02f5e6654c2642b3e1870f347ccd0c4e27af71",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
