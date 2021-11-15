@@ -35,6 +35,42 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdbb9da_6ab3bbb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2021-11-15T17:24:32Z",
+      "side": 1,
+      "message": "Ack.\n\nC\u0026P here\n\nrhos 16.2 - tested: https://url.corp.redhat.com/glance-store-16-2-unit\nrhos 17   - tested: https://url.corp.redhat.com/glance-store-17-unit",
+      "parentUuid": "f73c87e3_fefde6cd",
+      "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f35793b_ca130ad7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2021-11-15T17:24:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af6eb9bd_9c01033b",
+      "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf0615e1_bb54cb51",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-15T16:25:49Z",
       "side": 1,
       "message": "Well, there should be a 17.0, otherwise we will need to have another \"if\" in case of a future 17.1. \nMaybe we need to ask who handles those repository to revisit this decision.",
+      "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1096490c_5a679278",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2021-11-15T17:24:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf0615e1_bb54cb51",
       "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
