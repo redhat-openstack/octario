@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73c87e3_fefde6cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004788
+      },
+      "writtenOn": "2021-11-15T16:04:34Z",
+      "side": 1,
+      "message": "small comment: I think it\u0027s better to keep links to builds in Gerrit comments rather than the commit message",
+      "revId": "377cdd17c7309b4617f0c3e4602dc0d958efbfd4",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
