@@ -111,7 +111,6 @@ rpm_deps: [
   python3-swiftclient,
   python3-oslo-sphinx,
   python3-os-testr,
-  python3-pep8,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
