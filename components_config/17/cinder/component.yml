@@ -151,7 +151,7 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: [ 'rhelosp-17-brew', 'rhelosp-17-trunk-brew', 'rhelosp-17-unittest' ]
+        enable_repos: [ 'rhelosp-17.0-brew', 'rhelosp-17.0-trunk-brew', 'rhelosp-17.0-unittest' ]
       run: "{{ cinder_virt_run_config.run }}"
       archive: "{{ cinder_virt_run_config.archive }}"
       archive_run: "{{ cinder_virt_run_config.archive_run }}"

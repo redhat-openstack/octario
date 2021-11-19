@@ -111,7 +111,6 @@ rpm_deps: [
   python3-swiftclient,
   python3-oslo-sphinx,
   python3-os-testr,
-  python3-pep8,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
@@ -137,5 +136,5 @@ test_config:
       setup:
         install: "{{ rpm_deps }}"
         remove: "{{ remove_rpm }}"
-        enable_repos: [ 'rhelosp-17-trunk-brew', 'rhelosp-17-unittest' ]
+        enable_repos: [ 'rhelosp-17.0-trunk-brew', 'rhelosp-17.0-unittest' ]
       run: "{{ virt_run_config.run }}"
