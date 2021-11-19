@@ -61,7 +61,6 @@ rpm_deps: [
   python3-paste-deploy,
   python3-routes,
   python3-httplib2,
-  python3-crypto,
   python3-iso8601,
   python3-oslo-config,
   python3-oslo-concurrency,
