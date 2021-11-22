@@ -9,7 +9,7 @@ pep8:
 
 
 unittest:
-    rpm_deps: [ python3-pep8, python3-cliff, python3-requests-mock, python3-webtest ]
+    rpm_deps: [ python3-cliff, python3-requests-mock, python3-webtest ]
     remove_rpm: [ python3-manila ]
     run: |
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
@@ -90,7 +90,6 @@ rpm_deps: [
   python3-oslo-sphinx,
   python3-fixtures,
   python3-subunit,
-  python3-pep8,
   python3-os-testr,
   python3-pycodestyle,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
