@@ -1,12 +1,12 @@
 ### This file is used by glance_store component jobs
 
 pep8:
-    rpm_deps: []
+    rpm_deps: [ python3-flake8 ]
     remove_rpm: [ openstack-glance ]
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
-        git checkout -- test-requirements.txt requirements.txt;
-        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+        sudo pip-3 install doc8>=0.6.0;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
 unittest:
