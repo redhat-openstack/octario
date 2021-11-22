@@ -3,8 +3,7 @@ pep8:
     remove_rpm: [ python3-manilaclient ]
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
-        git checkout -- test-requirements.txt requirements.txt;
-        tox -v -e pep8 2>&1 | tee ../logs/testrun.log;
+        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
     rpm_deps: [ python3-cliff, python3-requests-mock, python3-webtest, python3-warlock ]
