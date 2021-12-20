@@ -89,6 +89,7 @@ rpm_deps: [
   python3-cryptography,
   python3-cursive,
   openstack-glance,
+  python3-boto3,
 
   python3-hacking,
   python3-babel,
