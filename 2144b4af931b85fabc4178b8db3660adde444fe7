@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8930aa90_9dd8fc35",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016206
+      },
+      "writtenOn": "2022-01-17T13:44:07Z",
+      "side": 1,
+      "message": "Manually tested in:\n- https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-octavia-16.2-functional-rhos/4/\n- https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-octavia-16.1-functional-rhos/23/",
+      "revId": "2144b4af931b85fabc4178b8db3660adde444fe7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
