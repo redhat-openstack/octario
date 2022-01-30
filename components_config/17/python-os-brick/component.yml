@@ -2,7 +2,7 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ python3-pep8, pyflakes, python3-flake8, python3-hacking ]
+    rpm_deps: [ python3-flake8, python3-hacking ]
     remove_rpm: []
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
