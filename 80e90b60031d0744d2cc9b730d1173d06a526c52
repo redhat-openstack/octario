@@ -16,6 +16,23 @@
       "message": "The trunk repository should exist on every component.",
       "revId": "80e90b60031d0744d2cc9b730d1173d06a526c52",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ef1963_ce48b08d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017622
+      },
+      "writtenOn": "2022-01-31T16:22:47Z",
+      "side": 1,
+      "message": "I triggered the osp16.2 ovn functional job [1] with this patch:\na) build #396 without any networking patch, so it has been executed on the latest osp16.2 compose - it passed\nb) build #397 with my networking-ovn patch [2] - it passed\n\nI think b) has been performed correctly because the output of the pip freeze command shows my networking-ovn patch was installed. You can see the log at [3] (search for \"#egg\u003dnetworking_ovn\"). My understanding is that this should be enough to run this job, as it only tests changes in networking-ovn.\nHowever, I have two concerns I would like to share with you:\ni) The rhelosp-16.2-trunk-brew repo can\u0027t be enabled because it\u0027s not included in rhos-release-16.2.repo; the job tries to enable it, which can\u0027t be done, but the job doesn\u0027t fail. Can this be problematic? See \"Error: No matching repo to modify: rhelosp-16.2-trunk-brew\" at [4].\nii) The patching stage uploads the modified networking-ovn rpm to the patched-rpms repo, but that repo is not enabled later, during the test execution stage. This looks concerning to me.\n\n\n\nIf you think this patch is correct, I\u0027ll remove the WIP from the commit message.\nDisclaimers:\nI haven\u0027t tested with 16.1, but it should not affect.\nI haven\u0027t tested with 17, maybe I should.\nThe octario gate fails, but that happens from long ago.\n\n\n[1] https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/\n[2] https://code.engineering.redhat.com/gerrit/c/networking-ovn/+/304799\n[3] https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/397/artifact/infrared/446d1cc34297847a4ca7940862e74718-tester-0/home/cloud-user/networking-ovn/.tox/dsvm-functional/log/dsvm-functional-3.log\n[4] https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/view/DFG/view/network/view/networking-ovn/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/397/artifact/.sh/ir-octario-dsvm-functional.log",
+      "revId": "80e90b60031d0744d2cc9b730d1173d06a526c52",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
