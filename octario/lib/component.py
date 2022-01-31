@@ -137,7 +137,7 @@ class ComponentUtils(object):
             if not self.rhos_release:
                 self.rhos_release = \
                     self.__get_rhos_version_from_branch(self.branch)
-            if 'trunk' in self.branch:
+            if 'trunk' in self.branch and float(self.rhos_release) <= 16.1:
                 self.rhos_release_repo = str(self.rhos_release) + '-trunk'
             else:
                 self.rhos_release_repo = str(self.rhos_release)
