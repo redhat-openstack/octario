@@ -2,7 +2,7 @@
 
 # Testers. Each tester specifies RPMs to install, RPMs to remove and a set of commands that include the invocation of the tester.
 pep8:
-    rpm_deps: [ python3-hacking, python3-os-brick ]
+    rpm_deps: []
     remove_rpm: [ python3-cinder ]
     # for python-os-win see https://projects.engineering.redhat.com/browse/RCM-21021
 
