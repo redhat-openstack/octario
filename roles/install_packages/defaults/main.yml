@@ -1,3 +1,4 @@
+cert_packages: [ ca-certificates ]
 logs_packages: [ subunit-filters, python-junitxml ]
 logs_packages_python3: [ subunit-filters, python3-junitxml ]
 pip_package: [ python-pip ]
