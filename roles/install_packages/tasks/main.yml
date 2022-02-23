@@ -143,6 +143,15 @@
   register: task_result
   until: task_result is success
 
+- name: Install certificates
+  become: yes
+  retries: 3
+  delay: 10
+  become_method: sudo
+  yum: name="{{ cert_packages }}" state=present
+  register: task_result
+  until: task_result is success
+
 - name: Install packages needed for converting and collecting the logs - python3
   become: yes
   retries: 3
