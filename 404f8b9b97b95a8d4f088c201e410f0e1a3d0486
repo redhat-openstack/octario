@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16488853_c34c1a9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-02-23T14:39:31Z",
+      "side": 1,
+      "message": "the package has to be installed on the target VM",
+      "revId": "404f8b9b97b95a8d4f088c201e410f0e1a3d0486",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
