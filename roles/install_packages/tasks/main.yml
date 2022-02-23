@@ -143,6 +143,16 @@
   register: task_result
   until: task_result is success
 
+- name: Install certificates on RedHat-7
+  become: yes
+  retries: 3
+  delay: 10
+  become_method: sudo
+  yum: name="{{ cert_packages }}" state=latest
+  when: "test_config.virt['RedHat-7'] | default(false)"
+  register: task_result
+  until: task_result is success
+
 - name: Install packages needed for converting and collecting the logs - python3
   become: yes
   retries: 3
