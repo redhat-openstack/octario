@@ -5,6 +5,7 @@ pep8:
     remove_rpm: [ openstack-glance ]
     run: >
        git checkout -- test-requirements.txt  requirements.txt;
+       yum install -y ca-certificates;
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
