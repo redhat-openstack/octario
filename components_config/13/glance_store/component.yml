@@ -20,6 +20,7 @@ unittest:
 
 # Common rpm deps needed for all tester types
 rpm_deps: [
+  ca-certificates,
   git,
   openstack-glance,
   python-tox,
