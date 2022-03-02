@@ -9,7 +9,7 @@ pep8:
 
 
 unittest:
-    rpm_deps: [ ]
+    rpm_deps: [ python3-ddt ]
     remove_rpm: [ python3-glanceclient ]
     run: |
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
