@@ -29,7 +29,7 @@ tempest:
 # Common rpm deps needed for all tester types
 rpm_deps: [
   git,
-  bandit,
+  bandit-1.0.1,
   gcc,
   mariadb-devel,
   MySQL-python,
