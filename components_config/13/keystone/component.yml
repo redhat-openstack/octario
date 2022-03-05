@@ -6,12 +6,12 @@ pep8:
         python-bashate,
         python-hacking,
         python-flake8,
-        bandit
     ]
 
     remove_rpm: []
 
     run:
+        sudo pip install bandit==1.1.0;
         /usr/bin/sed -i 's/^install_command/#&/' tox.ini;
         /usr/bin/sed -i 's/.*\.\[/#&/' tox.ini;
         /usr/bin/sed -i 's/^deps/#&/' tox.ini;
