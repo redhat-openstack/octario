@@ -29,7 +29,6 @@ tempest:
 # Common rpm deps needed for all tester types
 rpm_deps: [
   git,
-  bandit,
   gcc,
   mariadb-devel,
   MySQL-python,
@@ -69,6 +68,8 @@ sahara_virt_run_config:
 
     truncate --size 0 requirements.txt;
     truncate --size 0 test-requirements.txt;
+
+    sudo pip install bandit==1.1.0;
 
     echo "WARN:	Patching source for keeping test coverage while not supporting all plugins from upstream in the release.";
     sed -i'.bak' -e "/^version/d" setup.cfg;

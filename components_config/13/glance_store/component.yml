@@ -1,9 +1,10 @@
 ### This file is used by glance_store component jobs
 
 pep8:
-    rpm_deps: [ bandit ]
+    rpm_deps: []
     remove_rpm: [ openstack-glance ]
     run: >
+       sudo pip install bandit==1.1.0;
        git checkout -- test-requirements.txt  requirements.txt;
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
