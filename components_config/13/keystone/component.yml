@@ -6,7 +6,7 @@ pep8:
         python-bashate,
         python-hacking,
         python-flake8,
-        bandit
+        bandit-1.0.1 
     ]
 
     remove_rpm: []
