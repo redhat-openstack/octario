@@ -7,7 +7,7 @@ unittest:
       tox --sitepackages -v -epy27 -- --xunit-file=nosetests.xml --with-xunit test/unit 2>&1 | tee ../logs/testrun.log;
 
 pep8:
-  rpm_deps: [ bandit, pyflakes, python-pep8, python-flake8, python-hacking ]
+  rpm_deps: [ bandit-1.0.1, pyflakes, python-pep8, python-flake8, python-hacking ]
   run: >
       git checkout -- test-requirements.txt requirements.txt;
       tox  --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
