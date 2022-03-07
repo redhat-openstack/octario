@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376cfdf6_ebd9f729",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-03-07T18:40:13Z",
+      "side": 1,
+      "message": "typo: requirements",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "b8858c50bce47d69bf73395d639233a1edce9bce",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef8d67a4_9c2a609b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-03-07T18:40:13Z",
+      "side": 1,
+      "message": "Install the required python-flake8 package, required as well (by the pep8 target) (?)",
+      "revId": "b8858c50bce47d69bf73395d639233a1edce9bce",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
