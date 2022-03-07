@@ -33,6 +33,24 @@
       "message": "there should be just one version of bandit package in the repositories used by this job, and it\u0027s called bandit, not bandit-1.0.1. No need to change thsi line",
       "revId": "a22811e0702a2d528c205c9f65bb90c84b18e181",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8b42248_3e95fd76",
+        "filename": "components_config/13/glance_store/component.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-03-07T15:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cc2ad1e_dc1568b2",
+      "revId": "a22811e0702a2d528c205c9f65bb90c84b18e181",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
