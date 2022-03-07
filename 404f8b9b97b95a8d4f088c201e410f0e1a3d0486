@@ -16,6 +16,23 @@
       "message": "the package has to be installed on the target VM",
       "revId": "404f8b9b97b95a8d4f088c201e410f0e1a3d0486",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f328ef_2eff1709",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-03-07T08:57:38Z",
+      "side": 1,
+      "message": "For reference, this change was abandoned because it was replaced by https://review.gerrithub.io/c/redhat-openstack/octario/+/533624. \n\nTechnical note: maybe it could have been possible to avoid the creation of a duplicate by editing the commit message of this review and adding an appropriate Change-Id header.",
+      "revId": "404f8b9b97b95a8d4f088c201e410f0e1a3d0486",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
