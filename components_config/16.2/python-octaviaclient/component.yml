@@ -1,5 +1,6 @@
 pep8:
-    rpm_deps: [python-flake8]
+    rpm_deps: [ python-flake8,
+                libffi-devel ]
     remove_rpm: []
     run: >
         git checkout -- test-requirements.txt requirements.txt;
