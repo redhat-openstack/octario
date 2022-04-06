@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f621b952_20a927b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012843
+      },
+      "writtenOn": "2022-04-06T14:49:31Z",
+      "side": 1,
+      "message": "Failure doesn\u0027t look related to patch:\n\nkeystoneauth1.exceptions.http.Unauthorized: Invalid username or password (Disable insecure_debug mode to suppress these details.) (HTTP 401) (Request-ID: req-18d6aab7-2f47-4c84-b38e-6665fa828ee5)\n\n...",
+      "revId": "68db934d4f255827b6dc513aa2e6a6cf4bc63995",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
