@@ -1,7 +1,7 @@
 ### This file is used by python-openstackclient component jobs
 
 pep8:
-    rpm_deps: [ pyflakes, python-flake8, bandit ]
+    rpm_deps: [ pyflakes, python-flake8, bandit, libffi-devel ]
     remove_rpm: [ python-openstackclient ]
     run: >
        tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
