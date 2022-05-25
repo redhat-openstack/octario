@@ -1,7 +1,7 @@
 ### This file is used by manila component jobs
 
 pep8:
-    rpm_deps: [ python3-flake8, postgresql-devel, postgresql, openssl-devel ]
+    rpm_deps: [ python3-flake8, postgresql-devel, postgresql, openssl-devel, python3-hacking ]
     remove_rpm: [ python3-manila ]
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
@@ -9,7 +9,7 @@ pep8:
 
 
 unittest:
-    rpm_deps: [ python3-cliff, python3-requests-mock, python3-webtest ]
+    rpm_deps: [ python3-cliff, python3-requests-mock, python3-webtest, python3-hacking ]
     remove_rpm: [ python3-manila ]
     run: |
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
