@@ -92,6 +92,7 @@ rpm_deps: [
   python3-subunit,
   python3-os-testr,
   python3-pycodestyle,
+  python3-hacking,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
