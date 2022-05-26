@@ -11,8 +11,12 @@ pep8:
     archive_run: ''
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
-        sudo pip-3 install hacking==4.1.0;
-        sudo pip-3 install doc8>=0.6.0;
+        sudo pip3 install \
+           -c https://releases.openstack.org/constraints/upper/wallaby \
+           -r test-requirements.txt.bkp \
+           -r requirements.txt.bkp \
+           hacking \
+           doc8;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 unittest:
@@ -28,9 +32,12 @@ unittest:
     ]
 
     run: |
-        sudo pip-3 install --upgrade pip;
-        sudo pip-3 install setuptools_rust;
-        sudo pip-3 install moto[all];
+        sudo pip3 install \
+           -c https://releases.openstack.org/constraints/upper/wallaby \
+           -r test-requirements.txt.bkp \
+           -r requirements.txt.bkp \ 
+           setuptools_rust \
+           moto;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 
@@ -132,9 +139,12 @@ cinder_virt_run_config:
   run: |
     set -o pipefail
     rpm -qa | sort > ../logs/installed-rpms.log
+    cp test-requirements.txt test-requirements.txt.bkp
+    cp requirements.txt requirements.txt.bkp
     truncate --size 0 requirements.txt
     truncate --size 0 test-requirements.txt
 
+    sudo pip3 install --upgrade pip;
     sudo pip3 install tox
     sed -i "s/stestr/stestr-3/g" tox.ini
 
@@ -166,3 +176,4 @@ test_config:
       run: "{{ cinder_virt_run_config.run }}"
       archive: "{{ cinder_virt_run_config.archive }}"
       archive_run: "{{ cinder_virt_run_config.archive_run }}"
+                  
