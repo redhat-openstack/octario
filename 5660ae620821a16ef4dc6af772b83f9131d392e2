@@ -16,6 +16,23 @@
       "message": "verified  on PSI VM",
       "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d70ac517_ddaec460",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-05-26T17:15:53Z",
+      "side": 1,
+      "message": "Are those lines still needed? I think they were  added when bumping the moto dependency, but they may not be needed anymore.",
+      "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
