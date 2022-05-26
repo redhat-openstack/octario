@@ -29,8 +29,8 @@ unittest:
 
     run: |
         sudo pip-3 install --upgrade pip;
-        sudo pip-3 install setuptools_rust;
-        sudo pip-3 install moto[all];
+        sudo pip-3 install -U --no-deps setuptools_rust;
+        sudo pip-3 install -U --no-deps moto==2.0.1;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
 
