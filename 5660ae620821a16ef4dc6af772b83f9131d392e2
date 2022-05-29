@@ -33,6 +33,24 @@
       "message": "Are those lines still needed? I think they were  added when bumping the moto dependency, but they may not be needed anymore.",
       "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2259cebc_3df5b4d6",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-05-29T06:47:58Z",
+      "side": 1,
+      "message": "it is not working without those lines:\n    ModuleNotFoundError: No module named \u0027setuptools_rust\u0027\n\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-storage-cinder-17.0-unit-rhos/7/console",
+      "parentUuid": "d70ac517_ddaec460",
+      "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
