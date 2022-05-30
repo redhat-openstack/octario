@@ -51,6 +51,24 @@
       "parentUuid": "d70ac517_ddaec460",
       "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bd7fd8_5e04155b",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-05-30T10:37:13Z",
+      "side": 1,
+      "message": "Thanks for checking, but we are still installing too many packages from pip. See cryptography which is bumped to 37.0.2 , boto3 to 1.23.10, which should be at most 3.4.6 and 1.17.26 respectively, and there are many others. They are installed when installing moto, I\u0027m sure there is a way to find the right combination.",
+      "parentUuid": "2259cebc_3df5b4d6",
+      "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
