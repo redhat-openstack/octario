@@ -74,3 +74,12 @@
       >> /var/log/yum.log
     {% endif %}
   changed_when: true
+
+- name: enable trunk repositories
+  become: yes
+  shell: |
+      dnf config-manager --set-enabled \
+      rhelosp-{{ component.version }}-trunk-brew \
+      >> /var/log/dnf.log
+  when: "'trunk' in component_repo"
+  ignore_errors: true
