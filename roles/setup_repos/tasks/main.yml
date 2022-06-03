@@ -74,3 +74,12 @@
       >> /var/log/yum.log
     {% endif %}
   changed_when: true
+
+- name: enable trunk-brew repositories in case of osp17
+  become: yes
+  shell: |
+      dnf repolist disabled | awk '{print $1}'| grep trunk-brew | \
+      xargs dnf config-manager --set-enabled \
+      >> /var/log/dnf.log
+  when: '17-trunk'==component.repo or '17.0-trunk'==component.repo
+  ignore_errors: true
