@@ -19,7 +19,7 @@ unittest:
                 python3-mock,
                 python3-oslotest,
                 python3-neutron-lib-tests,
-                python3-testresources, 
+                python3-testresources,
                 python3-testscenarios,
                 python3-pep8,
                 python3-designateclient,
