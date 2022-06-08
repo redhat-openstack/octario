@@ -69,6 +69,24 @@
       "parentUuid": "2259cebc_3df5b4d6",
       "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7afcae1e_6b2176c8",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-06-08T08:32:56Z",
+      "side": 1,
+      "message": "Indeed, great point. I think it worthwhile to ask it for new Zuul jobs because this unittest job will be replaced by RPM based unittest job based on Zuul. Testing of RPM roles are in a final stage.",
+      "parentUuid": "b9bd7fd8_5e04155b",
+      "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
