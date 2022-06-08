@@ -87,6 +87,24 @@
       "parentUuid": "b9bd7fd8_5e04155b",
       "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d297e77e_75561728",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-06-08T08:46:32Z",
+      "side": 1,
+      "message": "I\u0027d argue that\u0027s not relevant here, because the same rules will apply. moto is not available as package so it will need to be overridden (and I hope the new system allows for overrides). We need a solution anyway which will be reused in the new jobs.\n\nSo let\u0027s fix it for now. Again: we need to trim down the amount of additional packages installed from pip which overrides the RPM ones, and we need the fix now.",
+      "parentUuid": "7afcae1e_6b2176c8",
+      "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
