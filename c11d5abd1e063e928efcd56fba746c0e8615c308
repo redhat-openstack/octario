@@ -16,6 +16,46 @@
       "message": "Patch verified here:\nhttps://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-neutron-17.0-dsvm-functional-rhos/65\n\nThe job fails, but it is due to a pending backport:\nhttps://review.opendev.org/c/openstack/neutron/+/844609",
       "revId": "c11d5abd1e063e928efcd56fba746c0e8615c308",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6080ce95_447a71a3",
+        "filename": "components_config/17/neutron/component.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-06-08T18:34:28Z",
+      "side": 1,
+      "message": "nit:whilespace",
+      "range": {
+        "startLine": 22,
+        "startChar": 38,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "c11d5abd1e063e928efcd56fba746c0e8615c308",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310a1340_0bd9f159",
+        "filename": "roles/setup_repos/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-06-08T18:34:28Z",
+      "side": 1,
+      "message": "probably better to specify what exactly have to be enabled. E.g\ncomponents_config/17/swift/component.yml:46:enable_repos: [\u0027rhelosp-17.0-trunk-brew\u0027, \u0027rhelosp-17.0-unittest\u0027]",
+      "revId": "c11d5abd1e063e928efcd56fba746c0e8615c308",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
