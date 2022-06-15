@@ -55,7 +55,7 @@ dsvm-functional:
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
         sudo pip3 install ovsdbapp testresources os_xenapi setuptools_rust 'neutron-lib<=1.29.1';
         export GIT_SSL_NO_VERIFY=true;
-        git clone https://code.engineering.redhat.com/gerrit/neutron.git;
+        git clone http://git.host.prod.eng.bos.redhat.com/git/neutron.git;
         pushd neutron;
         git checkout origin/rhos-16.1-trunk-patches;
         sudo pip3 install .;
