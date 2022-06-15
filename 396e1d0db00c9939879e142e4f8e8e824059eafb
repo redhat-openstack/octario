@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7fd4f0_48eec3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2022-06-15T17:03:05Z",
+      "side": 1,
+      "message": "Attention reviewers, there is another patch proposed that fixes the same: https://review.gerrithub.io/c/redhat-openstack/octario/+/539863",
+      "revId": "396e1d0db00c9939879e142e4f8e8e824059eafb",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
