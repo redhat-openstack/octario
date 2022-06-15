@@ -35,13 +35,12 @@ unittest:
         sudo pip3 install SQLAlchemy==1.2.18;
         tox --sitepackages -v -e py36 2>&1 | tee ../logs/testrun.log;
 
-# Install ovsdbapp from PyPi to get ovsdbapp.tests as the package is currently not available
 dsvm-functional:
     rpm_deps: [ openstack-neutron-openvswitch, python3-testresources,
                 python3-oslotest, nmap-ncat, ebtables, openstack-selinux,
                 mysql-server, python3-novaclient, python3-keystonemiddleware, rust, cargo,
                 psmisc, nfs-utils, selinux-policy, python3-os-testr, python3-oslo-rootwrap,
-                python3-ovsdbapp-tests, python3-neutron-lib-tests, openvswitch-ovn-common,
+                python3-neutron-lib-tests, openvswitch-ovn-common,
                 openvswitch-ovn-central, openvswitch-ovn-host, openvswitch-ovn-vtep,
                 python3-octavia-lib, python3-tooz ]
     remove_rpm: []
@@ -53,8 +52,9 @@ dsvm-functional:
         sudo sed -i -e "\$asslverify=0" /etc/dnf/dnf.conf;
         sudo dnf install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/python-tox/2.9.1/6.el8+7/noarch/python3-tox-2.9.1-6.el8+7.noarch.rpm;
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
-        sudo pip3 install ovsdbapp testresources os_xenapi setuptools_rust 'neutron-lib<=1.29.1';
+        sudo pip3 install testresources os_xenapi setuptools_rust 'neutron-lib<=1.29.1';
         export GIT_SSL_NO_VERIFY=true;
+        sudo pip3 install git+http://git.host.prod.eng.bos.redhat.com/git/python-ovsdbapp.git@rhos-16.1-trunk-patches#egg=ovsdbapp;
         git clone http://git.host.prod.eng.bos.redhat.com/git/neutron.git;
         pushd neutron;
         git checkout origin/rhos-16.1-trunk-patches;
