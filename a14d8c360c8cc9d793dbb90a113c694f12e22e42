@@ -16,6 +16,23 @@
       "message": "Verified https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/507/artifact/.sh/ir-octario-dsvm-functional.log",
       "revId": "a14d8c360c8cc9d793dbb90a113c694f12e22e42",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d047fe25_1e9712c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003309
+      },
+      "writtenOn": "2022-06-16T16:18:57Z",
+      "side": 1,
+      "message": "Not sure what happened to the old url and if it was taken down on purpose or it\u0027s an infra issue, but the old one doesn\u0027t work and the new one does, so +1 from me. Working \u003e Not Working :p",
+      "revId": "a14d8c360c8cc9d793dbb90a113c694f12e22e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
