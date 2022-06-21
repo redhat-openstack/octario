@@ -54,6 +54,7 @@ rpm_deps: [
   python3-testtools,
   python3-os-testr,
   python3-pycodestyle,
+  python3-tenacity,
   "{{ hostvars[inventory_hostname][tester.component.tox_target]['rpm_deps'] }}"
 ]
 
