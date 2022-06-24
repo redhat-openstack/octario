@@ -6,7 +6,6 @@ pep8:
     remove_rpm: []
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
-        sudo pip-3 install hacking==1.1.0;
         sudo pip-3 install doc8>=0.6.0;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
@@ -47,6 +46,7 @@ rpm_deps: [
 
   python3-retrying,
   python3-oslo-service,
+  python3-tenacity,
 
   python3-oslotest,
   python3-testrepository,
