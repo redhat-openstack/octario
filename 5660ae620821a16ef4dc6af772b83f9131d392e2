@@ -105,6 +105,24 @@
       "parentUuid": "7afcae1e_6b2176c8",
       "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dc014ac_02256b32",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-06-24T05:54:08Z",
+      "side": 1,
+      "message": "Installing moto from pip upgrades chriptorrpahy to v \u003e 36 and it happens also in upstream job (e.g.\nhttps://zuul.opendev.org/t/openstack/build/96273e0aaccf4198a851f519cb87b33a/console)\ndespite the ceiling specified by the https://opendev.org/openstack/requirements/src/branch/stable/wallaby/upper-constraints.txt\n\nSeems we can merge this change to fix the job and decide whether to ask to package moto with cryptography at pinned version.",
+      "parentUuid": "d297e77e_75561728",
+      "revId": "5660ae620821a16ef4dc6af772b83f9131d392e2",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
