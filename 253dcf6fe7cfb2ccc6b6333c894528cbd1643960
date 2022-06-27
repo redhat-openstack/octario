@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "519f15c2_2c31bb01",
+        "filename": "components_config/17/python-os-brick/component.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-06-27T21:29:30Z",
+      "side": 1,
+      "message": "requirements.txt.bkp and test-requirements.txt.bkp",
+      "revId": "253dcf6fe7cfb2ccc6b6333c894528cbd1643960",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
