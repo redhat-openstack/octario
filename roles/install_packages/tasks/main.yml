@@ -52,7 +52,9 @@
     set -euo pipefail
     {{ dnf_bin }} -y module disable virt:rhel
     {{ dnf_bin }} -y module enable virt:{{ ansible_distribution_version }} || {{ dnf_bin }} -y module enable virt:av
-  when: test_config.virt['RedHat-8'] | default(false)
+  when:
+    - test_config.virt['RedHat-8'] | default(false)
+    - ansible_distribution_major_version == '8'
 
 - name: Install test dependencies RPMs needed to run the tests
   become: yes
@@ -159,6 +161,9 @@
   delay: 10
   become_method: sudo
   yum: name="{{ logs_packages_python3 }}" state=present
-  when: "convert_fetch_logs | default(False) and test_config.virt['RedHat-8'] | default(false)"
+  when:
+    - convert_fetch_logs | default(False)
+    - (test_config.virt['RedHat-8'] | default(false) or test_config.virt['RedHat-9'] | default(false))
+    - ansible_distribution_major_version is version("8", ">=")
   register: task_result
   until: task_result is success
