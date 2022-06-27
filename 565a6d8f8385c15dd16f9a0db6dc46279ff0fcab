@@ -22,6 +22,30 @@
       },
       "revId": "565a6d8f8385c15dd16f9a0db6dc46279ff0fcab",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6700e1f_8ee2a78e",
+        "filename": "components_config/17/python-os-brick/component.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-06-27T21:01:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7448979f_30a517cc",
+      "range": {
+        "startLine": 9,
+        "startChar": 29,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "565a6d8f8385c15dd16f9a0db6dc46279ff0fcab",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
