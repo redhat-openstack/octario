@@ -49,6 +49,7 @@ rpm_deps: [
   libxslt-devel,
   libxml2-devel,
 
+  python3-jmespath,
 
   python3-testtools,
   python3-coverage,
