@@ -53,6 +53,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d43f7c69_6e93b935",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-06-28T08:28:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99a89410_a21f277e",
+      "revId": "7f22091fdaacdbea4c1ef0c0a28512ee1ececed9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3de50522_59773b6c",
