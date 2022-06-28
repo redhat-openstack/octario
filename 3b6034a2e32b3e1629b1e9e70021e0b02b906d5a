@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72709f5_77a4296c",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-06-28T09:15:17Z",
+      "side": 1,
+      "message": "and requirements.txt.bkp too, not just test-requirements.txt.bkp",
+      "revId": "3b6034a2e32b3e1629b1e9e70021e0b02b906d5a",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

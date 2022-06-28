@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "351862bb_3da204f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-06-28T09:15:17Z",
+      "side": 1,
+      "message": "Which RPMs exactly? It seems moto is not going to be packaged, or is it?",
+      "parentUuid": "90607b9e_e91f3d43",
+      "revId": "c5fe497c16ea00b8547867eb02e1fc306ddebff3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfe35342_97ec8444",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-06-28T08:32:31Z",
       "side": 1,
       "message": "https://url.corp.redhat.com/log \n\n2 problems:\n1) oslo-vmware 3.8.1 requires lxml\u003e\u003d4.5.0, but you have lxml 4.2.3 which is incompatible.\n\n2) oslo-service 2.5.1 requires greenlet\u003e\u003d0.4.15, but you have greenlet 0.4.13 which is incompatible.",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "c5fe497c16ea00b8547867eb02e1fc306ddebff3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5c7547_de676893",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-06-28T09:15:17Z",
+      "side": 1,
+      "message": "It\u0027s only passing test-requirements, not requirements, and moto \u003e\u003d 3 is being installed",
+      "parentUuid": "cfe35342_97ec8444",
       "range": {
         "startLine": 14,
         "startChar": 35,
