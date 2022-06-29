@@ -105,6 +105,30 @@
       },
       "revId": "c5fe497c16ea00b8547867eb02e1fc306ddebff3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "587599ab_9fb9aa03",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-06-29T09:39:31Z",
+      "side": 1,
+      "message": "Interesting enough, moto is unconstrainted; does that line requires  --upgrade  ?\n\nAnd what about unifying the two lines?\n\nsudo pip3 install r requirements.txt.bkp -r test-requirements.txt.bkp setuptools_rust moto;",
+      "parentUuid": "ace33449_1c72bd03",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "c5fe497c16ea00b8547867eb02e1fc306ddebff3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
