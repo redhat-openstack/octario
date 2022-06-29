@@ -81,6 +81,30 @@
       },
       "revId": "c5fe497c16ea00b8547867eb02e1fc306ddebff3",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace33449_1c72bd03",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-06-29T09:13:12Z",
+      "side": 1,
+      "message": "it was done in https://review.gerrithub.io/c/redhat-openstack/octario/+/538729/8\nand it causes a problem (https://url.corp.redhat.com/rpm-pip-mix).\nInstalling rpms and pip in this case is not working.",
+      "parentUuid": "0f5c7547_de676893",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "c5fe497c16ea00b8547867eb02e1fc306ddebff3",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
