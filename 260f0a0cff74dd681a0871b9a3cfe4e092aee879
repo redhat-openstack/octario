@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be09f0af_c0f8a881",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 14
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-07-01T08:56:37Z",
+      "side": 1,
+      "message": "Run it gain to show. All options leat to problems. I tried them manually on a VM.\n\nHere happens without --upgrade. \nhttps://url.corp.redhat.com/2requirement-files-with-setuptools\n\n\nBottom line: while mixing RPMs with PIP one have no real control.",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 95
+      },
+      "revId": "260f0a0cff74dd681a0871b9a3cfe4e092aee879",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
