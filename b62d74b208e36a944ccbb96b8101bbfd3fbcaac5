@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5764220e_d236a1e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-07-05T08:54:57Z",
+      "side": 1,
+      "message": "Should the commit message be updated a bit?",
+      "revId": "b62d74b208e36a944ccbb96b8101bbfd3fbcaac5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d2594e_05c2b0b6",
+        "filename": "components_config/17/cinder/component.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-07-05T08:54:57Z",
+      "side": 1,
+      "message": "I was wondering if we really need this now, or the version of pip is good enough.",
+      "revId": "b62d74b208e36a944ccbb96b8101bbfd3fbcaac5",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
