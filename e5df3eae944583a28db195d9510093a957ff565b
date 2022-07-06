@@ -51,6 +51,24 @@
       "parentUuid": "437a2df0_a1febda8",
       "revId": "e5df3eae944583a28db195d9510093a957ff565b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2c0b924_93d063e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-07-06T21:51:41Z",
+      "side": 1,
+      "message": "The appropriate fix would be to bump the greenlet RPM, but that may cause other problems (or maybe not). \nIf you implemented the check you just described, this job would fail with no hopes.\nThat\u0027s why I\u0027m trying to see if by removing the conflicting dependencies here we can reduce the amount of pip packages needed by the unfortunately unpackaged moto.",
+      "parentUuid": "135147f3_287806b0",
+      "revId": "e5df3eae944583a28db195d9510093a957ff565b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
