@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b488d6_fe40452b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-07-06T21:16:01Z",
+      "side": 1,
+      "message": "ok. It works \n\nhttps://url.corp.redhat.com/9d4291e\nhttps://url.corp.redhat.com/2f9d4b6\n\nwith the last patch. We can merge it now.\n",
+      "revId": "e5df3eae944583a28db195d9510093a957ff565b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
