@@ -16,6 +16,24 @@
       "message": "Thanks for trying, time to merge",
       "revId": "710cbaf22c3469e8495c9fad1f9549fd43d795cd",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6af2e7ed_f3827967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-07-06T13:16:31Z",
+      "side": 1,
+      "message": "Seems I missed the requirements file during the manual verification on Monday. Verifying this change results in a problem:\n\nhttps://url.corp.redhat.com/7f0edaf\n\nwe have \n\"Installed: python3-greenlet-0.4.13-4.el8.x86_64\"\n\nwhile having \nrequirements.txt.bkp:greenlet\u003e\u003d0.4.16 # MIT\n \nWhich results in:\n\n  Attempting uninstall: greenlet\n     Found existing installation: greenlet 0.4.13\n     \n  ERROR: Cannot uninstall \u0027greenlet\u0027. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall",
+      "parentUuid": "05bc16b1_60c24920",
+      "revId": "710cbaf22c3469e8495c9fad1f9549fd43d795cd",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
