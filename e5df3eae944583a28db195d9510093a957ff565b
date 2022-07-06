@@ -33,6 +33,24 @@
       "message": "Apart from the usage of sudo and the commit message, patchset 19 is the same as 17. So is it fine as it is? No need for example to remove greenlet from requirements.txt.bkp?",
       "revId": "e5df3eae944583a28db195d9510093a957ff565b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "135147f3_287806b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-07-06T21:36:26Z",
+      "side": 1,
+      "message": "I guess that removing greenlet from requirements.txt is more appropriate to be done as a cinder change then a change in octario. From the CI perspective we can fail the job if pip3 installed version is grater then the version that was installed from the RPM (or at least to issue a warning). What is your option on that?",
+      "parentUuid": "437a2df0_a1febda8",
+      "revId": "e5df3eae944583a28db195d9510093a957ff565b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
