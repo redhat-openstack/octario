@@ -16,6 +16,23 @@
       "message": "ok. It works \n\nhttps://url.corp.redhat.com/9d4291e\nhttps://url.corp.redhat.com/2f9d4b6\n\nwith the last patch. We can merge it now.\n",
       "revId": "e5df3eae944583a28db195d9510093a957ff565b",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437a2df0_a1febda8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-07-06T21:21:52Z",
+      "side": 1,
+      "message": "Apart from the usage of sudo and the commit message, patchset 19 is the same as 17. So is it fine as it is? No need for example to remove greenlet from requirements.txt.bkp?",
+      "revId": "e5df3eae944583a28db195d9510093a957ff565b",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
