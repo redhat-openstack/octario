@@ -5,6 +5,7 @@ pep8:
     remove_rpm: [ python3-manila ]
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
+        pip3 install hacking==3.1.0;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
