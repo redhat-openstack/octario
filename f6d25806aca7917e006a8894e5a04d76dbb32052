@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a69d132_4cfd9272",
+        "filename": "components_config/17/manila/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1014514
+      },
+      "writtenOn": "2022-07-18T19:22:57Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be removed?",
+      "range": {
+        "startLine": 4,
+        "startChar": 77,
+        "endLine": 4,
+        "endChar": 92
+      },
+      "revId": "f6d25806aca7917e006a8894e5a04d76dbb32052",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd6376b_17974038",
+        "filename": "components_config/17/manila/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1014514
+      },
+      "writtenOn": "2022-07-18T19:22:57Z",
+      "side": 1,
+      "message": "If the RPM is removed, wouldn\u0027t manila\u0027s test requirements pull in the most recent hacking lib from PyPi? So this isn\u0027t required..",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "f6d25806aca7917e006a8894e5a04d76dbb32052",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
