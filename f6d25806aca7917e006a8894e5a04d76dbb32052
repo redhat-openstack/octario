@@ -45,6 +45,30 @@
       },
       "revId": "f6d25806aca7917e006a8894e5a04d76dbb32052",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ad558a_ea220817",
+        "filename": "components_config/17/manila/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-07-19T12:57:04Z",
+      "side": 1,
+      "message": "In fact it is it still required since test-requirements.txt file is truncated to 0.\nThsose jobs are testing as much as possibe from RPMs. \nAnd the reason that we have no newer hacking RPM is because we are still running pep8 on rhel8 image (and new Zuul based jobs have rhel9)",
+      "parentUuid": "0cd6376b_17974038",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "f6d25806aca7917e006a8894e5a04d76dbb32052",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
