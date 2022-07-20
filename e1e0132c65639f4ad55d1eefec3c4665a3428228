@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15e1532f_420a5bd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1014514
+      },
+      "writtenOn": "2022-07-20T20:58:45Z",
+      "side": 1,
+      "message": "I don\u0027t understand the CI failure; but this lgtm! Thanks David!",
+      "revId": "e1e0132c65639f4ad55d1eefec3c4665a3428228",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}

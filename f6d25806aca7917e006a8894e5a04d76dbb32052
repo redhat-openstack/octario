@@ -69,6 +69,30 @@
       },
       "revId": "f6d25806aca7917e006a8894e5a04d76dbb32052",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3955d059_d045e05c",
+        "filename": "components_config/17/manila/component.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1014514
+      },
+      "writtenOn": "2022-07-20T20:58:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15ad558a_ea220817",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 36
+      },
+      "revId": "f6d25806aca7917e006a8894e5a04d76dbb32052",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
