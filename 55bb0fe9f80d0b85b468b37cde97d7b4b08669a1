@@ -16,6 +16,23 @@
       "message": "one more change was required to pass \nhttps://url.corp.redhat.com/cca3eb2",
       "revId": "55bb0fe9f80d0b85b468b37cde97d7b4b08669a1",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5cfed7f_36ed61f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-07-21T12:59:18Z",
+      "side": 1,
+      "message": "verification: https://url.corp.redhat.com/cca3eb2",
+      "revId": "55bb0fe9f80d0b85b468b37cde97d7b4b08669a1",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ],
   "submitRequirementResults": []
