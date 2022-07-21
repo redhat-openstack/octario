@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand the CI failure; but this lgtm! Thanks David!",
       "revId": "e1e0132c65639f4ad55d1eefec3c4665a3428228",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cafc416_22e259aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2022-07-21T12:58:53Z",
+      "side": 1,
+      "message": "Goutham, the gate is broken. No one is chaining octario anymore except configuration (yaml) files. So probably better to turn it non voting. Only older releases (13/16.1/16.2) will invoke octario. 17 will be Zuul based from the next week.",
+      "parentUuid": "15e1532f_420a5bd8",
+      "revId": "e1e0132c65639f4ad55d1eefec3c4665a3428228",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
