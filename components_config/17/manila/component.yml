@@ -1,10 +1,12 @@
 ### This file is used by manila component jobs
 
 pep8:
-    rpm_deps: [ python3-flake8, postgresql-devel, postgresql, openssl-devel, python3-hacking ]
+    rpm_deps: [ python3-flake8, postgresql-devel, postgresql, openssl-devel ]
     remove_rpm: [ python3-manila ]
     run: >
         sudo ln -sf /usr/bin/python3 /usr/bin/python;
+        sudo pip3 install hacking==3.1.0;
+        sudo pip3 install bashate;
         tox --sitepackages -v -e pep8 2>&1 | tee ../logs/testrun.log;
 
 
