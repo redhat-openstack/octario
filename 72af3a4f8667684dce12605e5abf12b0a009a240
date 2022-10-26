@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a432a00_bfeab46d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-10-26T11:06:09Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "revId": "72af3a4f8667684dce12605e5abf12b0a009a240",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80f11d0_7cbb5a3b",
+        "filename": "components_config/17/python-os-brick/component.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2022-10-26T11:06:09Z",
+      "side": 1,
+      "message": "and requirements.txt.bkp too, not just test-requirements.txt.bkp",
+      "revId": "72af3a4f8667684dce12605e5abf12b0a009a240",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
