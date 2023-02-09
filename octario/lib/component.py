@@ -294,7 +294,7 @@ class ComponentUtils(object):
             raise exceptions.InvalidRhosRelease(branch_name)
 
         major_version, minor_version = rhos_release[0].split(".")[:2]
-        if minor_version == '0':
+        if minor_version == '0' and int(major_version) < 17:
             rhos_release = major_version
         else:
             rhos_release = '%s.%s' % (major_version, minor_version)
