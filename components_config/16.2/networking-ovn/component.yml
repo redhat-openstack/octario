@@ -55,7 +55,11 @@ dsvm-functional:
         sudo dnf install -y http://download.eng.bos.redhat.com/brewroot/vol/rhel-8/packages/python-tox/2.9.1/6.el8+7/noarch/python3-tox-2.9.1-6.el8+7.noarch.rpm;
         sudo pip3 uninstall -y ovsdbapp neutron-lib neutron;
         sudo pip3 install ovsdbapp testresources os_xenapi setuptools_rust 'neutron-lib<=1.29.1';
-        sudo pip3 install git+https://code.engineering.redhat.com/gerrit/neutron@rhos-16.2-trunk-patches#egg=neutron;
+        NEUTRON_REPO=$(curl -w "%{url_effective}\n" -I -L -s -S https://url.corp.redhat.com/neutron-gerrit -o /dev/null) && sudo git clone $NEUTRON_REPO /tmp/neutron;
+        pushd /tmp/neutron;
+        sudo git checkout -b rhos-16.2-trunk-patches --track origin/rhos-16.2-trunk-patches;
+        sudo pip3 install .;
+        popd;
         truncate --size 0 /home/cloud-user/networking-ovn/networking_ovn/tests/functional/requirements.txt;
         sudo mkdir /opt/stack;
         sudo chmod -R 777 /opt/stack;
