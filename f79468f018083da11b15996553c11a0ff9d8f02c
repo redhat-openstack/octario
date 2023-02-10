@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee087cf_ea8e2046",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2023-02-10T13:35:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure I agree: I was able to successfully run rhos-release without a minor number (like rhos-release 17-trunk or rhos-release 17).\nIt just prints\nDeprecated: Please include \u0027.0\u0027 for 17.0 and later.\n\n\nbut then it works.\n\nMaybe the issue you are trying to fix is somewhere else? ",
+      "revId": "f79468f018083da11b15996553c11a0ff9d8f02c",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
