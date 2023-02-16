@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2ca673_b49c5449",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017622
+      },
+      "writtenOn": "2023-02-16T06:36:23Z",
+      "side": 1,
+      "message": "@David, can you please review this patch?\nIt was verified on Staging Jenkins, job name is DFG-network-networking-ovn-16.2-dsvm-functional-rhos\nIf you access and check it out, you\u0027ll see the octario stage takes some hours, but that\u0027s because I added a sleep 10000 in order to access the VM and investigate the issue. This will not happen in the production environment.\nThe job will be yellow after we merge this patch because there are some legit test failures: https://bugzilla.redhat.com/show_bug.cgi?id\u003d2169771\n",
+      "revId": "7e2fb7d2e3fd6e55386949f42626fc32613af736",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
