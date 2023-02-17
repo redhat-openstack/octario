@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457fa191_a20012b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2023-02-17T13:38:50Z",
+      "side": 1,
+      "message": "last thing is to use url.corp.redhat.com or move https internal repo. ",
+      "revId": "2d857995dc31627f73301b9d82b0dc77b671c2f9",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
