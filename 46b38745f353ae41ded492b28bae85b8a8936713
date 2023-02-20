@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15cba288_87b9c2a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019102
+      },
+      "writtenOn": "2023-02-20T12:40:27Z",
+      "side": 1,
+      "message": "This would fix one of the problems we are seeing on the gates",
+      "revId": "46b38745f353ae41ded492b28bae85b8a8936713",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
