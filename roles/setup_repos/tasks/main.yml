@@ -15,13 +15,17 @@
     replace: "enabled=0"
   with_items: "{{ yum_repos.stdout_lines | default() }}"
 
+- name: Obtain a real URL behind a shortened URL
+  shell: curl -sLI https://url.corp.redhat.com/rhos-release-latest-rpm --insecure | awk '/^location/ {print$2}' IGNORECASE=1 | head -1
+  register: extracted_url
+
 # rhos-release used for installing the rhos repos.
 - name: Install rhos-release
   become: yes
   retries: 3
   delay: 10
   yum:
-    name: "http://download-node-02.eng.bos.redhat.com/rcm-guest/puddles/OpenStack/rhos-release/rhos-release-latest.noarch.rpm"
+    name: "{{ extracted_url.stdout }}"
     validate_certs: no
     disable_gpg_check: yes
   register: task_result
