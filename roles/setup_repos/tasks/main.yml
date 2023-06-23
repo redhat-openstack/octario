@@ -21,7 +21,7 @@
   retries: 3
   delay: 10
   yum:
-    name: "http://download-node-02.eng.bos.redhat.com/rcm-guest/puddles/OpenStack/rhos-release/rhos-release-latest.noarch.rpm"
+    name: "http://download.lab.bos.redhat.com/rcm-guest/puddles/OpenStack/rhos-release/rhos-release-latest.noarch.rpm"
     validate_certs: no
     disable_gpg_check: yes
   register: task_result
