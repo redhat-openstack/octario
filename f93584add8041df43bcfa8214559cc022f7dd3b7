@@ -16,6 +16,23 @@
       "message": "this unblocks https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/",
       "revId": "f93584add8041df43bcfa8214559cc022f7dd3b7",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effc2555_47e5a7bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1016110
+      },
+      "writtenOn": "2023-06-23T10:20:54Z",
+      "side": 1,
+      "message": "you should use the internal redirector",
+      "revId": "f93584add8041df43bcfa8214559cc022f7dd3b7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
