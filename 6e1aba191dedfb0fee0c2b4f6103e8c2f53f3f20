@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee1ba3ce_9015a54f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1017622
+      },
+      "writtenOn": "2023-06-23T12:59:02Z",
+      "side": 1,
+      "message": "Tested on a downstream job, it fixes the issue with the rhos-release URL\n(Verified +1)",
+      "revId": "6e1aba191dedfb0fee0c2b4f6103e8c2f53f3f20",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
