@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c516f414_87584eb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019102
+      },
+      "writtenOn": "2023-06-23T09:11:26Z",
+      "side": 1,
+      "message": "this unblocks https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/",
+      "revId": "f93584add8041df43bcfa8214559cc022f7dd3b7",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
