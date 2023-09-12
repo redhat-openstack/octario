@@ -33,6 +33,23 @@
       "message": "Not sure what happened to the old url and if it was taken down on purpose or it\u0027s an infra issue, but the old one doesn\u0027t work and the new one does, so +1 from me. Working \u003e Not Working :p",
       "revId": "a14d8c360c8cc9d793dbb90a113c694f12e22e42",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38524442_b880df99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2023-09-12T12:05:25Z",
+      "side": 1,
+      "message": "16.X zuul jobs are in place (http://dfg-cre-sandbox.usersys.redhat.com/) and we can drop this",
+      "revId": "a14d8c360c8cc9d793dbb90a113c694f12e22e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
