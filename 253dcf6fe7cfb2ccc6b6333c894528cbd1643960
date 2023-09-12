@@ -16,6 +16,24 @@
       "message": "requirements.txt.bkp and test-requirements.txt.bkp",
       "revId": "253dcf6fe7cfb2ccc6b6333c894528cbd1643960",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee08ff43_9a02fecc",
+        "filename": "components_config/17/python-os-brick/component.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2023-09-12T11:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "519f15c2_2c31bb01",
+      "revId": "253dcf6fe7cfb2ccc6b6333c894528cbd1643960",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }

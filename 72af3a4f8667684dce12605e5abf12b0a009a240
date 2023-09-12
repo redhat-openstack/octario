@@ -18,6 +18,24 @@
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0872c1fd_d28c8845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2023-09-12T11:54:35Z",
+      "side": 1,
+      "message": "No. Abandoning",
+      "parentUuid": "2a432a00_bfeab46d",
+      "revId": "72af3a4f8667684dce12605e5abf12b0a009a240",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a80f11d0_7cbb5a3b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-10-26T11:06:09Z",
       "side": 1,
       "message": "and requirements.txt.bkp too, not just test-requirements.txt.bkp",
+      "revId": "72af3a4f8667684dce12605e5abf12b0a009a240",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23bf161_45cbd4ea",
+        "filename": "components_config/17/python-os-brick/component.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2023-09-12T11:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a80f11d0_7cbb5a3b",
       "revId": "72af3a4f8667684dce12605e5abf12b0a009a240",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
