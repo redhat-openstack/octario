@@ -22,6 +22,30 @@
       },
       "revId": "ab89491e7ae704559370c1eb635033ba781e4892",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0923dd9d_e235ba95",
+        "filename": "ir-plugin/osp_version_name.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2023-09-12T11:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7497a5_e7d8ff6f",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "ab89491e7ae704559370c1eb635033ba781e4892",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
