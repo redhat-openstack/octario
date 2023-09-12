@@ -1,4 +1,22 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4531e86_3b8f415b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1006664
+      },
+      "writtenOn": "2023-09-12T12:23:58Z",
+      "side": 1,
+      "message": "Cleanup. 16.X 17.X jobs were ported to Zuul. The gate is not used.",
+      "revId": "86f7545081b9f29b2a5be52dbf8e7921a03c9489",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ],
   "submitRequirementResults": []
 }
