@@ -72,7 +72,7 @@ dsvm-functional:
         sed -i "/configure_.*for_func_testing/d" /home/cloud-user/networking-ovn/networking_ovn/tests/contrib/gate_hook.sh;
         mkdir /home/cloud-user/new;
         cd /home/cloud-user/new;
-        git clone -b stable/train https://github.com/openstack/neutron.git;
+        git clone -b rhos-16.2-trunk-patches https://code.engineering.redhat.com/gerrit/neutron.git
         git clone -b stable/train https://github.com/openstack-dev/devstack.git;
         cp -r /home/cloud-user/networking-ovn /home/cloud-user/new/;
         cd /home/cloud-user/networking-ovn;
