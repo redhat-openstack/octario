@@ -50,6 +50,24 @@
       "message": "16.X zuul jobs are in place (http://dfg-cre-sandbox.usersys.redhat.com/) and we can drop this",
       "revId": "a14d8c360c8cc9d793dbb90a113c694f12e22e42",
       "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f98faef6_8113d8ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003214
+      },
+      "writtenOn": "2023-11-15T19:57:05Z",
+      "side": 1,
+      "message": "This patch for the functional testing suite. Does an equivalent exist there?",
+      "parentUuid": "38524442_b880df99",
+      "revId": "a14d8c360c8cc9d793dbb90a113c694f12e22e42",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
     }
   ]
 }
