@@ -1,0 +1,11 @@
+Code-Review+2: David Sariel <dsariel@redhat.com>
+Code-Review+2: Waldemar Znoinski <wznoinsk@redhat.com>
+Verified+1: Waldemar Znoinski <wznoinsk@redhat.com>
+Code-Review+1: Eduardo Olivares <eolivare@redhat.com>
+Code-Review+1: <averdagu@redhat.com>
+Submitted-by: Waldemar Znoinski <wznoinsk@redhat.com>
+Submitted-at: Tue, 09 Jul 2024 19:07:17 +0000
+Reviewed-on: https://review.gerrithub.io/c/redhat-openstack/octario/+/1197456
+Comments-Total: 1
+Project: redhat-openstack/octario
+Branch: refs/heads/master
