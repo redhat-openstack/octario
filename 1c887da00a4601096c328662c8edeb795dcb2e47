@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6425de43_fb8932b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019102
+      },
+      "writtenOn": "2024-07-09T15:10:13Z",
+      "side": 1,
+      "message": "Verified on https://rhos-ci-jenkins.lab.eng.tlv2.redhat.com/job/DFG-network-networking-ovn-16.2-dsvm-functional-rhos/905/ (failing because of codebase, finally running the tests)",
+      "revId": "1c887da00a4601096c328662c8edeb795dcb2e47",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735"
+    }
+  ]
+}
