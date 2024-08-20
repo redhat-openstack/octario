@@ -16,7 +16,7 @@
   with_items: "{{ yum_repos.stdout_lines | default() }}"
 
 - name: Obtain a real URL behind a shortened URL
-  shell: curl -sLI https://url.corp.redhat.com/rhos-release-latest-rpm --insecure | awk '/^location/ {print$2}' IGNORECASE=1 | head -1
+  shell: curl -sLI https://url.corp.redhat.com/latest-rhos-release-rpm --insecure | awk '/^location/ {print$2}' IGNORECASE=1 | head -1
   register: extracted_url
 
 # rhos-release used for installing the rhos repos.
